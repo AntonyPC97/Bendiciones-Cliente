@@ -188,6 +188,7 @@ namespace Bendiciones
                     btnSeleccionarBebe.Enabled = true;
                     btnAgregarBebe.Enabled = true;
 					cboSedes.Enabled = true;
+                    cboSedes.SelectedIndex = 1;
 					dgvCondiciones.Enabled = true;
 					lblCodigo.Visible = true;
 					dgvContactos.Enabled = true;
@@ -246,8 +247,7 @@ namespace Bendiciones
 		public bool verificarCampos()
 		{
 			int i;
-			if (txtNombreCliente.Text.Equals("") || txtDNI.Text.Equals("") || txtTelef.Equals("") ||
-				txtCorreo.Text.Equals("") || cboSedes.SelectedIndex==-1)
+			if (txtNombreCliente.Text.Equals("") || txtDNI.Text.Equals("") || cboSedes.SelectedIndex==-1)
 			{
 				frmMensaje mensaje = new frmMensaje("Complete los campos obligatorios","Error de Campos","");
 				return false;
@@ -261,7 +261,7 @@ namespace Bendiciones
 
 			if (!IsValidEmail(txtCorreo.Text))
 			{
-				frmMensaje mensaje = new frmMensaje("Ingrese un correo electronico valido", "", "");
+				frmMensaje mensaje = new frmMensaje("Ingrese un correo electronico valido: example@dominio.com", "", "");
 				return false;
 			}
 
@@ -274,27 +274,23 @@ namespace Bendiciones
 			if ((!txtAseguradora.Text.Equals("") && txtNumAseguradora.Text.Equals(""))|| (txtAseguradora.Text.Equals("") && !txtNumAseguradora.Text.Equals("")))
 			{
 				frmMensaje mensaje = new frmMensaje("Completar Campos de Aseguradora", "Error de ASEGURADORA", "");
-				return false;
-			}
-
-			if (!int.TryParse(txtNumAseguradora.Text,out i))
-			{
-				frmMensaje mensaje = new frmMensaje("Campo Num. ASEGURADORA debe ser numerico", "Error de ASEGURADORA", "");
-				return false;
-			}
+                if (!int.TryParse(txtNumAseguradora.Text, out i))
+                {
+                    frmMensaje mensaje1 = new frmMensaje("Campo Num. ASEGURADORA debe ser numerico", "Error de ASEGURADORA", "");
+                    return false;
+                }
+            }
 
 			if ((!txtDNIPareja.Text.Equals("") && txtNombrePareja.Text.Equals("")) || (txtDNIPareja.Text.Equals("") && !txtNombrePareja.Text.Equals("")))
 			{
 				frmMensaje mensaje = new frmMensaje("Completar Campos de Pareja", "Error de PAREJA", "");
-				return false;
+                if(rbFemeninoPareja.Checked == false && rbMasculinoPareja.Checked == false)
+                {
+                    frmMensaje mensaje1 = new frmMensaje("Campo SEXO(cliente o pareja) debe ser seleccionado", "Error de SEXO", "");
+                    return false;
+                }
 			}
-
-			if (rbFemeninoPareja.Checked == false && rbMasculinoPareja.Checked == false)
-			{
-				frmMensaje mensaje = new frmMensaje("Campo SEXO(cliente o pareja) debe ser seleccionado", "Error de SEXO", "");
-				return false;
-			}
-			return true;
+            return true;
 		}
 
 		#region Botones
@@ -493,7 +489,7 @@ namespace Bendiciones
 		private void btnAddContacto_Click(object sender, EventArgs e)
 		{
 			int i;
-			if (int.TryParse(txtTelefonoEmergencia.Text, out i) && !txtNombrePareja.Text.Equals(""))
+			if (int.TryParse(txtTelefonoEmergencia.Text, out i) && !txtNombreEmergencia.Text.Equals(""))
 			{
 				Service.contactoEmergencia cont = new Service.contactoEmergencia();
 				cont.nombre = txtNombreEmergencia.Text;

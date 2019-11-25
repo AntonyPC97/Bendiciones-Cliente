@@ -33,6 +33,14 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.pnlCtn = new System.Windows.Forms.Panel();
+            this.gbPago = new System.Windows.Forms.GroupBox();
+            this.txtSaldo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.cboDescuentos = new System.Windows.Forms.ComboBox();
+            this.lblDescuento = new System.Windows.Forms.Label();
+            this.btnPagarAhora = new System.Windows.Forms.Button();
             this.gbDocente = new System.Windows.Forms.GroupBox();
             this.lblNombreDocente = new System.Windows.Forms.Label();
             this.txtNombreDocente = new System.Windows.Forms.TextBox();
@@ -45,20 +53,9 @@
             this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.lblDNI = new System.Windows.Forms.Label();
             this.txtDNICliente = new System.Windows.Forms.TextBox();
-            this.gbPago = new System.Windows.Forms.GroupBox();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.lblSaldo = new System.Windows.Forms.Label();
-            this.txtSaldo = new System.Windows.Forms.TextBox();
-            this.cboDescuentos = new System.Windows.Forms.ComboBox();
-            this.lblDescuento = new System.Windows.Forms.Label();
-            this.cboFormaPago = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblAbonar = new System.Windows.Forms.Label();
-            this.txtAbonar = new System.Windows.Forms.TextBox();
             this.gbServicio = new System.Windows.Forms.GroupBox();
-            this.lblHoraFin = new System.Windows.Forms.Label();
             this.cboHoraFin = new System.Windows.Forms.ComboBox();
+            this.lblHoraFin = new System.Windows.Forms.Label();
             this.lblHoraIni = new System.Windows.Forms.Label();
             this.cboHoraIni = new System.Windows.Forms.ComboBox();
             this.dtpFechaMatricula = new System.Windows.Forms.DateTimePicker();
@@ -77,9 +74,9 @@
             this.txtNombreServicio = new System.Windows.Forms.TextBox();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.pnlCtn.SuspendLayout();
+            this.gbPago.SuspendLayout();
             this.gbDocente.SuspendLayout();
             this.gbCliente.SuspendLayout();
-            this.gbPago.SuspendLayout();
             this.gbServicio.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,14 +135,106 @@
             // pnlCtn
             // 
             this.pnlCtn.AutoScroll = true;
+            this.pnlCtn.Controls.Add(this.gbPago);
+            this.pnlCtn.Controls.Add(this.btnPagarAhora);
             this.pnlCtn.Controls.Add(this.gbDocente);
             this.pnlCtn.Controls.Add(this.gbCliente);
-            this.pnlCtn.Controls.Add(this.gbPago);
             this.pnlCtn.Controls.Add(this.gbServicio);
             this.pnlCtn.Location = new System.Drawing.Point(26, 104);
             this.pnlCtn.Name = "pnlCtn";
             this.pnlCtn.Size = new System.Drawing.Size(854, 347);
             this.pnlCtn.TabIndex = 70;
+            // 
+            // gbPago
+            // 
+            this.gbPago.Controls.Add(this.txtSaldo);
+            this.gbPago.Controls.Add(this.label1);
+            this.gbPago.Controls.Add(this.lblTotal);
+            this.gbPago.Controls.Add(this.txtTotal);
+            this.gbPago.Controls.Add(this.cboDescuentos);
+            this.gbPago.Controls.Add(this.lblDescuento);
+            this.gbPago.Location = new System.Drawing.Point(41, 724);
+            this.gbPago.Name = "gbPago";
+            this.gbPago.Size = new System.Drawing.Size(726, 125);
+            this.gbPago.TabIndex = 72;
+            this.gbPago.TabStop = false;
+            this.gbPago.Text = "Pago";
+            // 
+            // txtSaldo
+            // 
+            this.txtSaldo.Enabled = false;
+            this.txtSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSaldo.HideSelection = false;
+            this.txtSaldo.Location = new System.Drawing.Point(260, 89);
+            this.txtSaldo.Name = "txtSaldo";
+            this.txtSaldo.Size = new System.Drawing.Size(164, 26);
+            this.txtSaldo.TabIndex = 44;
+            this.txtSaldo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(118, 89);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 24);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "Saldo:";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(118, 56);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(124, 24);
+            this.lblTotal.TabIndex = 41;
+            this.lblTotal.Text = "Total a pagar:";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.HideSelection = false;
+            this.txtTotal.Location = new System.Drawing.Point(260, 54);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(164, 26);
+            this.txtTotal.TabIndex = 42;
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotal.TextChanged += new System.EventHandler(this.txtTotal_TextChanged);
+            // 
+            // cboDescuentos
+            // 
+            this.cboDescuentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboDescuentos.FormattingEnabled = true;
+            this.cboDescuentos.Location = new System.Drawing.Point(260, 22);
+            this.cboDescuentos.Name = "cboDescuentos";
+            this.cboDescuentos.Size = new System.Drawing.Size(164, 28);
+            this.cboDescuentos.TabIndex = 38;
+            this.cboDescuentos.SelectedIndexChanged += new System.EventHandler(this.cboDescuentos_SelectedIndexChanged);
+            // 
+            // lblDescuento
+            // 
+            this.lblDescuento.AutoSize = true;
+            this.lblDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescuento.Location = new System.Drawing.Point(118, 20);
+            this.lblDescuento.Name = "lblDescuento";
+            this.lblDescuento.Size = new System.Drawing.Size(106, 24);
+            this.lblDescuento.TabIndex = 37;
+            this.lblDescuento.Text = "Descuento:";
+            // 
+            // btnPagarAhora
+            // 
+            this.btnPagarAhora.FlatAppearance.BorderSize = 0;
+            this.btnPagarAhora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPagarAhora.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPagarAhora.Location = new System.Drawing.Point(631, 867);
+            this.btnPagarAhora.Name = "btnPagarAhora";
+            this.btnPagarAhora.Size = new System.Drawing.Size(136, 20);
+            this.btnPagarAhora.TabIndex = 71;
+            this.btnPagarAhora.Text = "Pagar ahora";
+            this.btnPagarAhora.UseVisualStyleBackColor = true;
+            this.btnPagarAhora.Click += new System.EventHandler(this.btnPagarAhora_Click);
             // 
             // gbDocente
             // 
@@ -285,137 +374,10 @@
             this.txtDNICliente.TabIndex = 31;
             this.txtDNICliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // gbPago
-            // 
-            this.gbPago.Controls.Add(this.lblTotal);
-            this.gbPago.Controls.Add(this.txtTotal);
-            this.gbPago.Controls.Add(this.lblSaldo);
-            this.gbPago.Controls.Add(this.txtSaldo);
-            this.gbPago.Controls.Add(this.cboDescuentos);
-            this.gbPago.Controls.Add(this.lblDescuento);
-            this.gbPago.Controls.Add(this.cboFormaPago);
-            this.gbPago.Controls.Add(this.label2);
-            this.gbPago.Controls.Add(this.lblAbonar);
-            this.gbPago.Controls.Add(this.txtAbonar);
-            this.gbPago.Location = new System.Drawing.Point(41, 724);
-            this.gbPago.Name = "gbPago";
-            this.gbPago.Size = new System.Drawing.Size(726, 245);
-            this.gbPago.TabIndex = 55;
-            this.gbPago.TabStop = false;
-            this.gbPago.Text = "Pago";
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(179, 30);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(56, 24);
-            this.lblTotal.TabIndex = 41;
-            this.lblTotal.Text = "Total:";
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.Enabled = false;
-            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.HideSelection = false;
-            this.txtTotal.Location = new System.Drawing.Point(345, 30);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(164, 26);
-            this.txtTotal.TabIndex = 42;
-            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // lblSaldo
-            // 
-            this.lblSaldo.AutoSize = true;
-            this.lblSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSaldo.Location = new System.Drawing.Point(179, 150);
-            this.lblSaldo.Name = "lblSaldo";
-            this.lblSaldo.Size = new System.Drawing.Size(63, 24);
-            this.lblSaldo.TabIndex = 39;
-            this.lblSaldo.Text = "Saldo:";
-            // 
-            // txtSaldo
-            // 
-            this.txtSaldo.Enabled = false;
-            this.txtSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSaldo.HideSelection = false;
-            this.txtSaldo.Location = new System.Drawing.Point(345, 150);
-            this.txtSaldo.Name = "txtSaldo";
-            this.txtSaldo.Size = new System.Drawing.Size(164, 26);
-            this.txtSaldo.TabIndex = 40;
-            this.txtSaldo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // cboDescuentos
-            // 
-            this.cboDescuentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboDescuentos.FormattingEnabled = true;
-            this.cboDescuentos.Items.AddRange(new object[] {
-            "Curso 1",
-            "Curso 2",
-            "Curso 3"});
-            this.cboDescuentos.Location = new System.Drawing.Point(345, 70);
-            this.cboDescuentos.Name = "cboDescuentos";
-            this.cboDescuentos.Size = new System.Drawing.Size(164, 28);
-            this.cboDescuentos.TabIndex = 38;
-            // 
-            // lblDescuento
-            // 
-            this.lblDescuento.AutoSize = true;
-            this.lblDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescuento.Location = new System.Drawing.Point(179, 70);
-            this.lblDescuento.Name = "lblDescuento";
-            this.lblDescuento.Size = new System.Drawing.Size(106, 24);
-            this.lblDescuento.TabIndex = 37;
-            this.lblDescuento.Text = "Descuento:";
-            // 
-            // cboFormaPago
-            // 
-            this.cboFormaPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboFormaPago.FormattingEnabled = true;
-            this.cboFormaPago.Items.AddRange(new object[] {
-            "Efectivo",
-            "Tarjeta"});
-            this.cboFormaPago.Location = new System.Drawing.Point(345, 190);
-            this.cboFormaPago.Name = "cboFormaPago";
-            this.cboFormaPago.Size = new System.Drawing.Size(164, 28);
-            this.cboFormaPago.TabIndex = 36;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(179, 190);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 24);
-            this.label2.TabIndex = 35;
-            this.label2.Text = "Forma de pago:";
-            // 
-            // lblAbonar
-            // 
-            this.lblAbonar.AutoSize = true;
-            this.lblAbonar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAbonar.Location = new System.Drawing.Point(179, 110);
-            this.lblAbonar.Name = "lblAbonar";
-            this.lblAbonar.Size = new System.Drawing.Size(77, 24);
-            this.lblAbonar.TabIndex = 33;
-            this.lblAbonar.Text = "Abonar:";
-            // 
-            // txtAbonar
-            // 
-            this.txtAbonar.Enabled = false;
-            this.txtAbonar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAbonar.HideSelection = false;
-            this.txtAbonar.Location = new System.Drawing.Point(345, 110);
-            this.txtAbonar.Name = "txtAbonar";
-            this.txtAbonar.Size = new System.Drawing.Size(164, 26);
-            this.txtAbonar.TabIndex = 34;
-            this.txtAbonar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // gbServicio
             // 
-            this.gbServicio.Controls.Add(this.lblHoraFin);
             this.gbServicio.Controls.Add(this.cboHoraFin);
+            this.gbServicio.Controls.Add(this.lblHoraFin);
             this.gbServicio.Controls.Add(this.lblHoraIni);
             this.gbServicio.Controls.Add(this.cboHoraIni);
             this.gbServicio.Controls.Add(this.dtpFechaMatricula);
@@ -439,16 +401,6 @@
             this.gbServicio.TabStop = false;
             this.gbServicio.Text = "Clase Particular";
             // 
-            // lblHoraFin
-            // 
-            this.lblHoraFin.AutoSize = true;
-            this.lblHoraFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHoraFin.Location = new System.Drawing.Point(112, 425);
-            this.lblHoraFin.Name = "lblHoraFin";
-            this.lblHoraFin.Size = new System.Drawing.Size(88, 24);
-            this.lblHoraFin.TabIndex = 49;
-            this.lblHoraFin.Text = "Hora Fin:";
-            // 
             // cboHoraFin
             // 
             this.cboHoraFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -461,14 +413,21 @@
             "13:00",
             "14:00",
             "15:00",
-            "16:00",
-            "17:00",
-            "18:00",
-            "19:00"});
-            this.cboHoraFin.Location = new System.Drawing.Point(260, 425);
+            "16:00"});
+            this.cboHoraFin.Location = new System.Drawing.Point(260, 419);
             this.cboHoraFin.Name = "cboHoraFin";
             this.cboHoraFin.Size = new System.Drawing.Size(144, 28);
-            this.cboHoraFin.TabIndex = 48;
+            this.cboHoraFin.TabIndex = 50;
+            // 
+            // lblHoraFin
+            // 
+            this.lblHoraFin.AutoSize = true;
+            this.lblHoraFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHoraFin.Location = new System.Drawing.Point(112, 425);
+            this.lblHoraFin.Name = "lblHoraFin";
+            this.lblHoraFin.Size = new System.Drawing.Size(88, 24);
+            this.lblHoraFin.TabIndex = 49;
+            this.lblHoraFin.Text = "Hora Fin:";
             // 
             // lblHoraIni
             // 
@@ -485,11 +444,14 @@
             this.cboHoraIni.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboHoraIni.FormattingEnabled = true;
             this.cboHoraIni.Items.AddRange(new object[] {
-            "09:00AM",
-            "10:00AM",
-            "11:00AM",
-            "12:00AM",
-            "01:00PM"});
+            "09:00",
+            "10:00",
+            "11:00",
+            "12:00",
+            "13:00",
+            "14:00",
+            "15:00",
+            "16:00"});
             this.cboHoraIni.Location = new System.Drawing.Point(260, 385);
             this.cboHoraIni.Name = "cboHoraIni";
             this.cboHoraIni.Size = new System.Drawing.Size(144, 28);
@@ -521,7 +483,9 @@
             "San Miguel",
             "Jesús María",
             "Magdalena",
-            "Lima"});
+            "Lima",
+            "Surco",
+            "Chorrillos"});
             this.cboDistrito.Location = new System.Drawing.Point(260, 305);
             this.cboDistrito.Name = "cboDistrito";
             this.cboDistrito.Size = new System.Drawing.Size(249, 28);
@@ -601,6 +565,7 @@
             this.txtPrecio.Size = new System.Drawing.Size(144, 26);
             this.txtPrecio.TabIndex = 38;
             this.txtPrecio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPrecio.TextChanged += new System.EventHandler(this.txtPrecio_TextChanged);
             // 
             // txtDescripcion
             // 
@@ -672,12 +637,12 @@
             this.Name = "frmGestionarClaseParticular";
             this.Text = "frmGestionarClaseParticular";
             this.pnlCtn.ResumeLayout(false);
+            this.gbPago.ResumeLayout(false);
+            this.gbPago.PerformLayout();
             this.gbDocente.ResumeLayout(false);
             this.gbDocente.PerformLayout();
             this.gbCliente.ResumeLayout(false);
             this.gbCliente.PerformLayout();
-            this.gbPago.ResumeLayout(false);
-            this.gbPago.PerformLayout();
             this.gbServicio.ResumeLayout(false);
             this.gbServicio.PerformLayout();
             this.ResumeLayout(false);
@@ -703,18 +668,8 @@
         private System.Windows.Forms.Button btnBuscarCliente;
         private System.Windows.Forms.Label lblDNI;
         private System.Windows.Forms.TextBox txtDNICliente;
-        private System.Windows.Forms.GroupBox gbPago;
-        protected internal System.Windows.Forms.Label lblSaldo;
-        private System.Windows.Forms.TextBox txtSaldo;
-        private System.Windows.Forms.ComboBox cboDescuentos;
-        private System.Windows.Forms.Label lblDescuento;
-        private System.Windows.Forms.ComboBox cboFormaPago;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblAbonar;
-        private System.Windows.Forms.TextBox txtAbonar;
         private System.Windows.Forms.GroupBox gbServicio;
         private System.Windows.Forms.Label lblHoraFin;
-        private System.Windows.Forms.ComboBox cboHoraFin;
         private System.Windows.Forms.Label lblHoraIni;
         private System.Windows.Forms.ComboBox cboHoraIni;
         private System.Windows.Forms.DateTimePicker dtpFechaMatricula;
@@ -732,7 +687,14 @@
         private System.Windows.Forms.Label lblNombreServicio;
         private System.Windows.Forms.TextBox txtNombreServicio;
         private System.Windows.Forms.Button btnNuevo;
+        private System.Windows.Forms.ComboBox cboHoraFin;
+        private System.Windows.Forms.Button btnPagarAhora;
+        private System.Windows.Forms.GroupBox gbPago;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.ComboBox cboDescuentos;
+        private System.Windows.Forms.Label lblDescuento;
+        private System.Windows.Forms.TextBox txtSaldo;
+        private System.Windows.Forms.Label label1;
     }
 }

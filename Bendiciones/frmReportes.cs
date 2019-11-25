@@ -16,15 +16,23 @@ namespace Bendiciones
         public frmReportes()
         {
             InitializeComponent();
+
         }
 
         private void btnGenerarReporte_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.ShowDialog();
-            byte[] arreglo
-                = Program.dbController.generarReporteServicioPDF(Int32.Parse((String)cboMeses.SelectedItem), Int32.Parse((String)cboYears.SelectedItem));
-            File.WriteAllBytes(saveFileDialog1.FileName
-                + ".pdf", arreglo);
+            if (cboMeses.SelectedIndex != -1 & cboYears.SelectedIndex != -1) {
+                saveFileDialog1.ShowDialog();
+                byte[] arreglo
+                    = Program.dbController.generarReporteServicioPDF(cboMeses.SelectedIndex + 1, Int32.Parse((String)cboYears.SelectedItem));
+                File.WriteAllBytes(saveFileDialog1.FileName
+                    + ".pdf", arreglo);
+            }
+            else
+            {
+                MessageBox.Show("Todos los campos son obligatorios", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
     }
 }

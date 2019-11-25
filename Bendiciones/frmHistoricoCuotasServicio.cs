@@ -27,6 +27,7 @@ namespace Bendiciones
 			gbServicio.BackColor = p.Blanco;
 			gbHistorico.BackColor = p.Blanco;
 			dgvHistorico.AutoGenerateColumns = false;
+
         }
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
@@ -48,6 +49,8 @@ namespace Bendiciones
             txtSaldo.Text = "";
             txtPrecio.Text = "";
             txtDescuento.Text = "";
+            dtpFechaMatricula.Value = DateTime.Now;
+            dgvHistorico.RowCount = 0;
         }
 
         private void btnListarServicios_Click(object sender, EventArgs e)
@@ -79,7 +82,7 @@ namespace Bendiciones
                             {
                                 Object[] fila = new Object[3];
                                 fila[0] = c.fecha.ToShortDateString();
-                                fila[1] = c.monto;
+                                fila[1] = c.monto.ToString("0.0");
                                 fila[2] = c.formaPago;
                                 dgvHistorico.Rows.Add(fila);
                             }
@@ -90,10 +93,7 @@ namespace Bendiciones
 					
 			}
 			else
-			{
-				frmMensaje mensaje = new frmMensaje("Seleccione un Cliente", "", "");
-			}
-				
+				MessageBox.Show("Seleccione un Cliente", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
 		}
     }

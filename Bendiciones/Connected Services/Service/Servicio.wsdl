@@ -5,6 +5,12 @@
       <xsd:import schemaLocation="http://23.22.34.143:8080/BendicionesSoftServices/Servicio?xsd=1" namespace="http://services/" />
     </xsd:schema>
   </types>
+  <message name="listarDocentesDelDiaPorCurso">
+    <part name="parameters" element="tns:listarDocentesDelDiaPorCurso" />
+  </message>
+  <message name="listarDocentesDelDiaPorCursoResponse">
+    <part name="parameters" element="tns:listarDocentesDelDiaPorCursoResponse" />
+  </message>
   <message name="listarCondMedicasPorBebe">
     <part name="parameters" element="tns:listarCondMedicasPorBebe" />
   </message>
@@ -371,6 +377,24 @@
   <message name="insertarDescuentoResponse">
     <part name="parameters" element="tns:insertarDescuentoResponse" />
   </message>
+  <message name="listarDocentesYaAsistieron">
+    <part name="parameters" element="tns:listarDocentesYaAsistieron" />
+  </message>
+  <message name="listarDocentesYaAsistieronResponse">
+    <part name="parameters" element="tns:listarDocentesYaAsistieronResponse" />
+  </message>
+  <message name="eliminarDocenteDeHoraio">
+    <part name="parameters" element="tns:eliminarDocenteDeHoraio" />
+  </message>
+  <message name="eliminarDocenteDeHoraioResponse">
+    <part name="parameters" element="tns:eliminarDocenteDeHoraioResponse" />
+  </message>
+  <message name="listarClientesYaAsistieron">
+    <part name="parameters" element="tns:listarClientesYaAsistieron" />
+  </message>
+  <message name="listarClientesYaAsistieronResponse">
+    <part name="parameters" element="tns:listarClientesYaAsistieronResponse" />
+  </message>
   <message name="listarClasesParticularesSinDocentePorGestante">
     <part name="parameters" element="tns:listarClasesParticularesSinDocentePorGestante" />
   </message>
@@ -533,7 +557,23 @@
   <message name="eliminarSedeResponse">
     <part name="parameters" element="tns:eliminarSedeResponse" />
   </message>
+  <message name="listarClientesYaAsistieronPorCurso">
+    <part name="parameters" element="tns:listarClientesYaAsistieronPorCurso" />
+  </message>
+  <message name="listarClientesYaAsistieronPorCursoResponse">
+    <part name="parameters" element="tns:listarClientesYaAsistieronPorCursoResponse" />
+  </message>
+  <message name="listarDocentesYaAsistieronPorCurso">
+    <part name="parameters" element="tns:listarDocentesYaAsistieronPorCurso" />
+  </message>
+  <message name="listarDocentesYaAsistieronPorCursoResponse">
+    <part name="parameters" element="tns:listarDocentesYaAsistieronPorCursoResponse" />
+  </message>
   <portType name="Servicio">
+    <operation name="listarDocentesDelDiaPorCurso">
+      <input wsam:Action="http://services/Servicio/listarDocentesDelDiaPorCursoRequest" message="tns:listarDocentesDelDiaPorCurso" />
+      <output wsam:Action="http://services/Servicio/listarDocentesDelDiaPorCursoResponse" message="tns:listarDocentesDelDiaPorCursoResponse" />
+    </operation>
     <operation name="listarCondMedicasPorBebe">
       <input wsam:Action="http://services/Servicio/listarCondMedicasPorBebeRequest" message="tns:listarCondMedicasPorBebe" />
       <output wsam:Action="http://services/Servicio/listarCondMedicasPorBebeResponse" message="tns:listarCondMedicasPorBebeResponse" />
@@ -778,6 +818,18 @@
       <input wsam:Action="http://services/Servicio/insertarDescuentoRequest" message="tns:insertarDescuento" />
       <output wsam:Action="http://services/Servicio/insertarDescuentoResponse" message="tns:insertarDescuentoResponse" />
     </operation>
+    <operation name="listarDocentesYaAsistieron">
+      <input wsam:Action="http://services/Servicio/listarDocentesYaAsistieronRequest" message="tns:listarDocentesYaAsistieron" />
+      <output wsam:Action="http://services/Servicio/listarDocentesYaAsistieronResponse" message="tns:listarDocentesYaAsistieronResponse" />
+    </operation>
+    <operation name="eliminarDocenteDeHoraio">
+      <input wsam:Action="http://services/Servicio/eliminarDocenteDeHoraioRequest" message="tns:eliminarDocenteDeHoraio" />
+      <output wsam:Action="http://services/Servicio/eliminarDocenteDeHoraioResponse" message="tns:eliminarDocenteDeHoraioResponse" />
+    </operation>
+    <operation name="listarClientesYaAsistieron">
+      <input wsam:Action="http://services/Servicio/listarClientesYaAsistieronRequest" message="tns:listarClientesYaAsistieron" />
+      <output wsam:Action="http://services/Servicio/listarClientesYaAsistieronResponse" message="tns:listarClientesYaAsistieronResponse" />
+    </operation>
     <operation name="listarClasesParticularesSinDocentePorGestante">
       <input wsam:Action="http://services/Servicio/listarClasesParticularesSinDocentePorGestanteRequest" message="tns:listarClasesParticularesSinDocentePorGestante" />
       <output wsam:Action="http://services/Servicio/listarClasesParticularesSinDocentePorGestanteResponse" message="tns:listarClasesParticularesSinDocentePorGestanteResponse" />
@@ -886,9 +938,26 @@
       <input wsam:Action="http://services/Servicio/eliminarSedeRequest" message="tns:eliminarSede" />
       <output wsam:Action="http://services/Servicio/eliminarSedeResponse" message="tns:eliminarSedeResponse" />
     </operation>
+    <operation name="listarClientesYaAsistieronPorCurso">
+      <input wsam:Action="http://services/Servicio/listarClientesYaAsistieronPorCursoRequest" message="tns:listarClientesYaAsistieronPorCurso" />
+      <output wsam:Action="http://services/Servicio/listarClientesYaAsistieronPorCursoResponse" message="tns:listarClientesYaAsistieronPorCursoResponse" />
+    </operation>
+    <operation name="listarDocentesYaAsistieronPorCurso">
+      <input wsam:Action="http://services/Servicio/listarDocentesYaAsistieronPorCursoRequest" message="tns:listarDocentesYaAsistieronPorCurso" />
+      <output wsam:Action="http://services/Servicio/listarDocentesYaAsistieronPorCursoResponse" message="tns:listarDocentesYaAsistieronPorCursoResponse" />
+    </operation>
   </portType>
   <binding name="ServicioPortBinding" type="tns:Servicio">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="listarDocentesDelDiaPorCurso">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="listarCondMedicasPorBebe">
       <soap:operation soapAction="" />
       <input>
@@ -1438,6 +1507,33 @@
         <soap:body use="literal" />
       </output>
     </operation>
+    <operation name="listarDocentesYaAsistieron">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eliminarDocenteDeHoraio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarClientesYaAsistieron">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="listarClasesParticularesSinDocentePorGestante">
       <soap:operation soapAction="" />
       <input>
@@ -1673,6 +1769,24 @@
       </output>
     </operation>
     <operation name="eliminarSede">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarClientesYaAsistieronPorCurso">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarDocentesYaAsistieronPorCurso">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

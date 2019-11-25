@@ -38,20 +38,21 @@
             // 
             // cboMeses
             // 
+            this.cboMeses.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
             this.cboMeses.FormattingEnabled = true;
             this.cboMeses.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Setiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre"});
             this.cboMeses.Location = new System.Drawing.Point(235, 39);
             this.cboMeses.Name = "cboMeses";
             this.cboMeses.Size = new System.Drawing.Size(196, 21);
