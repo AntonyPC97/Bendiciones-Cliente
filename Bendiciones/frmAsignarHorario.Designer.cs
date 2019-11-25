@@ -33,16 +33,17 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtNombreServicio = new System.Windows.Forms.TextBox();
             this.dgvHorarios = new System.Windows.Forms.DataGridView();
+            this.btnAddHorario = new System.Windows.Forms.Button();
+            this.btnEliminarHorario = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.pnlCtn = new System.Windows.Forms.Panel();
+            this.Num_clase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoraIni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoraFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Profesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sede = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumVac = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAddHorario = new System.Windows.Forms.Button();
-            this.btnEliminarHorario = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.pnlCtn = new System.Windows.Forms.Panel();
             this.gbCurso.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHorarios)).BeginInit();
             this.pnlCtn.SuspendLayout();
@@ -100,6 +101,7 @@
             this.dgvHorarios.AllowUserToDeleteRows = false;
             this.dgvHorarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHorarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Num_clase,
             this.HoraIni,
             this.HoraFin,
             this.Profesor,
@@ -110,51 +112,9 @@
             this.dgvHorarios.Name = "dgvHorarios";
             this.dgvHorarios.ReadOnly = true;
             this.dgvHorarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHorarios.Size = new System.Drawing.Size(705, 243);
+            this.dgvHorarios.Size = new System.Drawing.Size(731, 243);
             this.dgvHorarios.TabIndex = 41;
             this.dgvHorarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHorarios_CellDoubleClick);
-            // 
-            // HoraIni
-            // 
-            this.HoraIni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.HoraIni.HeaderText = "Hora Inicio";
-            this.HoraIni.Name = "HoraIni";
-            this.HoraIni.ReadOnly = true;
-            // 
-            // HoraFin
-            // 
-            this.HoraFin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.HoraFin.HeaderText = "Hora Fin";
-            this.HoraFin.Name = "HoraFin";
-            this.HoraFin.ReadOnly = true;
-            // 
-            // Profesor
-            // 
-            this.Profesor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Profesor.HeaderText = "Profesor";
-            this.Profesor.Name = "Profesor";
-            this.Profesor.ReadOnly = true;
-            // 
-            // Fecha
-            // 
-            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            // 
-            // Sede
-            // 
-            this.Sede.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Sede.HeaderText = "Sede";
-            this.Sede.Name = "Sede";
-            this.Sede.ReadOnly = true;
-            // 
-            // NumVac
-            // 
-            this.NumVac.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NumVac.HeaderText = "Vacantes";
-            this.NumVac.Name = "NumVac";
-            this.NumVac.ReadOnly = true;
             // 
             // btnAddHorario
             // 
@@ -207,6 +167,55 @@
             this.pnlCtn.Size = new System.Drawing.Size(785, 450);
             this.pnlCtn.TabIndex = 43;
             // 
+            // Num_clase
+            // 
+            this.Num_clase.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Num_clase.HeaderText = "Número de clase";
+            this.Num_clase.Name = "Num_clase";
+            this.Num_clase.ReadOnly = true;
+            // 
+            // HoraIni
+            // 
+            this.HoraIni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HoraIni.HeaderText = "Hora Inicio";
+            this.HoraIni.Name = "HoraIni";
+            this.HoraIni.ReadOnly = true;
+            // 
+            // HoraFin
+            // 
+            this.HoraFin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HoraFin.HeaderText = "Hora Fin";
+            this.HoraFin.Name = "HoraFin";
+            this.HoraFin.ReadOnly = true;
+            // 
+            // Profesor
+            // 
+            this.Profesor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Profesor.HeaderText = "Profesor";
+            this.Profesor.Name = "Profesor";
+            this.Profesor.ReadOnly = true;
+            // 
+            // Fecha
+            // 
+            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            // 
+            // Sede
+            // 
+            this.Sede.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Sede.HeaderText = "Sede";
+            this.Sede.Name = "Sede";
+            this.Sede.ReadOnly = true;
+            // 
+            // NumVac
+            // 
+            this.NumVac.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NumVac.HeaderText = "Vacantes";
+            this.NumVac.Name = "NumVac";
+            this.NumVac.ReadOnly = true;
+            // 
             // frmAsignarHorario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,13 +242,14 @@
         private System.Windows.Forms.DataGridViewButtonColumn AddDocente;
         private System.Windows.Forms.Button btnAddHorario;
         private System.Windows.Forms.Button btnEliminarHorario;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Panel pnlCtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Num_clase;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoraIni;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoraFin;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profesor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sede;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumVac;
-        private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Panel pnlCtn;
     }
 }

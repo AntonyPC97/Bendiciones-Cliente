@@ -35,22 +35,22 @@ namespace Bendiciones
 
 			if (cliente == null || servMat == null ||txtAbonar.Text.Equals("") || cboFormaPago.SelectedIndex == -1)
 			{
-				MessageBox.Show("Todos los campos son oligatorios", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				frmMensaje mensaje = new frmMensaje("Todos los campos son oligatorios", "", "");
 				return false;
 			}
 			if (!float.TryParse(txtAbonar.Text, out i))
 			{
-				MessageBox.Show("Ingrese una cantidad numerica valida", "Error de Abonar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				frmMensaje mensaje = new frmMensaje("Ingrese una cantidad numerica valida", "Error de Abonar", "");
 				return false;
 			}
 			if (float.Parse(txtAbonar.Text) < 0)
 			{
-				MessageBox.Show("Ingrese una cantidad numerica positiva", "Error de Abonar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				frmMensaje mensaje = new frmMensaje("Ingrese una cantidad numerica positiva", "Error de Abonar", "");
 				return false;
 			}
 			if (float.Parse(txtAbonar.Text)==0)
 			{
-				MessageBox.Show("No es posible abonar 0 soles", "Error de Abonar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				frmMensaje mensaje = new frmMensaje("No es posible abonar 0 soles", "Error de Abonar", "");
 				return false;
 			}
 			
@@ -79,11 +79,12 @@ namespace Bendiciones
 
         private void btnListarServicios_Click(object sender, EventArgs e)
         {
-			if(cliente != null)
+            if (cliente != null)
             {
                 frmBuscarServicioDeudaPorCliente formBuscarServicioPorCliente = new frmBuscarServicioDeudaPorCliente(cliente);
-                if (formBuscarServicioPorCliente.Matriculas != null)                {
-                    
+                if (formBuscarServicioPorCliente.Matriculas != null)
+                {
+
                     if (formBuscarServicioPorCliente.ShowDialog() == DialogResult.OK)
                     {
                         servMat = formBuscarServicioPorCliente.ServMat;
@@ -92,11 +93,12 @@ namespace Bendiciones
                         txtPendiente.Text = servMat.saldo.ToString("0.0");
                     }
                 }
-				
-			}
-			else
-				MessageBox.Show("Seleccione un Cliente","",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-            
+
+            }
+            else
+            {
+                frmMensaje mensaje = new frmMensaje("Seleccione un Cliente", "", "");
+            }
         }
 
         private void btnAbonar_Click(object sender, EventArgs e)
@@ -107,7 +109,7 @@ namespace Bendiciones
                 float pendiente = float.Parse(txtPendiente.Text);
                 if (pendiente < monto)
                 {
-                    MessageBox.Show("Monto máximo a abonar: " + pendiente.ToString("0.0"), "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    frmMensaje mensaje = new frmMensaje("Monto máximo a abonar: " + pendiente.ToString("0.0"), "Mensaje de advertencia", "");
                     txtAbonar.Text = "0";
                 }
                 else
@@ -121,7 +123,7 @@ namespace Bendiciones
                     servMat.saldo = servMat.saldo - c.monto;
                     Program.dbController.actualizarMatricula(servMat);
                     Program.dbController.insertarCuota(c, servMat.idMatricula);
-                    MessageBox.Show("Cuota Registrada exitosamente", "Mensaje Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmMensaje mensaje = new frmMensaje("Cuota Registrada exitosamente", "Mensaje Confirmación", "Confirmar");
 
                     txtPendiente.Text = (float.Parse(txtPendiente.Text) - float.Parse(txtAbonar.Text)).ToString("0.0");
                     txtAbonar.Text = "0";

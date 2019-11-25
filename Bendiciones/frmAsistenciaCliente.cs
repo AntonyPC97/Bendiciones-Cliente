@@ -115,11 +115,11 @@ namespace Bendiciones
                 dgvYaAsistieron.Rows.Add(fila);
                 dgvPorAsistir.Rows.RemoveAt(dgvPorAsistir.CurrentRow.Index);
                 
-                MessageBox.Show("Asistencia registrada", "Mensaje de confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                frmMensaje mensaje = new frmMensaje("Asistencia registrada", "Mensaje de confirmación", "Confirmar");
             }
             else
             {
-                MessageBox.Show("No hay asistentes el día de hoy", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                frmMensaje mensaje = new frmMensaje("No hay asistentes el día de hoy", "Mensaje de error", "");
             }
             
         }

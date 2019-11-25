@@ -30,19 +30,20 @@
         {
             this.pnlCtn = new System.Windows.Forms.Panel();
             this.gbServicio = new System.Windows.Forms.GroupBox();
-            this.cboHoraFin = new System.Windows.Forms.ComboBox();
+            this.dtpHoraFin = new System.Windows.Forms.DateTimePicker();
+            this.dtpHoraIni = new System.Windows.Forms.DateTimePicker();
             this.txtNumVac = new System.Windows.Forms.TextBox();
             this.lblVacantes = new System.Windows.Forms.Label();
             this.txtNumClase = new System.Windows.Forms.TextBox();
             this.lblNumClase = new System.Windows.Forms.Label();
             this.lblHoraFin = new System.Windows.Forms.Label();
             this.lblHoraIni = new System.Windows.Forms.Label();
-            this.cboHoraIni = new System.Windows.Forms.ComboBox();
             this.dtpFechaMatricula = new System.Windows.Forms.DateTimePicker();
             this.lblFecha = new System.Windows.Forms.Label();
             this.cboSede = new System.Windows.Forms.ComboBox();
             this.lblSede = new System.Windows.Forms.Label();
             this.gbDocente = new System.Windows.Forms.GroupBox();
+            this.btnEliminarDocente = new System.Windows.Forms.Button();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtNombreDocente = new System.Windows.Forms.TextBox();
             this.btnBuscarDocente = new System.Windows.Forms.Button();
@@ -67,14 +68,14 @@
             // 
             // gbServicio
             // 
-            this.gbServicio.Controls.Add(this.cboHoraFin);
+            this.gbServicio.Controls.Add(this.dtpHoraFin);
+            this.gbServicio.Controls.Add(this.dtpHoraIni);
             this.gbServicio.Controls.Add(this.txtNumVac);
             this.gbServicio.Controls.Add(this.lblVacantes);
             this.gbServicio.Controls.Add(this.txtNumClase);
             this.gbServicio.Controls.Add(this.lblNumClase);
             this.gbServicio.Controls.Add(this.lblHoraFin);
             this.gbServicio.Controls.Add(this.lblHoraIni);
-            this.gbServicio.Controls.Add(this.cboHoraIni);
             this.gbServicio.Controls.Add(this.dtpFechaMatricula);
             this.gbServicio.Controls.Add(this.lblFecha);
             this.gbServicio.Controls.Add(this.cboSede);
@@ -86,18 +87,30 @@
             this.gbServicio.TabStop = false;
             this.gbServicio.Text = "Horario";
             // 
-            // cboHoraFin
+            // dtpHoraFin
             // 
-            this.cboHoraFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboHoraFin.FormattingEnabled = true;
-            this.cboHoraFin.Items.AddRange(new object[] {
-            "09:00AM",
-            "10:00AM",
-            "11:00AM"});
-            this.cboHoraFin.Location = new System.Drawing.Point(172, 166);
-            this.cboHoraFin.Name = "cboHoraFin";
-            this.cboHoraFin.Size = new System.Drawing.Size(144, 28);
-            this.cboHoraFin.TabIndex = 53;
+            this.dtpHoraFin.CustomFormat = "HH:mm ";
+            this.dtpHoraFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dtpHoraFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpHoraFin.Location = new System.Drawing.Point(172, 166);
+            this.dtpHoraFin.Name = "dtpHoraFin";
+            this.dtpHoraFin.ShowUpDown = true;
+            this.dtpHoraFin.Size = new System.Drawing.Size(89, 26);
+            this.dtpHoraFin.TabIndex = 55;
+            this.dtpHoraFin.Value = new System.DateTime(2019, 11, 23, 15, 30, 0, 0);
+            // 
+            // dtpHoraIni
+            // 
+            this.dtpHoraIni.CustomFormat = "HH:mm";
+            this.dtpHoraIni.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dtpHoraIni.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpHoraIni.Location = new System.Drawing.Point(172, 116);
+            this.dtpHoraIni.MinDate = new System.DateTime(1753, 1, 1, 9, 0, 0, 0);
+            this.dtpHoraIni.Name = "dtpHoraIni";
+            this.dtpHoraIni.ShowUpDown = true;
+            this.dtpHoraIni.Size = new System.Drawing.Size(89, 26);
+            this.dtpHoraIni.TabIndex = 54;
+            this.dtpHoraIni.Value = new System.DateTime(2019, 11, 23, 15, 30, 0, 0);
             // 
             // txtNumVac
             // 
@@ -105,9 +118,10 @@
             this.txtNumVac.HideSelection = false;
             this.txtNumVac.Location = new System.Drawing.Point(172, 266);
             this.txtNumVac.Name = "txtNumVac";
-            this.txtNumVac.Size = new System.Drawing.Size(144, 26);
+            this.txtNumVac.Size = new System.Drawing.Size(89, 26);
             this.txtNumVac.TabIndex = 52;
             this.txtNumVac.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNumVac.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumVac_KeyPress);
             // 
             // lblVacantes
             // 
@@ -125,9 +139,10 @@
             this.txtNumClase.HideSelection = false;
             this.txtNumClase.Location = new System.Drawing.Point(172, 216);
             this.txtNumClase.Name = "txtNumClase";
-            this.txtNumClase.Size = new System.Drawing.Size(144, 26);
+            this.txtNumClase.Size = new System.Drawing.Size(89, 26);
             this.txtNumClase.TabIndex = 35;
             this.txtNumClase.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNumClase.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumClase_KeyPress);
             // 
             // lblNumClase
             // 
@@ -159,19 +174,6 @@
             this.lblHoraIni.TabIndex = 47;
             this.lblHoraIni.Text = "Hora Inicio:";
             // 
-            // cboHoraIni
-            // 
-            this.cboHoraIni.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboHoraIni.FormattingEnabled = true;
-            this.cboHoraIni.Items.AddRange(new object[] {
-            "09:00AM",
-            "10:00AM",
-            "11:00AM"});
-            this.cboHoraIni.Location = new System.Drawing.Point(172, 116);
-            this.cboHoraIni.Name = "cboHoraIni";
-            this.cboHoraIni.Size = new System.Drawing.Size(144, 28);
-            this.cboHoraIni.TabIndex = 45;
-            // 
             // dtpFechaMatricula
             // 
             this.dtpFechaMatricula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -193,7 +195,6 @@
             // cboSede
             // 
             this.cboSede.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboSede.FormattingEnabled = true;
             this.cboSede.Items.AddRange(new object[] {
             "Curso 1",
             "Curso 2",
@@ -215,6 +216,7 @@
             // 
             // gbDocente
             // 
+            this.gbDocente.Controls.Add(this.btnEliminarDocente);
             this.gbDocente.Controls.Add(this.lblNombre);
             this.gbDocente.Controls.Add(this.txtNombreDocente);
             this.gbDocente.Controls.Add(this.btnBuscarDocente);
@@ -226,6 +228,16 @@
             this.gbDocente.TabIndex = 58;
             this.gbDocente.TabStop = false;
             this.gbDocente.Text = "Docente";
+            // 
+            // btnEliminarDocente
+            // 
+            this.btnEliminarDocente.Location = new System.Drawing.Point(391, 16);
+            this.btnEliminarDocente.Name = "btnEliminarDocente";
+            this.btnEliminarDocente.Size = new System.Drawing.Size(158, 39);
+            this.btnEliminarDocente.TabIndex = 55;
+            this.btnEliminarDocente.Text = "Eliminar Docente";
+            this.btnEliminarDocente.UseVisualStyleBackColor = true;
+            this.btnEliminarDocente.Click += new System.EventHandler(this.btnEliminarDocente_Click);
             // 
             // lblNombre
             // 
@@ -293,6 +305,7 @@
             this.btnModificar.TabIndex = 54;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnCancelar
             // 
@@ -305,6 +318,7 @@
             this.btnCancelar.TabIndex = 53;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -323,7 +337,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(610, 609);
+            this.ClientSize = new System.Drawing.Size(604, 562);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
@@ -354,7 +368,6 @@
         private System.Windows.Forms.GroupBox gbServicio;
         private System.Windows.Forms.Label lblHoraFin;
         private System.Windows.Forms.Label lblHoraIni;
-        private System.Windows.Forms.ComboBox cboHoraIni;
         private System.Windows.Forms.DateTimePicker dtpFechaMatricula;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.ComboBox cboSede;
@@ -366,6 +379,8 @@
         private System.Windows.Forms.Label lblNumClase;
         private System.Windows.Forms.TextBox txtNumVac;
         private System.Windows.Forms.Label lblVacantes;
-        private System.Windows.Forms.ComboBox cboHoraFin;
+        private System.Windows.Forms.DateTimePicker dtpHoraIni;
+        private System.Windows.Forms.DateTimePicker dtpHoraFin;
+        private System.Windows.Forms.Button btnEliminarDocente;
     }
 }

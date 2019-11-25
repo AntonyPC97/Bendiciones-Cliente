@@ -29,7 +29,7 @@ namespace Bendiciones
         {
             if (dgvCursos.RowCount == 0)
             {
-                MessageBox.Show("No hay curso para seleccionar", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                frmMensaje mensaje = new frmMensaje("No hay curso para seleccionar", "Mensaje de advertencia", "");
             }
             else
             {
@@ -57,7 +57,7 @@ namespace Bendiciones
 		{
 			cursoSeleccionado = (Service.curso)dgvCursos.CurrentRow.DataBoundItem;
 			Program.dbController.eliminarCurso(cursoSeleccionado.id_servicio);
-			MessageBox.Show("Curso Eliminado exitosamente", "Mensaje Confirmacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			frmMensaje mensaje = new frmMensaje("Curso Eliminado exitosamente", "Mensaje Confirmacion", "Confirmar");
 			this.Close();
 		}
 	}

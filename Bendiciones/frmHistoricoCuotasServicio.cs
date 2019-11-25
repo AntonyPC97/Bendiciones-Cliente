@@ -56,10 +56,11 @@ namespace Bendiciones
         private void btnListarServicios_Click(object sender, EventArgs e)
         {
 
-			if(cliente != null)			{
-                
+            if (cliente != null)
+            {
+
                 frmBuscarServicioPorCliente formBuscarServicioPorCliente = new frmBuscarServicioPorCliente(cliente);
-                if(formBuscarServicioPorCliente.Matriculas!= null)
+                if (formBuscarServicioPorCliente.Matriculas != null)
                 {
                     if (formBuscarServicioPorCliente.ShowDialog() == DialogResult.OK)
                     {
@@ -90,11 +91,12 @@ namespace Bendiciones
 
                     }
                 }
-					
-			}
-			else
-				MessageBox.Show("Seleccione un Cliente", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
+            }
+            else
+            {
+                frmMensaje mensaje = new frmMensaje("Seleccione un Cliente", "","");
+            }
 		}
     }
 }

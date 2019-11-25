@@ -52,7 +52,7 @@ namespace Bendiciones
             else
             {
 
-                MessageBox.Show("El cliente no tiene deudas pendientes", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                frmMensaje mensaje = new frmMensaje("El cliente no tiene deudas pendientes", "Mensaje de advertencia", "");
                 this.DialogResult = DialogResult.OK;
 
 

@@ -30,7 +30,7 @@ namespace Bendiciones
             }
             else
             {
-                MessageBox.Show("Todos los campos son obligatorios", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios", "Mensaje de advertencia", "");
             }
             
         }

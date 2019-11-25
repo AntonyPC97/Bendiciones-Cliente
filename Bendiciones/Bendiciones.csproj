@@ -134,12 +134,6 @@
     <Compile Include="frmBuscarClaseParticular.Designer.cs">
       <DependentUpon>frmBuscarClaseParticular.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBuscarClaseParticularSinDocente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmBuscarClaseParticularSinDocente.Designer.cs">
-      <DependentUpon>frmBuscarClaseParticularSinDocente.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmBuscarSede.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,12 +231,6 @@
     <Compile Include="frmGestionarCliente.designer.cs">
       <DependentUpon>frmGestionarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="___frmInfoCurso.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="___frmInfoCurso.Designer.cs">
-      <DependentUpon>___frmInfoCurso.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmMatricula.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,18 +266,6 @@
     </Compile>
     <Compile Include="frmGestionarHorario.Designer.cs">
       <DependentUpon>frmGestionarHorario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmVerCliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmVerCliente.designer.cs">
-      <DependentUpon>frmVerCliente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmVerCurso.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmVerCurso.Designer.cs">
-      <DependentUpon>frmVerCurso.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
@@ -339,9 +315,6 @@
     <EmbeddedResource Include="frmBuscarClaseParticular.resx">
       <DependentUpon>frmBuscarClaseParticular.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBuscarClaseParticularSinDocente.resx">
-      <DependentUpon>frmBuscarClaseParticularSinDocente.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarSede.resx">
       <DependentUpon>frmBuscarSede.cs</DependentUpon>
     </EmbeddedResource>
@@ -390,9 +363,6 @@
     <EmbeddedResource Include="frmGestionarCliente.resx">
       <DependentUpon>frmGestionarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="___frmInfoCurso.resx">
-      <DependentUpon>___frmInfoCurso.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmMatricula.resx">
       <DependentUpon>frmMatricula.cs</DependentUpon>
     </EmbeddedResource>
@@ -410,12 +380,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmGestionarHorario.resx">
       <DependentUpon>frmGestionarHorario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmVerCliente.resx">
-      <DependentUpon>frmVerCliente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmVerCurso.resx">
-      <DependentUpon>frmVerCurso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>

@@ -162,7 +162,7 @@ namespace Bendiciones
                txtDireccion.Text.Equals("") || cboDistrito.SelectedIndex == -1 || cboHoraFin.SelectedIndex == -1 ||
                cboHoraIni.SelectedIndex == -1)
             {
-                MessageBox.Show("Todos los campos son obligatorios","",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios","","");
                return false;
             }
 
@@ -282,7 +282,7 @@ namespace Bendiciones
 
             Program.dbController.insertarMatricula(mat);
 
-            MessageBox.Show("Clase Particular Registrada", "Mensaje de confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmMensaje mensaje = new frmMensaje("Clase Particular Registrada", "Mensaje de confirmación", "Confirmar");
 
             estadoComponentes(Estado.Inicial);
         }

@@ -103,11 +103,11 @@ namespace Bendiciones
                 dgvYaAsistieron.Rows.Add(fila);
                 dgvPorAsistir.Rows.RemoveAt(dgvPorAsistir.CurrentRow.Index);
 
-                MessageBox.Show("Asistencia registrada", "Mensaje de confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                frmMensaje mensaje = new frmMensaje("Asistencia registrada", "Mensaje de confirmación", "Confirmar");
             }
             else
             {
-                MessageBox.Show("Debe seleccionar a un colaborador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                frmMensaje mensaje = new frmMensaje("Debe seleccionar a un colaborador", "Mensaje de error", "");
             }
 
         }
