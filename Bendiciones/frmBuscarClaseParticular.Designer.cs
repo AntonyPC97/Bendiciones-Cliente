@@ -38,11 +38,10 @@
             this.lblDNI = new System.Windows.Forms.Label();
             this.txtDNI = new System.Windows.Forms.TextBox();
             this.dgvClasesParticulares = new System.Windows.Forms.DataGridView();
-            this.btnSeleccionar = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaServicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSeleccionar = new System.Windows.Forms.Button();
             this.pnlContainer.SuspendLayout();
             this.gbCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClasesParticulares)).BeginInit();
@@ -64,7 +63,6 @@
             this.pnlContainer.Controls.Add(this.gbCliente);
             this.pnlContainer.Controls.Add(this.dgvClasesParticulares);
             this.pnlContainer.Controls.Add(this.btnSeleccionar);
-            this.pnlContainer.Controls.Add(this.btnBuscar);
             this.pnlContainer.Location = new System.Drawing.Point(73, 83);
             this.pnlContainer.Name = "pnlContainer";
             this.pnlContainer.Size = new System.Drawing.Size(659, 391);
@@ -74,7 +72,7 @@
             // 
             this.btnEliminar.FlatAppearance.BorderSize = 0;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Location = new System.Drawing.Point(291, 152);
+            this.btnEliminar.Location = new System.Drawing.Point(393, 152);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(100, 30);
             this.btnEliminar.TabIndex = 43;
@@ -164,30 +162,6 @@
             this.dgvClasesParticulares.Size = new System.Drawing.Size(526, 150);
             this.dgvClasesParticulares.TabIndex = 17;
             // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.FlatAppearance.BorderSize = 0;
-            this.btnSeleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSeleccionar.Location = new System.Drawing.Point(499, 152);
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(100, 30);
-            this.btnSeleccionar.TabIndex = 16;
-            this.btnSeleccionar.Text = "Seleccionar";
-            this.btnSeleccionar.UseVisualStyleBackColor = true;
-            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(383, 152);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(100, 30);
-            this.btnBuscar.TabIndex = 15;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // Nombre
             // 
             this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -208,6 +182,18 @@
             this.FechaServicio.HeaderText = "FechaServicio";
             this.FechaServicio.Name = "FechaServicio";
             this.FechaServicio.ReadOnly = true;
+            // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.FlatAppearance.BorderSize = 0;
+            this.btnSeleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSeleccionar.Location = new System.Drawing.Point(499, 152);
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.Size = new System.Drawing.Size(100, 30);
+            this.btnSeleccionar.TabIndex = 16;
+            this.btnSeleccionar.Text = "Seleccionar";
+            this.btnSeleccionar.UseVisualStyleBackColor = true;
+            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
             // frmBuscarClaseParticular
             // 
@@ -240,7 +226,6 @@
         private System.Windows.Forms.TextBox txtDNI;
         private System.Windows.Forms.DataGridView dgvClasesParticulares;
         private System.Windows.Forms.Button btnSeleccionar;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaServicio;

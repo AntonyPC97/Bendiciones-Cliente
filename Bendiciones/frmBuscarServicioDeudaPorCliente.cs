@@ -27,25 +27,42 @@ namespace Bendiciones
 			btnSeleccionar.Top = dgvMatriculas.Top + dgvMatriculas.Height + 10;
 			btnSeleccionar.Left = dgvMatriculas.Left + dgvMatriculas.Width - 85;
 
-			if (c is Service.apoderado)
+            IEnumerable<Service.matricula> mats;
+
+            if (c is Service.apoderado)
             {
-                matriculas = Program.dbController.listarMatriculaSaldoPorApoderado(c.idPersona).ToList<Service.matricula>();
+                mats = Program.dbController.listarMatriculaSaldoPorApoderado(c.idPersona);
             } else
             {
-                matriculas = Program.dbController.listarMatriculaSaldoPorGestante(c.idPersona).ToList<Service.matricula>();
+                mats = Program.dbController.listarMatriculaSaldoPorGestante(c.idPersona);
             }
 
-            foreach (Service.matricula m in matriculas)
+            if (mats != null)
             {
-                Object[] fila = new Object[3];
-                fila[0] = m.servicio.nombre;
-                fila[1] = m.fecha;
-                fila[2] = m.saldo;
-                dgvMatriculas.Rows.Add(fila);
+                matriculas = mats.ToList();
+                foreach (Service.matricula m in matriculas)
+                {
+                    Object[] fila = new Object[3];
+                    fila[0] = m.servicio.nombre;
+                    fila[1] = m.fecha.ToShortDateString();
+                    fila[2] = m.saldo;
+                    dgvMatriculas.Rows.Add(fila);
+                }
             }
+            else
+            {
+
+                MessageBox.Show("El cliente no tiene deudas pendientes", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.DialogResult = DialogResult.OK;
+
+
+            }
+
+
         }
 
         public matricula ServMat { get => servMat; set => servMat = value; }
+        public List<matricula> Matriculas { get => matriculas; set => matriculas = value; }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {

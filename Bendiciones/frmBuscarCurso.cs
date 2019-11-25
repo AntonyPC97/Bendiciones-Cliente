@@ -27,8 +27,16 @@ namespace Bendiciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            cursoSeleccionado = (Service.curso)dgvCursos.CurrentRow.DataBoundItem;
-            this.DialogResult = DialogResult.OK;
+            if (dgvCursos.RowCount == 0)
+            {
+                MessageBox.Show("No hay curso para seleccionar", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                cursoSeleccionado = (Service.curso)dgvCursos.CurrentRow.DataBoundItem;
+                this.DialogResult = DialogResult.OK;
+            }
+            
         }
 
         private void dgvCursos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -49,7 +57,7 @@ namespace Bendiciones
 		{
 			cursoSeleccionado = (Service.curso)dgvCursos.CurrentRow.DataBoundItem;
 			Program.dbController.eliminarCurso(cursoSeleccionado.id_servicio);
-			frmMensaje mensaje = new frmMensaje("Curso Eliminado exitosamente", "Mensaje Confirmacion", "Confirmar");
+			MessageBox.Show("Curso Eliminado exitosamente", "Mensaje Confirmacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			this.Close();
 		}
 	}

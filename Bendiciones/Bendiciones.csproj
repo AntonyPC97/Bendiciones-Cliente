@@ -170,6 +170,12 @@
     <Compile Include="frmInscribirAHorario.Designer.cs">
       <DependentUpon>frmInscribirAHorario.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPagoMat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPagoMat.Designer.cs">
+      <DependentUpon>frmPagoMat.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPrincipalSec.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -350,6 +356,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInscribirAHorario.resx">
       <DependentUpon>frmInscribirAHorario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPagoMat.resx">
+      <DependentUpon>frmPagoMat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipalSec.resx">
       <DependentUpon>frmPrincipalSec.cs</DependentUpon>
@@ -535,6 +544,9 @@
     <None Include="Connected Services\Service\Bendiciones.Service.eliminarDescuentoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.eliminarDocenteDeHoraioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\Service\Bendiciones.Service.eliminarGestacionResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -649,6 +661,12 @@
     <None Include="Connected Services\Service\Bendiciones.Service.listarClientesPorHorarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.listarClientesYaAsistieronPorCursoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.listarClientesYaAsistieronResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\Service\Bendiciones.Service.listarColaboradoresPorNombreDniResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -682,10 +700,19 @@
     <None Include="Connected Services\Service\Bendiciones.Service.listarDescuentosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.listarDocentesDelDiaPorCursoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\Service\Bendiciones.Service.listarDocentesDelDiaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\Service\Bendiciones.Service.listarDocentesPorNombreDniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.listarDocentesYaAsistieronPorCursoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.listarDocentesYaAsistieronResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\Service\Bendiciones.Service.listarGestacionPorGestanteResponse.datasource">

@@ -56,6 +56,8 @@
   <xs:element name="eliminarCursoResponse" type="tns:eliminarCursoResponse" />
   <xs:element name="eliminarDescuento" type="tns:eliminarDescuento" />
   <xs:element name="eliminarDescuentoResponse" type="tns:eliminarDescuentoResponse" />
+  <xs:element name="eliminarDocenteDeHoraio" type="tns:eliminarDocenteDeHoraio" />
+  <xs:element name="eliminarDocenteDeHoraioResponse" type="tns:eliminarDocenteDeHoraioResponse" />
   <xs:element name="eliminarGestacion" type="tns:eliminarGestacion" />
   <xs:element name="eliminarGestacionResponse" type="tns:eliminarGestacionResponse" />
   <xs:element name="eliminarGestante" type="tns:eliminarGestante" />
@@ -126,6 +128,10 @@
   <xs:element name="listarClientesDelDiaResponse" type="tns:listarClientesDelDiaResponse" />
   <xs:element name="listarClientesPorHorario" type="tns:listarClientesPorHorario" />
   <xs:element name="listarClientesPorHorarioResponse" type="tns:listarClientesPorHorarioResponse" />
+  <xs:element name="listarClientesYaAsistieron" type="tns:listarClientesYaAsistieron" />
+  <xs:element name="listarClientesYaAsistieronPorCurso" type="tns:listarClientesYaAsistieronPorCurso" />
+  <xs:element name="listarClientesYaAsistieronPorCursoResponse" type="tns:listarClientesYaAsistieronPorCursoResponse" />
+  <xs:element name="listarClientesYaAsistieronResponse" type="tns:listarClientesYaAsistieronResponse" />
   <xs:element name="listarColaboradoresPorNombreDni" type="tns:listarColaboradoresPorNombreDni" />
   <xs:element name="listarColaboradoresPorNombreDniResponse" type="tns:listarColaboradoresPorNombreDniResponse" />
   <xs:element name="listarCondMedicasPorBebe" type="tns:listarCondMedicasPorBebe" />
@@ -149,9 +155,15 @@
   <xs:element name="listarDescuentosPorServicioResponse" type="tns:listarDescuentosPorServicioResponse" />
   <xs:element name="listarDescuentosResponse" type="tns:listarDescuentosResponse" />
   <xs:element name="listarDocentesDelDia" type="tns:listarDocentesDelDia" />
+  <xs:element name="listarDocentesDelDiaPorCurso" type="tns:listarDocentesDelDiaPorCurso" />
+  <xs:element name="listarDocentesDelDiaPorCursoResponse" type="tns:listarDocentesDelDiaPorCursoResponse" />
   <xs:element name="listarDocentesDelDiaResponse" type="tns:listarDocentesDelDiaResponse" />
   <xs:element name="listarDocentesPorNombreDni" type="tns:listarDocentesPorNombreDni" />
   <xs:element name="listarDocentesPorNombreDniResponse" type="tns:listarDocentesPorNombreDniResponse" />
+  <xs:element name="listarDocentesYaAsistieron" type="tns:listarDocentesYaAsistieron" />
+  <xs:element name="listarDocentesYaAsistieronPorCurso" type="tns:listarDocentesYaAsistieronPorCurso" />
+  <xs:element name="listarDocentesYaAsistieronPorCursoResponse" type="tns:listarDocentesYaAsistieronPorCursoResponse" />
+  <xs:element name="listarDocentesYaAsistieronResponse" type="tns:listarDocentesYaAsistieronResponse" />
   <xs:element name="listarGestacionPorGestante" type="tns:listarGestacionPorGestante" />
   <xs:element name="listarGestacionPorGestanteResponse" type="tns:listarGestacionPorGestanteResponse" />
   <xs:element name="listarGestantePorNombreDNI" type="tns:listarGestantePorNombreDNI" />
@@ -287,6 +299,16 @@
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
       <xs:element name="porcentaje" type="xs:float" />
       <xs:element name="tipo" type="xs:unsignedShort" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDocentesDelDiaPorCurso">
+    <xs:sequence>
+      <xs:element name="idCurso" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDocentesDelDiaPorCursoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:curso" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarGestantePorNombreDNI">
@@ -446,6 +468,14 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="listarDocentesYaAsistieron">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarDocentesYaAsistieronResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:curso" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="listarHorariosPorCurso">
     <xs:sequence>
       <xs:element name="idCurso" type="xs:int" />
@@ -548,6 +578,16 @@
   <xs:complexType name="insertarGestanteResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarClientesYaAsistieronPorCurso">
+    <xs:sequence>
+      <xs:element name="idCurso" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarClientesYaAsistieronPorCursoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:curso" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarTipoColaborador">
@@ -829,6 +869,14 @@
   <xs:complexType name="actualizarGestanteResponse">
     <xs:sequence />
   </xs:complexType>
+  <xs:complexType name="listarClientesYaAsistieron">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarClientesYaAsistieronResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:curso" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="listarCuotasPorMatricula">
     <xs:sequence>
       <xs:element name="idMatricula" type="xs:int" />
@@ -865,6 +913,14 @@
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarDocenteDeHoraio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="asistencia" type="tns:asistencia" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarDocenteDeHoraioResponse">
+    <xs:sequence />
   </xs:complexType>
   <xs:complexType name="listarMatriculaActivaPorGestante">
     <xs:sequence>
@@ -996,6 +1052,16 @@
   <xs:complexType name="listarGestacionPorGestanteResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:gestacion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDocentesYaAsistieronPorCurso">
+    <xs:sequence>
+      <xs:element name="idCurso" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDocentesYaAsistieronPorCursoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:curso" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarSedes">
