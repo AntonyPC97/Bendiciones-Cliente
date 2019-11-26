@@ -114,7 +114,7 @@ namespace Bendiciones
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (curso == null)
+             if (curso == null)
             {
                 frmMensaje mensaje = new frmMensaje("Seleccione un curso", "Error", "");
                 return;

@@ -175,6 +175,7 @@ namespace Bendiciones
             f.iniFormFreddyGestionar(this, "Clase Particular", pnlCtn, btnNuevo, btnBuscar, btnGuardar, btnModificar, btnCancelar, false);
             f.formatearBotonListar(btnBuscarCliente);
             f.formatearBotonListar(btnBuscarDocente);
+            f.formatearBotonNaranja(btnPagarAhora);
             limpiarComponentes();
             descuentos = Program.dbController.listarDescuentos();
             if(descuentos != null)

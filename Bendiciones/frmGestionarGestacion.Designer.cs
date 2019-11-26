@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionarGestacion));
             this.pnlCtn = new System.Windows.Forms.Panel();
             this.gbDatosGenerales = new System.Windows.Forms.GroupBox();
             this.txtNumEmbarazo = new System.Windows.Forms.TextBox();
@@ -209,8 +210,9 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.pnlCtn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmGestionarGestacion";
-            this.Text = "frmGestionarGestacion";
+            this.Text = "Gestionar Gestacion";
             this.pnlCtn.ResumeLayout(false);
             this.gbDatosGenerales.ResumeLayout(false);
             this.gbDatosGenerales.PerformLayout();

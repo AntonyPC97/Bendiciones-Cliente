@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAsignarDescuento));
             this.dgvDescuentos = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -145,8 +146,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(675, 399);
             this.Controls.Add(this.pnlCtn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAsignarDescuento";
-            this.Text = "frmAsginarDescuento";
+            this.Text = "Asignar Descuento";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDescuentos)).EndInit();
             this.gbCurso.ResumeLayout(false);
             this.gbCurso.PerformLayout();

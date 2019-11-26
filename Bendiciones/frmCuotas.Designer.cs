@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCuotas));
             this.btnAbonar = new System.Windows.Forms.Button();
             this.gbCliente = new System.Windows.Forms.GroupBox();
             this.lblNombre = new System.Windows.Forms.Label();
@@ -309,7 +310,7 @@
             this.pnlCtn.Controls.Add(this.gbServicio);
             this.pnlCtn.Controls.Add(this.gbCliente);
             this.pnlCtn.Location = new System.Drawing.Point(76, 91);
-            this.pnlCtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlCtn.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCtn.Name = "pnlCtn";
             this.pnlCtn.Size = new System.Drawing.Size(849, 347);
             this.pnlCtn.TabIndex = 41;
@@ -321,8 +322,9 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(963, 599);
             this.Controls.Add(this.pnlCtn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCuotas";
-            this.Text = "frmCuotas";
+            this.Text = "Pagos";
             this.gbCliente.ResumeLayout(false);
             this.gbCliente.PerformLayout();
             this.gbServicio.ResumeLayout(false);

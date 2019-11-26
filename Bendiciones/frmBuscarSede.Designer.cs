@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBuscarSede));
             this.dgvSedes = new System.Windows.Forms.DataGridView();
             this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Distrito = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -130,8 +131,9 @@
             this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtNombre);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmBuscarSede";
-            this.Text = "frmBuscarSede";
+            this.Text = "Buscar Sede";
             ((System.ComponentModel.ISupportInitialize)(this.dgvSedes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

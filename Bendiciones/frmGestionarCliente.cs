@@ -533,6 +533,8 @@ namespace Bendiciones
 					contactos.Add(contacto);
 				foreach (DataGridViewRow fila in dgvContactos.SelectedRows)
 				{
+                //contacto = contactos[fila.index];
+                //Program.elim
 				contactos.RemoveAt(fila.Index);
 				dgvContactos.Rows.RemoveAt(fila.Index);
 				}

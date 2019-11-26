@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionarHorario));
             this.pnlCtn = new System.Windows.Forms.Panel();
             this.gbServicio = new System.Windows.Forms.GroupBox();
             this.dtpHoraFin = new System.Windows.Forms.DateTimePicker();
@@ -343,6 +344,7 @@
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.pnlCtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(50, 80);
             this.MaximizeBox = false;
             this.Name = "frmGestionarHorario";

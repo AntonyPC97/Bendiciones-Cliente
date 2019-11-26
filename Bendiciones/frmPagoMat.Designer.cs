@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPagoMat));
             this.pnlCtn = new System.Windows.Forms.Panel();
             this.gbPago = new System.Windows.Forms.GroupBox();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -177,8 +178,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 450);
             this.Controls.Add(this.pnlCtn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPagoMat";
-            this.Text = "frmPagoMat";
+            this.Text = "Pago de Matricula";
             this.pnlCtn.ResumeLayout(false);
             this.gbPago.ResumeLayout(false);
             this.gbPago.PerformLayout();

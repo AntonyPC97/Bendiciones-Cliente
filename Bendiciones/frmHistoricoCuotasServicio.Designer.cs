@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHistoricoCuotasServicio));
             this.gbServicio = new System.Windows.Forms.GroupBox();
             this.txtDescuento = new System.Windows.Forms.TextBox();
             this.lblDescuento = new System.Windows.Forms.Label();
@@ -343,6 +344,7 @@
             this.Controls.Add(this.gbHistorico);
             this.Controls.Add(this.gbServicio);
             this.Controls.Add(this.gbCliente);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmHistoricoCuotasServicio";
             this.Text = "Historial de Cuotas";
             this.gbServicio.ResumeLayout(false);

@@ -228,7 +228,7 @@
             this.btnPagarAhora.FlatAppearance.BorderSize = 0;
             this.btnPagarAhora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPagarAhora.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPagarAhora.Location = new System.Drawing.Point(631, 867);
+            this.btnPagarAhora.Location = new System.Drawing.Point(682, 867);
             this.btnPagarAhora.Name = "btnPagarAhora";
             this.btnPagarAhora.Size = new System.Drawing.Size(136, 20);
             this.btnPagarAhora.TabIndex = 71;
