@@ -230,7 +230,7 @@ namespace Bendiciones
 			rbMasculino.Checked = false;
 			dgvGestaciones.RowCount = 0;
 		}
-		#endregion
+
 		public bool IsValidEmail(string email)
 		{
 			try
@@ -292,9 +292,10 @@ namespace Bendiciones
 			}
             return true;
 		}
+        #endregion
 
-		#region Botones
-		private void btnBuscar_Click(object sender, EventArgs e)
+        #region Botones
+        private void btnBuscar_Click(object sender, EventArgs e)
 		{
 			frmBuscarCliente formCliente = new frmBuscarCliente();
 			if (formCliente.ShowDialog() == DialogResult.OK)
@@ -311,7 +312,8 @@ namespace Bendiciones
 					rbMasculino.Checked = true;
 				txtAseguradora.Text = cliente.aseguradora;
 				txtNumAseguradora.Text = cliente.numSeguro;
-                dgvContactos.Rows.Clear();
+                //dgvContactos.Rows.Clear();
+                //rprobando cambios a rama
 				if (cliente.contactos != null)
 				{
 					foreach (Service.contactoEmergencia contacto in cliente.contactos)
@@ -489,7 +491,8 @@ namespace Bendiciones
 		private void btnAddContacto_Click(object sender, EventArgs e)
 		{
 			int i;
-			if (int.TryParse(txtTelefonoEmergencia.Text, out i) && !txtNombreEmergencia.Text.Equals(""))
+            contactos = new BindingList<Service.contactoEmergencia>();
+            if (int.TryParse(txtTelefonoEmergencia.Text, out i) && !txtNombreEmergencia.Text.Equals(""))
 			{
 				Service.contactoEmergencia cont = new Service.contactoEmergencia();
 				cont.nombre = txtNombreEmergencia.Text;
@@ -499,9 +502,12 @@ namespace Bendiciones
 					contactos.Add(cont);
 				else
 				{
-					contactos = new BindingList<Service.contactoEmergencia>();
-					foreach (Service.contactoEmergencia contacto in cliente.contactos)
-						contactos.Add(contacto);
+					
+                    if(cliente.contactos != null)
+                    {
+                        foreach (Service.contactoEmergencia contacto in cliente.contactos)
+                            contactos.Add(contacto);
+                    }
 					contactos.Add(cont);
 				}
 				Object[] filaContacto = new Object[2];
