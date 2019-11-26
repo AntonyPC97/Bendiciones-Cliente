@@ -252,6 +252,11 @@ namespace Bendiciones
 				frmMensaje mensaje = new frmMensaje("Complete los campos obligatorios","Error de Campos","");
 				return false;
 			}
+            if(!Program.dbController.verificarDNI(txtDNI.Text) || !Program.dbController.verificarDNI(txtDNIPareja.Text))
+            {
+                frmMensaje mensaje = new frmMensaje("El Dni ya existe en la base de datos", "Error de Dni", "");
+                return false;
+            }
 
 			if(!int.TryParse(txtTelef.Text,out i))
 			{
@@ -364,7 +369,16 @@ namespace Bendiciones
 							rbMasculino.Checked = true;
 					}
                     dgvGestaciones.AutoGenerateColumns = false;
-                    dgvGestaciones.DataSource = gestante.gestaciones;
+                    
+                    foreach (Service.gestacion gest in gestante.gestaciones)
+                    {
+                        Object[] filaGestacion = new Object[2];
+                        filaGestacion[0] = gest.clinica;
+                        filaGestacion[1] = gest.fecha_probable_parto;
+                        gestaciones.Add(gest);
+                        dgvGestaciones.Rows.Add(filaGestacion);
+                    }
+                    //dgvGestaciones.DataSource = gestante.gestaciones;
 				}
                 estadoComponentes(Estado.Buscar);
 			}
@@ -577,7 +591,7 @@ namespace Bendiciones
 		#region Gestante
 		private void btnAgregarGestacion_Click(object sender, EventArgs e)
         {
-            frmGestionarGestacion formGestionarGestacion = new frmGestionarGestacion();
+            frmGestionarGestacion formGestionarGestacion = new frmGestionarGestacion((int)udNumEmbarazos.Value);
             if(formGestionarGestacion.ShowDialog() == DialogResult.OK)
             {
                 gestacion = formGestionarGestacion.Gestacion;
@@ -592,15 +606,21 @@ namespace Bendiciones
 
         private void btnSeleccionarGestacion_Click(object sender, EventArgs e)
         {
-            //si dgv no está vacío
-            gestacion = gestaciones[dgvGestaciones.CurrentRow.Index];
 
-            //la idea es que se modifique
-            frmGestionarGestacion formGestionarGestacion = new frmGestionarGestacion(gestacion);
-            if (formGestionarGestacion.ShowDialog() == DialogResult.OK)
+            if(gestaciones != null)
             {
-                
+                gestacion = gestaciones[dgvGestaciones.CurrentRow.Index];
+                frmGestionarGestacion formGestionarGestacion = new frmGestionarGestacion(gestacion, (int)udNumEmbarazos.Value);
+                if (formGestionarGestacion.ShowDialog() == DialogResult.OK)
+                {
+                    gestacion = formGestionarGestacion.Gestacion;
+                    gestaciones[dgvGestaciones.CurrentRow.Index] = gestacion;
+                    //actualizar la fila
+                    dgvGestaciones.Rows[dgvGestaciones.CurrentRow.Index].Cells[0].Value = gestacion.clinica;
+                    dgvGestaciones.Rows[dgvGestaciones.CurrentRow.Index].Cells[1].Value = gestacion.fecha_probable_parto;
+                }
             }
+            
         }
 		
 		private void dgvCondiciones_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -609,6 +629,8 @@ namespace Bendiciones
 			if (conFila != null)
 				dgvCondiciones.Rows[e.RowIndex].Cells[0].Value = conFila.nombre;
 		}
-		#endregion
-	}
+        #endregion
+
+        
+    }
 }

@@ -563,11 +563,29 @@
   <message name="listarClientesYaAsistieronPorCursoResponse">
     <part name="parameters" element="tns:listarClientesYaAsistieronPorCursoResponse" />
   </message>
+  <message name="listarMatriculaCursosActivosPorGestante">
+    <part name="parameters" element="tns:listarMatriculaCursosActivosPorGestante" />
+  </message>
+  <message name="listarMatriculaCursosActivosPorGestanteResponse">
+    <part name="parameters" element="tns:listarMatriculaCursosActivosPorGestanteResponse" />
+  </message>
+  <message name="listarMatriculaCursosActivosPorApoderado">
+    <part name="parameters" element="tns:listarMatriculaCursosActivosPorApoderado" />
+  </message>
+  <message name="listarMatriculaCursosActivosPorApoderadoResponse">
+    <part name="parameters" element="tns:listarMatriculaCursosActivosPorApoderadoResponse" />
+  </message>
   <message name="listarDocentesYaAsistieronPorCurso">
     <part name="parameters" element="tns:listarDocentesYaAsistieronPorCurso" />
   </message>
   <message name="listarDocentesYaAsistieronPorCursoResponse">
     <part name="parameters" element="tns:listarDocentesYaAsistieronPorCursoResponse" />
+  </message>
+  <message name="verificarDNI">
+    <part name="parameters" element="tns:verificarDNI" />
+  </message>
+  <message name="verificarDNIResponse">
+    <part name="parameters" element="tns:verificarDNIResponse" />
   </message>
   <portType name="Servicio">
     <operation name="listarDocentesDelDiaPorCurso">
@@ -942,9 +960,21 @@
       <input wsam:Action="http://services/Servicio/listarClientesYaAsistieronPorCursoRequest" message="tns:listarClientesYaAsistieronPorCurso" />
       <output wsam:Action="http://services/Servicio/listarClientesYaAsistieronPorCursoResponse" message="tns:listarClientesYaAsistieronPorCursoResponse" />
     </operation>
+    <operation name="listarMatriculaCursosActivosPorGestante">
+      <input wsam:Action="http://services/Servicio/listarMatriculaCursosActivosPorGestanteRequest" message="tns:listarMatriculaCursosActivosPorGestante" />
+      <output wsam:Action="http://services/Servicio/listarMatriculaCursosActivosPorGestanteResponse" message="tns:listarMatriculaCursosActivosPorGestanteResponse" />
+    </operation>
+    <operation name="listarMatriculaCursosActivosPorApoderado">
+      <input wsam:Action="http://services/Servicio/listarMatriculaCursosActivosPorApoderadoRequest" message="tns:listarMatriculaCursosActivosPorApoderado" />
+      <output wsam:Action="http://services/Servicio/listarMatriculaCursosActivosPorApoderadoResponse" message="tns:listarMatriculaCursosActivosPorApoderadoResponse" />
+    </operation>
     <operation name="listarDocentesYaAsistieronPorCurso">
       <input wsam:Action="http://services/Servicio/listarDocentesYaAsistieronPorCursoRequest" message="tns:listarDocentesYaAsistieronPorCurso" />
       <output wsam:Action="http://services/Servicio/listarDocentesYaAsistieronPorCursoResponse" message="tns:listarDocentesYaAsistieronPorCursoResponse" />
+    </operation>
+    <operation name="verificarDNI">
+      <input wsam:Action="http://services/Servicio/verificarDNIRequest" message="tns:verificarDNI" />
+      <output wsam:Action="http://services/Servicio/verificarDNIResponse" message="tns:verificarDNIResponse" />
     </operation>
   </portType>
   <binding name="ServicioPortBinding" type="tns:Servicio">
@@ -1786,7 +1816,34 @@
         <soap:body use="literal" />
       </output>
     </operation>
+    <operation name="listarMatriculaCursosActivosPorGestante">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarMatriculaCursosActivosPorApoderado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="listarDocentesYaAsistieronPorCurso">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="verificarDNI">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
