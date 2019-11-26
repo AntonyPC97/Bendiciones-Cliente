@@ -77,6 +77,12 @@ namespace Bendiciones
                 }
                 else   //si es gestante
                 {
+                    lblBebe.Visible = false;
+                    cboBebes.Visible = false;
+                    if (cboBebes.Items.Count <= 0)
+                    {
+
+                    }
                     IEnumerable<Service.matricula> matriculas = Program.dbController.listarMatriculaActivaPorGestante(cliente.idPersona);
                     if (matriculas != null)
                     {

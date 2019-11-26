@@ -30,6 +30,8 @@ namespace Bendiciones
             dtpHoraIni.MaxDate = DateTime.Parse("1/01/1970 21:00");
             dtpHoraFin.MinDate = DateTime.Parse("1/01/1970 11:00");
             dtpHoraFin.MaxDate = DateTime.Parse("1/01/1970 23:00");
+            txtNumClase.MaxLength =3;
+            txtNumVac.MaxLength =3;
 
         }
         public frmGestionarHorario()
@@ -44,7 +46,8 @@ namespace Bendiciones
             dtpHoraIni.MaxDate = DateTime.Parse("1/01/1970 21:00");
             dtpHoraFin.MinDate = DateTime.Parse("1/01/1970 11:00");
             dtpHoraFin.MaxDate = DateTime.Parse("1/01/1970 23:00");
-
+            txtNumClase.MaxLength = 3;
+            txtNumVac.MaxLength = 3;
         }
         public bool verificarCampos()
         {
@@ -102,6 +105,8 @@ namespace Bendiciones
             dtpHoraIni.MaxDate = DateTime.Parse("1/01/1970 21:00");
             dtpHoraFin.MinDate = DateTime.Parse("1/01/1970 11:00");
             dtpHoraFin.MaxDate = DateTime.Parse("1/01/1970 23:00");
+            txtNumClase.MaxLength = 3;
+            txtNumVac.MaxLength = 3;
 
 
             //llena los datos
@@ -135,6 +140,8 @@ namespace Bendiciones
             dtpHoraIni.MaxDate = DateTime.Parse("1/01/1970 21:00");
             dtpHoraFin.MinDate = DateTime.Parse("1/01/1970 11:00");
             dtpHoraFin.MaxDate = DateTime.Parse("1/01/1970 23:00");
+            txtNumClase.MaxLength = 3;
+            txtNumVac.MaxLength = 3;
 
 
             //llena los datos

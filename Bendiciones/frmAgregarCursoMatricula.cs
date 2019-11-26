@@ -19,6 +19,10 @@ namespace Bendiciones
         private Service.curso cur = null;
 
         public matricula Mat { get => mat; set => mat = value; }
+
+
+
+
         public curso Cur { get => cur; set => cur = value; }
 
         public frmAgregarCursoMatricula()
