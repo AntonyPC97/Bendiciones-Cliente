@@ -694,6 +694,12 @@
     <None Include="Connected Services\Service\Bendiciones.Service.listarMatriculaActivaPorGestanteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.listarMatriculaCursosActivosPorApoderadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.listarMatriculaCursosActivosPorGestanteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\Service\Bendiciones.Service.listarMatriculaSaldoPorApoderadoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
