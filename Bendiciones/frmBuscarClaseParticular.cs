@@ -30,12 +30,12 @@ namespace Bendiciones
         {
             if(cliente == null)
             {
-                frmMensaje mensaje = new frmMensaje("Debe seleccionar primero a un cliente", "Mensaje de advertencia", "");
+                MessageBox.Show("Debe seleccionar primero a un cliente", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 
             }
             else if (dgvClasesParticulares.RowCount == 0)
             {
-                frmMensaje mensaje = new frmMensaje("El cliente no tiene clases particulares", "Mensaje de advertencia", "");
+                MessageBox.Show("El cliente no tiene clases particulares", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -50,14 +50,14 @@ namespace Bendiciones
         {
             if (cliente == null || dgvClasesParticulares.RowCount == 0)
             {
-                frmMensaje mensaje = new frmMensaje("No hay clase particular seleccionada", "Mensaje de advertencia", "");
+                MessageBox.Show("No hay clase particular seleccionada", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             } else
             {
                 claseSeleccionada = clases[dgvClasesParticulares.CurrentRow.Index];
                 Console.WriteLine("id clase particular:");
                 Console.WriteLine(claseSeleccionada.id_servicio);
                 Program.dbController.eliminarClaseParticular(claseSeleccionada.id_servicio);
-                frmMensaje mensaje = new frmMensaje("Se ha eliminado correctamente", "Mensaje Confirmacion", "Confirmar");
+                MessageBox.Show("Se ha eliminado correctamente", "Mensaje Confirmacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 clases.Remove(ClaseSeleccionada);
                 dgvClasesParticulares.Rows.Remove(dgvClasesParticulares.CurrentRow);
                 this.Close();

@@ -727,6 +727,9 @@
     <None Include="Connected Services\Service\Bendiciones.Service.tipoColaborador.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.verificarDNIResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\Service\Bendiciones.Service.verificarUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
