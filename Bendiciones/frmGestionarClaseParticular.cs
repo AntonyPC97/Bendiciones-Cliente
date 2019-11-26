@@ -173,8 +173,33 @@ namespace Bendiciones
             if (txtNombreServicio.Text.Equals("") || txtDescripcion.Text.Equals("") || txtPrecio.Text.Equals("") ||
                txtDireccion.Text.Equals("") || cboDistrito.SelectedIndex == -1)
             {
-                MessageBox.Show("Todos los campos son obligatorios","",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios", "", "");
                return false;
+            }
+            if(float.TryParse(txtPrecio.Text, out i))
+            {
+                if(i <= 0)
+                {
+                    frmMensaje mensaje = new frmMensaje("El precio debe ser mayor a cero", "", "");
+                    return false;
+                }
+            }
+            else
+            {
+                frmMensaje mensaje = new frmMensaje("TDebe ingresar un precio válido", "", "");
+                return false;
+            }
+            if (dtpHoraIni.Value > dtpHoraFin.Value)
+            {
+                frmMensaje mensaje = new frmMensaje("El horario tiene una hora de inicio mayor a la hora final", "Error de Servicio", "");
+                return false;
+            }
+            int horaIni = dtpHoraIni.Value.Hour * 100 + dtpHoraIni.Value.Minute;
+            int horaFin = dtpHoraFin.Value.Hour * 100 + dtpHoraFin.Value.Minute;
+            if (horaFin - horaIni > 300 | horaFin - horaIni < 130)
+            {
+                frmMensaje mensaje = new frmMensaje("La duración de la clase particular debe ser de mínimo 2hrs y máximo 3 hrs", "Error de Servicio", "");
+                return false;
             }
 
             return true;
@@ -347,13 +372,14 @@ namespace Bendiciones
                 cp.id_servicio = idClase;
 
                 mat.servicio = cp;
-                MessageBox.Show("Clase Particular insertada", "Mensaje de confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Program.dbController.insertarMatricula(mat);
-                MessageBox.Show("Clase Particular (matricula) Registrada", "Mensaje de confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                frmMensaje mensaje = new frmMensaje("Clase Particular registrada", "Mensaje de confirmación", "");
+                
             } else
             {
                 Program.dbController.actualizarClaseParticular(cp);
-                MessageBox.Show("Clase Particular actualizada", "Mensaje de confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                frmMensaje mensaje = new frmMensaje("Clase Particular actualizada", "Mensaje de confirmación", "");
             }
 
             limpiarComponentes();
@@ -367,15 +393,15 @@ namespace Bendiciones
 
             if (float.TryParse(txtPrecio.Text, out p))
             {
-                if (p == 0)
+                if (p <= 0)
                 {
-                    MessageBox.Show("Ingrese una cantidad numérica mayor a cero", "Error de Precio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    frmMensaje mensaje = new frmMensaje("Ingrese una cantidad numérica mayor a cero", "Error de precio", "");
                     txtPrecio.Text = "";
                     return;
                 }
             }else
             {
-                MessageBox.Show("Ingrese una cantidad numérica mayor a cero", "Error de Precio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                frmMensaje mensaje = new frmMensaje("Ingrese una cantidad numérica mayor a cero", "Error de precio", "");
                 txtPrecio.Text = "";
                 return;
             }
@@ -407,7 +433,7 @@ namespace Bendiciones
             }
             else
             {
-                MessageBox.Show("Ingrese una cantidad numérica mayor a cero", "Error de Precio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                frmMensaje mensaje = new frmMensaje("Ingrese una cantidad numérica mayor a cero", "Error de precio", "");
                 txtPrecio.Text = "";
                 txtSaldo.Text = "0";
                 txtTotal.Text = "0";

@@ -816,6 +816,24 @@ namespace Bendiciones.Service {
         System.Threading.Tasks.Task<Bendiciones.Service.listarClientesYaAsistieronPorCursoResponse> listarClientesYaAsistieronPorCursoAsync(Bendiciones.Service.listarClientesYaAsistieronPorCursoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services/Servicio/listarMatriculaCursosActivosPorGestanteRequest", ReplyAction="http://services/Servicio/listarMatriculaCursosActivosPorGestanteResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        Bendiciones.Service.listarMatriculaCursosActivosPorGestanteResponse listarMatriculaCursosActivosPorGestante(Bendiciones.Service.listarMatriculaCursosActivosPorGestanteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services/Servicio/listarMatriculaCursosActivosPorGestanteRequest", ReplyAction="http://services/Servicio/listarMatriculaCursosActivosPorGestanteResponse")]
+        System.Threading.Tasks.Task<Bendiciones.Service.listarMatriculaCursosActivosPorGestanteResponse> listarMatriculaCursosActivosPorGestanteAsync(Bendiciones.Service.listarMatriculaCursosActivosPorGestanteRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services/Servicio/listarMatriculaCursosActivosPorApoderadoRequest", ReplyAction="http://services/Servicio/listarMatriculaCursosActivosPorApoderadoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        Bendiciones.Service.listarMatriculaCursosActivosPorApoderadoResponse listarMatriculaCursosActivosPorApoderado(Bendiciones.Service.listarMatriculaCursosActivosPorApoderadoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services/Servicio/listarMatriculaCursosActivosPorApoderadoRequest", ReplyAction="http://services/Servicio/listarMatriculaCursosActivosPorApoderadoResponse")]
+        System.Threading.Tasks.Task<Bendiciones.Service.listarMatriculaCursosActivosPorApoderadoResponse> listarMatriculaCursosActivosPorApoderadoAsync(Bendiciones.Service.listarMatriculaCursosActivosPorApoderadoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services/Servicio/listarDocentesYaAsistieronPorCursoRequest", ReplyAction="http://services/Servicio/listarDocentesYaAsistieronPorCursoResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -1634,10 +1652,10 @@ namespace Bendiciones.Service {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(bebe))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(cliente))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(apoderado))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(gestante))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(apoderado))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(bebe))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(colaborador))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
@@ -1755,8 +1773,8 @@ namespace Bendiciones.Service {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(apoderado))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(gestante))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(apoderado))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1877,29 +1895,6 @@ namespace Bendiciones.Service {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services/")]
-    public partial class apoderado : cliente {
-        
-        private bebe[] bebesField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("bebes", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=0)]
-        public bebe[] bebes {
-            get {
-                return this.bebesField;
-            }
-            set {
-                this.bebesField = value;
-                this.RaisePropertyChanged("bebes");
             }
         }
     }
@@ -2197,6 +2192,29 @@ namespace Bendiciones.Service {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services/")]
+    public partial class apoderado : cliente {
+        
+        private bebe[] bebesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("bebes", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=0)]
+        public bebe[] bebes {
+            get {
+                return this.bebesField;
+            }
+            set {
+                this.bebesField = value;
+                this.RaisePropertyChanged("bebes");
             }
         }
     }
@@ -5818,6 +5836,78 @@ namespace Bendiciones.Service {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarMatriculaCursosActivosPorGestante", WrapperNamespace="http://services/", IsWrapped=true)]
+    public partial class listarMatriculaCursosActivosPorGestanteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idGestante;
+        
+        public listarMatriculaCursosActivosPorGestanteRequest() {
+        }
+        
+        public listarMatriculaCursosActivosPorGestanteRequest(int idGestante) {
+            this.idGestante = idGestante;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarMatriculaCursosActivosPorGestanteResponse", WrapperNamespace="http://services/", IsWrapped=true)]
+    public partial class listarMatriculaCursosActivosPorGestanteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public Bendiciones.Service.matricula[] @return;
+        
+        public listarMatriculaCursosActivosPorGestanteResponse() {
+        }
+        
+        public listarMatriculaCursosActivosPorGestanteResponse(Bendiciones.Service.matricula[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarMatriculaCursosActivosPorApoderado", WrapperNamespace="http://services/", IsWrapped=true)]
+    public partial class listarMatriculaCursosActivosPorApoderadoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idApoderado;
+        
+        public listarMatriculaCursosActivosPorApoderadoRequest() {
+        }
+        
+        public listarMatriculaCursosActivosPorApoderadoRequest(int idApoderado) {
+            this.idApoderado = idApoderado;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarMatriculaCursosActivosPorApoderadoResponse", WrapperNamespace="http://services/", IsWrapped=true)]
+    public partial class listarMatriculaCursosActivosPorApoderadoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public Bendiciones.Service.matricula[] @return;
+        
+        public listarMatriculaCursosActivosPorApoderadoResponse() {
+        }
+        
+        public listarMatriculaCursosActivosPorApoderadoResponse(Bendiciones.Service.matricula[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="listarDocentesYaAsistieronPorCurso", WrapperNamespace="http://services/", IsWrapped=true)]
     public partial class listarDocentesYaAsistieronPorCursoRequest {
         
@@ -8010,6 +8100,52 @@ namespace Bendiciones.Service {
             Bendiciones.Service.listarClientesYaAsistieronPorCursoRequest inValue = new Bendiciones.Service.listarClientesYaAsistieronPorCursoRequest();
             inValue.idCurso = idCurso;
             return ((Bendiciones.Service.Servicio)(this)).listarClientesYaAsistieronPorCursoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Bendiciones.Service.listarMatriculaCursosActivosPorGestanteResponse Bendiciones.Service.Servicio.listarMatriculaCursosActivosPorGestante(Bendiciones.Service.listarMatriculaCursosActivosPorGestanteRequest request) {
+            return base.Channel.listarMatriculaCursosActivosPorGestante(request);
+        }
+        
+        public Bendiciones.Service.matricula[] listarMatriculaCursosActivosPorGestante(int idGestante) {
+            Bendiciones.Service.listarMatriculaCursosActivosPorGestanteRequest inValue = new Bendiciones.Service.listarMatriculaCursosActivosPorGestanteRequest();
+            inValue.idGestante = idGestante;
+            Bendiciones.Service.listarMatriculaCursosActivosPorGestanteResponse retVal = ((Bendiciones.Service.Servicio)(this)).listarMatriculaCursosActivosPorGestante(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Bendiciones.Service.listarMatriculaCursosActivosPorGestanteResponse> Bendiciones.Service.Servicio.listarMatriculaCursosActivosPorGestanteAsync(Bendiciones.Service.listarMatriculaCursosActivosPorGestanteRequest request) {
+            return base.Channel.listarMatriculaCursosActivosPorGestanteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Bendiciones.Service.listarMatriculaCursosActivosPorGestanteResponse> listarMatriculaCursosActivosPorGestanteAsync(int idGestante) {
+            Bendiciones.Service.listarMatriculaCursosActivosPorGestanteRequest inValue = new Bendiciones.Service.listarMatriculaCursosActivosPorGestanteRequest();
+            inValue.idGestante = idGestante;
+            return ((Bendiciones.Service.Servicio)(this)).listarMatriculaCursosActivosPorGestanteAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Bendiciones.Service.listarMatriculaCursosActivosPorApoderadoResponse Bendiciones.Service.Servicio.listarMatriculaCursosActivosPorApoderado(Bendiciones.Service.listarMatriculaCursosActivosPorApoderadoRequest request) {
+            return base.Channel.listarMatriculaCursosActivosPorApoderado(request);
+        }
+        
+        public Bendiciones.Service.matricula[] listarMatriculaCursosActivosPorApoderado(int idApoderado) {
+            Bendiciones.Service.listarMatriculaCursosActivosPorApoderadoRequest inValue = new Bendiciones.Service.listarMatriculaCursosActivosPorApoderadoRequest();
+            inValue.idApoderado = idApoderado;
+            Bendiciones.Service.listarMatriculaCursosActivosPorApoderadoResponse retVal = ((Bendiciones.Service.Servicio)(this)).listarMatriculaCursosActivosPorApoderado(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Bendiciones.Service.listarMatriculaCursosActivosPorApoderadoResponse> Bendiciones.Service.Servicio.listarMatriculaCursosActivosPorApoderadoAsync(Bendiciones.Service.listarMatriculaCursosActivosPorApoderadoRequest request) {
+            return base.Channel.listarMatriculaCursosActivosPorApoderadoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Bendiciones.Service.listarMatriculaCursosActivosPorApoderadoResponse> listarMatriculaCursosActivosPorApoderadoAsync(int idApoderado) {
+            Bendiciones.Service.listarMatriculaCursosActivosPorApoderadoRequest inValue = new Bendiciones.Service.listarMatriculaCursosActivosPorApoderadoRequest();
+            inValue.idApoderado = idApoderado;
+            return ((Bendiciones.Service.Servicio)(this)).listarMatriculaCursosActivosPorApoderadoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

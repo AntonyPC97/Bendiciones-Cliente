@@ -563,6 +563,18 @@
   <message name="listarClientesYaAsistieronPorCursoResponse">
     <part name="parameters" element="tns:listarClientesYaAsistieronPorCursoResponse" />
   </message>
+  <message name="listarMatriculaCursosActivosPorGestante">
+    <part name="parameters" element="tns:listarMatriculaCursosActivosPorGestante" />
+  </message>
+  <message name="listarMatriculaCursosActivosPorGestanteResponse">
+    <part name="parameters" element="tns:listarMatriculaCursosActivosPorGestanteResponse" />
+  </message>
+  <message name="listarMatriculaCursosActivosPorApoderado">
+    <part name="parameters" element="tns:listarMatriculaCursosActivosPorApoderado" />
+  </message>
+  <message name="listarMatriculaCursosActivosPorApoderadoResponse">
+    <part name="parameters" element="tns:listarMatriculaCursosActivosPorApoderadoResponse" />
+  </message>
   <message name="listarDocentesYaAsistieronPorCurso">
     <part name="parameters" element="tns:listarDocentesYaAsistieronPorCurso" />
   </message>
@@ -947,6 +959,14 @@
     <operation name="listarClientesYaAsistieronPorCurso">
       <input wsam:Action="http://services/Servicio/listarClientesYaAsistieronPorCursoRequest" message="tns:listarClientesYaAsistieronPorCurso" />
       <output wsam:Action="http://services/Servicio/listarClientesYaAsistieronPorCursoResponse" message="tns:listarClientesYaAsistieronPorCursoResponse" />
+    </operation>
+    <operation name="listarMatriculaCursosActivosPorGestante">
+      <input wsam:Action="http://services/Servicio/listarMatriculaCursosActivosPorGestanteRequest" message="tns:listarMatriculaCursosActivosPorGestante" />
+      <output wsam:Action="http://services/Servicio/listarMatriculaCursosActivosPorGestanteResponse" message="tns:listarMatriculaCursosActivosPorGestanteResponse" />
+    </operation>
+    <operation name="listarMatriculaCursosActivosPorApoderado">
+      <input wsam:Action="http://services/Servicio/listarMatriculaCursosActivosPorApoderadoRequest" message="tns:listarMatriculaCursosActivosPorApoderado" />
+      <output wsam:Action="http://services/Servicio/listarMatriculaCursosActivosPorApoderadoResponse" message="tns:listarMatriculaCursosActivosPorApoderadoResponse" />
     </operation>
     <operation name="listarDocentesYaAsistieronPorCurso">
       <input wsam:Action="http://services/Servicio/listarDocentesYaAsistieronPorCursoRequest" message="tns:listarDocentesYaAsistieronPorCurso" />
@@ -1788,6 +1808,24 @@
       </output>
     </operation>
     <operation name="listarClientesYaAsistieronPorCurso">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarMatriculaCursosActivosPorGestante">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarMatriculaCursosActivosPorApoderado">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
