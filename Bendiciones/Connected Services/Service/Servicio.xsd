@@ -935,6 +935,16 @@
       <xs:element name="return" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="verificarDNI">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dni" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verificarDNIResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="actualizarContactoEmergencia">
     <xs:sequence>
       <xs:element minOccurs="0" name="contacto" type="tns:contactoEmergencia" />
