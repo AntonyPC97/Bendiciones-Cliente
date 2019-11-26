@@ -19,6 +19,10 @@ namespace Bendiciones
         private Service.curso cur = null;
 
         public matricula Mat { get => mat; set => mat = value; }
+
+
+
+
         public curso Cur { get => cur; set => cur = value; }
 
         public frmAgregarCursoMatricula()
@@ -35,7 +39,7 @@ namespace Bendiciones
 			f.formatearBotonNaranja(btnGuardar);
 			btnGuardar.Top = gbCliente.Top;
 			btnCancelar.Top = btnGuardar.Top + btnGuardar.Height + 10;
-
+            cboFormaPago.SelectedIndex = 0;
 			btnGuardar.Left = gbCliente.Left + gbCliente.Width + 10;
 			btnCancelar.Left = btnGuardar.Left;
             dgvCondicionesMedicas.AutoGenerateColumns = false;
@@ -48,17 +52,18 @@ namespace Bendiciones
             float i;
             if (cur == null)
             {
-                frmMensaje mensaje = new frmMensaje("No se ha seleciconado un servicio","Error de Servicio","");
+                frmMensaje mensaje = new frmMensaje("No se ha seleccionado un servicio","Error de Servicio","");
                 return false;
             }
             if (cboFormaPago.SelectedIndex == -1)
             {
-                frmMensaje mensaje = new frmMensaje("No se ha seleciconado una forma de pago", "Error de Forma de Pago", "");
+                frmMensaje mensaje = new frmMensaje("No se ha seleccionado una forma de pago", "Error de Forma de Pago", "");
                 return false;
             }
             if(!float.TryParse(txtAbonar.Text,out i))
             {
                 frmMensaje mensaje = new frmMensaje("Ingrese una cantidad valida", "Error al Abonar", "");
+                txtAbonar.Text = "";
                 return false;
             }
             return true;
@@ -143,7 +148,15 @@ namespace Bendiciones
                 txtTotal.Text = (cur.precio * (1 - desc.porcentaje / 100)).ToString("0.0");
                 int longitud = txtTotal.Text.Length;
                 txtAbonar.MaxLength = longitud;
-                txtSaldo.Text = (float.Parse(txtTotal.Text)- float.Parse(txtAbonar.Text)).ToString("0.0");
+                if (txtAbonar.Text == "")
+                {
+                    txtSaldo.Text = (float.Parse(txtTotal.Text) - 0).ToString("0.0");
+                }
+                else
+                {
+                    txtSaldo.Text = (float.Parse(txtTotal.Text) - float.Parse(txtAbonar.Text)).ToString("0.0");
+                }
+                
             }
             else
             {
@@ -156,7 +169,12 @@ namespace Bendiciones
         private void txtAbonar_TextChanged(object sender, EventArgs e)
         {
             float i;
-            if (float.TryParse(txtAbonar.Text,out i))
+            if (txtAbonar.Text == "")
+            {
+
+            }
+            
+            else if (float.TryParse(txtAbonar.Text,out i))
             {
                 if ((txtAbonar.Text != "") & (txtTotal.Text != ""))
                 {
@@ -176,6 +194,7 @@ namespace Bendiciones
             else
             {
                 frmMensaje mensaje = new frmMensaje("Ingrese una cantidad valida", "Error al Abonar", "");
+                txtAbonar.Text = "";
             }
             
         }
@@ -191,7 +210,9 @@ namespace Bendiciones
             txtAbonar.Text = "";
             cboDescuentos.SelectedIndex = -1;
             cboFormaPago.SelectedIndex = -1;
-            dgvCondicionesMedicas.DataSource = null; 
+            dgvCondicionesMedicas.DataSource = null;
         }
+
+ 
     }
 }
