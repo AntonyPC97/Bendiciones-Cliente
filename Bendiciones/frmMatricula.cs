@@ -38,6 +38,8 @@ namespace Bendiciones
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
+            lblBebe.Visible = false;
+            cboBebes.Visible = false;
 
             frmBuscarCliente formBuscarCliente = new frmBuscarCliente();
             if(formBuscarCliente.ShowDialog() == DialogResult.OK)
@@ -157,6 +159,11 @@ namespace Bendiciones
 
         private void btnEliminarCurso_Click(object sender, EventArgs e)
         {
+            if(cliente == null)
+            {
+                frmMensaje mensaje = new frmMensaje("Seleccione un Cliente", "Error de Cliente", "");
+                return;
+            }
             foreach(DataGridViewRow row in dgvMatriculas.SelectedRows)
             {
                 matriculas.RemoveAt(row.Index);

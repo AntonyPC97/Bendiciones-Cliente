@@ -23,6 +23,11 @@ namespace Bendiciones
             f.iniFormFreddyBuscar(this, "Buscar Sede", "Nombre:", txtNombre, dgvSedes, btnBuscar, btnSeleccionar,btnEliminar, false);
         }
 
+
+
+
+
+
         public sede SedeSeleccionada { get => sedeSeleccionada; set => sedeSeleccionada = value; }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)

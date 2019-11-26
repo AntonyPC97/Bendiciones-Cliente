@@ -14,9 +14,9 @@ namespace Bendiciones
     {
         private Service.cliente cliente;
         private Service.colaborador docente;
-        private Service.claseParticular cp;
+        private Service.claseParticular cp = new Service.claseParticular();
         private Service.matricula mat = new Service.matricula();
-        private BindingList<Service.cuota> cuotas = new BindingList<Service.cuota>();
+        private BindingList<Service.cuota> cuotas = null;
         private IEnumerable<Service.descuento> descuentos;
         Estado estadoObjColab;
 
@@ -30,13 +30,15 @@ namespace Bendiciones
             txtPrecio.Text = "0";
             txtObservaciones.Text = "";
             txtDireccion.Text = "";
-            cboDistrito.SelectedText = "";
-            cboDistrito.SelectedIndex = -1;
+            //cboDistrito.SelectedText = "";
+            cboDistrito.SelectedIndex = 0;
             dtpFechaMatricula.Value = DateTime.Today;
-            cboHoraIni.SelectedIndex = -1;
-            cboHoraFin.SelectedIndex = -1;
-            cboHoraFin.SelectedText ="";
-            cboHoraIni.SelectedText = "";
+
+            dtpHoraIni.MinDate = DateTime.Parse("1/01/1970 9:00");
+            dtpHoraIni.MaxDate = DateTime.Parse("1/01/1970 21:00");
+            dtpHoraFin.MinDate = DateTime.Parse("1/01/1970 11:00");
+            dtpHoraFin.MaxDate = DateTime.Parse("1/01/1970 23:00");
+
             txtDNIDocente.Text = ""; ;
             txtNombreDocente.Text = "";
             txtSaldo.Text = "0";
@@ -58,8 +60,9 @@ namespace Bendiciones
                     txtDireccion.Enabled = false;
                     cboDistrito.Enabled = false;
                     dtpFechaMatricula.Enabled = false;
-                    cboHoraIni.Enabled = false;
-                    cboHoraFin.Enabled = false;
+
+                    dtpHoraIni.Enabled = false;
+                    dtpHoraFin.Enabled = false;
 
                     btnBuscarDocente.Enabled = false;
 
@@ -70,6 +73,8 @@ namespace Bendiciones
                     btnModificar.Enabled = false;
 
                     cboDescuentos.Enabled = false;
+
+                    gbPago.Visible = true;
 
                     btnPagarAhora.Enabled = false;
                     btnPagarAhora.Visible = false;
@@ -84,9 +89,10 @@ namespace Bendiciones
                     txtDireccion.Enabled = true;
                     cboDistrito.Enabled = true;
                     dtpFechaMatricula.Enabled = true;
-                    cboHoraIni.Enabled = true;
-                    cboHoraFin.Enabled = true;
-                   
+
+                    dtpHoraIni.Enabled = true;
+                    dtpHoraFin.Enabled = true;
+
                     btnBuscarDocente.Enabled = true;
                    
 
@@ -96,6 +102,8 @@ namespace Bendiciones
                     btnBuscar.Enabled = false;
                     btnModificar.Enabled = false;
                     cboDescuentos.Enabled = true;
+
+                    gbPago.Visible = true;
 
                     btnPagarAhora.Enabled = true;
                     btnPagarAhora.Visible = true;
@@ -110,9 +118,9 @@ namespace Bendiciones
                     txtDireccion.Enabled = false;
                     cboDistrito.Enabled = false;
                     dtpFechaMatricula.Enabled = false;
-                    cboHoraIni.Enabled = false;
-                    cboHoraFin.Enabled = false;
-                   
+                    dtpHoraIni.Enabled = false;
+                    dtpHoraFin.Enabled = false;
+
                     btnBuscarDocente.Enabled = false;
 
                     btnNuevo.Enabled = false;
@@ -121,6 +129,8 @@ namespace Bendiciones
                     btnGuardar.Enabled = false;
                     btnCancelar.Enabled = true;
                     cboDescuentos.Enabled = false;
+
+                    gbPago.Visible = false;
 
                     btnPagarAhora.Enabled = false;
                     btnPagarAhora.Visible = false;
@@ -135,9 +145,9 @@ namespace Bendiciones
                     txtDireccion.Enabled = true;
                     cboDistrito.Enabled = true;
                     dtpFechaMatricula.Enabled = true;
-                    cboHoraIni.Enabled = true;
-                    cboHoraFin.Enabled = true;
-                   
+                    dtpHoraIni.Enabled = true;
+                    dtpHoraFin.Enabled = true;
+
                     btnBuscarDocente.Enabled = true;
                     
 
@@ -147,6 +157,8 @@ namespace Bendiciones
                     btnBuscar.Enabled = false;
                     btnModificar.Enabled = false;
                     cboDescuentos.Enabled = false;
+
+                    gbPago.Visible = false;
 
                     btnPagarAhora.Enabled = false;
                     btnPagarAhora.Visible = false;
@@ -159,10 +171,9 @@ namespace Bendiciones
         {
             float i;
             if (txtNombreServicio.Text.Equals("") || txtDescripcion.Text.Equals("") || txtPrecio.Text.Equals("") ||
-               txtDireccion.Text.Equals("") || cboDistrito.SelectedIndex == -1 || cboHoraFin.SelectedIndex == -1 ||
-               cboHoraIni.SelectedIndex == -1)
+               txtDireccion.Text.Equals("") || cboDistrito.SelectedIndex == -1)
             {
-                frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios","","");
+                MessageBox.Show("Todos los campos son obligatorios","",MessageBoxButtons.OK,MessageBoxIcon.Error);
                return false;
             }
 
@@ -175,7 +186,7 @@ namespace Bendiciones
             f.iniFormFreddyGestionar(this, "Clase Particular", pnlCtn, btnNuevo, btnBuscar, btnGuardar, btnModificar, btnCancelar, false);
             f.formatearBotonListar(btnBuscarCliente);
             f.formatearBotonListar(btnBuscarDocente);
-            f.formatearBotonNaranja(btnPagarAhora);
+            f.formatearBotonLila(btnPagarAhora);
             limpiarComponentes();
             descuentos = Program.dbController.listarDescuentos();
             if(descuentos != null)
@@ -239,6 +250,7 @@ namespace Bendiciones
             frmBuscarClaseParticular formBuscarClaseParticular = new frmBuscarClaseParticular();
             if(formBuscarClaseParticular.ShowDialog() == DialogResult.OK)
             {
+                limpiarComponentes();
                 cp = formBuscarClaseParticular.ClaseSeleccionada;
                 cliente = formBuscarClaseParticular.Cliente;
 
@@ -249,16 +261,14 @@ namespace Bendiciones
                 txtPrecio.Text = cp.precio.ToString();
                 txtObservaciones.Text = cp.observaciones;
                 txtDireccion.Text = cp.direccion;
-                cboDistrito.SelectedText = "";
-                cboDistrito.SelectedText = cp.distrito;
-                dtpFechaMatricula.Value = cp.fecha;
                 
-                cboHoraIni.SelectedIndex = -1;
-                cboHoraFin.SelectedIndex = -1;
-                cboHoraIni.SelectedText = "";
-                cboHoraFin.SelectedText = "";
-                cboHoraIni.SelectedText = cp.horaIni.ToShortTimeString();
-                cboHoraFin.SelectedText = cp.horaFin.ToShortTimeString();
+                cboDistrito.SelectedItem = cp.distrito;
+
+                dtpFechaMatricula.Value = cp.fecha;
+
+                dtpHoraIni.Value = cp.horaIni;
+                dtpHoraFin.Value = cp.horaFin;
+
                 txtDNIDocente.Text = cp.colaborador.dni;
                 txtNombreDocente.Text = cp.colaborador.nombre;
 
@@ -270,38 +280,46 @@ namespace Bendiciones
         {
             int idMat;
             int idClase;
+            float p;
             
-            mat.cliente = cliente;
+            if(cliente != null)
+                mat.cliente = cliente;
+            else
+            {
+                frmMensaje m1 = new frmMensaje("Debe seleccionar un cliente", "Error de CLIENTE", "");
+                return;
+            }
+
+           
             mat.fecha = DateTime.Today;
             mat.fechaSpecified = true;
 
 
-            idClase = Program.dbController.insertarClaseParticular(cp);
-            cp.id_servicio = idClase;
+            if (!verificarCampos())
+                return;
 
-            mat.servicio = cp;
-
-            Program.dbController.insertarMatricula(mat);
-
-            frmMensaje mensaje = new frmMensaje("Clase Particular Registrada", "Mensaje de confirmación", "Confirmar");
-
-            estadoComponentes(Estado.Inicial);
-        }
-
-        private void btnPagarAhora_Click(object sender, EventArgs e)
-        {
-            int idMat;
-            int idClase;
-            //se construye clase particular
-            cp = new Service.claseParticular();
+            //clase particular
+            
             cp.colaborador = docente;
+
+            cp.nombre = txtNombreServicio.Text;
             cp.descripcion = txtDescripcion.Text;
             cp.direccion = txtDireccion.Text;
-            cp.distrito = cboDistrito.SelectedItem.ToString();
 
-            cp.fecha = dtpFechaMatricula.Value;
-            cp.fechaSpecified = true;
+            cp.distrito = cboDistrito.SelectedItem.ToString();
             
+
+            if(dtpFechaMatricula.Value >= DateTime.Today)
+            {
+                cp.fecha = dtpFechaMatricula.Value;
+                cp.fechaSpecified = true;
+            }
+            else
+            {
+                frmMensaje m1 = new frmMensaje("Campo fecha debe ser posterior a hoy", "Error de FECHA", "");
+                return;
+            }
+
             //se debe revisar la hora en el DateTime
             cp.horaIni = DateTime.Now;
             cp.horaFin = DateTime.Now;
@@ -309,13 +327,58 @@ namespace Bendiciones
             cp.horaFinSpecified = true;
             cp.horaIniSpecified = true;
 
-            cp.nombre = txtNombreServicio.Text;
-            cp.observaciones = txtObservaciones.Text;
-            cp.precio = float.Parse(txtPrecio.Text);
+
             
+
+            cp.observaciones = txtObservaciones.Text;
+
+
+            cp.precio = float.Parse(txtPrecio.Text);
+
 
             mat.descuento = (Service.descuento)cboDescuentos.SelectedItem;
             mat.monto = float.Parse(txtTotal.Text);
+
+
+
+            if (cp.id_servicio == 0)
+            {
+                idClase = Program.dbController.insertarClaseParticular(cp);
+                cp.id_servicio = idClase;
+
+                mat.servicio = cp;
+                MessageBox.Show("Clase Particular insertada", "Mensaje de confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Program.dbController.insertarMatricula(mat);
+                MessageBox.Show("Clase Particular (matricula) Registrada", "Mensaje de confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } else
+            {
+                Program.dbController.actualizarClaseParticular(cp);
+                MessageBox.Show("Clase Particular actualizada", "Mensaje de confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            limpiarComponentes();
+            estadoComponentes(Estado.Inicial);
+        }
+
+        private void btnPagarAhora_Click(object sender, EventArgs e)
+        {
+            int idMat;
+            float p;
+
+            if (float.TryParse(txtPrecio.Text, out p))
+            {
+                if (p == 0)
+                {
+                    MessageBox.Show("Ingrese una cantidad numérica mayor a cero", "Error de Precio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtPrecio.Text = "";
+                    return;
+                }
+            }else
+            {
+                MessageBox.Show("Ingrese una cantidad numérica mayor a cero", "Error de Precio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPrecio.Text = "";
+                return;
+            }
 
 
             frmPagoMat formPagoMat = new frmPagoMat(mat);
@@ -323,6 +386,7 @@ namespace Bendiciones
             {
                 if(formPagoMat.Cuota != null)
                 {
+                    cuotas = new BindingList<Service.cuota>();
                     cuotas.Add(formPagoMat.Cuota);
                     mat.cuotas = cuotas.ToArray();
                 }
@@ -336,7 +400,18 @@ namespace Bendiciones
 
         private void txtPrecio_TextChanged(object sender, EventArgs e)
         {
-            txtTotal.Text = txtPrecio.Text;
+            float p;
+            if (float.TryParse(txtPrecio.Text, out p))
+            {
+                txtTotal.Text = txtPrecio.Text;
+            }
+            else
+            {
+                MessageBox.Show("Ingrese una cantidad numérica mayor a cero", "Error de Precio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPrecio.Text = "";
+                txtSaldo.Text = "0";
+                txtTotal.Text = "0";
+            }
             cboDescuentos.SelectedIndex = -1;
 
         }
@@ -347,26 +422,38 @@ namespace Bendiciones
         {
             Service.descuento d = (Service.descuento)cboDescuentos.SelectedItem;
             float t;
-            if (d != null && txtPrecio.Text != "0")
-            {
-                Console.WriteLine("txtPrecio: ", txtPrecio.Text);
-                if (float.TryParse(txtPrecio.Text, out t))
-                {
-                    t = (float.Parse(txtPrecio.Text) * (100 - d.porcentaje)/100);
-                    Console.WriteLine("t: ", t);
-                    txtTotal.Text = t.ToString();
-                }
-                else
-                {
-                    txtTotal.Text = "No se puede convertir";
-                }
 
+            if (float.TryParse(txtPrecio.Text, out t))
+            {
+                if(d != null)
+                {
+                    t = (float.Parse(txtPrecio.Text) * (100 - d.porcentaje) / 100);
+                } else
+                {
+                    t = float.Parse(txtPrecio.Text);
+                    
+                }
+                
+                txtTotal.Text = t.ToString();
             }
+            else
+            {
+                frmMensaje mensaje = new frmMensaje("Ingrese un precio válido", "Error de precio", "");
+                cboDescuentos.SelectedIndex = -1;
+                txtSaldo.Text = "0";
+                txtTotal.Text = "0";
+            }
+
+           
+
+            
         }
 
         private void txtTotal_TextChanged(object sender, EventArgs e)
         {
             txtSaldo.Text = txtTotal.Text;
+            mat.monto = float.Parse(txtTotal.Text);
+            //mat.saldo = float.Parse(txtSaldo.Text);
         }
     }
 }
