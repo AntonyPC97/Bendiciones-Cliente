@@ -43,6 +43,8 @@
             // 
             // dgvProfesores
             // 
+            this.dgvProfesores.AllowUserToAddRows = false;
+            this.dgvProfesores.AllowUserToDeleteRows = false;
             this.dgvProfesores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProfesores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DNI,
@@ -51,6 +53,7 @@
             this.Sexo});
             this.dgvProfesores.Location = new System.Drawing.Point(112, 178);
             this.dgvProfesores.Name = "dgvProfesores";
+            this.dgvProfesores.ReadOnly = true;
             this.dgvProfesores.Size = new System.Drawing.Size(526, 150);
             this.dgvProfesores.TabIndex = 17;
             this.dgvProfesores.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProfesores_CellFormatting);
@@ -59,21 +62,25 @@
             // 
             this.DNI.HeaderText = "DNI";
             this.DNI.Name = "DNI";
+            this.DNI.ReadOnly = true;
             // 
             // Nombre
             // 
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
             // 
             // Profesion
             // 
             this.Profesion.HeaderText = "Profesión";
             this.Profesion.Name = "Profesion";
+            this.Profesion.ReadOnly = true;
             // 
             // Sexo
             // 
             this.Sexo.HeaderText = "Sexo";
             this.Sexo.Name = "Sexo";
+            this.Sexo.ReadOnly = true;
             // 
             // btnSeleccionar
             // 

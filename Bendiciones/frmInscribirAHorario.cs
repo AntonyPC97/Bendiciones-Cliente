@@ -39,7 +39,7 @@ namespace Bendiciones
                 txtDNI.Text = cliente.dni;
                 txtNombreCliente.Text = cliente.nombre;
 
-                BindingList<Service.matricula> mats = new BindingList<Service.matricula>();
+                //BindingList<Service.matricula> mats = new BindingList<Service.matricula>();
 
                 //si es apoderado, muestra bebés
                 if (cliente is Service.apoderado)
@@ -53,11 +53,13 @@ namespace Bendiciones
                         cboBebes.DisplayMember = "Nombre";
                         cboBebes.DataSource = bebes;
                     }
-
-                    if (Program.dbController.listarMatriculaActivaPorApoderado(cliente.idPersona) != null)
+                    IEnumerable<Service.matricula> matriculas = Program.dbController.listarMatriculaActivaPorApoderado(cliente.idPersona);
+                    if (matriculas!= null)
                     {
+                        BindingList<Service.matricula> mats = new BindingList<Service.matricula>();
                         Console.WriteLine("apoderado: listar no es null");
-                        foreach (Service.matricula m in Program.dbController.listarMatriculaActivaPorApoderado(cliente.idPersona))
+                        foreach (Service.matricula m in matriculas)
+
                         {
                             Service.bebe b = (Service.bebe)cboBebes.SelectedItem;
                             Console.WriteLine("id bebe seleccionado:");
@@ -68,21 +70,28 @@ namespace Bendiciones
                             {
                                 mats.Add(m);
                             }
-                                
+                            IEnumerable<Service.servicio> serv = mats as IEnumerable<Service.servicio>;
+                            cboServicios.DataSource = serv;
+                            cboServicios.DisplayMember = "nombre";
                         }
-                        
-                        Console.WriteLine("lista mat por apoderado");
+
+                    
                     }
 
                 }
                 else   //si es gestante
                 {
+                    lblBebe.Visible = false;
+                    cboBebes.Visible = false;
                     IEnumerable<Service.matricula> matriculas = Program.dbController.listarMatriculaActivaPorGestante(cliente.idPersona);
                     if (matriculas != null)
                     {
                         List<Service.servicio> servicios = new List<Service.servicio>();
                         foreach (Service.matricula m in matriculas)
                         {
+                            //Service.servicio s =new Service.servicio();
+                            //s = m.servicio;
+                            //if(s is Service.curso)
                             servicios.Add(m.servicio);
                         }
                         IEnumerable<Service.servicio> serv = servicios as IEnumerable<Service.servicio>;
@@ -91,14 +100,6 @@ namespace Bendiciones
                     }
                     
                     
-                }
-
-                //cboServicios.DataSource = mats;
-                //cboServicios.DisplayMember = "idServicio";
-                //prueba}
-                foreach (Service.matricula m in mats)
-                {
-                    Console.WriteLine(m.servicio.nombre);
                 }
 
 
