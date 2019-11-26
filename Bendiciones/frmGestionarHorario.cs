@@ -272,6 +272,7 @@ namespace Bendiciones
 
         private void txtNumVac_KeyPress(object sender, KeyPressEventArgs e)
         {
+
             if (char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -284,7 +285,6 @@ namespace Bendiciones
             {
                 e.Handled = true;
             }
-
         }
     }
 }

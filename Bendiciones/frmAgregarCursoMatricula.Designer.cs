@@ -338,9 +338,9 @@
             // 
             this.gbRestricciones.Controls.Add(this.dgvCondicionesMedicas);
             this.gbRestricciones.Location = new System.Drawing.Point(16, 202);
-            this.gbRestricciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbRestricciones.Margin = new System.Windows.Forms.Padding(2);
             this.gbRestricciones.Name = "gbRestricciones";
-            this.gbRestricciones.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbRestricciones.Padding = new System.Windows.Forms.Padding(2);
             this.gbRestricciones.Size = new System.Drawing.Size(431, 143);
             this.gbRestricciones.TabIndex = 46;
             this.gbRestricciones.TabStop = false;
