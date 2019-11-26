@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionarGestacion));
             this.pnlCtn = new System.Windows.Forms.Panel();
             this.gbDatosGenerales = new System.Windows.Forms.GroupBox();
-            this.txtNumEmbarazo = new System.Windows.Forms.TextBox();
             this.lblNumEmbarazo = new System.Windows.Forms.Label();
             this.txtMedico = new System.Windows.Forms.TextBox();
             this.lblMedico = new System.Windows.Forms.Label();
@@ -44,8 +43,10 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.udNumeroEmb = new System.Windows.Forms.NumericUpDown();
             this.pnlCtn.SuspendLayout();
             this.gbDatosGenerales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.udNumeroEmb)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlCtn
@@ -59,7 +60,7 @@
             // 
             // gbDatosGenerales
             // 
-            this.gbDatosGenerales.Controls.Add(this.txtNumEmbarazo);
+            this.gbDatosGenerales.Controls.Add(this.udNumeroEmb);
             this.gbDatosGenerales.Controls.Add(this.lblNumEmbarazo);
             this.gbDatosGenerales.Controls.Add(this.txtMedico);
             this.gbDatosGenerales.Controls.Add(this.lblMedico);
@@ -73,13 +74,6 @@
             this.gbDatosGenerales.TabIndex = 31;
             this.gbDatosGenerales.TabStop = false;
             this.gbDatosGenerales.Text = "Datos Generales";
-            // 
-            // txtNumEmbarazo
-            // 
-            this.txtNumEmbarazo.Location = new System.Drawing.Point(207, 134);
-            this.txtNumEmbarazo.Name = "txtNumEmbarazo";
-            this.txtNumEmbarazo.Size = new System.Drawing.Size(197, 20);
-            this.txtNumEmbarazo.TabIndex = 35;
             // 
             // lblNumEmbarazo
             // 
@@ -173,6 +167,7 @@
             this.btnModificar.TabIndex = 63;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnCancelar
             // 
@@ -185,6 +180,7 @@
             this.btnCancelar.TabIndex = 62;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -198,6 +194,13 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // udNumeroEmb
+            // 
+            this.udNumeroEmb.Location = new System.Drawing.Point(207, 134);
+            this.udNumeroEmb.Name = "udNumeroEmb";
+            this.udNumeroEmb.Size = new System.Drawing.Size(103, 20);
+            this.udNumeroEmb.TabIndex = 35;
             // 
             // frmGestionarGestacion
             // 
@@ -216,6 +219,7 @@
             this.pnlCtn.ResumeLayout(false);
             this.gbDatosGenerales.ResumeLayout(false);
             this.gbDatosGenerales.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.udNumeroEmb)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -223,7 +227,6 @@
         #endregion
         private System.Windows.Forms.Panel pnlCtn;
         private System.Windows.Forms.GroupBox gbDatosGenerales;
-        private System.Windows.Forms.TextBox txtNumEmbarazo;
         private System.Windows.Forms.Label lblNumEmbarazo;
         private System.Windows.Forms.TextBox txtMedico;
         private System.Windows.Forms.Label lblMedico;
@@ -236,5 +239,6 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.NumericUpDown udNumeroEmb;
     }
 }
