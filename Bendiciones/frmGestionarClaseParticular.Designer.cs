@@ -54,10 +54,9 @@
             this.lblDNI = new System.Windows.Forms.Label();
             this.txtDNICliente = new System.Windows.Forms.TextBox();
             this.gbServicio = new System.Windows.Forms.GroupBox();
-            this.cboHoraFin = new System.Windows.Forms.ComboBox();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
             this.lblHoraFin = new System.Windows.Forms.Label();
             this.lblHoraIni = new System.Windows.Forms.Label();
-            this.cboHoraIni = new System.Windows.Forms.ComboBox();
             this.dtpFechaMatricula = new System.Windows.Forms.DateTimePicker();
             this.lblFecha = new System.Windows.Forms.Label();
             this.cboDistrito = new System.Windows.Forms.ComboBox();
@@ -67,12 +66,13 @@
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.lblObservaciones = new System.Windows.Forms.Label();
             this.lblPrecio = new System.Windows.Forms.Label();
-            this.txtPrecio = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblNombreServicio = new System.Windows.Forms.Label();
             this.txtNombreServicio = new System.Windows.Forms.TextBox();
             this.btnNuevo = new System.Windows.Forms.Button();
+            this.dtpHoraFin = new System.Windows.Forms.DateTimePicker();
+            this.dtpHoraIni = new System.Windows.Forms.DateTimePicker();
             this.pnlCtn.SuspendLayout();
             this.gbPago.SuspendLayout();
             this.gbDocente.SuspendLayout();
@@ -228,7 +228,7 @@
             this.btnPagarAhora.FlatAppearance.BorderSize = 0;
             this.btnPagarAhora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPagarAhora.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPagarAhora.Location = new System.Drawing.Point(682, 867);
+            this.btnPagarAhora.Location = new System.Drawing.Point(631, 867);
             this.btnPagarAhora.Name = "btnPagarAhora";
             this.btnPagarAhora.Size = new System.Drawing.Size(136, 20);
             this.btnPagarAhora.TabIndex = 71;
@@ -376,10 +376,11 @@
             // 
             // gbServicio
             // 
-            this.gbServicio.Controls.Add(this.cboHoraFin);
+            this.gbServicio.Controls.Add(this.dtpHoraFin);
+            this.gbServicio.Controls.Add(this.dtpHoraIni);
+            this.gbServicio.Controls.Add(this.txtPrecio);
             this.gbServicio.Controls.Add(this.lblHoraFin);
             this.gbServicio.Controls.Add(this.lblHoraIni);
-            this.gbServicio.Controls.Add(this.cboHoraIni);
             this.gbServicio.Controls.Add(this.dtpFechaMatricula);
             this.gbServicio.Controls.Add(this.lblFecha);
             this.gbServicio.Controls.Add(this.cboDistrito);
@@ -389,7 +390,6 @@
             this.gbServicio.Controls.Add(this.txtObservaciones);
             this.gbServicio.Controls.Add(this.lblObservaciones);
             this.gbServicio.Controls.Add(this.lblPrecio);
-            this.gbServicio.Controls.Add(this.txtPrecio);
             this.gbServicio.Controls.Add(this.txtDescripcion);
             this.gbServicio.Controls.Add(this.lblDescripcion);
             this.gbServicio.Controls.Add(this.lblNombreServicio);
@@ -401,23 +401,17 @@
             this.gbServicio.TabStop = false;
             this.gbServicio.Text = "Clase Particular";
             // 
-            // cboHoraFin
+            // txtPrecio
             // 
-            this.cboHoraFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboHoraFin.FormattingEnabled = true;
-            this.cboHoraFin.Items.AddRange(new object[] {
-            "09:00",
-            "10:00",
-            "11:00",
-            "12:00",
-            "13:00",
-            "14:00",
-            "15:00",
-            "16:00"});
-            this.cboHoraFin.Location = new System.Drawing.Point(260, 419);
-            this.cboHoraFin.Name = "cboHoraFin";
-            this.cboHoraFin.Size = new System.Drawing.Size(144, 28);
-            this.cboHoraFin.TabIndex = 50;
+            this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecio.HideSelection = false;
+            this.txtPrecio.Location = new System.Drawing.Point(260, 145);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(168, 26);
+            this.txtPrecio.TabIndex = 51;
+            this.txtPrecio.Text = "0";
+            this.txtPrecio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPrecio.TextChanged += new System.EventHandler(this.txtPrecio_TextChanged);
             // 
             // lblHoraFin
             // 
@@ -438,24 +432,6 @@
             this.lblHoraIni.Size = new System.Drawing.Size(105, 24);
             this.lblHoraIni.TabIndex = 47;
             this.lblHoraIni.Text = "Hora Inicio:";
-            // 
-            // cboHoraIni
-            // 
-            this.cboHoraIni.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboHoraIni.FormattingEnabled = true;
-            this.cboHoraIni.Items.AddRange(new object[] {
-            "09:00",
-            "10:00",
-            "11:00",
-            "12:00",
-            "13:00",
-            "14:00",
-            "15:00",
-            "16:00"});
-            this.cboHoraIni.Location = new System.Drawing.Point(260, 385);
-            this.cboHoraIni.Name = "cboHoraIni";
-            this.cboHoraIni.Size = new System.Drawing.Size(144, 28);
-            this.cboHoraIni.TabIndex = 45;
             // 
             // dtpFechaMatricula
             // 
@@ -555,18 +531,6 @@
             this.lblPrecio.TabIndex = 37;
             this.lblPrecio.Text = "Precio:";
             // 
-            // txtPrecio
-            // 
-            this.txtPrecio.Enabled = false;
-            this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecio.HideSelection = false;
-            this.txtPrecio.Location = new System.Drawing.Point(260, 145);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(144, 26);
-            this.txtPrecio.TabIndex = 38;
-            this.txtPrecio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtPrecio.TextChanged += new System.EventHandler(this.txtPrecio_TextChanged);
-            // 
             // txtDescripcion
             // 
             this.txtDescripcion.Enabled = false;
@@ -623,6 +587,31 @@
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
+            // dtpHoraFin
+            // 
+            this.dtpHoraFin.CustomFormat = "HH:mm ";
+            this.dtpHoraFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dtpHoraFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpHoraFin.Location = new System.Drawing.Point(260, 425);
+            this.dtpHoraFin.Name = "dtpHoraFin";
+            this.dtpHoraFin.ShowUpDown = true;
+            this.dtpHoraFin.Size = new System.Drawing.Size(89, 26);
+            this.dtpHoraFin.TabIndex = 57;
+            this.dtpHoraFin.Value = new System.DateTime(2019, 11, 23, 15, 30, 0, 0);
+            // 
+            // dtpHoraIni
+            // 
+            this.dtpHoraIni.CustomFormat = "HH:mm";
+            this.dtpHoraIni.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dtpHoraIni.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpHoraIni.Location = new System.Drawing.Point(260, 385);
+            this.dtpHoraIni.MinDate = new System.DateTime(1753, 1, 1, 9, 0, 0, 0);
+            this.dtpHoraIni.Name = "dtpHoraIni";
+            this.dtpHoraIni.ShowUpDown = true;
+            this.dtpHoraIni.Size = new System.Drawing.Size(89, 26);
+            this.dtpHoraIni.TabIndex = 56;
+            this.dtpHoraIni.Value = new System.DateTime(2019, 11, 23, 15, 30, 0, 0);
+            // 
             // frmGestionarClaseParticular
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -671,7 +660,6 @@
         private System.Windows.Forms.GroupBox gbServicio;
         private System.Windows.Forms.Label lblHoraFin;
         private System.Windows.Forms.Label lblHoraIni;
-        private System.Windows.Forms.ComboBox cboHoraIni;
         private System.Windows.Forms.DateTimePicker dtpFechaMatricula;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.ComboBox cboDistrito;
@@ -681,13 +669,11 @@
         private System.Windows.Forms.TextBox txtObservaciones;
         private System.Windows.Forms.Label lblObservaciones;
         private System.Windows.Forms.Label lblPrecio;
-        private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.Label lblNombreServicio;
         private System.Windows.Forms.TextBox txtNombreServicio;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.ComboBox cboHoraFin;
         private System.Windows.Forms.Button btnPagarAhora;
         private System.Windows.Forms.GroupBox gbPago;
         private System.Windows.Forms.Label lblTotal;
@@ -696,5 +682,8 @@
         private System.Windows.Forms.Label lblDescuento;
         private System.Windows.Forms.TextBox txtSaldo;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.DateTimePicker dtpHoraFin;
+        private System.Windows.Forms.DateTimePicker dtpHoraIni;
     }
 }

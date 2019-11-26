@@ -823,6 +823,15 @@ namespace Bendiciones.Service {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://services/Servicio/listarDocentesYaAsistieronPorCursoRequest", ReplyAction="http://services/Servicio/listarDocentesYaAsistieronPorCursoResponse")]
         System.Threading.Tasks.Task<Bendiciones.Service.listarDocentesYaAsistieronPorCursoResponse> listarDocentesYaAsistieronPorCursoAsync(Bendiciones.Service.listarDocentesYaAsistieronPorCursoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services/Servicio/verificarDNIRequest", ReplyAction="http://services/Servicio/verificarDNIResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        Bendiciones.Service.verificarDNIResponse verificarDNI(Bendiciones.Service.verificarDNIRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services/Servicio/verificarDNIRequest", ReplyAction="http://services/Servicio/verificarDNIResponse")]
+        System.Threading.Tasks.Task<Bendiciones.Service.verificarDNIResponse> verificarDNIAsync(Bendiciones.Service.verificarDNIRequest request);
     }
     
     /// <remarks/>
@@ -5842,6 +5851,42 @@ namespace Bendiciones.Service {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="verificarDNI", WrapperNamespace="http://services/", IsWrapped=true)]
+    public partial class verificarDNIRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string dni;
+        
+        public verificarDNIRequest() {
+        }
+        
+        public verificarDNIRequest(string dni) {
+            this.dni = dni;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="verificarDNIResponse", WrapperNamespace="http://services/", IsWrapped=true)]
+    public partial class verificarDNIResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool @return;
+        
+        public verificarDNIResponse() {
+        }
+        
+        public verificarDNIResponse(bool @return) {
+            this.@return = @return;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface ServicioChannel : Bendiciones.Service.Servicio, System.ServiceModel.IClientChannel {
     }
@@ -7988,6 +8033,29 @@ namespace Bendiciones.Service {
             Bendiciones.Service.listarDocentesYaAsistieronPorCursoRequest inValue = new Bendiciones.Service.listarDocentesYaAsistieronPorCursoRequest();
             inValue.idCurso = idCurso;
             return ((Bendiciones.Service.Servicio)(this)).listarDocentesYaAsistieronPorCursoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Bendiciones.Service.verificarDNIResponse Bendiciones.Service.Servicio.verificarDNI(Bendiciones.Service.verificarDNIRequest request) {
+            return base.Channel.verificarDNI(request);
+        }
+        
+        public bool verificarDNI(string dni) {
+            Bendiciones.Service.verificarDNIRequest inValue = new Bendiciones.Service.verificarDNIRequest();
+            inValue.dni = dni;
+            Bendiciones.Service.verificarDNIResponse retVal = ((Bendiciones.Service.Servicio)(this)).verificarDNI(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Bendiciones.Service.verificarDNIResponse> Bendiciones.Service.Servicio.verificarDNIAsync(Bendiciones.Service.verificarDNIRequest request) {
+            return base.Channel.verificarDNIAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Bendiciones.Service.verificarDNIResponse> verificarDNIAsync(string dni) {
+            Bendiciones.Service.verificarDNIRequest inValue = new Bendiciones.Service.verificarDNIRequest();
+            inValue.dni = dni;
+            return ((Bendiciones.Service.Servicio)(this)).verificarDNIAsync(inValue);
         }
     }
 }
