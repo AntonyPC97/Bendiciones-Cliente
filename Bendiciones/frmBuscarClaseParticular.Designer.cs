@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBuscarClaseParticular));
             this.lblBuscarClaseParticular = new System.Windows.Forms.Label();
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -203,9 +202,8 @@
             this.ClientSize = new System.Drawing.Size(800, 534);
             this.Controls.Add(this.lblBuscarClaseParticular);
             this.Controls.Add(this.pnlContainer);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmBuscarClaseParticular";
-            this.Text = "Buscar Clase Particular";
+            this.Text = "frmBuscarClaseParticular";
             this.pnlContainer.ResumeLayout(false);
             this.gbCliente.ResumeLayout(false);
             this.gbCliente.PerformLayout();

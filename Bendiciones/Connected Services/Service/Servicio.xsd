@@ -186,6 +186,8 @@
   <xs:element name="listarTipoColaboradorResponse" type="tns:listarTipoColaboradorResponse" />
   <xs:element name="registrarClienteEnHorario" type="tns:registrarClienteEnHorario" />
   <xs:element name="registrarClienteEnHorarioResponse" type="tns:registrarClienteEnHorarioResponse" />
+  <xs:element name="verificarDNI" type="tns:verificarDNI" />
+  <xs:element name="verificarDNIResponse" type="tns:verificarDNIResponse" />
   <xs:element name="verificarUsuario" type="tns:verificarUsuario" />
   <xs:element name="verificarUsuarioResponse" type="tns:verificarUsuarioResponse" />
   <xs:complexType name="listarCondMedicasPorGestante">
@@ -523,6 +525,16 @@
   </xs:complexType>
   <xs:complexType name="actualizarSedeResponse">
     <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="verificarDNI">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dni" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verificarDNIResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
   </xs:complexType>
   <xs:complexType name="actualizarContactoEmergencia">
     <xs:sequence>
