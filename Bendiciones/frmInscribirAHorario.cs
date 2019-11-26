@@ -56,46 +56,50 @@ namespace Bendiciones
 
                     if (Program.dbController.listarMatriculaActivaPorApoderado(cliente.idPersona) != null)
                     {
-                        //Console.WriteLine("apoderado: listar no es null");
+                        Console.WriteLine("apoderado: listar no es null");
                         foreach (Service.matricula m in Program.dbController.listarMatriculaActivaPorApoderado(cliente.idPersona))
                         {
                             Service.bebe b = (Service.bebe)cboBebes.SelectedItem;
-                            //Console.WriteLine("id bebe seleccionado:");
-                            //Console.WriteLine(b.idPersona);
-                            //Console.WriteLine("id bebe de matricula:");
-                            //Console.WriteLine(m.bebe.idPersona);
-                            //if (((Service.bebe)cboBebes.SelectedItem).idPersona == m.bebe.idPersona)
+                            Console.WriteLine("id bebe seleccionado:");
+                            Console.WriteLine(b.idPersona);
+                            Console.WriteLine("id bebe de matricula:");
+                            Console.WriteLine(m.bebe.idPersona);
+                            if (((Service.bebe)cboBebes.SelectedItem).idPersona == m.bebe.idPersona)
                             {
                                 mats.Add(m);
                             }
                                 
                         }
                         
-                       // Console.WriteLine("lista mat por apoderado");
+                        Console.WriteLine("lista mat por apoderado");
                     }
 
                 }
                 else   //si es gestante
                 {
-                    if (Program.dbController.listarMatriculaActivaPorGestante(cliente.idPersona) != null)
+                    IEnumerable<Service.matricula> matriculas = Program.dbController.listarMatriculaActivaPorGestante(cliente.idPersona);
+                    if (matriculas != null)
                     {
-                        //Console.WriteLine("gestante: listar no es null");
-                        foreach(Service.matricula m in Program.dbController.listarMatriculaActivaPorGestante(cliente.idPersona))
+                        List<Service.servicio> servicios = new List<Service.servicio>();
+                        foreach (Service.matricula m in matriculas)
                         {
-                            mats.Add(m);
-                        }                        
+                            servicios.Add(m.servicio);
+                        }
+                        IEnumerable<Service.servicio> serv = servicios as IEnumerable<Service.servicio>;
+                        cboServicios.DataSource = serv;
+                        cboServicios.DisplayMember = "nombre";
                     }
                     
                     
                 }
 
-                cboServicios.DataSource = mats;
-
+                //cboServicios.DataSource = mats;
+                //cboServicios.DisplayMember = "idServicio";
                 //prueba}
-                //foreach (Service.matricula m in mats)
-                //{
-                //    //Console.WriteLine(m.servicio.nombre);
-                //}
+                foreach (Service.matricula m in mats)
+                {
+                    Console.WriteLine(m.servicio.nombre);
+                }
 
 
             }
@@ -105,10 +109,12 @@ namespace Bendiciones
         {
             if(cboServicios.SelectedIndex != -1)
             {
+                dgvHorarios.Rows.Clear();
                 horarios = new BindingList<Service.horario>();
-                Service.servicio curso = (Service.servicio)((Service.matricula)cboServicios.SelectedItem).servicio;
+                //Service.servicio curso = (Service.servicio)((Service.matricula)cboServicios.SelectedItem).servicio;
+                Service.servicio curso = (Service.servicio)cboServicios.SelectedItem;
 
-                
+
 
                 if (Program.dbController.listarHorariosPorCurso(curso.id_servicio) != null)
                 {
@@ -117,7 +123,7 @@ namespace Bendiciones
                         horarios.Add(h);
                         Object[] filaHorario = new Object[6];
                         filaHorario[0] = h.clase;
-                        filaHorario[1] = h.sede;
+                        filaHorario[1] = h.sede.direccion;
                         filaHorario[2] = h.horaIni.ToShortTimeString();
                         filaHorario[3] = h.horaFin.ToShortTimeString();
                         filaHorario[4] = h.fecha.ToShortDateString();
@@ -147,8 +153,10 @@ namespace Bendiciones
                 {
                     a.persona = (Service.persona)cboBebes.SelectedItem;
                 }
+
+
                 Program.dbController.registrarClienteEnHorario(a);
-                frmMensaje mensaje = new frmMensaje("Cliente registrado en horario", "Mensaje Confirmación", "Confirmar");
+                MessageBox.Show("Cliente registrado en horario", "Mensaje Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             
         }

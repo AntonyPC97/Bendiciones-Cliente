@@ -311,7 +311,7 @@ namespace Bendiciones
 					rbMasculino.Checked = true;
 				txtAseguradora.Text = cliente.aseguradora;
 				txtNumAseguradora.Text = cliente.numSeguro;
-
+                dgvContactos.Rows.Clear();
 				if (cliente.contactos != null)
 				{
 					foreach (Service.contactoEmergencia contacto in cliente.contactos)
