@@ -97,7 +97,7 @@ namespace Bendiciones
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            frmBuscarCondicion formCondicion = new frmBuscarCondicion();
+            frmBuscarCondicion formCondicion = new frmBuscarCondicion(true);
             if(formCondicion.ShowDialog() == DialogResult.OK)
             {
                 condicion = formCondicion.ConSeleccionada;

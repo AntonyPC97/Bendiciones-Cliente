@@ -118,7 +118,7 @@ namespace Bendiciones
             panel.Height = ventana.Height - 190;
         }
 
-        public void estiloFormularioBusqueda(Form ventana, Label titulo, String nombre, Panel panel, String criterioBusqueda, TextBox txtCriterio, DataGridView dg, Button btnBuscar, Button btnSeleccionar, Button btnEliminar,Boolean isMini) {
+        public void estiloFormularioBusqueda(Form ventana, Label titulo, String nombre, Panel panel, String criterioBusqueda, TextBox txtCriterio, DataGridView dg, Button btnBuscar, Button btnSeleccionar, Button btnEliminar,Boolean isMini, Boolean eliminar) {
             if (isMini == false)
             {
                 formatearVentanaFull(ventana);
@@ -130,10 +130,13 @@ namespace Bendiciones
 
             formatearBotonNaranja(btnBuscar);
             formatearBotonLila(btnSeleccionar);
-			formatearBotonNaranja(btnEliminar);
+
+
+			
             btnBuscar.Parent = panel;
             btnSeleccionar.Parent = panel;
-			btnEliminar.Parent = panel;
+
+            
 
             titulo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             titulo.Left = pnlGap;
@@ -166,11 +169,24 @@ namespace Bendiciones
 
             btnSeleccionar.Top = crit.Top + crit.Height + btnGap;
             btnBuscar.Top = btnSeleccionar.Top;
-			btnEliminar.Top = btnBuscar.Top;
 
-            btnEliminar.Left = dg.Left + dg.Width - btnEliminar.Width;
-            btnSeleccionar.Left = btnEliminar.Left - btnEliminar.Width - btnGap;
-			btnBuscar.Left = btnSeleccionar.Left - btnSeleccionar.Width - btnGap;
+            if (eliminar)
+            {
+                formatearBotonNaranja(btnEliminar);
+                btnEliminar.Parent = panel;
+                btnEliminar.Top = btnBuscar.Top;
+
+                btnEliminar.Left = dg.Left + dg.Width - btnEliminar.Width;
+                btnSeleccionar.Left = btnEliminar.Left - btnEliminar.Width - btnGap;
+                btnBuscar.Left = btnSeleccionar.Left - btnSeleccionar.Width - btnGap;
+            } else
+            {
+                btnEliminar.Visible = false;
+                btnSeleccionar.Left = dg.Left + dg.Width - btnSeleccionar.Width;
+                btnBuscar.Left = btnSeleccionar.Left - btnSeleccionar.Width - btnGap;
+            }
+
+            
 
             dg.Parent = panel;
             dg.Top = btnBuscar.Top + btnBuscar.Height + btnGap;
@@ -195,7 +211,7 @@ namespace Bendiciones
             centerPanel(form, pnlCtn);
         }
 
-        public void iniFormAsistencia(Form form, String nombre, Panel pnlCtn, Button btnRegistrar)
+        public void iniFormAsistencia(Form form, String nombre, Panel pnlCtn, Button btnRegistrar, Button btnBuscar)
         {
             Label titulo = new Label();
             Panel panel = new Panel();
@@ -203,9 +219,11 @@ namespace Bendiciones
 			panel.Parent = form;
 
             btnRegistrar.Text = "Registrar";
+            btnBuscar.Text = "Buscar";
             titulo.Text = nombre;
             formatearVentanaFull(form);
             formatearBotonNaranja(btnRegistrar);
+            formatearBotonLila(btnBuscar);
 
             titulo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             titulo.Left = pnlGap;
@@ -222,7 +240,7 @@ namespace Bendiciones
             centerPanel(form, pnlCtn);
         }
 
-        public void iniFormFreddyBuscar(Form form, String nombre, String criterioBusqueda, TextBox txtCriterio, DataGridView dg, Button btnBuscar, Button btnSeleccionar,Button btnEliminar ,Boolean isMini) {
+        public void iniFormFreddyBuscar(Form form, String nombre, String criterioBusqueda, TextBox txtCriterio, DataGridView dg, Button btnBuscar, Button btnSeleccionar,Button btnEliminar ,Boolean isMini, Boolean eliminar) {
             Label titulo = new Label();
             Panel panel = new Panel();
 
@@ -233,7 +251,7 @@ namespace Bendiciones
 			btnEliminar.Text = "Eliminar";
 
             titulo.Text = nombre;
-            estiloFormularioBusqueda(form,titulo,nombre,panel,criterioBusqueda,txtCriterio,dg,btnBuscar,btnSeleccionar,btnEliminar,isMini);
+            estiloFormularioBusqueda(form,titulo,nombre,panel,criterioBusqueda,txtCriterio,dg,btnBuscar,btnSeleccionar,btnEliminar,isMini, eliminar);
         }
         public void centerPanel(Form formulario, Panel pnl) {
             pnl.Top = (formulario.Height - pnl.Height) / 2;
@@ -473,6 +491,38 @@ namespace Bendiciones
 			btnOk.Left = pnlMensaje.Left + pnlMensaje.Width - 3 * btnGap - 2 * btnW;
 			btnCancel.Left = btnOk.Left + btnOk.Width + btnGap;
 		}
+
+        public void formReportes(Form form, String nombre, Panel pnlCtn)
+        {
+
+            Label titulo = new Label();
+            Panel panel = new Panel();
+
+            titulo.Parent = form;
+            titulo.Text = nombre;
+            panel.Parent = form;
+
+
+            titulo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            titulo.Left = pnlGap;
+            titulo.Top = pnlGap + btnH - titulo.Height;
+            titulo.Width *= 3;
+
+            panel.BackColor = colores.GrisClaro; //////////////
+            panel.SendToBack();
+            panel.Left = pnlGap;
+            panel.Width = form.Width - 2 * pnlGap;
+
+            
+
+            panel.Top = titulo.Top + titulo.Height + btnGap;
+            panel.Height = form.Height - 150;
+
+            form.BackColor = colores.GrisClaro;
+            formatearVentanaFull(form);
+
+            centerPanel(form, pnlCtn);
+        }
     }
 
 }

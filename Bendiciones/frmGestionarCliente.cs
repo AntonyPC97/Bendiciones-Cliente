@@ -299,7 +299,7 @@ namespace Bendiciones
         #region Botones
         private void btnBuscar_Click(object sender, EventArgs e)
 		{
-			frmBuscarCliente formCliente = new frmBuscarCliente();
+			frmBuscarCliente formCliente = new frmBuscarCliente(true);
 			if (formCliente.ShowDialog() == DialogResult.OK)
 			{
 				cliente = formCliente.ClienteSeleccionado;

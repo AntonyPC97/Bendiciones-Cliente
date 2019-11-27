@@ -17,13 +17,13 @@ namespace Bendiciones
 
 		public descuento DescuentoSeleccionado { get => descuentoSeleccionado; set => descuentoSeleccionado = value; }
 
-		public frmBuscarDescuento()
+		public frmBuscarDescuento(Boolean eliminar)
         {
             InitializeComponent();
             dgvDescuentos.AutoGenerateColumns = false;
             dgvDescuentos.DataSource = Program.dbController.listarDescuentos();
             Formateador f = new Formateador();
-            f.iniFormFreddyBuscar(this, "Buscar Descuento", "Nombre:", txtNombre, dgvDescuentos, btnBuscar, btnSeleccionar,btnEliminar, false);
+            f.iniFormFreddyBuscar(this, "Buscar Descuento", "Nombre:", txtNombre, dgvDescuentos, btnBuscar, btnSeleccionar,btnEliminar, false, eliminar);
         }
 
         

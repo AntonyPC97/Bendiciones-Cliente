@@ -21,7 +21,7 @@ namespace Bendiciones
         {
             InitializeComponent();
             Formateador f = new Formateador();
-            f.iniFormAsistencia(this,"Asistencia de Colaborador",pnlCtn,btnRegistrar);
+            f.iniFormAsistencia(this,"Asistencia de Colaborador",pnlCtn,btnRegistrar, btnBuscar);
             dgvPorAsistir.ClearSelection();
             //dgvPorAsistir.
             dgvYaAsistieron.ClearSelection();
