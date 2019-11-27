@@ -14,14 +14,14 @@ namespace Bendiciones
     public partial class frmBuscarCondicion : Form
     {
 		private Service.condicionMedica conSeleccionada = new Service.condicionMedica();
-        public frmBuscarCondicion()
+        public frmBuscarCondicion(Boolean eliminar)
         {
             InitializeComponent();
             dgvCondiciones.AutoGenerateColumns = false;
             dgvCondiciones.DataSource = Program.dbController.listarCondMedicasPorNombre("");
             Formateador f = new Formateador();
             f.iniFormFreddyBuscar(this, "Buscar Condicion", "Nombre:", txtNombre, dgvCondiciones, 
-									btnBuscar, btnSeleccionar,btnEliminar, false);
+									btnBuscar, btnSeleccionar,btnEliminar, false, eliminar);
         }
 
         public condicionMedica ConSeleccionada { get => conSeleccionada; set => conSeleccionada = value; }

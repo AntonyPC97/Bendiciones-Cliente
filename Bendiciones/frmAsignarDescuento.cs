@@ -25,7 +25,7 @@ namespace Bendiciones
 
         private void btnbuscarCurso_Click(object sender, EventArgs e)
         {
-            frmBuscarCurso formBuscarCurso = new frmBuscarCurso();
+            frmBuscarCurso formBuscarCurso = new frmBuscarCurso(false);
             if (formBuscarCurso.ShowDialog() == DialogResult.OK)
             {
                 curso = formBuscarCurso.CursoSeleccionado;

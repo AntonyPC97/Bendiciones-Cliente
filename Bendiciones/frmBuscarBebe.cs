@@ -16,7 +16,7 @@ namespace Bendiciones
         {
             InitializeComponent();
             Formateador f = new Formateador();
-            f.iniFormFreddyBuscar(this, "Buscar Bebé", "Nombre o DNI:", txtNombre, dgvBebes, btnBuscar, btnSeleccionar,btnEliminar, false);
+            f.iniFormFreddyBuscar(this, "Buscar Bebé", "Nombre o DNI:", txtNombre, dgvBebes, btnBuscar, btnSeleccionar,btnEliminar, false, false);
         }
     }
 }

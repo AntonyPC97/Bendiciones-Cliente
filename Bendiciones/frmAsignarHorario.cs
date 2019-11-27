@@ -30,7 +30,7 @@ namespace Bendiciones
             dgvHorarios.Rows.Clear();
             horarios = new BindingList<Service.horario>();
             //dgvHorarios.RowCount = 0;
-            frmBuscarCurso formBuscarCurso = new frmBuscarCurso();
+            frmBuscarCurso formBuscarCurso = new frmBuscarCurso(false);
             if (formBuscarCurso.ShowDialog() == DialogResult.OK)
             {
                 curso = formBuscarCurso.CursoSeleccionado;

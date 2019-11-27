@@ -41,7 +41,7 @@ namespace Bendiciones
             lblBebe.Visible = false;
             cboBebes.Visible = false;
 
-            frmBuscarCliente formBuscarCliente = new frmBuscarCliente();
+            frmBuscarCliente formBuscarCliente = new frmBuscarCliente(false);
             if(formBuscarCliente.ShowDialog() == DialogResult.OK)
             {
                 cliente = formBuscarCliente.ClienteSeleccionado;

@@ -205,7 +205,7 @@ namespace Bendiciones
 		}
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            frmBuscarColaborador formColaborador = new frmBuscarColaborador();
+            frmBuscarColaborador formColaborador = new frmBuscarColaborador(true);
             if (formColaborador.ShowDialog() == DialogResult.OK)
             {
                 colaborador = formColaborador.ColabSeleccionado;

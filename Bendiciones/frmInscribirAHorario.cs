@@ -30,7 +30,7 @@ namespace Bendiciones
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
             dgvHorarios.RowCount = 0;
-            frmBuscarCliente formBuscarCliente = new frmBuscarCliente();
+            frmBuscarCliente formBuscarCliente = new frmBuscarCliente(false);
             if (formBuscarCliente.ShowDialog() == DialogResult.OK)
             {
                 cliente = formBuscarCliente.ClienteSeleccionado;

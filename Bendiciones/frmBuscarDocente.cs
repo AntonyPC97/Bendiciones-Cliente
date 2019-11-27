@@ -17,11 +17,11 @@ namespace Bendiciones
 
         public colaborador DocenteSeleccionado { get => docenteSeleccionado; set => docenteSeleccionado = value; }
 
-        public frmBuscarDocente()
+        public frmBuscarDocente(Boolean eliminar)
         {
             InitializeComponent();
             Formateador f = new Formateador();
-            f.iniFormFreddyBuscar(this, "Buscar Docente", "Nombre o DNI:", txtNombre, dgvProfesores, btnBuscar, btnSeleccionar, btnEliminar, false);
+            f.iniFormFreddyBuscar(this, "Buscar Docente", "Nombre o DNI:", txtNombre, dgvProfesores, btnBuscar, btnSeleccionar, btnEliminar, false, eliminar);
             dgvProfesores.AutoGenerateColumns = false;
             dgvProfesores.DataSource = Program.dbController.listarDocentesPorNombreDni("");
             btnEliminar.Visible = false;
