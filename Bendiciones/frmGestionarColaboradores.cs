@@ -43,7 +43,8 @@ namespace Bendiciones
 					rbFemenino.Enabled = false;
 					rbMasculino.Enabled = false;
 					cboTipo.Enabled = false;
-                    txtReferencia.Enabled = false;
+					cboTipo.SelectedIndex = -1;
+					txtReferencia.Enabled = false;
                     txtProfesion.Enabled = false;
                     dtpFechaNac.Enabled = false;
                     txtDireccion.Enabled = false;
@@ -183,18 +184,13 @@ namespace Bendiciones
 		{
             int i;
 			if (txtNombre.Text.Equals("") || txtDNI.Text.Equals("") || txtCorreo.Text.Equals("") ||
-				txtTelefono.Text.Equals("") || txtPassword.Text.Equals("") ||
-				(rbFemenino.Checked==false && rbMasculino.Checked == false) || 
-				cboTipo.SelectedIndex ==-1 || txtProfesion.Text.Equals(""))
+				txtTelefono.Text.Equals("") || (rbFemenino.Checked==false && rbMasculino.Checked == false) || 
+				cboTipo.SelectedIndex ==-1 || txtDireccion.Text.Equals(""))
             {
-				frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios.","","");
+				frmMensaje mensaje = new frmMensaje("Complete los campos obligatorios","Error de CAMPOS","");
 				return false;
 			}
-            if (!Program.dbController.verificarDNI(txtDNI.Text))
-            {
-                frmMensaje mensaje = new frmMensaje("El Dni ya existe en la base de datos", "Error de DNI", "");
-                return false;
-            }
+            
 
             if (!IsValidEmail(txtCorreo.Text))
             {
@@ -273,7 +269,12 @@ namespace Bendiciones
 
                 if (estadoObjColab == Estado.Nuevo)
                 {
-                    Program.dbController.insertarColaborador(colaborador);
+					if (!Program.dbController.verificarDNI(txtDNI.Text))
+					{
+						frmMensaje msj = new frmMensaje("El Dni ya existe en la base de datos", "Error de DNI", "");
+						return;
+					}
+					Program.dbController.insertarColaborador(colaborador);
 					frmMensaje mensaje = new frmMensaje("Colaborador registrado correctamente.", "Mensaje Confirmacion", "Confirmar");
                     correo.CorreoNuevoColaborador(colaborador);
                 }
@@ -334,5 +335,45 @@ namespace Bendiciones
             if (e.KeyCode == Keys.Enter)
                 rbFemenino.Checked = true;
         }
-    }
+
+		private void txtDNI_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (Char.IsDigit(e.KeyChar))
+			{
+				e.Handled = false;
+			}
+			else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
+			{
+				e.Handled = false;
+			}
+			else
+			{
+				//el resto de teclas pulsadas se desactivan
+				e.Handled = true;
+			}
+		}
+
+		private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			txtDNI_KeyPress(sender,e);
+		}
+
+		private void txtNumColeg_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			txtDNI_KeyPress(sender, e);
+		}
+
+		private void cboTipo_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if(cboTipo.SelectedIndex==2)
+			{
+				txtUsuario.Text = "";
+				txtUsuario.Enabled = false;
+			}
+			else
+			{
+				txtUsuario.Enabled = true;
+			}
+		}
+	}
 }

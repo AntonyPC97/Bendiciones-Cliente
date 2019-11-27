@@ -170,7 +170,7 @@ namespace Bendiciones
                 curso = formCurso.CursoSeleccionado;
                 txtNombreCurso.Text = curso.nombre;
                 txtDescripcion.Text = curso.descripcion;
-                txtPrecio.Text = curso.precio.ToString();
+                txtPrecio.Text = curso.precio.ToString("0.0");
                 udNumClases.Value = curso.numClases;
                 dgvCondiciones.DataSource = curso.condMedicas;
                 for (int i = 0; i < dgvCondiciones.RowCount; i++)
