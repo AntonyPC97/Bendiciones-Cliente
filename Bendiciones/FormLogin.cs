@@ -7,6 +7,8 @@ namespace Bendiciones
 {
     public partial class FormLogin : Form
     {
+		private string correo;
+		private string pass;
         public FormLogin()
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("es-MX");
@@ -27,6 +29,8 @@ namespace Bendiciones
             lblPassword.ForeColor = paleta.Marron;
             pnlLine1.BackColor = paleta.Marron;
             pnlLine2.BackColor = paleta.Marron;
+			btnOlvide.Visible = false;
+
 
         }
         public int transformar(double minutos)
@@ -63,7 +67,7 @@ namespace Bendiciones
                     Program.dbController.actualizarColaborador(colaborador);
                 }
             }
-
+			
             if (txtPassword.Text.Equals(colaborador.password))
                 return colaborador;
             else
@@ -73,6 +77,9 @@ namespace Bendiciones
                     colaborador.intentos += 1;
                     Program.dbController.actualizarColaborador(colaborador);
                     frmMensaje mensaje = new frmMensaje("Contraseña incorrecta \nIntentos restantes: " + (3 - colaborador.intentos), "", "");
+					btnOlvide.Visible = true;
+					correo = colaborador.email;
+					pass = colaborador.password;
                     if (colaborador.intentos == 3)
                     {
                         int hora = DateTime.Now.Hour;
@@ -130,5 +137,11 @@ namespace Bendiciones
             if (e.KeyCode == Keys.Enter)
                 btnIngresar_Click(sender, e);
         }
-    }
+
+		private void btnOlvide_Click(object sender, EventArgs e)
+		{
+			Correo c = new Correo();
+			c.RecuperarPassword(correo, pass);
+		}
+	}
 }

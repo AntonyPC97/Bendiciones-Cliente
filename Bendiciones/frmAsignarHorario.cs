@@ -146,7 +146,7 @@ namespace Bendiciones
                     Program.dbController.insertarHorario(h, curso.id_servicio);
                 }
             }
-            frmMensaje mensaje1 = new frmMensaje("Horarios registrados", "Mensaje de confirmación","Confirmar");
+            frmMensaje mensaje1 = new frmMensaje("Cambios realizados", "Mensaje de confirmación","Confirmar");
         }
 
         private void dgvHorarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
