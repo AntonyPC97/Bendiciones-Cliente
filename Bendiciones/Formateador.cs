@@ -211,7 +211,7 @@ namespace Bendiciones
             centerPanel(form, pnlCtn);
         }
 
-        public void iniFormAsistencia(Form form, String nombre, Panel pnlCtn, Button btnRegistrar)
+        public void iniFormAsistencia(Form form, String nombre, Panel pnlCtn, Button btnRegistrar, Button btnBuscar)
         {
             Label titulo = new Label();
             Panel panel = new Panel();
@@ -219,9 +219,11 @@ namespace Bendiciones
 			panel.Parent = form;
 
             btnRegistrar.Text = "Registrar";
+            btnBuscar.Text = "Buscar";
             titulo.Text = nombre;
             formatearVentanaFull(form);
             formatearBotonNaranja(btnRegistrar);
+            formatearBotonLila(btnBuscar);
 
             titulo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             titulo.Left = pnlGap;
