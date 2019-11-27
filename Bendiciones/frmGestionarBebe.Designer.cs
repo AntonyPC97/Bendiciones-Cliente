@@ -70,7 +70,7 @@
             this.btnModificar.Location = new System.Drawing.Point(300, 378);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(136, 20);
-            this.btnModificar.TabIndex = 64;
+            this.btnModificar.TabIndex = 12;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -83,9 +83,10 @@
             this.btnCancelar.Location = new System.Drawing.Point(584, 378);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(136, 20);
-            this.btnCancelar.TabIndex = 63;
+            this.btnCancelar.TabIndex = 13;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -95,7 +96,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(138, 378);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(136, 20);
-            this.btnGuardar.TabIndex = 62;
+            this.btnGuardar.TabIndex = 11;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -117,13 +118,14 @@
             this.gbDatosGenerales.Controls.Add(this.lblFechaNac);
             this.gbDatosGenerales.Location = new System.Drawing.Point(3, 3);
             this.gbDatosGenerales.Name = "gbDatosGenerales";
-            this.gbDatosGenerales.Size = new System.Drawing.Size(412, 232);
+            this.gbDatosGenerales.Size = new System.Drawing.Size(412, 268);
             this.gbDatosGenerales.TabIndex = 61;
             this.gbDatosGenerales.TabStop = false;
             this.gbDatosGenerales.Text = "Datos Generales";
             // 
             // cboRelacion
             // 
+            this.cboRelacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboRelacion.FormattingEnabled = true;
             this.cboRelacion.Items.AddRange(new object[] {
             "Papá",
@@ -131,117 +133,131 @@
             "Tío/Tía",
             "Hermano/Hermana",
             "Otro"});
-            this.cboRelacion.Location = new System.Drawing.Point(194, 112);
+            this.cboRelacion.Location = new System.Drawing.Point(118, 153);
             this.cboRelacion.Name = "cboRelacion";
-            this.cboRelacion.Size = new System.Drawing.Size(196, 21);
-            this.cboRelacion.TabIndex = 44;
+            this.cboRelacion.Size = new System.Drawing.Size(196, 24);
+            this.cboRelacion.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 115);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(4, 150);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.Size = new System.Drawing.Size(108, 24);
             this.label1.TabIndex = 43;
-            this.label1.Text = "Relación";
+            this.label1.Text = "Relación(*):";
             // 
             // lblSexo
             // 
             this.lblSexo.AutoSize = true;
-            this.lblSexo.Location = new System.Drawing.Point(19, 189);
+            this.lblSexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSexo.Location = new System.Drawing.Point(4, 230);
             this.lblSexo.Name = "lblSexo";
-            this.lblSexo.Size = new System.Drawing.Size(34, 13);
+            this.lblSexo.Size = new System.Drawing.Size(78, 24);
             this.lblSexo.TabIndex = 42;
-            this.lblSexo.Text = "Sexo:";
+            this.lblSexo.Text = "Sexo(*):";
             // 
             // rbMasculino
             // 
             this.rbMasculino.AutoSize = true;
-            this.rbMasculino.Location = new System.Drawing.Point(194, 185);
+            this.rbMasculino.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMasculino.Location = new System.Drawing.Point(129, 234);
             this.rbMasculino.Name = "rbMasculino";
-            this.rbMasculino.Size = new System.Drawing.Size(73, 17);
-            this.rbMasculino.TabIndex = 40;
+            this.rbMasculino.Size = new System.Drawing.Size(87, 20);
+            this.rbMasculino.TabIndex = 6;
             this.rbMasculino.Text = "Masculino";
             this.rbMasculino.UseVisualStyleBackColor = true;
             // 
             // rbFemenino
             // 
             this.rbFemenino.AutoSize = true;
-            this.rbFemenino.Location = new System.Drawing.Point(275, 185);
+            this.rbFemenino.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbFemenino.Location = new System.Drawing.Point(227, 234);
             this.rbFemenino.Name = "rbFemenino";
-            this.rbFemenino.Size = new System.Drawing.Size(71, 17);
-            this.rbFemenino.TabIndex = 41;
+            this.rbFemenino.Size = new System.Drawing.Size(86, 20);
+            this.rbFemenino.TabIndex = 7;
             this.rbFemenino.Text = "Femenino";
             this.rbFemenino.UseVisualStyleBackColor = true;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(193, 49);
+            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.Location = new System.Drawing.Point(113, 73);
+            this.txtNombre.MaxLength = 150;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(197, 20);
-            this.txtNombre.TabIndex = 39;
+            this.txtNombre.Size = new System.Drawing.Size(277, 22);
+            this.txtNombre.TabIndex = 2;
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(19, 57);
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.Location = new System.Drawing.Point(4, 70);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(44, 13);
+            this.lblNombre.Size = new System.Drawing.Size(103, 24);
             this.lblNombre.TabIndex = 38;
-            this.lblNombre.Text = "Nombre";
+            this.lblNombre.Text = "Nombre(*):";
             // 
             // txtDNIBebe
             // 
-            this.txtDNIBebe.Location = new System.Drawing.Point(193, 19);
+            this.txtDNIBebe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDNIBebe.Location = new System.Drawing.Point(75, 33);
+            this.txtDNIBebe.MaxLength = 8;
             this.txtDNIBebe.Name = "txtDNIBebe";
-            this.txtDNIBebe.Size = new System.Drawing.Size(197, 20);
-            this.txtDNIBebe.TabIndex = 37;
+            this.txtDNIBebe.Size = new System.Drawing.Size(180, 22);
+            this.txtDNIBebe.TabIndex = 1;
             // 
             // lblDNIBebe
             // 
             this.lblDNIBebe.AutoSize = true;
-            this.lblDNIBebe.Location = new System.Drawing.Point(19, 27);
+            this.lblDNIBebe.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDNIBebe.Location = new System.Drawing.Point(4, 30);
             this.lblDNIBebe.Name = "lblDNIBebe";
-            this.lblDNIBebe.Size = new System.Drawing.Size(26, 13);
+            this.lblDNIBebe.Size = new System.Drawing.Size(65, 24);
             this.lblDNIBebe.TabIndex = 36;
-            this.lblDNIBebe.Text = "DNI";
+            this.lblDNIBebe.Text = "DNI(*):";
             // 
             // udNumHermanos
             // 
-            this.udNumHermanos.Location = new System.Drawing.Point(193, 148);
+            this.udNumHermanos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.udNumHermanos.Location = new System.Drawing.Point(230, 194);
             this.udNumHermanos.Maximum = new decimal(new int[] {
             20,
             0,
             0,
             0});
             this.udNumHermanos.Name = "udNumHermanos";
-            this.udNumHermanos.Size = new System.Drawing.Size(120, 20);
-            this.udNumHermanos.TabIndex = 35;
+            this.udNumHermanos.Size = new System.Drawing.Size(120, 22);
+            this.udNumHermanos.TabIndex = 5;
             // 
             // lblNumHermanos
             // 
             this.lblNumHermanos.AutoSize = true;
-            this.lblNumHermanos.Location = new System.Drawing.Point(19, 148);
+            this.lblNumHermanos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumHermanos.Location = new System.Drawing.Point(4, 190);
             this.lblNumHermanos.Name = "lblNumHermanos";
-            this.lblNumHermanos.Size = new System.Drawing.Size(108, 13);
+            this.lblNumHermanos.Size = new System.Drawing.Size(220, 24);
             this.lblNumHermanos.TabIndex = 34;
-            this.lblNumHermanos.Text = "Número de hermanos";
+            this.lblNumHermanos.Text = "Número de hermanos(*):";
             // 
             // dtpFechaNac
             // 
-            this.dtpFechaNac.Location = new System.Drawing.Point(193, 81);
+            this.dtpFechaNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaNac.Location = new System.Drawing.Point(139, 111);
             this.dtpFechaNac.Name = "dtpFechaNac";
-            this.dtpFechaNac.Size = new System.Drawing.Size(197, 20);
-            this.dtpFechaNac.TabIndex = 29;
+            this.dtpFechaNac.Size = new System.Drawing.Size(251, 22);
+            this.dtpFechaNac.TabIndex = 3;
             // 
             // lblFechaNac
             // 
             this.lblFechaNac.AutoSize = true;
-            this.lblFechaNac.Location = new System.Drawing.Point(19, 81);
+            this.lblFechaNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaNac.Location = new System.Drawing.Point(4, 110);
             this.lblFechaNac.Name = "lblFechaNac";
-            this.lblFechaNac.Size = new System.Drawing.Size(106, 13);
+            this.lblFechaNac.Size = new System.Drawing.Size(129, 24);
             this.lblFechaNac.TabIndex = 28;
-            this.lblFechaNac.Text = "Fecha de nacimiento";
+            this.lblFechaNac.Text = "Nacimiento(*):";
             // 
             // pnlCtn
             // 
@@ -250,7 +266,7 @@
             this.pnlCtn.Controls.Add(this.gbDatosGenerales);
             this.pnlCtn.Location = new System.Drawing.Point(78, 77);
             this.pnlCtn.Name = "pnlCtn";
-            this.pnlCtn.Size = new System.Drawing.Size(664, 238);
+            this.pnlCtn.Size = new System.Drawing.Size(664, 274);
             this.pnlCtn.TabIndex = 66;
             // 
             // groupBox2
@@ -258,7 +274,7 @@
             this.groupBox2.Controls.Add(this.txtObservaciones);
             this.groupBox2.Location = new System.Drawing.Point(421, 149);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(237, 86);
+            this.groupBox2.Size = new System.Drawing.Size(237, 122);
             this.groupBox2.TabIndex = 63;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Observaciones";
@@ -268,8 +284,8 @@
             this.txtObservaciones.Location = new System.Drawing.Point(21, 20);
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
-            this.txtObservaciones.Size = new System.Drawing.Size(197, 60);
-            this.txtObservaciones.TabIndex = 43;
+            this.txtObservaciones.Size = new System.Drawing.Size(197, 88);
+            this.txtObservaciones.TabIndex = 8;
             // 
             // groupBox1
             // 
@@ -316,7 +332,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(26, 378);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(136, 20);
-            this.btnBuscar.TabIndex = 67;
+            this.btnBuscar.TabIndex = 10;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             // 
@@ -328,7 +344,7 @@
             this.btnNuevo.Location = new System.Drawing.Point(399, 378);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(136, 20);
-            this.btnNuevo.TabIndex = 68;
+            this.btnNuevo.TabIndex = 9;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
             // 

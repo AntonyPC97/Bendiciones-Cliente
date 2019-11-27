@@ -72,6 +72,8 @@
   <xs:element name="eliminarSedeResponse" type="tns:eliminarSedeResponse" />
   <xs:element name="eliminarTipoColaborador" type="tns:eliminarTipoColaborador" />
   <xs:element name="eliminarTipoColaboradorResponse" type="tns:eliminarTipoColaboradorResponse" />
+  <xs:element name="generarReporteAsistenciaPorCursoPDF" type="tns:generarReporteAsistenciaPorCursoPDF" />
+  <xs:element name="generarReporteAsistenciaPorCursoPDFResponse" type="tns:generarReporteAsistenciaPorCursoPDFResponse" />
   <xs:element name="generarReporteServicioPDF" type="tns:generarReporteServicioPDF" />
   <xs:element name="generarReporteServicioPDFResponse" type="tns:generarReporteServicioPDFResponse" />
   <xs:element name="insertarApoderado" type="tns:insertarApoderado" />
@@ -925,14 +927,15 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:condicionMedica" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="verificarDNI">
+  <xs:complexType name="generarReporteAsistenciaPorCursoPDF">
     <xs:sequence>
-      <xs:element minOccurs="0" name="dni" type="xs:string" />
+      <xs:element name="mes" type="xs:int" />
+      <xs:element name="anho" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="verificarDNIResponse">
+  <xs:complexType name="generarReporteAsistenciaPorCursoPDFResponse">
     <xs:sequence>
-      <xs:element name="return" type="xs:boolean" />
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="verificarDNI">

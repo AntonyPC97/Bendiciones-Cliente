@@ -831,7 +831,7 @@
             this.txtCorreo.MaxLength = 150;
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(152, 20);
-            this.txtCorreo.TabIndex = 4;
+            this.txtCorreo.TabIndex = 3;
             // 
             // txtTelef
             // 
@@ -839,7 +839,7 @@
             this.txtTelef.MaxLength = 9;
             this.txtTelef.Name = "txtTelef";
             this.txtTelef.Size = new System.Drawing.Size(152, 20);
-            this.txtTelef.TabIndex = 6;
+            this.txtTelef.TabIndex = 4;
             // 
             // txtDNI
             // 
@@ -847,7 +847,7 @@
             this.txtDNI.MaxLength = 8;
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(152, 20);
-            this.txtDNI.TabIndex = 9;
+            this.txtDNI.TabIndex = 2;
             // 
             // rbMasculino
             // 
@@ -855,7 +855,7 @@
             this.rbMasculino.Location = new System.Drawing.Point(131, 110);
             this.rbMasculino.Name = "rbMasculino";
             this.rbMasculino.Size = new System.Drawing.Size(73, 17);
-            this.rbMasculino.TabIndex = 10;
+            this.rbMasculino.TabIndex = 5;
             this.rbMasculino.Text = "Masculino";
             this.rbMasculino.UseVisualStyleBackColor = true;
             // 
@@ -865,7 +865,7 @@
             this.rbFemenino.Location = new System.Drawing.Point(212, 110);
             this.rbFemenino.Name = "rbFemenino";
             this.rbFemenino.Size = new System.Drawing.Size(71, 17);
-            this.rbFemenino.TabIndex = 11;
+            this.rbFemenino.TabIndex = 6;
             this.rbFemenino.Text = "Femenino";
             this.rbFemenino.UseVisualStyleBackColor = true;
             // 
@@ -876,7 +876,7 @@
             this.txtNombreCliente.MaxLength = 150;
             this.txtNombreCliente.Name = "txtNombreCliente";
             this.txtNombreCliente.Size = new System.Drawing.Size(402, 31);
-            this.txtNombreCliente.TabIndex = 49;
+            this.txtNombreCliente.TabIndex = 1;
             // 
             // btnBuscar
             // 
