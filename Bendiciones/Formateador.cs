@@ -473,6 +473,38 @@ namespace Bendiciones
 			btnOk.Left = pnlMensaje.Left + pnlMensaje.Width - 3 * btnGap - 2 * btnW;
 			btnCancel.Left = btnOk.Left + btnOk.Width + btnGap;
 		}
+
+        public void formReportes(Form form, String nombre, Panel pnlCtn)
+        {
+
+            Label titulo = new Label();
+            Panel panel = new Panel();
+
+            titulo.Parent = form;
+            titulo.Text = nombre;
+            panel.Parent = form;
+
+
+            titulo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            titulo.Left = pnlGap;
+            titulo.Top = pnlGap + btnH - titulo.Height;
+            titulo.Width *= 3;
+
+            panel.BackColor = colores.GrisClaro; //////////////
+            panel.SendToBack();
+            panel.Left = pnlGap;
+            panel.Width = form.Width - 2 * pnlGap;
+
+            
+
+            panel.Top = titulo.Top + titulo.Height + btnGap;
+            panel.Height = form.Height - 150;
+
+            form.BackColor = colores.GrisClaro;
+            formatearVentanaFull(form);
+
+            centerPanel(form, pnlCtn);
+        }
     }
 
 }

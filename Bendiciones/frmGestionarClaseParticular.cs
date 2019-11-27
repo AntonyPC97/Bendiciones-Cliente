@@ -346,8 +346,8 @@ namespace Bendiciones
             }
 
             //se debe revisar la hora en el DateTime
-            cp.horaIni = DateTime.Now;
-            cp.horaFin = DateTime.Now;
+            cp.horaIni = dtpHoraIni.Value;
+            cp.horaFin = dtpHoraFin.Value;
 
             cp.horaFinSpecified = true;
             cp.horaIniSpecified = true;

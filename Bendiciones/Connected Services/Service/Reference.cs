@@ -550,6 +550,15 @@ namespace Bendiciones.Service {
         System.Threading.Tasks.Task<Bendiciones.Service.insertarDescuentoResponse> insertarDescuentoAsync(Bendiciones.Service.insertarDescuentoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services/Servicio/generarReporteAsistenciaPorCursoPDFRequest", ReplyAction="http://services/Servicio/generarReporteAsistenciaPorCursoPDFResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        Bendiciones.Service.generarReporteAsistenciaPorCursoPDFResponse generarReporteAsistenciaPorCursoPDF(Bendiciones.Service.generarReporteAsistenciaPorCursoPDFRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services/Servicio/generarReporteAsistenciaPorCursoPDFRequest", ReplyAction="http://services/Servicio/generarReporteAsistenciaPorCursoPDFResponse")]
+        System.Threading.Tasks.Task<Bendiciones.Service.generarReporteAsistenciaPorCursoPDFResponse> generarReporteAsistenciaPorCursoPDFAsync(Bendiciones.Service.generarReporteAsistenciaPorCursoPDFRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services/Servicio/listarDocentesYaAsistieronRequest", ReplyAction="http://services/Servicio/listarDocentesYaAsistieronResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -4855,6 +4864,47 @@ namespace Bendiciones.Service {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="generarReporteAsistenciaPorCursoPDF", WrapperNamespace="http://services/", IsWrapped=true)]
+    public partial class generarReporteAsistenciaPorCursoPDFRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int mes;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int anho;
+        
+        public generarReporteAsistenciaPorCursoPDFRequest() {
+        }
+        
+        public generarReporteAsistenciaPorCursoPDFRequest(int mes, int anho) {
+            this.mes = mes;
+            this.anho = anho;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="generarReporteAsistenciaPorCursoPDFResponse", WrapperNamespace="http://services/", IsWrapped=true)]
+    public partial class generarReporteAsistenciaPorCursoPDFResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="base64Binary", IsNullable=true)]
+        public byte[] @return;
+        
+        public generarReporteAsistenciaPorCursoPDFResponse() {
+        }
+        
+        public generarReporteAsistenciaPorCursoPDFResponse(byte[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="listarDocentesYaAsistieron", WrapperNamespace="http://services/", IsWrapped=true)]
     public partial class listarDocentesYaAsistieronRequest {
         
@@ -7404,6 +7454,31 @@ namespace Bendiciones.Service {
             Bendiciones.Service.insertarDescuentoRequest inValue = new Bendiciones.Service.insertarDescuentoRequest();
             inValue.descuento = descuento;
             return ((Bendiciones.Service.Servicio)(this)).insertarDescuentoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Bendiciones.Service.generarReporteAsistenciaPorCursoPDFResponse Bendiciones.Service.Servicio.generarReporteAsistenciaPorCursoPDF(Bendiciones.Service.generarReporteAsistenciaPorCursoPDFRequest request) {
+            return base.Channel.generarReporteAsistenciaPorCursoPDF(request);
+        }
+        
+        public byte[] generarReporteAsistenciaPorCursoPDF(int mes, int anho) {
+            Bendiciones.Service.generarReporteAsistenciaPorCursoPDFRequest inValue = new Bendiciones.Service.generarReporteAsistenciaPorCursoPDFRequest();
+            inValue.mes = mes;
+            inValue.anho = anho;
+            Bendiciones.Service.generarReporteAsistenciaPorCursoPDFResponse retVal = ((Bendiciones.Service.Servicio)(this)).generarReporteAsistenciaPorCursoPDF(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Bendiciones.Service.generarReporteAsistenciaPorCursoPDFResponse> Bendiciones.Service.Servicio.generarReporteAsistenciaPorCursoPDFAsync(Bendiciones.Service.generarReporteAsistenciaPorCursoPDFRequest request) {
+            return base.Channel.generarReporteAsistenciaPorCursoPDFAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Bendiciones.Service.generarReporteAsistenciaPorCursoPDFResponse> generarReporteAsistenciaPorCursoPDFAsync(int mes, int anho) {
+            Bendiciones.Service.generarReporteAsistenciaPorCursoPDFRequest inValue = new Bendiciones.Service.generarReporteAsistenciaPorCursoPDFRequest();
+            inValue.mes = mes;
+            inValue.anho = anho;
+            return ((Bendiciones.Service.Servicio)(this)).generarReporteAsistenciaPorCursoPDFAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
