@@ -21,7 +21,7 @@ namespace Bendiciones
         {
             InitializeComponent();
             Formateador f = new Formateador();
-            f.formReportes(this, "Horarios", pnlCtn);
+            f.formReportes(this, "Reportes", pnlCtn);
             f.formatearBotonNaranja(btnAsistenciaCurso);
             f.formatearBotonNaranja(btnAsistenciaHorario);
             f.formatearBotonNaranja(btnMonto);
