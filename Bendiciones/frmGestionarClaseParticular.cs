@@ -303,9 +303,7 @@ namespace Bendiciones
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            int idMat;
             int idClase;
-            float p;
             
             if(cliente != null)
                 mat.cliente = cliente;
@@ -388,7 +386,6 @@ namespace Bendiciones
 
         private void btnPagarAhora_Click(object sender, EventArgs e)
         {
-            int idMat;
             float p;
 
             if (float.TryParse(txtPrecio.Text, out p))
