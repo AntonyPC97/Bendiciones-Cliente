@@ -283,7 +283,7 @@ namespace Bendiciones
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
-            frmReportes formReportes = new frmReportes();
+            frmReportesTotal formReportes = new frmReportesTotal();
             openChildForm(formReportes);
             customDesign();
         }

@@ -133,7 +133,7 @@ namespace Bendiciones
 
 		private void btnBuscar_Click(object sender, EventArgs e)
 		{
-			frmBuscarSede formSede = new frmBuscarSede();
+			frmBuscarSede formSede = new frmBuscarSede(true);
 			if (formSede.ShowDialog() == DialogResult.OK)
 			{
 				sede = formSede.SedeSeleccionada;

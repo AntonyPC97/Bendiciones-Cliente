@@ -148,7 +148,7 @@ namespace Bendiciones
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            frmBuscarDescuento formDescuento = new frmBuscarDescuento();
+            frmBuscarDescuento formDescuento = new frmBuscarDescuento(true);
             if (formDescuento.ShowDialog() == DialogResult.OK)
             {
                 descuento = formDescuento.DescuentoSeleccionado;

@@ -196,7 +196,7 @@ namespace Bendiciones
 
         private void btnBuscarDocente_Click(object sender, EventArgs e)
         {
-            frmBuscarDocente formBuscarDocente = new frmBuscarDocente();
+            frmBuscarDocente formBuscarDocente = new frmBuscarDocente(false);
             if (formBuscarDocente.ShowDialog() == DialogResult.OK)
             {
                 docente = formBuscarDocente.DocenteSeleccionado;

@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionarGestacion));
             this.pnlCtn = new System.Windows.Forms.Panel();
             this.gbDatosGenerales = new System.Windows.Forms.GroupBox();
+            this.udNumeroEmb = new System.Windows.Forms.NumericUpDown();
             this.lblNumEmbarazo = new System.Windows.Forms.Label();
             this.txtMedico = new System.Windows.Forms.TextBox();
             this.lblMedico = new System.Windows.Forms.Label();
@@ -43,7 +44,6 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.udNumeroEmb = new System.Windows.Forms.NumericUpDown();
             this.pnlCtn.SuspendLayout();
             this.gbDatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.udNumeroEmb)).BeginInit();
@@ -53,9 +53,9 @@
             // 
             this.pnlCtn.AutoScroll = true;
             this.pnlCtn.Controls.Add(this.gbDatosGenerales);
-            this.pnlCtn.Location = new System.Drawing.Point(58, 38);
+            this.pnlCtn.Location = new System.Drawing.Point(85, 78);
             this.pnlCtn.Name = "pnlCtn";
-            this.pnlCtn.Size = new System.Drawing.Size(670, 311);
+            this.pnlCtn.Size = new System.Drawing.Size(551, 215);
             this.pnlCtn.TabIndex = 60;
             // 
             // gbDatosGenerales
@@ -68,69 +68,94 @@
             this.gbDatosGenerales.Controls.Add(this.lblClinica);
             this.gbDatosGenerales.Controls.Add(this.dtpFPP);
             this.gbDatosGenerales.Controls.Add(this.lblFPP);
-            this.gbDatosGenerales.Location = new System.Drawing.Point(96, 53);
+            this.gbDatosGenerales.Location = new System.Drawing.Point(9, 12);
             this.gbDatosGenerales.Name = "gbDatosGenerales";
-            this.gbDatosGenerales.Size = new System.Drawing.Size(461, 188);
+            this.gbDatosGenerales.Size = new System.Drawing.Size(525, 188);
             this.gbDatosGenerales.TabIndex = 31;
             this.gbDatosGenerales.TabStop = false;
             this.gbDatosGenerales.Text = "Datos Generales";
             // 
+            // udNumeroEmb
+            // 
+            this.udNumeroEmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.udNumeroEmb.Location = new System.Drawing.Point(229, 144);
+            this.udNumeroEmb.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.udNumeroEmb.Name = "udNumeroEmb";
+            this.udNumeroEmb.Size = new System.Drawing.Size(103, 22);
+            this.udNumeroEmb.TabIndex = 4;
+            this.udNumeroEmb.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // lblNumEmbarazo
             // 
             this.lblNumEmbarazo.AutoSize = true;
-            this.lblNumEmbarazo.Location = new System.Drawing.Point(33, 134);
+            this.lblNumEmbarazo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumEmbarazo.Location = new System.Drawing.Point(4, 140);
             this.lblNumEmbarazo.Name = "lblNumEmbarazo";
-            this.lblNumEmbarazo.Size = new System.Drawing.Size(108, 13);
+            this.lblNumEmbarazo.Size = new System.Drawing.Size(219, 24);
             this.lblNumEmbarazo.TabIndex = 34;
-            this.lblNumEmbarazo.Text = "Número de embarazo";
+            this.lblNumEmbarazo.Text = "Número de embarazo(*):";
             // 
             // txtMedico
             // 
-            this.txtMedico.Location = new System.Drawing.Point(207, 99);
+            this.txtMedico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMedico.Location = new System.Drawing.Point(229, 103);
             this.txtMedico.Name = "txtMedico";
-            this.txtMedico.Size = new System.Drawing.Size(197, 20);
-            this.txtMedico.TabIndex = 33;
+            this.txtMedico.Size = new System.Drawing.Size(225, 22);
+            this.txtMedico.TabIndex = 3;
             // 
             // lblMedico
             // 
             this.lblMedico.AutoSize = true;
-            this.lblMedico.Location = new System.Drawing.Point(33, 107);
+            this.lblMedico.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMedico.Location = new System.Drawing.Point(4, 100);
             this.lblMedico.Name = "lblMedico";
-            this.lblMedico.Size = new System.Drawing.Size(42, 13);
+            this.lblMedico.Size = new System.Drawing.Size(97, 24);
             this.lblMedico.TabIndex = 32;
-            this.lblMedico.Text = "Médico";
+            this.lblMedico.Text = "Médico(*):";
             // 
             // txtClinica
             // 
-            this.txtClinica.Location = new System.Drawing.Point(207, 65);
+            this.txtClinica.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClinica.Location = new System.Drawing.Point(229, 63);
             this.txtClinica.Name = "txtClinica";
-            this.txtClinica.Size = new System.Drawing.Size(197, 20);
-            this.txtClinica.TabIndex = 31;
+            this.txtClinica.Size = new System.Drawing.Size(225, 22);
+            this.txtClinica.TabIndex = 2;
             // 
             // lblClinica
             // 
             this.lblClinica.AutoSize = true;
-            this.lblClinica.Location = new System.Drawing.Point(33, 73);
+            this.lblClinica.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClinica.Location = new System.Drawing.Point(4, 60);
             this.lblClinica.Name = "lblClinica";
-            this.lblClinica.Size = new System.Drawing.Size(40, 13);
+            this.lblClinica.Size = new System.Drawing.Size(90, 24);
             this.lblClinica.TabIndex = 30;
-            this.lblClinica.Text = "Clínica";
+            this.lblClinica.Text = "Clínica(*):";
             // 
             // dtpFPP
             // 
-            this.dtpFPP.Location = new System.Drawing.Point(207, 36);
+            this.dtpFPP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFPP.Location = new System.Drawing.Point(252, 22);
             this.dtpFPP.Name = "dtpFPP";
-            this.dtpFPP.Size = new System.Drawing.Size(197, 20);
-            this.dtpFPP.TabIndex = 29;
+            this.dtpFPP.Size = new System.Drawing.Size(257, 22);
+            this.dtpFPP.TabIndex = 1;
             // 
             // lblFPP
             // 
             this.lblFPP.AutoSize = true;
-            this.lblFPP.Location = new System.Drawing.Point(33, 36);
+            this.lblFPP.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFPP.Location = new System.Drawing.Point(4, 20);
             this.lblFPP.Name = "lblFPP";
-            this.lblFPP.Size = new System.Drawing.Size(123, 13);
+            this.lblFPP.Size = new System.Drawing.Size(242, 24);
             this.lblFPP.TabIndex = 28;
-            this.lblFPP.Text = "Fecha probable de parto";
+            this.lblFPP.Text = "Fecha probable de parto(*):";
             // 
             // btnBuscar
             // 
@@ -164,7 +189,7 @@
             this.btnModificar.Location = new System.Drawing.Point(154, 384);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(136, 20);
-            this.btnModificar.TabIndex = 63;
+            this.btnModificar.TabIndex = 6;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -177,7 +202,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(457, 384);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(136, 20);
-            this.btnCancelar.TabIndex = 62;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -190,17 +215,10 @@
             this.btnGuardar.Location = new System.Drawing.Point(-8, 384);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(136, 20);
-            this.btnGuardar.TabIndex = 61;
+            this.btnGuardar.TabIndex = 5;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // udNumeroEmb
-            // 
-            this.udNumeroEmb.Location = new System.Drawing.Point(207, 134);
-            this.udNumeroEmb.Name = "udNumeroEmb";
-            this.udNumeroEmb.Size = new System.Drawing.Size(103, 20);
-            this.udNumeroEmb.TabIndex = 35;
             // 
             // frmGestionarGestacion
             // 

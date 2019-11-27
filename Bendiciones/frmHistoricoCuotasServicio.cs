@@ -32,7 +32,7 @@ namespace Bendiciones
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
-            frmBuscarCliente formBuscarCliente = new frmBuscarCliente();
+            frmBuscarCliente formBuscarCliente = new frmBuscarCliente(false);
             if(formBuscarCliente.ShowDialog() == DialogResult.OK)
             {
                 limpiarComponentes();

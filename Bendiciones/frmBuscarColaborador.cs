@@ -17,14 +17,14 @@ namespace Bendiciones
 
         public colaborador ColabSeleccionado { get => colabSeleccionado; set => colabSeleccionado = value; }
 
-        public frmBuscarColaborador()
+        public frmBuscarColaborador(Boolean eliminar)
         {
             InitializeComponent();
             dgvColaborador.AutoGenerateColumns = false;
             dgvColaborador.DataSource = Program.dbController.listarColaboradoresPorNombreDni("");
 
             Formateador f = new Formateador();
-            f.iniFormFreddyBuscar(this, "Buscar Colaborador", "Nombre o DNI:", txtNombre, dgvColaborador, btnBuscar, btnSeleccionar,btnEliminar, false);
+            f.iniFormFreddyBuscar(this, "Buscar Colaborador", "Nombre o DNI:", txtNombre, dgvColaborador, btnBuscar, btnSeleccionar,btnEliminar, false, eliminar);
         }
 
         private void dgvColaborador_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

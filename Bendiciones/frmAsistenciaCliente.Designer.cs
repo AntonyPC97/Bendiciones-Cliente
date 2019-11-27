@@ -49,6 +49,7 @@
             this.HoraFi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDni = new System.Windows.Forms.TextBox();
             this.lblDni = new System.Windows.Forms.Label();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.pnlCtn.SuspendLayout();
             this.tabAsistencia.SuspendLayout();
             this.tpPorAsistir.SuspendLayout();
@@ -59,6 +60,7 @@
             // 
             // pnlCtn
             // 
+            this.pnlCtn.Controls.Add(this.btnBuscar);
             this.pnlCtn.Controls.Add(this.cboCursos);
             this.pnlCtn.Controls.Add(this.lblCurso);
             this.pnlCtn.Controls.Add(this.btnRegistrar);
@@ -90,7 +92,7 @@
             // 
             // btnRegistrar
             // 
-            this.btnRegistrar.Location = new System.Drawing.Point(350, 0);
+            this.btnRegistrar.Location = new System.Drawing.Point(502, 16);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(121, 23);
             this.btnRegistrar.TabIndex = 15;
@@ -113,7 +115,7 @@
             this.tpPorAsistir.Controls.Add(this.dgvPorAsistir);
             this.tpPorAsistir.Location = new System.Drawing.Point(4, 22);
             this.tpPorAsistir.Name = "tpPorAsistir";
-            this.tpPorAsistir.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpPorAsistir.Padding = new System.Windows.Forms.Padding(3);
             this.tpPorAsistir.Size = new System.Drawing.Size(582, 198);
             this.tpPorAsistir.TabIndex = 0;
             this.tpPorAsistir.Text = "Por Asistir";
@@ -172,7 +174,7 @@
             this.tpYaAsistieron.Controls.Add(this.dgvYaAsistieron);
             this.tpYaAsistieron.Location = new System.Drawing.Point(4, 22);
             this.tpYaAsistieron.Name = "tpYaAsistieron";
-            this.tpYaAsistieron.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpYaAsistieron.Padding = new System.Windows.Forms.Padding(3);
             this.tpYaAsistieron.Size = new System.Drawing.Size(582, 198);
             this.tpYaAsistieron.TabIndex = 1;
             this.tpYaAsistieron.Text = "Ya asistieron";
@@ -244,6 +246,15 @@
             this.lblDni.TabIndex = 7;
             this.lblDni.Text = "DNI:";
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(365, 16);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(121, 23);
+            this.btnBuscar.TabIndex = 18;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            // 
             // frmAsistenciaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,5 +298,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Curs;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoraIn;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoraFi;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }
