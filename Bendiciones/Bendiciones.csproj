@@ -532,6 +532,9 @@
     <None Include="Connected Services\Service\Bendiciones.Service.eliminarTipoColaboradorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.generarReporteAsistenciaPorCursoPDFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\Service\Bendiciones.Service.generarReporteServicioPDFResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

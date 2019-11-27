@@ -15,6 +15,7 @@ namespace Bendiciones
 
     {
         private Service.gestacion gestacion;
+        private Service.gestacion gestSeleccionada;
         Estado estadoObjGestacion;
         public frmGestionarGestacion(int maxEmb)
         {
@@ -38,9 +39,18 @@ namespace Bendiciones
             txtMedico.Text = gestacion.medico;
             udNumeroEmb.Maximum = maxEmb;
             udNumeroEmb.Value = gestacion.numEmbar;
+            gestSeleccionada = gestacion;
             estadoComponentes(Estado.Buscar);
         }
-
+        public bool verificarCampos()
+        {
+            if (txtClinica.Text.Equals("") || txtMedico.Text.Equals(""))
+            {
+                frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios", "Error de CAMPOS", "");
+                return false;
+            }
+            return true;
+        }
         public void estadoComponentes(Estado estado)
         {
             switch (estado)
@@ -90,18 +100,26 @@ namespace Bendiciones
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            gestacion = new gestacion();
-            gestacion.clinica = txtClinica.Text;
-            gestacion.fecha_probable_parto = dtpFPP.Value;
-            gestacion.fecha_probable_partoSpecified = true;
-            gestacion.medico = txtMedico.Text;
-            gestacion.numEmbar = (int)udNumeroEmb.Value;
-            this.DialogResult = DialogResult.OK;
+            if (verificarCampos())
+            {
+                gestacion = new gestacion();
+                if (estadoObjGestacion == Estado.Modificar)
+                    gestacion.idGestacion = gestSeleccionada.idGestacion;
+
+                gestacion.clinica = txtClinica.Text;
+                gestacion.fecha_probable_parto = dtpFPP.Value;
+                gestacion.fecha_probable_partoSpecified = true;
+                gestacion.medico = txtMedico.Text;
+                gestacion.numEmbar = (int)udNumeroEmb.Value;
+                this.DialogResult = DialogResult.OK;
+            }
+            
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
             estadoComponentes(Estado.Modificar);
+            estadoObjGestacion = Estado.Modificar;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
