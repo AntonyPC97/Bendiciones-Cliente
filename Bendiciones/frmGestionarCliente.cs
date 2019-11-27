@@ -616,7 +616,7 @@ namespace Bendiciones
 
         private void btnSeleccionarGestacion_Click(object sender, EventArgs e)
         {
-            if(gestaciones != null)
+            if(gestaciones != null && estadoObjCliente!= Estado.Nuevo)
             {
                 gestacion = gestaciones[dgvGestaciones.CurrentRow.Index];
                 frmGestionarGestacion formGestionarGestacion = new frmGestionarGestacion(gestacion, (int)udNumEmbarazos.Value);
