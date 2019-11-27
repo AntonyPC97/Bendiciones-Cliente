@@ -18,7 +18,7 @@ namespace Bendiciones
         private Form activeForm = null;
         int btnHeight = 30;
         int btnWidth = 172;
-
+        //gampi
 
         public frmPrincipal()
         {
