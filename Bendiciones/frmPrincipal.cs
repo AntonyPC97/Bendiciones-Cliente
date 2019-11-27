@@ -54,7 +54,6 @@ namespace Bendiciones
             btnAsistenciaDocente.Height = btnHeight;
             btnRegitrarCuota.Height = btnHeight;
             btnHistorico.Height = btnHeight;
-            btnServiciosAdeudados.Height = btnHeight;
             btnAsignarHorario.Height = btnHeight;
             btnInscribir.Height = btnHeight;
             btnReportes.Height = btnHeight;
@@ -77,7 +76,6 @@ namespace Bendiciones
             btnAsistenciaDocente.Width = btnWidth;
             btnRegitrarCuota.Width = btnWidth;
             btnHistorico.Width = btnWidth;
-            btnServiciosAdeudados.Width = btnWidth;
             btnAsignarHorario.Width = btnWidth;
             btnInscribir.Width = btnWidth;
             btnReportes.Width = btnWidth;
@@ -100,7 +98,6 @@ namespace Bendiciones
             f.formatearBotonSubMenu(btnAsistenciaDocente);
             f.formatearBotonSubMenu(btnRegitrarCuota);
             f.formatearBotonSubMenu(btnHistorico);
-            f.formatearBotonSubMenu(btnServiciosAdeudados);
             f.formatearBotonSubMenu(btnAsignarHorario);
             f.formatearBotonMenu(btnPagos);
             f.formatearBotonSubMenu(btnInscribir);
@@ -254,11 +251,6 @@ namespace Bendiciones
             frmHistoricoCuotasServicio formHistorico = new frmHistoricoCuotasServicio();
 			formHistorico.Show();
             customDesign();
-        }
-
-        private void btnServiciosAdeudados_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void btnMatricula_Click(object sender, EventArgs e)

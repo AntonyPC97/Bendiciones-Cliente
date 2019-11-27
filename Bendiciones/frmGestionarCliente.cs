@@ -29,6 +29,7 @@ namespace Bendiciones
 		{
 			InitializeComponent();
 			Formateador f = new Formateador();
+			Paleta p = new Paleta();
 			f.formatearBotonListar(btnAddContacto);
 			f.formatearBotonListar(btnQuitarContacto);
 			cliente = new Service.cliente();
@@ -248,7 +249,7 @@ namespace Bendiciones
 		public bool verificarCampos()
 		{
 			int i;
-			if (txtNombreCliente.Text.Equals("") || txtDNI.Text.Equals("") || cboSedes.SelectedIndex==-1)
+			if (txtNombreCliente.Text.Equals("") || txtDNI.Text.Equals("") || cboSedes.SelectedIndex==-1|| txtTelef.Text.Equals(""))
 			{
 				frmMensaje mensaje = new frmMensaje("Complete los campos obligatorios","Error de Campos","");
 				return false;
@@ -393,6 +394,11 @@ namespace Bendiciones
 			{
 				if (tabTipo.SelectedTab == tabApoderado)
 				{
+					if (dgvBebes.RowCount == 0)
+					{
+						frmMensaje mensaje = new frmMensaje("Debe registrar un bebe para poder Registrar Apoderado","","");
+						return;
+					}
 					apoderado.nombre = txtNombreCliente.Text;
 					apoderado.dni = txtDNI.Text;
 					apoderado.email = txtCorreo.Text;
@@ -426,6 +432,11 @@ namespace Bendiciones
 				}
 				else
 				{
+					if (dgvGestaciones.RowCount == 0)
+					{
+						frmMensaje mensaje = new frmMensaje("Debe registrar una gestacion para poder Registrar Gestante", "", "");
+						return;
+					}
 					gestante.nombre = txtNombreCliente.Text;
 					gestante.dni = txtDNI.Text;
 					gestante.email = txtCorreo.Text;
@@ -580,7 +591,7 @@ namespace Bendiciones
 
 		private void btnSeleccionarBebe_Click(object sender, EventArgs e)
 		{
-            if (bebes != null)
+            if (bebes != null && dgvBebes.RowCount !=0)
             {
                 bebe = bebes[dgvBebes.CurrentRow.Index];
                 frmGestionarBebe formGestionarBebe = new frmGestionarBebe(bebe);
@@ -616,7 +627,7 @@ namespace Bendiciones
 
         private void btnSeleccionarGestacion_Click(object sender, EventArgs e)
         {
-            if(gestaciones != null && estadoObjCliente!= Estado.Nuevo)
+            if(gestaciones != null && dgvGestaciones.RowCount !=0)
             {
                 gestacion = gestaciones[dgvGestaciones.CurrentRow.Index];
                 frmGestionarGestacion formGestionarGestacion = new frmGestionarGestacion(gestacion, (int)udNumEmbarazos.Value);
@@ -638,8 +649,54 @@ namespace Bendiciones
 			if (conFila != null)
 				dgvCondiciones.Rows[e.RowIndex].Cells[0].Value = conFila.nombre;
 		}
-        #endregion
 
-        
-    }
+		#endregion
+
+		private void txtDNI_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (Char.IsDigit(e.KeyChar))
+			{
+				e.Handled = false;
+			}
+			else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
+			{
+				e.Handled = false;
+			}
+			else
+			{
+				//el resto de teclas pulsadas se desactivan
+				e.Handled = true;
+			}
+		}
+
+		private void txtTelef_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			txtDNI_KeyPress(sender,e);
+		}
+
+		private void txtNumAseguradora_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			txtDNI_KeyPress(sender, e);
+		}
+
+		private void txtTelefonoEmergencia_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			txtDNI_KeyPress(sender, e);
+		}
+
+		private void udNumPartos_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			txtDNI_KeyPress(sender, e);
+		}
+
+		private void udNumEmbarazos_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			txtDNI_KeyPress(sender, e);
+		}
+
+		private void txtDNIPareja_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			txtDNI_KeyPress(sender, e);
+		}
+	}
 }
