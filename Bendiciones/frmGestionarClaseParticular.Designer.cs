@@ -54,6 +54,8 @@
             this.lblDNI = new System.Windows.Forms.Label();
             this.txtDNICliente = new System.Windows.Forms.TextBox();
             this.gbServicio = new System.Windows.Forms.GroupBox();
+            this.dtpHoraFin = new System.Windows.Forms.DateTimePicker();
+            this.dtpHoraIni = new System.Windows.Forms.DateTimePicker();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.lblHoraFin = new System.Windows.Forms.Label();
             this.lblHoraIni = new System.Windows.Forms.Label();
@@ -71,8 +73,6 @@
             this.lblNombreServicio = new System.Windows.Forms.Label();
             this.txtNombreServicio = new System.Windows.Forms.TextBox();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.dtpHoraFin = new System.Windows.Forms.DateTimePicker();
-            this.dtpHoraIni = new System.Windows.Forms.DateTimePicker();
             this.pnlCtn.SuspendLayout();
             this.gbPago.SuspendLayout();
             this.gbDocente.SuspendLayout();
@@ -401,6 +401,31 @@
             this.gbServicio.TabStop = false;
             this.gbServicio.Text = "Clase Particular";
             // 
+            // dtpHoraFin
+            // 
+            this.dtpHoraFin.CustomFormat = "HH:mm ";
+            this.dtpHoraFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dtpHoraFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpHoraFin.Location = new System.Drawing.Point(260, 425);
+            this.dtpHoraFin.Name = "dtpHoraFin";
+            this.dtpHoraFin.ShowUpDown = true;
+            this.dtpHoraFin.Size = new System.Drawing.Size(89, 26);
+            this.dtpHoraFin.TabIndex = 57;
+            this.dtpHoraFin.Value = new System.DateTime(2019, 11, 23, 15, 30, 0, 0);
+            // 
+            // dtpHoraIni
+            // 
+            this.dtpHoraIni.CustomFormat = "HH:mm";
+            this.dtpHoraIni.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dtpHoraIni.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpHoraIni.Location = new System.Drawing.Point(260, 385);
+            this.dtpHoraIni.MinDate = new System.DateTime(1753, 1, 1, 9, 0, 0, 0);
+            this.dtpHoraIni.Name = "dtpHoraIni";
+            this.dtpHoraIni.ShowUpDown = true;
+            this.dtpHoraIni.Size = new System.Drawing.Size(89, 26);
+            this.dtpHoraIni.TabIndex = 56;
+            this.dtpHoraIni.Value = new System.DateTime(2019, 11, 23, 15, 30, 0, 0);
+            // 
             // txtPrecio
             // 
             this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -438,7 +463,7 @@
             this.dtpFechaMatricula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaMatricula.Location = new System.Drawing.Point(260, 343);
             this.dtpFechaMatricula.Name = "dtpFechaMatricula";
-            this.dtpFechaMatricula.Size = new System.Drawing.Size(249, 26);
+            this.dtpFechaMatricula.Size = new System.Drawing.Size(301, 26);
             this.dtpFechaMatricula.TabIndex = 44;
             // 
             // lblFecha
@@ -464,7 +489,7 @@
             "Chorrillos"});
             this.cboDistrito.Location = new System.Drawing.Point(260, 305);
             this.cboDistrito.Name = "cboDistrito";
-            this.cboDistrito.Size = new System.Drawing.Size(249, 28);
+            this.cboDistrito.Size = new System.Drawing.Size(301, 28);
             this.cboDistrito.TabIndex = 42;
             // 
             // lblDirección
@@ -586,31 +611,6 @@
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // dtpHoraFin
-            // 
-            this.dtpHoraFin.CustomFormat = "HH:mm ";
-            this.dtpHoraFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.dtpHoraFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpHoraFin.Location = new System.Drawing.Point(260, 425);
-            this.dtpHoraFin.Name = "dtpHoraFin";
-            this.dtpHoraFin.ShowUpDown = true;
-            this.dtpHoraFin.Size = new System.Drawing.Size(89, 26);
-            this.dtpHoraFin.TabIndex = 57;
-            this.dtpHoraFin.Value = new System.DateTime(2019, 11, 23, 15, 30, 0, 0);
-            // 
-            // dtpHoraIni
-            // 
-            this.dtpHoraIni.CustomFormat = "HH:mm";
-            this.dtpHoraIni.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.dtpHoraIni.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpHoraIni.Location = new System.Drawing.Point(260, 385);
-            this.dtpHoraIni.MinDate = new System.DateTime(1753, 1, 1, 9, 0, 0, 0);
-            this.dtpHoraIni.Name = "dtpHoraIni";
-            this.dtpHoraIni.ShowUpDown = true;
-            this.dtpHoraIni.Size = new System.Drawing.Size(89, 26);
-            this.dtpHoraIni.TabIndex = 56;
-            this.dtpHoraIni.Value = new System.DateTime(2019, 11, 23, 15, 30, 0, 0);
             // 
             // frmGestionarClaseParticular
             // 

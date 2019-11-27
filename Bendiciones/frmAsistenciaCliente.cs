@@ -22,7 +22,7 @@ namespace Bendiciones
         {            
             InitializeComponent();
             Formateador f = new Formateador();
-            f.iniFormAsistencia(this, "Asistencia de cliente", pnlCtn, btnRegistrar);
+            f.iniFormAsistencia(this, "Asistencia de cliente", pnlCtn, btnRegistrar, btnBuscar);
             cboCursos.SelectedIndexChanged -= new EventHandler(cboCursos_SelectedIndexChanged);
             IEnumerable<Service.curso> dataSource = Program.dbController.listarCursosPorNombre("");
             if (dataSource != null)
