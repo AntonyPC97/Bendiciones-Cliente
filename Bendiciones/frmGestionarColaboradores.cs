@@ -191,15 +191,24 @@ namespace Bendiciones
 				return false;
 			}
             
-
+			if(txtTelefono.Text.Length < 7 || txtTelefono.Text.Length == 8)
+			{
+				frmMensaje mensaje = new frmMensaje("Telefono de longitud incorrecta", "Error de TELEFONO", "");
+				return false;
+			}
+			if (!Program.dbController.validarUsuarioUnico(txtUsuario.Text))
+			{
+				frmMensaje mensaje = new frmMensaje("El nombre de USUARIO no esta disponible.", "Error de USUARIO", "");
+				return false;
+			}
             if (!IsValidEmail(txtCorreo.Text))
             {
                 frmMensaje mensaje = new frmMensaje("Ingrese un correo electronico valido", "", "");
                 return false;
             }
-            if (!int.TryParse(txtDNI.Text,out i) || !int.TryParse(txtTelefono.Text, out i) || !int.TryParse(txtNumColeg.Text, out i)) 
+            if (!int.TryParse(txtDNI.Text,out i) || !int.TryParse(txtTelefono.Text, out i)) 
             {
-                frmMensaje mensaje = new frmMensaje("Dni, Telefono y Numero de Colegiatura deben ser numericos", "", "");
+                frmMensaje mensaje = new frmMensaje("Dni y Telefono deben ser numericos", "", "");
                 return false;
             }
             

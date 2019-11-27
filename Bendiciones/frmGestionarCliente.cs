@@ -261,6 +261,16 @@ namespace Bendiciones
 				frmMensaje mensaje = new frmMensaje("Campo TELEFONO debe ser numerico", "Error de TELEFONO", "");
 				return false;
 			}
+			if (txtDNI.Text.Length != 8)
+			{
+				frmMensaje mensaje = new frmMensaje("DNI de longitud incorrecta", "Error de DNI", "");
+				return false;
+			}
+			if (txtTelef.Text.Length != 9 || txtTelef.Text.Length != 7)
+			{
+				frmMensaje mensaje = new frmMensaje("Telefono de longitud incorrecta", "Error de TELEFONO", "");
+				return false;
+			}
 
 			if (!IsValidEmail(txtCorreo.Text))
 			{
@@ -292,6 +302,11 @@ namespace Bendiciones
                     frmMensaje mensaje1 = new frmMensaje("Campo SEXO(cliente o pareja) debe ser seleccionado", "Error de SEXO", "");
                     return false;
                 }
+			}
+
+			if (udNumEmbarazos.Value > udNumPartos.Value)
+			{
+
 			}
             return true;
 		}
@@ -437,6 +452,11 @@ namespace Bendiciones
 						frmMensaje mensaje = new frmMensaje("Debe registrar una gestacion para poder Registrar Gestante", "", "");
 						return;
 					}
+					if (udNumEmbarazos.Value < udNumPartos.Value)
+					{
+						frmMensaje mensaje = new frmMensaje("Numero de Partos no puede se mayor que el Numero de Embarazos","", "");
+						return;
+					}
 					gestante.nombre = txtNombreCliente.Text;
 					gestante.dni = txtDNI.Text;
 					gestante.email = txtCorreo.Text;
@@ -542,7 +562,7 @@ namespace Bendiciones
 		private void btnAddContacto_Click(object sender, EventArgs e)
 		{
 			int i;
-            if (int.TryParse(txtTelefonoEmergencia.Text, out i) && !txtNombreEmergencia.Text.Equals(""))
+            if (int.TryParse(txtTelefonoEmergencia.Text, out i) && (txtTelefonoEmergencia.Text.Length==7 || txtTelefonoEmergencia.Text.Length ==9) && !txtNombreEmergencia.Text.Equals(""))
 			{
 				Service.contactoEmergencia cont = new Service.contactoEmergencia();
 				cont.nombre = txtNombreEmergencia.Text;
@@ -556,7 +576,7 @@ namespace Bendiciones
 			}
 			else
 			{
-				frmMensaje mensaje = new frmMensaje("Ingrese datos del contacto de emergencia", "Error de CAMPOS", "");
+				frmMensaje mensaje = new frmMensaje("Ingrese datos del contacto de emergencia correctamente", "Error de CAMPOS", "");
 			}			
 		}
 

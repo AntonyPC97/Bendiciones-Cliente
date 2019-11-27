@@ -95,18 +95,18 @@
 			this.pnlCtn.Controls.Add(this.rbFemenino);
 			this.pnlCtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.pnlCtn.Location = new System.Drawing.Point(53, 182);
-			this.pnlCtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.pnlCtn.Margin = new System.Windows.Forms.Padding(4);
 			this.pnlCtn.Name = "pnlCtn";
 			this.pnlCtn.Size = new System.Drawing.Size(1196, 409);
 			this.pnlCtn.TabIndex = 8;
 			// 
 			// dtpFechaNac
 			// 
-			this.dtpFechaNac.Location = new System.Drawing.Point(271, 228);
-			this.dtpFechaNac.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.dtpFechaNac.Location = new System.Drawing.Point(155, 228);
+			this.dtpFechaNac.Margin = new System.Windows.Forms.Padding(4);
 			this.dtpFechaNac.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
 			this.dtpFechaNac.Name = "dtpFechaNac";
-			this.dtpFechaNac.Size = new System.Drawing.Size(307, 34);
+			this.dtpFechaNac.Size = new System.Drawing.Size(423, 34);
 			this.dtpFechaNac.TabIndex = 5;
 			// 
 			// lblFechaNac
@@ -115,9 +115,9 @@
 			this.lblFechaNac.Location = new System.Drawing.Point(5, 234);
 			this.lblFechaNac.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblFechaNac.Name = "lblFechaNac";
-			this.lblFechaNac.Size = new System.Drawing.Size(243, 29);
+			this.lblFechaNac.Size = new System.Drawing.Size(141, 29);
 			this.lblFechaNac.TabIndex = 106;
-			this.lblFechaNac.Text = "Fecha de nacimiento:";
+			this.lblFechaNac.Text = "Nacimiento:";
 			// 
 			// lblReferencia
 			// 
@@ -132,7 +132,7 @@
 			// txtReferencia
 			// 
 			this.txtReferencia.Location = new System.Drawing.Point(155, 181);
-			this.txtReferencia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtReferencia.Margin = new System.Windows.Forms.Padding(4);
 			this.txtReferencia.MaxLength = 150;
 			this.txtReferencia.Name = "txtReferencia";
 			this.txtReferencia.Size = new System.Drawing.Size(423, 34);
@@ -151,7 +151,7 @@
 			// txtDireccion
 			// 
 			this.txtDireccion.Location = new System.Drawing.Point(859, 280);
-			this.txtDireccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtDireccion.Margin = new System.Windows.Forms.Padding(4);
 			this.txtDireccion.MaxLength = 150;
 			this.txtDireccion.Name = "txtDireccion";
 			this.txtDireccion.Size = new System.Drawing.Size(293, 34);
@@ -170,7 +170,7 @@
 			// txtUsuario
 			// 
 			this.txtUsuario.Location = new System.Drawing.Point(859, 181);
-			this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
 			this.txtUsuario.MaxLength = 25;
 			this.txtUsuario.Name = "txtUsuario";
 			this.txtUsuario.Size = new System.Drawing.Size(293, 34);
@@ -189,7 +189,7 @@
 			// txtPassword
 			// 
 			this.txtPassword.Location = new System.Drawing.Point(859, 230);
-			this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
 			this.txtPassword.Name = "txtPassword";
 			this.txtPassword.PasswordChar = '*';
 			this.txtPassword.Size = new System.Drawing.Size(293, 34);
@@ -208,7 +208,7 @@
 			// txtProfesion
 			// 
 			this.txtProfesion.Location = new System.Drawing.Point(859, 132);
-			this.txtProfesion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtProfesion.Margin = new System.Windows.Forms.Padding(4);
 			this.txtProfesion.MaxLength = 150;
 			this.txtProfesion.Name = "txtProfesion";
 			this.txtProfesion.Size = new System.Drawing.Size(293, 34);
@@ -227,7 +227,7 @@
 			// txtNumColeg
 			// 
 			this.txtNumColeg.Location = new System.Drawing.Point(859, 83);
-			this.txtNumColeg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtNumColeg.Margin = new System.Windows.Forms.Padding(4);
 			this.txtNumColeg.MaxLength = 6;
 			this.txtNumColeg.Name = "txtNumColeg";
 			this.txtNumColeg.Size = new System.Drawing.Size(293, 34);
@@ -247,7 +247,7 @@
 			// txtNombre
 			// 
 			this.txtNombre.Location = new System.Drawing.Point(155, 33);
-			this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
 			this.txtNombre.MaxLength = 60;
 			this.txtNombre.Name = "txtNombre";
 			this.txtNombre.Size = new System.Drawing.Size(423, 34);
@@ -257,7 +257,7 @@
 			// 
 			this.cboTipo.FormattingEnabled = true;
 			this.cboTipo.Location = new System.Drawing.Point(892, 33);
-			this.cboTipo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.cboTipo.Margin = new System.Windows.Forms.Padding(4);
 			this.cboTipo.Name = "cboTipo";
 			this.cboTipo.Size = new System.Drawing.Size(260, 37);
 			this.cboTipo.TabIndex = 9;
@@ -316,7 +316,7 @@
 			// txtCorreo
 			// 
 			this.txtCorreo.Location = new System.Drawing.Point(155, 132);
-			this.txtCorreo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
 			this.txtCorreo.MaxLength = 150;
 			this.txtCorreo.Name = "txtCorreo";
 			this.txtCorreo.Size = new System.Drawing.Size(423, 34);
@@ -325,7 +325,7 @@
 			// txtTelefono
 			// 
 			this.txtTelefono.Location = new System.Drawing.Point(155, 279);
-			this.txtTelefono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtTelefono.Margin = new System.Windows.Forms.Padding(4);
 			this.txtTelefono.MaxLength = 9;
 			this.txtTelefono.Name = "txtTelefono";
 			this.txtTelefono.Size = new System.Drawing.Size(423, 34);
@@ -335,7 +335,7 @@
 			// txtDNI
 			// 
 			this.txtDNI.Location = new System.Drawing.Point(155, 82);
-			this.txtDNI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtDNI.Margin = new System.Windows.Forms.Padding(4);
 			this.txtDNI.MaxLength = 8;
 			this.txtDNI.Name = "txtDNI";
 			this.txtDNI.Size = new System.Drawing.Size(423, 34);
@@ -346,7 +346,7 @@
 			// 
 			this.rbMasculino.AutoSize = true;
 			this.rbMasculino.Location = new System.Drawing.Point(120, 332);
-			this.rbMasculino.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.rbMasculino.Margin = new System.Windows.Forms.Padding(4);
 			this.rbMasculino.Name = "rbMasculino";
 			this.rbMasculino.Size = new System.Drawing.Size(143, 33);
 			this.rbMasculino.TabIndex = 7;
@@ -359,7 +359,7 @@
 			// 
 			this.rbFemenino.AutoSize = true;
 			this.rbFemenino.Location = new System.Drawing.Point(307, 332);
-			this.rbFemenino.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.rbFemenino.Margin = new System.Windows.Forms.Padding(4);
 			this.rbFemenino.Name = "rbFemenino";
 			this.rbFemenino.Size = new System.Drawing.Size(143, 33);
 			this.rbFemenino.TabIndex = 8;
@@ -374,7 +374,7 @@
 			this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnModificar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnModificar.Location = new System.Drawing.Point(360, 50);
-			this.btnModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnModificar.Margin = new System.Windows.Forms.Padding(4);
 			this.btnModificar.Name = "btnModificar";
 			this.btnModificar.Size = new System.Drawing.Size(181, 25);
 			this.btnModificar.TabIndex = 18;
@@ -388,7 +388,7 @@
 			this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnCancelar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnCancelar.Location = new System.Drawing.Point(739, 50);
-			this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
 			this.btnCancelar.Name = "btnCancelar";
 			this.btnCancelar.Size = new System.Drawing.Size(181, 25);
 			this.btnCancelar.TabIndex = 19;
@@ -402,7 +402,7 @@
 			this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnGuardar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnGuardar.Location = new System.Drawing.Point(144, 50);
-			this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
 			this.btnGuardar.Name = "btnGuardar";
 			this.btnGuardar.Size = new System.Drawing.Size(181, 25);
 			this.btnGuardar.TabIndex = 17;
@@ -416,7 +416,7 @@
 			this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnBuscar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnBuscar.Location = new System.Drawing.Point(53, 103);
-			this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
 			this.btnBuscar.Name = "btnBuscar";
 			this.btnBuscar.Size = new System.Drawing.Size(181, 25);
 			this.btnBuscar.TabIndex = 16;
@@ -430,7 +430,7 @@
 			this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnNuevo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnNuevo.Location = new System.Drawing.Point(451, 139);
-			this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
 			this.btnNuevo.Name = "btnNuevo";
 			this.btnNuevo.Size = new System.Drawing.Size(181, 25);
 			this.btnNuevo.TabIndex = 15;
@@ -449,7 +449,7 @@
 			this.Controls.Add(this.btnCancelar);
 			this.Controls.Add(this.btnGuardar);
 			this.Controls.Add(this.pnlCtn);
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "frmGestionarColaboradores";
 			this.Text = "frmGestionarColaboradores";
 			this.pnlCtn.ResumeLayout(false);

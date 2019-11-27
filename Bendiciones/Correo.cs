@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Mail;
 using System.Net;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace Bendiciones
 {
@@ -39,8 +40,8 @@ namespace Bendiciones
                
             
         }
-
-		public void CorreoNuevoServicio(Service.colaborador cliente,Service.curso curso)
+		
+		public void CorreoNuevoServicio(Service.cliente cliente,BindingList<Service.matricula> matriculas)
 		{
 
 			using (MailMessage mail = new MailMessage())
@@ -48,18 +49,41 @@ namespace Bendiciones
 				mail.From = new MailAddress(emailFromAddress);
 				mail.To.Add(cliente.email);
 				mail.Subject = "Bienvenida/o a Escuela para embarazadas " + cliente.nombre;
-				mail.Body = "El dia de hoy se matriculo en el curso "+curso.nombre;
+				mail.Body = "La relacion de sus matricuals es\n\n";
+				foreach(Service.matricula mat in matriculas)
+				{
+					mail.Body += mat.servicio.nombre +"\n";
+				}
 				mail.IsBodyHtml = true;
 				using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
 				{
 					smtp.Credentials = new NetworkCredential(emailFromAddress, password);
 					smtp.EnableSsl = enableSSL;
 					smtp.Send(mail);
-					frmMensaje mensaje = new frmMensaje("Se ha enviado el correo a " + cliente.email, "", "");
+					frmMensaje mensaje = new frmMensaje("Se ha enviado Correo con los detalles a " + cliente.email, "", "");
 				}
 			}
 
 
+		}
+
+		public void RecuperarPassword(string correo, string pass)
+		{
+			using (MailMessage mail = new MailMessage())
+			{
+				mail.From = new MailAddress(emailFromAddress);
+				mail.To.Add(correo);
+				mail.Subject = "Solicito recuperar contraseña";
+				mail.Body = "Password: " + pass;
+				mail.IsBodyHtml = true;
+				using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
+				{
+					smtp.Credentials = new NetworkCredential(emailFromAddress, password);
+					smtp.EnableSsl = enableSSL;
+					smtp.Send(mail);
+					frmMensaje mensaje = new frmMensaje("Se ha enviado el correo a " + correo, "", "");
+				}
+			}
 		}
 	}
 }
