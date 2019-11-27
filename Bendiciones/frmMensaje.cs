@@ -24,10 +24,6 @@ namespace Bendiciones
 
         }
 
-        public void ventanaMensaje(String mensaje) {
-
-        }
-
         private void btnOk_Click(object sender, EventArgs e)
         {
 			this.DialogResult = DialogResult.OK;

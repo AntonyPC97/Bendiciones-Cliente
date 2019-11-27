@@ -183,13 +183,19 @@ namespace Bendiciones
 		{
             int i;
 			if (txtNombre.Text.Equals("") || txtDNI.Text.Equals("") || txtCorreo.Text.Equals("") ||
-				txtTelefono.Text.Equals("") || txtUsuario.Text.Equals("") || txtPassword.Text.Equals("") ||
-				txtNumColeg.Text.Equals("") || (rbFemenino.Checked==false && rbMasculino.Checked == false) || 
+				txtTelefono.Text.Equals("") || txtPassword.Text.Equals("") ||
+				(rbFemenino.Checked==false && rbMasculino.Checked == false) || 
 				cboTipo.SelectedIndex ==-1 || txtProfesion.Text.Equals(""))
             {
 				frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios.","","");
 				return false;
 			}
+            if (!Program.dbController.verificarDNI(txtDNI.Text))
+            {
+                frmMensaje mensaje = new frmMensaje("El Dni ya existe en la base de datos", "Error de DNI", "");
+                return false;
+            }
+
             if (!IsValidEmail(txtCorreo.Text))
             {
                 frmMensaje mensaje = new frmMensaje("Ingrese un correo electronico valido", "", "");

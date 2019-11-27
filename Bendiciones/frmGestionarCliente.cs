@@ -17,6 +17,7 @@ namespace Bendiciones
 		private Service.gestante gestante = new Service.gestante();
 		private Service.gestacion gestacion = new Service.gestacion();
 		private Service.contactoEmergencia contacto = new Service.contactoEmergencia();
+        private Service.bebe bebe = new Service.bebe();
 
 		private BindingList<Service.contactoEmergencia> contactos = new BindingList<Service.contactoEmergencia>();
 		private BindingList<Service.bebe> bebes = new BindingList<Service.bebe>();
@@ -230,7 +231,7 @@ namespace Bendiciones
 			rbMasculino.Checked = false;
 			dgvGestaciones.RowCount = 0;
 		}
-		#endregion
+
 		public bool IsValidEmail(string email)
 		{
 			try
@@ -252,6 +253,7 @@ namespace Bendiciones
 				frmMensaje mensaje = new frmMensaje("Complete los campos obligatorios","Error de Campos","");
 				return false;
 			}
+            
 
 			if(!int.TryParse(txtTelef.Text,out i))
 			{
@@ -292,9 +294,10 @@ namespace Bendiciones
 			}
             return true;
 		}
+        #endregion
 
-		#region Botones
-		private void btnBuscar_Click(object sender, EventArgs e)
+        #region Botones
+        private void btnBuscar_Click(object sender, EventArgs e)
 		{
 			frmBuscarCliente formCliente = new frmBuscarCliente(true);
 			if (formCliente.ShowDialog() == DialogResult.OK)
@@ -311,7 +314,9 @@ namespace Bendiciones
 					rbMasculino.Checked = true;
 				txtAseguradora.Text = cliente.aseguradora;
 				txtNumAseguradora.Text = cliente.numSeguro;
-                dgvContactos.Rows.Clear();
+                //dgvContactos.Rows.Clear();
+                dgvContactos.RowCount = 0;
+                //rprobando cambios a rama
 				if (cliente.contactos != null)
 				{
 					foreach (Service.contactoEmergencia contacto in cliente.contactos)
@@ -327,6 +332,8 @@ namespace Bendiciones
 				{
 					apoderado = (Service.apoderado)cliente;
 					tabTipo.SelectedTab = tabApoderado;
+                    dgvBebes.RowCount = 0;
+                    //bebes = new BindingList<Service.bebe>();
 					if (apoderado.bebes != null) {
 						foreach(Service.bebe bebe in apoderado.bebes)
 						{
@@ -361,8 +368,20 @@ namespace Bendiciones
 						else
 							rbMasculino.Checked = true;
 					}
+
                     dgvGestaciones.AutoGenerateColumns = false;
-                    dgvGestaciones.DataSource = gestante.gestaciones;
+                    gestaciones = new BindingList<Service.gestacion>();
+                    if(gestante.gestaciones!= null)
+                    {
+                        foreach (Service.gestacion gest in gestante.gestaciones)
+                        {
+                            Object[] filaGestacion = new Object[2];
+                            filaGestacion[0] = gest.clinica;
+                            filaGestacion[1] = gest.fecha_probable_parto;
+                            gestaciones.Add(gest);
+                            dgvGestaciones.Rows.Add(filaGestacion);
+                        }
+                    }                   
 				}
                 estadoComponentes(Estado.Buscar);
 			}
@@ -390,7 +409,12 @@ namespace Bendiciones
 					apoderado.bebes = bebes.ToArray();
 					if (estadoObjCliente == Estado.Nuevo)
 					{
-						string cod = Program.dbController.insertarApoderado(apoderado, ((Service.sede)cboSedes.SelectedItem).distrito);
+                        if (!Program.dbController.verificarDNI(txtDNI.Text))
+                        {
+                            frmMensaje msj = new frmMensaje("El Dni ya existe en la base de datos", "Error de Dni", "");
+                            return;
+                        }
+                        string cod = Program.dbController.insertarApoderado(apoderado, ((Service.sede)cboSedes.SelectedItem).distrito);
 						Console.WriteLine(cod);
 						frmMensaje mensaje = new frmMensaje("Se ha registrado un nuevo Apoderado", "Mensaje de confirmación", "Confirmar");
 					}
@@ -452,7 +476,12 @@ namespace Bendiciones
 
 					if (estadoObjCliente == Estado.Nuevo)
 					{
-						string cod = Program.dbController.insertarGestante(gestante, ((Service.sede)cboSedes.SelectedItem).distrito);
+                        if (!Program.dbController.verificarDNI(txtDNI.Text) || !Program.dbController.verificarDNI(txtDNIPareja.Text))
+                        {
+                            frmMensaje msj = new frmMensaje("El Dni ya existe en la base de datos", "Error de Dni", "");
+                            return;
+                        }
+                        string cod = Program.dbController.insertarGestante(gestante, ((Service.sede)cboSedes.SelectedItem).distrito);
 						frmMensaje mensaje = new frmMensaje("Cliente apoderado registrado", "Mensaje de confirmación", "");
 					}
 					else
@@ -482,28 +511,33 @@ namespace Bendiciones
 		{
 			estadoObjCliente = Estado.Modificar;
 			estadoComponentes(Estado.Modificar);
-		}
+
+            contactos = new BindingList<Service.contactoEmergencia>();
+            if(cliente.contactos != null)
+                foreach (Service.contactoEmergencia contacto in cliente.contactos)
+                    contactos.Add(contacto);
+
+            if(cliente is Service.apoderado)
+            {
+                bebes = new BindingList<Service.bebe>();
+                Service.apoderado apod = (Service.apoderado)cliente;
+                foreach (Service.bebe bebe in apod.bebes)
+                    bebes.Add(bebe);
+            }
+        }
 		#endregion
 
 		#region ContactosDeEmergencia
 		private void btnAddContacto_Click(object sender, EventArgs e)
 		{
 			int i;
-			if (int.TryParse(txtTelefonoEmergencia.Text, out i) && !txtNombreEmergencia.Text.Equals(""))
+            if (int.TryParse(txtTelefonoEmergencia.Text, out i) && !txtNombreEmergencia.Text.Equals(""))
 			{
 				Service.contactoEmergencia cont = new Service.contactoEmergencia();
 				cont.nombre = txtNombreEmergencia.Text;
 				cont.telefono = txtTelefonoEmergencia.Text;
 
-				if (estadoObjCliente == Estado.Nuevo)
-					contactos.Add(cont);
-				else
-				{
-					contactos = new BindingList<Service.contactoEmergencia>();
-					foreach (Service.contactoEmergencia contacto in cliente.contactos)
-						contactos.Add(contacto);
-					contactos.Add(cont);
-				}
+                contactos.Add(cont);
 				Object[] filaContacto = new Object[2];
 				filaContacto[0] = cont.nombre;
 				filaContacto[1] = cont.telefono;
@@ -517,28 +551,11 @@ namespace Bendiciones
 
 		private void btnQuitarContacto_Click(object sender, EventArgs e)
 		{
-			
-			if (estadoObjCliente == Estado.Nuevo)
-			{
-				foreach (DataGridViewRow fila in dgvContactos.SelectedRows)
-				{
-				contactos.RemoveAt(fila.Index);
-				dgvContactos.Rows.RemoveAt(fila.Index);
-				}	
-			}
-			else
-			{
-				contactos = new BindingList<Service.contactoEmergencia>();
-				foreach (Service.contactoEmergencia contacto in cliente.contactos)
-					contactos.Add(contacto);
-				foreach (DataGridViewRow fila in dgvContactos.SelectedRows)
-				{
-                //contacto = contactos[fila.index];
-                //Program.elim
-				contactos.RemoveAt(fila.Index);
-				dgvContactos.Rows.RemoveAt(fila.Index);
-				}
-			}
+            foreach (DataGridViewRow fila in dgvContactos.SelectedRows)
+            {
+                contactos.RemoveAt(fila.Index);
+                dgvContactos.Rows.RemoveAt(fila.Index);
+            }
 		
 		}
 		#endregion
@@ -550,7 +567,7 @@ namespace Bendiciones
 			if (formGestionarBebe.ShowDialog() == DialogResult.OK)
 			{
 				Service.bebe bebe;
-				bebe = formGestionarBebe.BebeSeleccionado;
+				bebe = formGestionarBebe.Bebe;
 				bebes.Add(bebe);
 				Object[] filaBebe = new Object[4];
 				filaBebe[0] = bebe.dni;
@@ -563,15 +580,28 @@ namespace Bendiciones
 
 		private void btnSeleccionarBebe_Click(object sender, EventArgs e)
 		{
-			frmBuscarBebe formBuscarBebe = new frmBuscarBebe();
-			formBuscarBebe.Show();
-		}
+            if (bebes != null)
+            {
+                bebe = bebes[dgvBebes.CurrentRow.Index];
+                frmGestionarBebe formGestionarBebe = new frmGestionarBebe(bebe);
+                if (formGestionarBebe.ShowDialog() == DialogResult.OK)
+                {
+                    bebe = formGestionarBebe.Bebe;
+                    bebes[dgvBebes.CurrentRow.Index] = bebe;
+                    //actualizar la fila
+                    dgvBebes.Rows[dgvBebes.CurrentRow.Index].Cells[0].Value = bebe.dni;
+                    dgvBebes.Rows[dgvBebes.CurrentRow.Index].Cells[1].Value = bebe.nombre;
+                    dgvBebes.Rows[dgvBebes.CurrentRow.Index].Cells[2].Value = bebe.relacion;
+                    dgvBebes.Rows[dgvBebes.CurrentRow.Index].Cells[3].Value = bebe.fechaNaci.ToShortDateString();
+                }
+            }
+        }
 		#endregion
 
 		#region Gestante
 		private void btnAgregarGestacion_Click(object sender, EventArgs e)
         {
-            frmGestionarGestacion formGestionarGestacion = new frmGestionarGestacion();
+            frmGestionarGestacion formGestionarGestacion = new frmGestionarGestacion((int)udNumEmbarazos.Value);
             if(formGestionarGestacion.ShowDialog() == DialogResult.OK)
             {
                 gestacion = formGestionarGestacion.Gestacion;
@@ -579,22 +609,27 @@ namespace Bendiciones
 
                 Object[] filaGestacion = new Object[2];
                 filaGestacion[0] = gestacion.clinica;
-                filaGestacion[1] = gestacion.fecha_probable_parto;
+                filaGestacion[1] = gestacion.fecha_probable_parto.ToShortDateString();
                 dgvGestaciones.Rows.Add(filaGestacion);
             }
         }
 
         private void btnSeleccionarGestacion_Click(object sender, EventArgs e)
         {
-            //si dgv no está vacío
-            gestacion = gestaciones[dgvGestaciones.CurrentRow.Index];
-
-            //la idea es que se modifique
-            frmGestionarGestacion formGestionarGestacion = new frmGestionarGestacion(gestacion);
-            if (formGestionarGestacion.ShowDialog() == DialogResult.OK)
+            if(gestaciones != null)
             {
-                
+                gestacion = gestaciones[dgvGestaciones.CurrentRow.Index];
+                frmGestionarGestacion formGestionarGestacion = new frmGestionarGestacion(gestacion, (int)udNumEmbarazos.Value);
+                if (formGestionarGestacion.ShowDialog() == DialogResult.OK)
+                {
+                    gestacion = formGestionarGestacion.Gestacion;
+                    gestaciones[dgvGestaciones.CurrentRow.Index] = gestacion;
+                    //actualizar la fila
+                    dgvGestaciones.Rows[dgvGestaciones.CurrentRow.Index].Cells[0].Value = gestacion.clinica;
+                    dgvGestaciones.Rows[dgvGestaciones.CurrentRow.Index].Cells[1].Value = gestacion.fecha_probable_parto.ToShortDateString();
+                }
             }
+            
         }
 		
 		private void dgvCondiciones_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -603,6 +638,8 @@ namespace Bendiciones
 			if (conFila != null)
 				dgvCondiciones.Rows[e.RowIndex].Cells[0].Value = conFila.nombre;
 		}
-		#endregion
-	}
+        #endregion
+
+        
+    }
 }
