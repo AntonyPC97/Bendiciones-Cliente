@@ -88,9 +88,9 @@
 			this.pnlSide.Controls.Add(this.btnCursos);
 			this.pnlSide.Dock = System.Windows.Forms.DockStyle.Left;
 			this.pnlSide.Location = new System.Drawing.Point(0, 74);
-			this.pnlSide.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.pnlSide.Margin = new System.Windows.Forms.Padding(4);
 			this.pnlSide.Name = "pnlSide";
-			this.pnlSide.Size = new System.Drawing.Size(252, 662);
+			this.pnlSide.Size = new System.Drawing.Size(252, 679);
 			this.pnlSide.TabIndex = 1;
 			// 
 			// btnReportes
@@ -100,7 +100,7 @@
 			this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnReportes.Location = new System.Drawing.Point(0, 703);
-			this.btnReportes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnReportes.Margin = new System.Windows.Forms.Padding(4);
 			this.btnReportes.Name = "btnReportes";
 			this.btnReportes.Size = new System.Drawing.Size(231, 37);
 			this.btnReportes.TabIndex = 29;
@@ -116,7 +116,7 @@
 			this.btnClasesParticulares.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnClasesParticulares.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnClasesParticulares.Location = new System.Drawing.Point(0, 666);
-			this.btnClasesParticulares.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnClasesParticulares.Margin = new System.Windows.Forms.Padding(4);
 			this.btnClasesParticulares.Name = "btnClasesParticulares";
 			this.btnClasesParticulares.Size = new System.Drawing.Size(231, 37);
 			this.btnClasesParticulares.TabIndex = 28;
@@ -132,7 +132,7 @@
 			this.btnMatricula.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMatricula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnMatricula.Location = new System.Drawing.Point(0, 629);
-			this.btnMatricula.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnMatricula.Margin = new System.Windows.Forms.Padding(4);
 			this.btnMatricula.Name = "btnMatricula";
 			this.btnMatricula.Size = new System.Drawing.Size(231, 37);
 			this.btnMatricula.TabIndex = 27;
@@ -147,7 +147,7 @@
 			this.pnlPagos.Controls.Add(this.btnRegitrarCuota);
 			this.pnlPagos.Dock = System.Windows.Forms.DockStyle.Top;
 			this.pnlPagos.Location = new System.Drawing.Point(0, 555);
-			this.pnlPagos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.pnlPagos.Margin = new System.Windows.Forms.Padding(4);
 			this.pnlPagos.Name = "pnlPagos";
 			this.pnlPagos.Size = new System.Drawing.Size(231, 74);
 			this.pnlPagos.TabIndex = 1;
@@ -160,7 +160,7 @@
 			this.btnHistorico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
 			this.btnHistorico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnHistorico.Location = new System.Drawing.Point(0, 37);
-			this.btnHistorico.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnHistorico.Margin = new System.Windows.Forms.Padding(4);
 			this.btnHistorico.Name = "btnHistorico";
 			this.btnHistorico.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
 			this.btnHistorico.Size = new System.Drawing.Size(231, 37);
@@ -178,7 +178,7 @@
 			this.btnRegitrarCuota.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
 			this.btnRegitrarCuota.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnRegitrarCuota.Location = new System.Drawing.Point(0, 0);
-			this.btnRegitrarCuota.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnRegitrarCuota.Margin = new System.Windows.Forms.Padding(4);
 			this.btnRegitrarCuota.Name = "btnRegitrarCuota";
 			this.btnRegitrarCuota.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
 			this.btnRegitrarCuota.Size = new System.Drawing.Size(231, 37);
@@ -195,7 +195,7 @@
 			this.btnPagos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnPagos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnPagos.Location = new System.Drawing.Point(0, 518);
-			this.btnPagos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnPagos.Margin = new System.Windows.Forms.Padding(4);
 			this.btnPagos.Name = "btnPagos";
 			this.btnPagos.Size = new System.Drawing.Size(231, 37);
 			this.btnPagos.TabIndex = 23;
@@ -210,7 +210,7 @@
 			this.pnlAsistencia.Controls.Add(this.btnAsistenciaCliente);
 			this.pnlAsistencia.Dock = System.Windows.Forms.DockStyle.Top;
 			this.pnlAsistencia.Location = new System.Drawing.Point(0, 444);
-			this.pnlAsistencia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.pnlAsistencia.Margin = new System.Windows.Forms.Padding(4);
 			this.pnlAsistencia.Name = "pnlAsistencia";
 			this.pnlAsistencia.Size = new System.Drawing.Size(231, 74);
 			this.pnlAsistencia.TabIndex = 17;
@@ -223,7 +223,7 @@
 			this.btnAsistenciaDocente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
 			this.btnAsistenciaDocente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnAsistenciaDocente.Location = new System.Drawing.Point(0, 41);
-			this.btnAsistenciaDocente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnAsistenciaDocente.Margin = new System.Windows.Forms.Padding(4);
 			this.btnAsistenciaDocente.Name = "btnAsistenciaDocente";
 			this.btnAsistenciaDocente.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
 			this.btnAsistenciaDocente.Size = new System.Drawing.Size(231, 41);
@@ -241,7 +241,7 @@
 			this.btnAsistenciaCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
 			this.btnAsistenciaCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnAsistenciaCliente.Location = new System.Drawing.Point(0, 0);
-			this.btnAsistenciaCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnAsistenciaCliente.Margin = new System.Windows.Forms.Padding(4);
 			this.btnAsistenciaCliente.Name = "btnAsistenciaCliente";
 			this.btnAsistenciaCliente.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
 			this.btnAsistenciaCliente.Size = new System.Drawing.Size(231, 41);
@@ -258,7 +258,7 @@
 			this.btnAsistencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnAsistencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnAsistencia.Location = new System.Drawing.Point(0, 407);
-			this.btnAsistencia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnAsistencia.Margin = new System.Windows.Forms.Padding(4);
 			this.btnAsistencia.Name = "btnAsistencia";
 			this.btnAsistencia.Size = new System.Drawing.Size(231, 37);
 			this.btnAsistencia.TabIndex = 20;
@@ -275,7 +275,7 @@
 			this.pnlAdmin.Controls.Add(this.btnSede);
 			this.pnlAdmin.Dock = System.Windows.Forms.DockStyle.Top;
 			this.pnlAdmin.Location = new System.Drawing.Point(0, 259);
-			this.pnlAdmin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.pnlAdmin.Margin = new System.Windows.Forms.Padding(4);
 			this.pnlAdmin.Name = "pnlAdmin";
 			this.pnlAdmin.Size = new System.Drawing.Size(231, 148);
 			this.pnlAdmin.TabIndex = 10;
@@ -287,7 +287,7 @@
 			this.btnCondiciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnCondiciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnCondiciones.Location = new System.Drawing.Point(0, 111);
-			this.btnCondiciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnCondiciones.Margin = new System.Windows.Forms.Padding(4);
 			this.btnCondiciones.Name = "btnCondiciones";
 			this.btnCondiciones.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
 			this.btnCondiciones.Size = new System.Drawing.Size(231, 37);
@@ -304,7 +304,7 @@
 			this.btnDescuentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnDescuentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnDescuentos.Location = new System.Drawing.Point(0, 74);
-			this.btnDescuentos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnDescuentos.Margin = new System.Windows.Forms.Padding(4);
 			this.btnDescuentos.Name = "btnDescuentos";
 			this.btnDescuentos.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
 			this.btnDescuentos.Size = new System.Drawing.Size(231, 37);
@@ -321,7 +321,7 @@
 			this.btnColaborador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnColaborador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnColaborador.Location = new System.Drawing.Point(0, 37);
-			this.btnColaborador.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnColaborador.Margin = new System.Windows.Forms.Padding(4);
 			this.btnColaborador.Name = "btnColaborador";
 			this.btnColaborador.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
 			this.btnColaborador.Size = new System.Drawing.Size(231, 37);
@@ -338,7 +338,7 @@
 			this.btnSede.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnSede.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnSede.Location = new System.Drawing.Point(0, 0);
-			this.btnSede.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnSede.Margin = new System.Windows.Forms.Padding(4);
 			this.btnSede.Name = "btnSede";
 			this.btnSede.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
 			this.btnSede.Size = new System.Drawing.Size(231, 37);
@@ -355,7 +355,7 @@
 			this.btnAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnAdmin.Location = new System.Drawing.Point(0, 222);
-			this.btnAdmin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnAdmin.Margin = new System.Windows.Forms.Padding(4);
 			this.btnAdmin.Name = "btnAdmin";
 			this.btnAdmin.Size = new System.Drawing.Size(231, 37);
 			this.btnAdmin.TabIndex = 9;
@@ -371,7 +371,7 @@
 			this.btnCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnCliente.Location = new System.Drawing.Point(0, 185);
-			this.btnCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnCliente.Margin = new System.Windows.Forms.Padding(4);
 			this.btnCliente.Name = "btnCliente";
 			this.btnCliente.Size = new System.Drawing.Size(231, 37);
 			this.btnCliente.TabIndex = 5;
@@ -388,7 +388,7 @@
 			this.pnlCursos.Controls.Add(this.btnCursosRegistrar);
 			this.pnlCursos.Dock = System.Windows.Forms.DockStyle.Top;
 			this.pnlCursos.Location = new System.Drawing.Point(0, 37);
-			this.pnlCursos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.pnlCursos.Margin = new System.Windows.Forms.Padding(4);
 			this.pnlCursos.Name = "pnlCursos";
 			this.pnlCursos.Size = new System.Drawing.Size(231, 148);
 			this.pnlCursos.TabIndex = 2;
@@ -400,7 +400,7 @@
 			this.btnInscribir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnInscribir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnInscribir.Location = new System.Drawing.Point(0, 111);
-			this.btnInscribir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnInscribir.Margin = new System.Windows.Forms.Padding(4);
 			this.btnInscribir.Name = "btnInscribir";
 			this.btnInscribir.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
 			this.btnInscribir.Size = new System.Drawing.Size(231, 37);
@@ -417,7 +417,7 @@
 			this.btnAsignarHorario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnAsignarHorario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnAsignarHorario.Location = new System.Drawing.Point(0, 74);
-			this.btnAsignarHorario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnAsignarHorario.Margin = new System.Windows.Forms.Padding(4);
 			this.btnAsignarHorario.Name = "btnAsignarHorario";
 			this.btnAsignarHorario.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
 			this.btnAsignarHorario.Size = new System.Drawing.Size(231, 37);
@@ -434,7 +434,7 @@
 			this.btnAsignarDesc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnAsignarDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnAsignarDesc.Location = new System.Drawing.Point(0, 37);
-			this.btnAsignarDesc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnAsignarDesc.Margin = new System.Windows.Forms.Padding(4);
 			this.btnAsignarDesc.Name = "btnAsignarDesc";
 			this.btnAsignarDesc.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
 			this.btnAsignarDesc.Size = new System.Drawing.Size(231, 37);
@@ -451,7 +451,7 @@
 			this.btnCursosRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btnCursosRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnCursosRegistrar.Location = new System.Drawing.Point(0, 0);
-			this.btnCursosRegistrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnCursosRegistrar.Margin = new System.Windows.Forms.Padding(4);
 			this.btnCursosRegistrar.Name = "btnCursosRegistrar";
 			this.btnCursosRegistrar.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
 			this.btnCursosRegistrar.Size = new System.Drawing.Size(231, 37);
@@ -468,7 +468,7 @@
 			this.btnCursos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnCursos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnCursos.Location = new System.Drawing.Point(0, 0);
-			this.btnCursos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnCursos.Margin = new System.Windows.Forms.Padding(4);
 			this.btnCursos.Name = "btnCursos";
 			this.btnCursos.Size = new System.Drawing.Size(231, 37);
 			this.btnCursos.TabIndex = 1;
@@ -484,7 +484,7 @@
 			this.pnlTop.Controls.Add(this.imgIsotipo);
 			this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
 			this.pnlTop.Location = new System.Drawing.Point(0, 0);
-			this.pnlTop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.pnlTop.Margin = new System.Windows.Forms.Padding(4);
 			this.pnlTop.Name = "pnlTop";
 			this.pnlTop.Size = new System.Drawing.Size(1552, 74);
 			this.pnlTop.TabIndex = 0;
@@ -494,7 +494,7 @@
 			this.lblBendiciones.AutoSize = true;
 			this.lblBendiciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblBendiciones.ForeColor = System.Drawing.Color.White;
-			this.lblBendiciones.Location = new System.Drawing.Point(63, 14);
+			this.lblBendiciones.Location = new System.Drawing.Point(37, 14);
 			this.lblBendiciones.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblBendiciones.Name = "lblBendiciones";
 			this.lblBendiciones.Size = new System.Drawing.Size(215, 39);
@@ -505,8 +505,8 @@
 			// 
 			this.imgIsotipo.ErrorImage = ((System.Drawing.Image)(resources.GetObject("imgIsotipo.ErrorImage")));
 			this.imgIsotipo.Image = ((System.Drawing.Image)(resources.GetObject("imgIsotipo.Image")));
-			this.imgIsotipo.Location = new System.Drawing.Point(25, 20);
-			this.imgIsotipo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.imgIsotipo.Location = new System.Drawing.Point(4, 23);
+			this.imgIsotipo.Margin = new System.Windows.Forms.Padding(4);
 			this.imgIsotipo.Name = "imgIsotipo";
 			this.imgIsotipo.Size = new System.Drawing.Size(32, 30);
 			this.imgIsotipo.TabIndex = 0;
@@ -514,15 +514,14 @@
 			// 
 			// pnlFiller
 			// 
-			this.pnlFiller.AutoSize = true;
 			this.pnlFiller.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.pnlFiller.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pnlFiller.Controls.Add(this.pictureBox1);
 			this.pnlFiller.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pnlFiller.Location = new System.Drawing.Point(252, 74);
-			this.pnlFiller.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.pnlFiller.Margin = new System.Windows.Forms.Padding(4);
 			this.pnlFiller.Name = "pnlFiller";
-			this.pnlFiller.Size = new System.Drawing.Size(1300, 662);
+			this.pnlFiller.Size = new System.Drawing.Size(1300, 679);
 			this.pnlFiller.TabIndex = 2;
 			// 
 			// pictureBox1
@@ -532,9 +531,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
 			this.pictureBox1.Location = new System.Drawing.Point(532, 187);
-			this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(341, 310);
+			this.pictureBox1.Size = new System.Drawing.Size(341, 327);
 			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
@@ -543,16 +542,13 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1552, 736);
+			this.ClientSize = new System.Drawing.Size(1552, 753);
 			this.Controls.Add(this.pnlFiller);
 			this.Controls.Add(this.pnlSide);
 			this.Controls.Add(this.pnlTop);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			this.MaximizeBox = false;
-			this.MaximumSize = new System.Drawing.Size(1570, 783);
-			this.MinimumSize = new System.Drawing.Size(1570, 783);
+			this.Margin = new System.Windows.Forms.Padding(4);
+			this.MinimumSize = new System.Drawing.Size(1570, 800);
 			this.Name = "frmPrincipal";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Bendiciones";
@@ -568,7 +564,6 @@
 			this.pnlFiller.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
         }
 

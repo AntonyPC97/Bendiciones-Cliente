@@ -35,7 +35,7 @@ namespace Bendiciones
 			cliente = new Service.cliente();
             dgvCondiciones.AutoGenerateColumns = false;
 			dgvCondiciones.DataSource = Program.dbController.listarCondMedicasPorNombre("");
-			f.iniFormFreddyGestionar(this, "Gestionar Cliente", pnlCtn, btnNuevo, btnBuscar, btnGuardar, btnModificar, btnCancelar, false);
+			f.formCliente(this, "Gestionar Cliente", pnlCtn, btnNuevo, btnBuscar, btnGuardar, btnModificar, btnCancelar);
 			cboSedes.DataSource = new BindingList<Service.sede>(Program.dbController.listarSedes());
 			cboSedes.DisplayMember = "distrito";
 			cboSedes.ValueMember = "idSede";
@@ -266,7 +266,7 @@ namespace Bendiciones
 				frmMensaje mensaje = new frmMensaje("DNI de longitud incorrecta", "Error de DNI", "");
 				return false;
 			}
-			if (txtTelef.Text.Length != 9 || txtTelef.Text.Length != 7)
+			if (txtTelef.Text.Length < 7 || txtTelef.Text.Length == 8)
 			{
 				frmMensaje mensaje = new frmMensaje("Telefono de longitud incorrecta", "Error de TELEFONO", "");
 				return false;
