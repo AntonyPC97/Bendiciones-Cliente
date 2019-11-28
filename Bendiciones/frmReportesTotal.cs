@@ -112,7 +112,7 @@ namespace Bendiciones
                     id = horarios[dgvHorarios.CurrentRow.Index].idHorario;
                     saveFileDialog1.ShowDialog();
                     byte[] arreglo
-                        = Program.dbController.generarReporteServicioPDF(cboMesesMonto.SelectedIndex + 1, Int32.Parse((String)cboYearsMonto.SelectedItem));
+                        = Program.dbController.generarReporteAlumnosPorHorarioPDF(horarios[dgvHorarios.CurrentRow.Index].idHorario);
                     File.WriteAllBytes(saveFileDialog1.FileName
                         + ".pdf", arreglo);
 

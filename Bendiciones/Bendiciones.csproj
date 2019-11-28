@@ -523,6 +523,9 @@
     <None Include="Connected Services\Service\Bendiciones.Service.eliminarTipoColaboradorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.generarReporteAlumnosPorHorarioPDFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\Service\Bendiciones.Service.generarReporteAsistenciaPorCursoPDFResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -725,6 +728,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\Service\Bendiciones.Service.tipoColaborador.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.validarUsuarioUnicoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\Service\Bendiciones.Service.verificarDNIResponse.datasource">

@@ -134,11 +134,11 @@ namespace Bendiciones
                     }
 
                     Program.dbController.insertarMatricula(m);
-                    frmMensaje mensaje = new frmMensaje("Matrícula Registrada exitosamente", "Mensaje Confirmación", "Confirmar");
-
-
                 }
-                txtDNI.Text = "";
+				frmMensaje mensaje = new frmMensaje("Matrícula Registrada exitosamente", "Mensaje Confirmación", "Confirmar");
+				Correo c = new Correo();
+				c.CorreoNuevoServicio(cliente,matriculas);
+				txtDNI.Text = "";
                 txtNombreCliente.Text = "";
                 cboBebes.DataSource = null;
                 cboBebes.SelectedIndex = -1;

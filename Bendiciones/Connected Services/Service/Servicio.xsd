@@ -72,6 +72,8 @@
   <xs:element name="eliminarSedeResponse" type="tns:eliminarSedeResponse" />
   <xs:element name="eliminarTipoColaborador" type="tns:eliminarTipoColaborador" />
   <xs:element name="eliminarTipoColaboradorResponse" type="tns:eliminarTipoColaboradorResponse" />
+  <xs:element name="generarReporteAlumnosPorHorarioPDF" type="tns:generarReporteAlumnosPorHorarioPDF" />
+  <xs:element name="generarReporteAlumnosPorHorarioPDFResponse" type="tns:generarReporteAlumnosPorHorarioPDFResponse" />
   <xs:element name="generarReporteAsistenciaPorCursoPDF" type="tns:generarReporteAsistenciaPorCursoPDF" />
   <xs:element name="generarReporteAsistenciaPorCursoPDFResponse" type="tns:generarReporteAsistenciaPorCursoPDFResponse" />
   <xs:element name="generarReporteServicioPDF" type="tns:generarReporteServicioPDF" />
@@ -192,6 +194,8 @@
   <xs:element name="listarTipoColaboradorResponse" type="tns:listarTipoColaboradorResponse" />
   <xs:element name="registrarClienteEnHorario" type="tns:registrarClienteEnHorario" />
   <xs:element name="registrarClienteEnHorarioResponse" type="tns:registrarClienteEnHorarioResponse" />
+  <xs:element name="validarUsuarioUnico" type="tns:validarUsuarioUnico" />
+  <xs:element name="validarUsuarioUnicoResponse" type="tns:validarUsuarioUnicoResponse" />
   <xs:element name="verificarDNI" type="tns:verificarDNI" />
   <xs:element name="verificarDNIResponse" type="tns:verificarDNIResponse" />
   <xs:element name="verificarUsuario" type="tns:verificarUsuario" />
@@ -622,6 +626,16 @@
   <xs:complexType name="eliminarDocenteDeHoraioResponse">
     <xs:sequence />
   </xs:complexType>
+  <xs:complexType name="validarUsuarioUnico">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuario" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validarUsuarioUnicoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="listarMatriculaSaldoPorGestante">
     <xs:sequence>
       <xs:element name="idGestante" type="xs:int" />
@@ -1003,6 +1017,16 @@
   </xs:complexType>
   <xs:complexType name="actualizarCondicionMedicaResponse">
     <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="generarReporteAlumnosPorHorarioPDF">
+    <xs:sequence>
+      <xs:element name="idHorario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="generarReporteAlumnosPorHorarioPDFResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarBebePorApoderado">
     <xs:sequence>

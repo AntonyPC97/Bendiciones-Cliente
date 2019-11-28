@@ -13,7 +13,6 @@ namespace Bendiciones
     public partial class frmInscribirAHorario : Form
     {
         private Service.cliente cliente = new Service.cliente();
-        private Service.curso curso;
         private Service.apoderado ap;
         private BindingList<Service.horario> horarios;
         

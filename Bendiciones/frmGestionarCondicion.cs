@@ -71,6 +71,15 @@ namespace Bendiciones
 			}
 		}
 		
+		public bool verificarCampos()
+		{
+			if(txtDescripcion.Text.Equals("") || txtNombreCondicion.Text.Equals(""))
+			{
+				frmMensaje mensaje = new frmMensaje("Complete los campos obligatorios", "Error de CAMPOS", "");
+				return false;
+			}
+			return true;
+		}
 		public void limpiarComponentes()
 		{
 			txtDescripcion.Text = "";
@@ -78,20 +87,25 @@ namespace Bendiciones
 		}
 		private void btnGuardar_Click(object sender, EventArgs e)
         {
-            condicion.nombre = txtNombreCondicion.Text;
-            condicion.descripcion = txtDescripcion.Text;
+			if (verificarCampos())
+			{
+				condicion.nombre = txtNombreCondicion.Text;
+				condicion.descripcion = txtDescripcion.Text;
 
-            if(estadoObjCon == Estado.Nuevo)
-            {
-                Program.dbController.insertarCondicionMedica(condicion);
-                frmMensaje mensaje = new frmMensaje("Condicion Medica Registrada exitosamente", "Mensaje Confirmacion", "Confirmar");
-            } else if(estadoObjCon == Estado.Modificar)
-            {
-                Program.dbController.actualizarCondicionMedica(condicion);
-                frmMensaje mensaje = new frmMensaje("Se han actualizado los datos", "Mensaje Confirmacion", "Confirmar");
-            }
-			limpiarComponentes();
-			estadoComponentes(Estado.Inicial);
+				if (estadoObjCon == Estado.Nuevo)
+				{
+					Program.dbController.insertarCondicionMedica(condicion);
+					frmMensaje mensaje = new frmMensaje("Condicion Medica Registrada exitosamente", "Mensaje Confirmacion", "Confirmar");
+				}
+				else if (estadoObjCon == Estado.Modificar)
+				{
+					Program.dbController.actualizarCondicionMedica(condicion);
+					frmMensaje mensaje = new frmMensaje("Se han actualizado los datos", "Mensaje Confirmacion", "Confirmar");
+				}
+				limpiarComponentes();
+				estadoComponentes(Estado.Inicial);
+			}
+            
             
         }
 

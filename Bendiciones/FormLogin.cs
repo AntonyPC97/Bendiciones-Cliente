@@ -2,11 +2,15 @@
 using System.Windows.Forms;
 using System.Globalization;
 using System.Threading;
+using System.Linq;
 
 namespace Bendiciones
 {
     public partial class FormLogin : Form
     {
+		private string correo;
+		private string pass;
+        private Service.colaborador colaborador;
         public FormLogin()
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("es-MX");
@@ -27,6 +31,7 @@ namespace Bendiciones
             lblPassword.ForeColor = paleta.Marron;
             pnlLine1.BackColor = paleta.Marron;
             pnlLine2.BackColor = paleta.Marron;
+			btnOlvide.Visible = false;
 
         }
         public int transformar(double minutos)
@@ -37,7 +42,7 @@ namespace Bendiciones
         public Service.colaborador verificarCampos()
         {
             double minutos = 0;
-            Service.colaborador colaborador = Program.dbController.verificarUsuario(txtUser.Text);
+            colaborador = Program.dbController.verificarUsuario(txtUser.Text);
 
             if (colaborador.idPersona == 0)
             {
@@ -63,7 +68,7 @@ namespace Bendiciones
                     Program.dbController.actualizarColaborador(colaborador);
                 }
             }
-
+			
             if (txtPassword.Text.Equals(colaborador.password))
                 return colaborador;
             else
@@ -73,6 +78,9 @@ namespace Bendiciones
                     colaborador.intentos += 1;
                     Program.dbController.actualizarColaborador(colaborador);
                     frmMensaje mensaje = new frmMensaje("Contraseña incorrecta \nIntentos restantes: " + (3 - colaborador.intentos), "", "");
+					btnOlvide.Visible = true;
+					correo = colaborador.email;
+					pass = colaborador.password;
                     if (colaborador.intentos == 3)
                     {
                         int hora = DateTime.Now.Hour;
@@ -103,13 +111,13 @@ namespace Bendiciones
                     Program.dbController.actualizarColaborador(colaborador);
                     if (colaborador.tipo.nombre.Equals("Administracion"))
                     {
-                        frmPrincipal Principal = new frmPrincipal();
+                        frmPrincipal Principal = new frmPrincipal(txtUser.Text);
                         Principal.Show();
                         this.Hide();
                     }
                     else if(colaborador.tipo.nombre.Equals("Secretaria"))
                     {
-                        frmPrincipalSec Principal = new frmPrincipalSec();
+                        frmPrincipalSec Principal = new frmPrincipalSec(txtUser.Text);
                         Principal.Show();
                         this.Hide();
                     }
@@ -119,7 +127,35 @@ namespace Bendiciones
             
         }
 
-		private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        public string randomPassword()
+        {
+            string password = "";
+            //3 mayuscula, 3 minuscula, 3 numeros, 1 signo de puntuacion
+            Random random = new Random();
+            for (int i = 0; i < 3; i++)
+            {
+                int mayus = random.Next(65, 91);
+                char car = (char)mayus;
+                password += car;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                int min = random.Next(97, 123);
+                char car = (char)min;
+                password += car;
+            }
+            password += '.';
+            for (int i = 0; i < 3; i++)
+            {
+                int num = random.Next(10);
+                password += num;
+            }
+
+            string shuffle = new string(password.ToCharArray().OrderBy(s => (random.Next(2) % 2) == 0).ToArray());
+            return shuffle;
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
 		{
             if (e.KeyCode == Keys.Enter)
                 btnIngresar_Click(sender, e);
@@ -130,5 +166,13 @@ namespace Bendiciones
             if (e.KeyCode == Keys.Enter)
                 btnIngresar_Click(sender, e);
         }
-    }
+
+		private void btnOlvide_Click(object sender, EventArgs e)
+		{
+			Correo c = new Correo();
+            colaborador.password = randomPassword();
+            Program.dbController.actualizarColaborador(colaborador);
+			c.RecuperarPassword(colaborador);
+		}
+	}
 }

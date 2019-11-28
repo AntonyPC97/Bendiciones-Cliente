@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Bendiciones
 {
-	public partial class frmGestionarCliente : Form
+    public partial class frmGestionarCliente : Form
 	{
 		private Service.cliente cliente = new Service.cliente();
 		private Service.apoderado apoderado = new Service.apoderado();
@@ -29,12 +26,13 @@ namespace Bendiciones
 		{
 			InitializeComponent();
 			Formateador f = new Formateador();
+			Paleta p = new Paleta();
 			f.formatearBotonListar(btnAddContacto);
 			f.formatearBotonListar(btnQuitarContacto);
 			cliente = new Service.cliente();
             dgvCondiciones.AutoGenerateColumns = false;
 			dgvCondiciones.DataSource = Program.dbController.listarCondMedicasPorNombre("");
-			f.iniFormFreddyGestionar(this, "Gestionar Cliente", pnlCtn, btnNuevo, btnBuscar, btnGuardar, btnModificar, btnCancelar, false);
+			f.formCliente(this, "Gestionar Cliente", pnlCtn, btnNuevo, btnBuscar, btnGuardar, btnModificar, btnCancelar);
 			cboSedes.DataSource = new BindingList<Service.sede>(Program.dbController.listarSedes());
 			cboSedes.DisplayMember = "distrito";
 			cboSedes.ValueMember = "idSede";
@@ -232,38 +230,79 @@ namespace Bendiciones
 			dgvGestaciones.RowCount = 0;
 		}
 
-		public bool IsValidEmail(string email)
-		{
-			try
-			{
-				var addr = new System.Net.Mail.MailAddress(email);
-				return addr.Address == email;
-			}
-			catch
-			{
-				return false;
-			}
-		}
+        public bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
 
-		public bool verificarCampos()
+            try
+            {
+                // Normalize the domain
+                email = Regex.Replace(email, @"(@)(.+)$", DomainMapper,
+                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+
+                // Examines the domain part of the email and normalizes it.
+                string DomainMapper(Match match)
+                {
+                    // Use IdnMapping class to convert Unicode domain names.
+                    var idn = new IdnMapping();
+
+                    // Pull out and process domain name (throws ArgumentException on invalid)
+                    var domainName = idn.GetAscii(match.Groups[2].Value);
+
+                    return match.Groups[1].Value + domainName;
+                }
+            }
+            catch (RegexMatchTimeoutException e)
+            {
+                return false;
+            }
+            catch (ArgumentException e)
+            {
+                return false;
+            }
+
+            try
+            {
+                return Regex.IsMatch(email,
+                    @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                    @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
+
+        public bool verificarCampos()
 		{
 			int i;
-			if (txtNombreCliente.Text.Equals("") || txtDNI.Text.Equals("") || cboSedes.SelectedIndex==-1)
+			if (txtNombreCliente.Text.Equals("") || txtDNI.Text.Equals("") || cboSedes.SelectedIndex==-1|| txtTelef.Text.Equals(""))
 			{
 				frmMensaje mensaje = new frmMensaje("Complete los campos obligatorios","Error de Campos","");
 				return false;
 			}
             
-
 			if(!int.TryParse(txtTelef.Text,out i))
 			{
 				frmMensaje mensaje = new frmMensaje("Campo TELEFONO debe ser numerico", "Error de TELEFONO", "");
 				return false;
 			}
+			if (txtDNI.Text.Length != 8)
+			{
+				frmMensaje mensaje = new frmMensaje("DNI de longitud incorrecta", "Error de DNI", "");
+				return false;
+			}
+			if (txtTelef.Text.Length < 7 || txtTelef.Text.Length == 8)
+			{
+				frmMensaje mensaje = new frmMensaje("Telefono de longitud incorrecta", "Error de TELEFONO", "");
+				return false;
+			}
 
 			if (!IsValidEmail(txtCorreo.Text))
 			{
-				frmMensaje mensaje = new frmMensaje("Ingrese un correo electronico valido: example@dominio.com", "", "");
+				frmMensaje mensaje = new frmMensaje("Ingrese un correo electronico valido: example@dominio.com", "Error de CORREO", "");
 				return false;
 			}
 
@@ -281,6 +320,7 @@ namespace Bendiciones
                     frmMensaje mensaje1 = new frmMensaje("Campo Num. ASEGURADORA debe ser numerico", "Error de ASEGURADORA", "");
                     return false;
                 }
+                return false;
             }
 
 			if ((!txtDNIPareja.Text.Equals("") && txtNombrePareja.Text.Equals("")) || (txtDNIPareja.Text.Equals("") && !txtNombrePareja.Text.Equals("")))
@@ -291,7 +331,14 @@ namespace Bendiciones
                     frmMensaje mensaje1 = new frmMensaje("Campo SEXO(cliente o pareja) debe ser seleccionado", "Error de SEXO", "");
                     return false;
                 }
+                return false;
 			}
+
+			if (udNumEmbarazos.Value < udNumPartos.Value)
+			{
+                frmMensaje mensaje1 = new frmMensaje("N° de Embarazos debe ser mayor que N° de Partos ", "Error", "");
+                return false;
+            }
             return true;
 		}
         #endregion
@@ -393,6 +440,11 @@ namespace Bendiciones
 			{
 				if (tabTipo.SelectedTab == tabApoderado)
 				{
+					if (dgvBebes.RowCount == 0)
+					{
+						frmMensaje mensaje = new frmMensaje("Debe registrar un bebe para poder Registrar Apoderado","","");
+						return;
+					}
 					apoderado.nombre = txtNombreCliente.Text;
 					apoderado.dni = txtDNI.Text;
 					apoderado.email = txtCorreo.Text;
@@ -426,6 +478,16 @@ namespace Bendiciones
 				}
 				else
 				{
+					if (dgvGestaciones.RowCount == 0)
+					{
+						frmMensaje mensaje = new frmMensaje("Debe registrar una gestacion para poder Registrar Gestante", "", "");
+						return;
+					}
+					if (udNumEmbarazos.Value < udNumPartos.Value)
+					{
+						frmMensaje mensaje = new frmMensaje("Numero de Partos no puede se mayor que el Numero de Embarazos","", "");
+						return;
+					}
 					gestante.nombre = txtNombreCliente.Text;
 					gestante.dni = txtDNI.Text;
 					gestante.email = txtCorreo.Text;
@@ -531,7 +593,7 @@ namespace Bendiciones
 		private void btnAddContacto_Click(object sender, EventArgs e)
 		{
 			int i;
-            if (int.TryParse(txtTelefonoEmergencia.Text, out i) && !txtNombreEmergencia.Text.Equals(""))
+            if (int.TryParse(txtTelefonoEmergencia.Text, out i) && (txtTelefonoEmergencia.Text.Length==7 || txtTelefonoEmergencia.Text.Length ==9) && !txtNombreEmergencia.Text.Equals(""))
 			{
 				Service.contactoEmergencia cont = new Service.contactoEmergencia();
 				cont.nombre = txtNombreEmergencia.Text;
@@ -545,7 +607,7 @@ namespace Bendiciones
 			}
 			else
 			{
-				frmMensaje mensaje = new frmMensaje("Ingrese datos del contacto de emergencia", "Error de CAMPOS", "");
+				frmMensaje mensaje = new frmMensaje("Ingrese datos del contacto de emergencia correctamente", "Error de CAMPOS", "");
 			}			
 		}
 
@@ -580,7 +642,7 @@ namespace Bendiciones
 
 		private void btnSeleccionarBebe_Click(object sender, EventArgs e)
 		{
-            if (bebes != null)
+            if (bebes != null && dgvBebes.RowCount !=0)
             {
                 bebe = bebes[dgvBebes.CurrentRow.Index];
                 frmGestionarBebe formGestionarBebe = new frmGestionarBebe(bebe);
@@ -616,7 +678,7 @@ namespace Bendiciones
 
         private void btnSeleccionarGestacion_Click(object sender, EventArgs e)
         {
-            if(gestaciones != null)
+            if(gestaciones != null && dgvGestaciones.RowCount !=0)
             {
                 gestacion = gestaciones[dgvGestaciones.CurrentRow.Index];
                 frmGestionarGestacion formGestionarGestacion = new frmGestionarGestacion(gestacion, (int)udNumEmbarazos.Value);
@@ -638,8 +700,54 @@ namespace Bendiciones
 			if (conFila != null)
 				dgvCondiciones.Rows[e.RowIndex].Cells[0].Value = conFila.nombre;
 		}
-        #endregion
 
-        
-    }
+		#endregion
+
+		private void txtDNI_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (Char.IsDigit(e.KeyChar))
+			{
+				e.Handled = false;
+			}
+			else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
+			{
+				e.Handled = false;
+			}
+			else
+			{
+				//el resto de teclas pulsadas se desactivan
+				e.Handled = true;
+			}
+		}
+
+		private void txtTelef_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			txtDNI_KeyPress(sender,e);
+		}
+
+		private void txtNumAseguradora_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			txtDNI_KeyPress(sender, e);
+		}
+
+		private void txtTelefonoEmergencia_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			txtDNI_KeyPress(sender, e);
+		}
+
+		private void udNumPartos_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			txtDNI_KeyPress(sender, e);
+		}
+
+		private void udNumEmbarazos_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			txtDNI_KeyPress(sender, e);
+		}
+
+		private void txtDNIPareja_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			txtDNI_KeyPress(sender, e);
+		}
+	}
 }

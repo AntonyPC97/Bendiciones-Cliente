@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Bendiciones
@@ -43,7 +41,8 @@ namespace Bendiciones
 					rbFemenino.Enabled = false;
 					rbMasculino.Enabled = false;
 					cboTipo.Enabled = false;
-                    txtReferencia.Enabled = false;
+					cboTipo.SelectedIndex = -1;
+					txtReferencia.Enabled = false;
                     txtProfesion.Enabled = false;
                     dtpFechaNac.Enabled = false;
                     txtDireccion.Enabled = false;
@@ -151,6 +150,7 @@ namespace Bendiciones
             string shuffle = new string(password.ToCharArray().OrderBy(s => (random.Next(2) % 2) == 0).ToArray());
             return shuffle;
         }
+
 		public void limpiarComponentes() {
 			txtNombre.Text = "";
 			txtDNI.Text = "";
@@ -169,41 +169,78 @@ namespace Bendiciones
 
         public bool IsValidEmail(string email)
         {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
             try
             {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
+                // Normalize the domain
+                email = Regex.Replace(email, @"(@)(.+)$", DomainMapper,
+                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+
+                // Examines the domain part of the email and normalizes it.
+                string DomainMapper(Match match)
+                {
+                    // Use IdnMapping class to convert Unicode domain names.
+                    var idn = new IdnMapping();
+
+                    // Pull out and process domain name (throws ArgumentException on invalid)
+                    var domainName = idn.GetAscii(match.Groups[2].Value);
+
+                    return match.Groups[1].Value + domainName;
+                }
             }
-            catch
+            catch (RegexMatchTimeoutException e)
+            {
+                return false;
+            }
+            catch (ArgumentException e)
+            {
+                return false;
+            }
+
+            try
+            {
+                return Regex.IsMatch(email,
+                    @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                    @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
             {
                 return false;
             }
         }
+
         public bool verificarCampos()
 		{
             int i;
 			if (txtNombre.Text.Equals("") || txtDNI.Text.Equals("") || txtCorreo.Text.Equals("") ||
-				txtTelefono.Text.Equals("") || txtPassword.Text.Equals("") ||
-				(rbFemenino.Checked==false && rbMasculino.Checked == false) || 
-				cboTipo.SelectedIndex ==-1 || txtProfesion.Text.Equals(""))
+				txtTelefono.Text.Equals("") || (rbFemenino.Checked==false && rbMasculino.Checked == false) || 
+				cboTipo.SelectedIndex ==-1 || txtDireccion.Text.Equals(""))
             {
-				frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios.","","");
+				frmMensaje mensaje = new frmMensaje("Complete los campos obligatorios","Error de CAMPOS","");
 				return false;
 			}
-            if (!Program.dbController.verificarDNI(txtDNI.Text))
-            {
-                frmMensaje mensaje = new frmMensaje("El Dni ya existe en la base de datos", "Error de DNI", "");
-                return false;
-            }
-
+            
+			if(txtTelefono.Text.Length < 7 || txtTelefono.Text.Length == 8)
+			{
+				frmMensaje mensaje = new frmMensaje("Telefono de longitud incorrecta", "Error de TELEFONO", "");
+				return false;
+			}
+			if (!Program.dbController.validarUsuarioUnico(txtUsuario.Text))
+			{
+				frmMensaje mensaje = new frmMensaje("El nombre de USUARIO no esta disponible.", "Error de USUARIO", "");
+				return false;
+			}
             if (!IsValidEmail(txtCorreo.Text))
             {
                 frmMensaje mensaje = new frmMensaje("Ingrese un correo electronico valido", "", "");
                 return false;
             }
-            if (!int.TryParse(txtDNI.Text,out i) || !int.TryParse(txtTelefono.Text, out i) || !int.TryParse(txtNumColeg.Text, out i)) 
+            if (!int.TryParse(txtDNI.Text,out i) || !int.TryParse(txtTelefono.Text, out i)) 
             {
-                frmMensaje mensaje = new frmMensaje("Dni, Telefono y Numero de Colegiatura deben ser numericos", "", "");
+                frmMensaje mensaje = new frmMensaje("Dni y Telefono deben ser numericos", "", "");
                 return false;
             }
             
@@ -273,7 +310,12 @@ namespace Bendiciones
 
                 if (estadoObjColab == Estado.Nuevo)
                 {
-                    Program.dbController.insertarColaborador(colaborador);
+					if (!Program.dbController.verificarDNI(txtDNI.Text))
+					{
+						frmMensaje msj = new frmMensaje("El Dni ya existe en la base de datos", "Error de DNI", "");
+						return;
+					}
+					Program.dbController.insertarColaborador(colaborador);
 					frmMensaje mensaje = new frmMensaje("Colaborador registrado correctamente.", "Mensaje Confirmacion", "Confirmar");
                     correo.CorreoNuevoColaborador(colaborador);
                 }
@@ -334,5 +376,45 @@ namespace Bendiciones
             if (e.KeyCode == Keys.Enter)
                 rbFemenino.Checked = true;
         }
-    }
+
+		private void txtDNI_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (Char.IsDigit(e.KeyChar))
+			{
+				e.Handled = false;
+			}
+			else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
+			{
+				e.Handled = false;
+			}
+			else
+			{
+				//el resto de teclas pulsadas se desactivan
+				e.Handled = true;
+			}
+		}
+
+		private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			txtDNI_KeyPress(sender,e);
+		}
+
+		private void txtNumColeg_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			txtDNI_KeyPress(sender, e);
+		}
+
+		private void cboTipo_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if(cboTipo.SelectedIndex==2)
+			{
+				txtUsuario.Text = "";
+				txtUsuario.Enabled = false;
+			}
+			else
+			{
+				txtUsuario.Enabled = true;
+			}
+		}
+	}
 }
