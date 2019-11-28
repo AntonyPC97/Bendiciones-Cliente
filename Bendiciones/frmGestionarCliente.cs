@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Bendiciones
 {
-	public partial class frmGestionarCliente : Form
+    public partial class frmGestionarCliente : Form
 	{
 		private Service.cliente cliente = new Service.cliente();
 		private Service.apoderado apoderado = new Service.apoderado();
@@ -233,20 +230,52 @@ namespace Bendiciones
 			dgvGestaciones.RowCount = 0;
 		}
 
-		public bool IsValidEmail(string email)
-		{
-			try
-			{
-				var addr = new System.Net.Mail.MailAddress(email);
-				return addr.Address == email;
-			}
-			catch
-			{
-				return false;
-			}
-		}
+        public bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
 
-		public bool verificarCampos()
+            try
+            {
+                // Normalize the domain
+                email = Regex.Replace(email, @"(@)(.+)$", DomainMapper,
+                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+
+                // Examines the domain part of the email and normalizes it.
+                string DomainMapper(Match match)
+                {
+                    // Use IdnMapping class to convert Unicode domain names.
+                    var idn = new IdnMapping();
+
+                    // Pull out and process domain name (throws ArgumentException on invalid)
+                    var domainName = idn.GetAscii(match.Groups[2].Value);
+
+                    return match.Groups[1].Value + domainName;
+                }
+            }
+            catch (RegexMatchTimeoutException e)
+            {
+                return false;
+            }
+            catch (ArgumentException e)
+            {
+                return false;
+            }
+
+            try
+            {
+                return Regex.IsMatch(email,
+                    @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                    @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
+
+        public bool verificarCampos()
 		{
 			int i;
 			if (txtNombreCliente.Text.Equals("") || txtDNI.Text.Equals("") || cboSedes.SelectedIndex==-1|| txtTelef.Text.Equals(""))
@@ -255,7 +284,6 @@ namespace Bendiciones
 				return false;
 			}
             
-
 			if(!int.TryParse(txtTelef.Text,out i))
 			{
 				frmMensaje mensaje = new frmMensaje("Campo TELEFONO debe ser numerico", "Error de TELEFONO", "");
@@ -274,7 +302,7 @@ namespace Bendiciones
 
 			if (!IsValidEmail(txtCorreo.Text))
 			{
-				frmMensaje mensaje = new frmMensaje("Ingrese un correo electronico valido: example@dominio.com", "", "");
+				frmMensaje mensaje = new frmMensaje("Ingrese un correo electronico valido: example@dominio.com", "Error de CORREO", "");
 				return false;
 			}
 
@@ -292,6 +320,7 @@ namespace Bendiciones
                     frmMensaje mensaje1 = new frmMensaje("Campo Num. ASEGURADORA debe ser numerico", "Error de ASEGURADORA", "");
                     return false;
                 }
+                return false;
             }
 
 			if ((!txtDNIPareja.Text.Equals("") && txtNombrePareja.Text.Equals("")) || (txtDNIPareja.Text.Equals("") && !txtNombrePareja.Text.Equals("")))
@@ -302,12 +331,14 @@ namespace Bendiciones
                     frmMensaje mensaje1 = new frmMensaje("Campo SEXO(cliente o pareja) debe ser seleccionado", "Error de SEXO", "");
                     return false;
                 }
+                return false;
 			}
 
-			if (udNumEmbarazos.Value > udNumPartos.Value)
+			if (udNumEmbarazos.Value < udNumPartos.Value)
 			{
-
-			}
+                frmMensaje mensaje1 = new frmMensaje("N° de Embarazos debe ser mayor que N° de Partos ", "Error", "");
+                return false;
+            }
             return true;
 		}
         #endregion

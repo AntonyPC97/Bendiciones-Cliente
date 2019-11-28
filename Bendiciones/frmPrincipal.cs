@@ -27,6 +27,7 @@ namespace Bendiciones
             Paleta paleta = new Paleta();
             pnlTop.BackColor = paleta.GrisOscuro;
             pnlSide.BackColor = paleta.NaranjaOscuro;
+            pnlCuenta.BackColor = paleta.NaranjaOscuro;
             lblUsuario.Text = usuario;
             lblUsuario.Left = lblBienvenido.Width - lblUsuario.Width;
             estadoInicialBarraLateral();
@@ -104,6 +105,8 @@ namespace Bendiciones
             f.formatearBotonMenu(btnPagos);
             f.formatearBotonSubMenu(btnInscribir);
             f.formatearBotonMenu(btnReportes);
+            f.formatearBotonSubMenu(btnCerrarSesion);
+            f.formatearBotonSubMenu(btnCambiarPass);
             #endregion
 
         }
@@ -113,6 +116,7 @@ namespace Bendiciones
             pnlAdmin.Visible = false;
             pnlAsistencia.Visible = false;
             pnlPagos.Visible = false;
+            pnlCuenta.Visible = false;
         }
 
         private void hideSubMenu()
@@ -125,7 +129,8 @@ namespace Bendiciones
                 pnlAsistencia.Visible = false;
             if (pnlAdmin.Visible == true)
                 pnlAdmin.Visible = false;
-          
+            if (pnlCuenta.Visible == true)
+                pnlCuenta.Visible = false;
         }
 
         private void showSubMenu(Panel subMenu)
@@ -173,6 +178,11 @@ namespace Bendiciones
         private void btnPagos_Click(object sender, EventArgs e)
         {
             showSubMenu(pnlPagos);
+        }
+
+        private void picCerraSesion_Click(object sender, EventArgs e)
+        {
+            showSubMenu(pnlCuenta);
         }
         #endregion
 
@@ -311,9 +321,15 @@ namespace Bendiciones
             Application.Exit();
         }
 
-        private void picCerraSesion_Click(object sender, EventArgs e)
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            frmMensaje mensaje = new frmMensaje("Desea Cerrar Sesion?","","");
+            frmMensaje mensaje = new frmMensaje("Seguro que quiere cerrar sesion?","","Confirmar");
+            if(mensaje.ShowDialog() == DialogResult.OK)
+            {
+                this.Hide();
+                FormLogin login = new FormLogin();
+                login.Show();
+            }
         }
     }
 }
