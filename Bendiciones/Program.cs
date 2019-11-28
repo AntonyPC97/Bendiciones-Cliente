@@ -21,8 +21,8 @@ namespace Bendiciones
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //Application.Run(new frmPrincipal());
-            //Application.Run(new frmPrincipalSec());
+            //Application.Run(new frmPrincipal("usuario"));
+            //Application.Run(new frmPrincipalSec("usuario"));
             Application.Run(new FormLogin());
 
         }

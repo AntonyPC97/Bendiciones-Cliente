@@ -67,21 +67,22 @@ namespace Bendiciones
 
 		}
 
-		public void RecuperarPassword(string correo, string pass)
+		public void RecuperarPassword(Service.colaborador colaborador)
 		{
 			using (MailMessage mail = new MailMessage())
 			{
 				mail.From = new MailAddress(emailFromAddress);
-				mail.To.Add(correo);
-				mail.Subject = "Solicito recuperar contraseña";
-				mail.Body = "Password: " + pass;
-				mail.IsBodyHtml = true;
+				mail.To.Add(colaborador.email);
+				mail.Subject = "Recuperar Contraseña";
+				mail.Body = "Estimado " + colaborador.nombre + ",<br><br> Nuestro sistema ha detectato que olvidaste tu contraseña por lo que se ha generado una nueva.+" +
+                    "<br>Contraseña nueva: "+colaborador.password+ "<br> Contraseña personal. Por favor, no comparta con nadie su contraseña";
+                mail.IsBodyHtml = true;
 				using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
 				{
 					smtp.Credentials = new NetworkCredential(emailFromAddress, password);
 					smtp.EnableSsl = enableSSL;
 					smtp.Send(mail);
-					frmMensaje mensaje = new frmMensaje("Se ha enviado el correo a " + correo, "", "");
+					frmMensaje mensaje = new frmMensaje("Se ha enviado un correo a " + colaborador.email, "", "Confirmar");
 				}
 			}
 		}

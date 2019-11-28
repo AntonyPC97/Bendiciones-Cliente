@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBuscarColaborador));
 			this.dgvColaborador = new System.Windows.Forms.DataGridView();
 			this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,16 +45,20 @@
 			this.dgvColaborador.AllowUserToAddRows = false;
 			this.dgvColaborador.AllowUserToDeleteRows = false;
 			this.dgvColaborador.AllowUserToResizeRows = false;
+			this.dgvColaborador.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
 			this.dgvColaborador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvColaborador.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nombre,
             this.Tipo});
-			this.dgvColaborador.Location = new System.Drawing.Point(109, 256);
-			this.dgvColaborador.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.dgvColaborador.Location = new System.Drawing.Point(66, 205);
+			this.dgvColaborador.Margin = new System.Windows.Forms.Padding(4);
 			this.dgvColaborador.Name = "dgvColaborador";
 			this.dgvColaborador.ReadOnly = true;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+			this.dgvColaborador.RowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgvColaborador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dgvColaborador.Size = new System.Drawing.Size(817, 239);
+			this.dgvColaborador.Size = new System.Drawing.Size(860, 307);
 			this.dgvColaborador.TabIndex = 21;
 			this.dgvColaborador.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvColaborador_CellFormatting);
 			// 
@@ -75,8 +80,8 @@
 			// 
 			this.btnSeleccionar.FlatAppearance.BorderSize = 0;
 			this.btnSeleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnSeleccionar.Location = new System.Drawing.Point(749, 165);
-			this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnSeleccionar.Location = new System.Drawing.Point(732, 125);
+			this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(4);
 			this.btnSeleccionar.Name = "btnSeleccionar";
 			this.btnSeleccionar.Size = new System.Drawing.Size(133, 37);
 			this.btnSeleccionar.TabIndex = 20;
@@ -88,8 +93,8 @@
 			// 
 			this.btnBuscar.FlatAppearance.BorderSize = 0;
 			this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnBuscar.Location = new System.Drawing.Point(600, 165);
-			this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnBuscar.Location = new System.Drawing.Point(569, 125);
+			this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
 			this.btnBuscar.Name = "btnBuscar";
 			this.btnBuscar.Size = new System.Drawing.Size(133, 37);
 			this.btnBuscar.TabIndex = 19;
@@ -99,18 +104,19 @@
 			// 
 			// txtNombre
 			// 
-			this.txtNombre.Location = new System.Drawing.Point(392, 133);
-			this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtNombre.Location = new System.Drawing.Point(338, 64);
+			this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
 			this.txtNombre.Name = "txtNombre";
-			this.txtNombre.Size = new System.Drawing.Size(607, 22);
+			this.txtNombre.Size = new System.Drawing.Size(607, 30);
 			this.txtNombre.TabIndex = 18;
 			// 
 			// btnEliminar
 			// 
 			this.btnEliminar.FlatAppearance.BorderSize = 0;
 			this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnEliminar.Location = new System.Drawing.Point(867, 165);
-			this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnEliminar.Location = new System.Drawing.Point(873, 125);
+			this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
 			this.btnEliminar.Name = "btnEliminar";
 			this.btnEliminar.Size = new System.Drawing.Size(133, 37);
 			this.btnEliminar.TabIndex = 22;
@@ -129,7 +135,7 @@
 			this.Controls.Add(this.btnBuscar);
 			this.Controls.Add(this.txtNombre);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "frmBuscarColaborador";
 			this.Text = "Buscar Colaborador";
 			((System.ComponentModel.ISupportInitialize)(this.dgvColaborador)).EndInit();

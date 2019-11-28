@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 			this.pnlCtn = new System.Windows.Forms.Panel();
 			this.tabReportes = new System.Windows.Forms.TabControl();
@@ -78,7 +79,7 @@
 			// 
 			this.pnlCtn.Controls.Add(this.tabReportes);
 			this.pnlCtn.Location = new System.Drawing.Point(97, 65);
-			this.pnlCtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.pnlCtn.Margin = new System.Windows.Forms.Padding(4);
 			this.pnlCtn.Name = "pnlCtn";
 			this.pnlCtn.Size = new System.Drawing.Size(858, 486);
 			this.pnlCtn.TabIndex = 57;
@@ -90,7 +91,7 @@
 			this.tabReportes.Controls.Add(this.tabMontoRecaudado);
 			this.tabReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tabReportes.Location = new System.Drawing.Point(4, 4);
-			this.tabReportes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.tabReportes.Margin = new System.Windows.Forms.Padding(4);
 			this.tabReportes.Name = "tabReportes";
 			this.tabReportes.SelectedIndex = 0;
 			this.tabReportes.Size = new System.Drawing.Size(850, 478);
@@ -104,9 +105,9 @@
 			this.tabAsistenciaHorario.Controls.Add(this.btnAsistenciaHorario);
 			this.tabAsistenciaHorario.Controls.Add(this.gbGestaciones);
 			this.tabAsistenciaHorario.Location = new System.Drawing.Point(4, 29);
-			this.tabAsistenciaHorario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.tabAsistenciaHorario.Margin = new System.Windows.Forms.Padding(4);
 			this.tabAsistenciaHorario.Name = "tabAsistenciaHorario";
-			this.tabAsistenciaHorario.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.tabAsistenciaHorario.Padding = new System.Windows.Forms.Padding(4);
 			this.tabAsistenciaHorario.Size = new System.Drawing.Size(842, 445);
 			this.tabAsistenciaHorario.TabIndex = 0;
 			this.tabAsistenciaHorario.Text = "Asistentes por horario";
@@ -126,9 +127,12 @@
             this.Sede,
             this.NumVac});
 			this.dgvHorarios.Location = new System.Drawing.Point(8, 126);
-			this.dgvHorarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.dgvHorarios.Margin = new System.Windows.Forms.Padding(4);
 			this.dgvHorarios.Name = "dgvHorarios";
 			this.dgvHorarios.ReadOnly = true;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+			this.dgvHorarios.RowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgvHorarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvHorarios.Size = new System.Drawing.Size(819, 191);
 			this.dgvHorarios.TabIndex = 59;
@@ -188,9 +192,9 @@
 			this.gbCurso.Controls.Add(this.lblNombre);
 			this.gbCurso.Controls.Add(this.txtNombreServicio);
 			this.gbCurso.Location = new System.Drawing.Point(8, 21);
-			this.gbCurso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.gbCurso.Margin = new System.Windows.Forms.Padding(4);
 			this.gbCurso.Name = "gbCurso";
-			this.gbCurso.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.gbCurso.Padding = new System.Windows.Forms.Padding(4);
 			this.gbCurso.Size = new System.Drawing.Size(792, 86);
 			this.gbCurso.TabIndex = 58;
 			this.gbCurso.TabStop = false;
@@ -202,7 +206,7 @@
 			this.btnbuscarCurso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnbuscarCurso.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnbuscarCurso.Location = new System.Drawing.Point(729, 31);
-			this.btnbuscarCurso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnbuscarCurso.Margin = new System.Windows.Forms.Padding(4);
 			this.btnbuscarCurso.Name = "btnbuscarCurso";
 			this.btnbuscarCurso.Size = new System.Drawing.Size(53, 31);
 			this.btnbuscarCurso.TabIndex = 32;
@@ -227,7 +231,7 @@
 			this.txtNombreServicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtNombreServicio.HideSelection = false;
 			this.txtNombreServicio.Location = new System.Drawing.Point(153, 30);
-			this.txtNombreServicio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtNombreServicio.Margin = new System.Windows.Forms.Padding(4);
 			this.txtNombreServicio.Name = "txtNombreServicio";
 			this.txtNombreServicio.Size = new System.Drawing.Size(567, 30);
 			this.txtNombreServicio.TabIndex = 31;
@@ -239,7 +243,7 @@
 			this.btnAsistenciaHorario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnAsistenciaHorario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnAsistenciaHorario.Location = new System.Drawing.Point(680, 332);
-			this.btnAsistenciaHorario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnAsistenciaHorario.Margin = new System.Windows.Forms.Padding(4);
 			this.btnAsistenciaHorario.Name = "btnAsistenciaHorario";
 			this.btnAsistenciaHorario.Size = new System.Drawing.Size(147, 25);
 			this.btnAsistenciaHorario.TabIndex = 57;
@@ -253,9 +257,9 @@
 			this.gbGestaciones.Controls.Add(this.btnAgregarGestacion);
 			this.gbGestaciones.Controls.Add(this.dgvGestaciones);
 			this.gbGestaciones.Location = new System.Drawing.Point(45, 505);
-			this.gbGestaciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.gbGestaciones.Margin = new System.Windows.Forms.Padding(4);
 			this.gbGestaciones.Name = "gbGestaciones";
-			this.gbGestaciones.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.gbGestaciones.Padding = new System.Windows.Forms.Padding(4);
 			this.gbGestaciones.Size = new System.Drawing.Size(831, 342);
 			this.gbGestaciones.TabIndex = 32;
 			this.gbGestaciones.TabStop = false;
@@ -266,7 +270,7 @@
 			this.btnSeleccionarGestacion.FlatAppearance.BorderSize = 0;
 			this.btnSeleccionarGestacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnSeleccionarGestacion.Location = new System.Drawing.Point(492, 23);
-			this.btnSeleccionarGestacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnSeleccionarGestacion.Margin = new System.Windows.Forms.Padding(4);
 			this.btnSeleccionarGestacion.Name = "btnSeleccionarGestacion";
 			this.btnSeleccionarGestacion.Size = new System.Drawing.Size(161, 34);
 			this.btnSeleccionarGestacion.TabIndex = 44;
@@ -278,7 +282,7 @@
 			this.btnAgregarGestacion.FlatAppearance.BorderSize = 0;
 			this.btnAgregarGestacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnAgregarGestacion.Location = new System.Drawing.Point(661, 23);
-			this.btnAgregarGestacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnAgregarGestacion.Margin = new System.Windows.Forms.Padding(4);
 			this.btnAgregarGestacion.Name = "btnAgregarGestacion";
 			this.btnAgregarGestacion.Size = new System.Drawing.Size(161, 34);
 			this.btnAgregarGestacion.TabIndex = 43;
@@ -294,7 +298,7 @@
             this.Clinica,
             this.FechaProb});
 			this.dgvGestaciones.Location = new System.Drawing.Point(4, 78);
-			this.dgvGestaciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.dgvGestaciones.Margin = new System.Windows.Forms.Padding(4);
 			this.dgvGestaciones.Name = "dgvGestaciones";
 			this.dgvGestaciones.ReadOnly = true;
 			this.dgvGestaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -322,11 +326,11 @@
 			this.tabAsistenciaCurso.Controls.Add(this.cboMesesCurso);
 			this.tabAsistenciaCurso.Controls.Add(this.label4);
 			this.tabAsistenciaCurso.Controls.Add(this.btnAsistenciaCurso);
-			this.tabAsistenciaCurso.Location = new System.Drawing.Point(4, 34);
-			this.tabAsistenciaCurso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.tabAsistenciaCurso.Location = new System.Drawing.Point(4, 29);
+			this.tabAsistenciaCurso.Margin = new System.Windows.Forms.Padding(4);
 			this.tabAsistenciaCurso.Name = "tabAsistenciaCurso";
-			this.tabAsistenciaCurso.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			this.tabAsistenciaCurso.Size = new System.Drawing.Size(827, 385);
+			this.tabAsistenciaCurso.Padding = new System.Windows.Forms.Padding(4);
+			this.tabAsistenciaCurso.Size = new System.Drawing.Size(842, 445);
 			this.tabAsistenciaCurso.TabIndex = 1;
 			this.tabAsistenciaCurso.Text = "Asistencia por curso";
 			this.tabAsistenciaCurso.UseVisualStyleBackColor = true;
@@ -340,7 +344,7 @@
             "2019",
             "2020"});
 			this.cboYearsCurso.Location = new System.Drawing.Point(333, 166);
-			this.cboYearsCurso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.cboYearsCurso.Margin = new System.Windows.Forms.Padding(4);
 			this.cboYearsCurso.Name = "cboYearsCurso";
 			this.cboYearsCurso.Size = new System.Drawing.Size(260, 33);
 			this.cboYearsCurso.TabIndex = 67;
@@ -375,7 +379,7 @@
             "Noviembre",
             "Diciembre"});
 			this.cboMesesCurso.Location = new System.Drawing.Point(333, 123);
-			this.cboMesesCurso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.cboMesesCurso.Margin = new System.Windows.Forms.Padding(4);
 			this.cboMesesCurso.Name = "cboMesesCurso";
 			this.cboMesesCurso.Size = new System.Drawing.Size(260, 33);
 			this.cboMesesCurso.TabIndex = 65;
@@ -397,7 +401,7 @@
 			this.btnAsistenciaCurso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnAsistenciaCurso.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnAsistenciaCurso.Location = new System.Drawing.Point(533, 308);
-			this.btnAsistenciaCurso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnAsistenciaCurso.Margin = new System.Windows.Forms.Padding(4);
 			this.btnAsistenciaCurso.Name = "btnAsistenciaCurso";
 			this.btnAsistenciaCurso.Size = new System.Drawing.Size(147, 25);
 			this.btnAsistenciaCurso.TabIndex = 58;
@@ -412,11 +416,11 @@
 			this.tabMontoRecaudado.Controls.Add(this.cboMesesMonto);
 			this.tabMontoRecaudado.Controls.Add(this.label1);
 			this.tabMontoRecaudado.Controls.Add(this.btnMonto);
-			this.tabMontoRecaudado.Location = new System.Drawing.Point(4, 34);
-			this.tabMontoRecaudado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.tabMontoRecaudado.Location = new System.Drawing.Point(4, 29);
+			this.tabMontoRecaudado.Margin = new System.Windows.Forms.Padding(4);
 			this.tabMontoRecaudado.Name = "tabMontoRecaudado";
-			this.tabMontoRecaudado.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			this.tabMontoRecaudado.Size = new System.Drawing.Size(827, 385);
+			this.tabMontoRecaudado.Padding = new System.Windows.Forms.Padding(4);
+			this.tabMontoRecaudado.Size = new System.Drawing.Size(842, 445);
 			this.tabMontoRecaudado.TabIndex = 2;
 			this.tabMontoRecaudado.Text = "Monto recaudado";
 			this.tabMontoRecaudado.UseVisualStyleBackColor = true;
@@ -430,7 +434,7 @@
             "2019",
             "2020"});
 			this.cboYearsMonto.Location = new System.Drawing.Point(333, 166);
-			this.cboYearsMonto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.cboYearsMonto.Margin = new System.Windows.Forms.Padding(4);
 			this.cboYearsMonto.Name = "cboYearsMonto";
 			this.cboYearsMonto.Size = new System.Drawing.Size(260, 33);
 			this.cboYearsMonto.TabIndex = 63;
@@ -465,7 +469,7 @@
             "Noviembre",
             "Diciembre"});
 			this.cboMesesMonto.Location = new System.Drawing.Point(333, 123);
-			this.cboMesesMonto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.cboMesesMonto.Margin = new System.Windows.Forms.Padding(4);
 			this.cboMesesMonto.Name = "cboMesesMonto";
 			this.cboMesesMonto.Size = new System.Drawing.Size(260, 33);
 			this.cboMesesMonto.TabIndex = 61;
@@ -487,7 +491,7 @@
 			this.btnMonto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMonto.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnMonto.Location = new System.Drawing.Point(533, 308);
-			this.btnMonto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnMonto.Margin = new System.Windows.Forms.Padding(4);
 			this.btnMonto.Name = "btnMonto";
 			this.btnMonto.Size = new System.Drawing.Size(147, 25);
 			this.btnMonto.TabIndex = 59;
@@ -501,7 +505,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1281, 624);
 			this.Controls.Add(this.pnlCtn);
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "frmReportesTotal";
 			this.Text = "frmReportesTotal";
 			this.pnlCtn.ResumeLayout(false);

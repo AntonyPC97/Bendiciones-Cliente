@@ -155,7 +155,7 @@ namespace Bendiciones
             Label crit = new Label();
             dg.Left = (panel.Width - dg.Width) / 2;
 
-            crit.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            crit.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             crit.Text = criterioBusqueda;
             crit.Parent = panel;
             crit.Top = pnlGap;
@@ -523,6 +523,49 @@ namespace Bendiciones
 
             centerPanel(form, pnlCtn);
         }
-    }
+
+		public void formCliente(Form form, String nombre, Panel pnlCtn, Button btnNuevo, Button btnBuscar, Button btnGuardar, Button btnModificar, Button btnCancelar)
+		{
+			Label titulo = new Label();
+			Panel panel = new Panel();
+
+			titulo.Parent = form;
+			panel.Parent = form;
+
+			titulo.Text = nombre;
+			estiloCliente(form, titulo, panel,btnNuevo,btnBuscar, btnGuardar,btnModificar, btnCancelar);
+			centerPanel(form, pnlCtn);
+		}
+		public void estiloCliente(Form ventana, Label titulo, Panel panel, Button btnNuevo, Button btnBuscar, Button btnGuardar, Button btnModificar, Button btnCancelar)
+		{
+			formatearVentanaFull(ventana);
+			formatearBotonNaranja(btnModificar);
+			formatearBotonNaranja(btnNuevo);
+			formatearBotonNaranja(btnBuscar);
+			formatearBotonNaranja(btnGuardar);
+			formatearBotonNaranja(btnCancelar);
+
+			titulo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			titulo.Left = pnlGap;
+			titulo.Top = pnlGap - 25 + btnH - titulo.Height;
+			titulo.Width *= 3;
+
+			panel.BackColor = colores.GrisClaro; //////////////
+			panel.SendToBack();
+			panel.Left = pnlGap;
+			panel.Width = ventana.Width - 2 * pnlGap;
+
+			btnGuardar.Top =btnBuscar.Top = btnCancelar.Top = btnNuevo.Top = btnModificar.Top = pnlGap - 25;
+
+			btnNuevo.Left = panel.Left + panel.Width - 4*btnGap - 5 * btnW;
+			btnBuscar.Left = btnNuevo.Left + btnNuevo.Width + btnGap;
+			btnGuardar.Left = btnBuscar.Left + btnBuscar.Width + btnGap;
+			btnModificar.Left = btnGuardar.Left + btnGuardar.Width + btnGap;
+			btnCancelar.Left = btnModificar.Left + btnModificar.Width + btnGap;
+
+			panel.Top = btnCancelar.Top + btnCancelar.Height + btnGap;
+			panel.Height = ventana.Height - 150;
+		}
+	}
 
 }

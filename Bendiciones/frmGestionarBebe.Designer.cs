@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.btnModificar = new System.Windows.Forms.Button();
 			this.btnCancelar = new System.Windows.Forms.Button();
 			this.btnGuardar = new System.Windows.Forms.Button();
@@ -68,7 +69,7 @@
 			this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnModificar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnModificar.Location = new System.Drawing.Point(400, 465);
-			this.btnModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnModificar.Margin = new System.Windows.Forms.Padding(4);
 			this.btnModificar.Name = "btnModificar";
 			this.btnModificar.Size = new System.Drawing.Size(181, 25);
 			this.btnModificar.TabIndex = 12;
@@ -82,7 +83,7 @@
 			this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnCancelar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnCancelar.Location = new System.Drawing.Point(779, 465);
-			this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
 			this.btnCancelar.Name = "btnCancelar";
 			this.btnCancelar.Size = new System.Drawing.Size(181, 25);
 			this.btnCancelar.TabIndex = 13;
@@ -96,7 +97,7 @@
 			this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnGuardar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnGuardar.Location = new System.Drawing.Point(184, 465);
-			this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
 			this.btnGuardar.Name = "btnGuardar";
 			this.btnGuardar.Size = new System.Drawing.Size(181, 25);
 			this.btnGuardar.TabIndex = 11;
@@ -120,9 +121,9 @@
 			this.gbDatosGenerales.Controls.Add(this.dtpFechaNac);
 			this.gbDatosGenerales.Controls.Add(this.lblFechaNac);
 			this.gbDatosGenerales.Location = new System.Drawing.Point(4, 4);
-			this.gbDatosGenerales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.gbDatosGenerales.Margin = new System.Windows.Forms.Padding(4);
 			this.gbDatosGenerales.Name = "gbDatosGenerales";
-			this.gbDatosGenerales.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.gbDatosGenerales.Padding = new System.Windows.Forms.Padding(4);
 			this.gbDatosGenerales.Size = new System.Drawing.Size(549, 330);
 			this.gbDatosGenerales.TabIndex = 61;
 			this.gbDatosGenerales.TabStop = false;
@@ -139,7 +140,7 @@
             "Hermano/Hermana",
             "Otro"});
 			this.cboRelacion.Location = new System.Drawing.Point(157, 188);
-			this.cboRelacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.cboRelacion.Margin = new System.Windows.Forms.Padding(4);
 			this.cboRelacion.Name = "cboRelacion";
 			this.cboRelacion.Size = new System.Drawing.Size(260, 28);
 			this.cboRelacion.TabIndex = 4;
@@ -171,7 +172,7 @@
 			this.rbMasculino.AutoSize = true;
 			this.rbMasculino.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.rbMasculino.Location = new System.Drawing.Point(172, 288);
-			this.rbMasculino.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.rbMasculino.Margin = new System.Windows.Forms.Padding(4);
 			this.rbMasculino.Name = "rbMasculino";
 			this.rbMasculino.Size = new System.Drawing.Size(106, 24);
 			this.rbMasculino.TabIndex = 6;
@@ -183,7 +184,7 @@
 			this.rbFemenino.AutoSize = true;
 			this.rbFemenino.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.rbFemenino.Location = new System.Drawing.Point(303, 288);
-			this.rbFemenino.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.rbFemenino.Margin = new System.Windows.Forms.Padding(4);
 			this.rbFemenino.Name = "rbFemenino";
 			this.rbFemenino.Size = new System.Drawing.Size(103, 24);
 			this.rbFemenino.TabIndex = 7;
@@ -194,7 +195,7 @@
 			// 
 			this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtNombre.Location = new System.Drawing.Point(151, 90);
-			this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
 			this.txtNombre.MaxLength = 150;
 			this.txtNombre.Name = "txtNombre";
 			this.txtNombre.Size = new System.Drawing.Size(368, 26);
@@ -215,7 +216,7 @@
 			// 
 			this.txtDNIBebe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtDNIBebe.Location = new System.Drawing.Point(100, 41);
-			this.txtDNIBebe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtDNIBebe.Margin = new System.Windows.Forms.Padding(4);
 			this.txtDNIBebe.MaxLength = 8;
 			this.txtDNIBebe.Name = "txtDNIBebe";
 			this.txtDNIBebe.Size = new System.Drawing.Size(239, 26);
@@ -237,7 +238,7 @@
 			// 
 			this.udNumHermanos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.udNumHermanos.Location = new System.Drawing.Point(307, 239);
-			this.udNumHermanos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.udNumHermanos.Margin = new System.Windows.Forms.Padding(4);
 			this.udNumHermanos.Maximum = new decimal(new int[] {
             20,
             0,
@@ -263,7 +264,7 @@
 			// 
 			this.dtpFechaNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.dtpFechaNac.Location = new System.Drawing.Point(185, 137);
-			this.dtpFechaNac.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.dtpFechaNac.Margin = new System.Windows.Forms.Padding(4);
 			this.dtpFechaNac.Name = "dtpFechaNac";
 			this.dtpFechaNac.Size = new System.Drawing.Size(333, 26);
 			this.dtpFechaNac.TabIndex = 3;
@@ -285,7 +286,7 @@
 			this.pnlCtn.Controls.Add(this.groupBox1);
 			this.pnlCtn.Controls.Add(this.gbDatosGenerales);
 			this.pnlCtn.Location = new System.Drawing.Point(104, 95);
-			this.pnlCtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.pnlCtn.Margin = new System.Windows.Forms.Padding(4);
 			this.pnlCtn.Name = "pnlCtn";
 			this.pnlCtn.Size = new System.Drawing.Size(885, 337);
 			this.pnlCtn.TabIndex = 66;
@@ -294,9 +295,9 @@
 			// 
 			this.groupBox2.Controls.Add(this.txtObservaciones);
 			this.groupBox2.Location = new System.Drawing.Point(561, 183);
-			this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
 			this.groupBox2.Size = new System.Drawing.Size(316, 150);
 			this.groupBox2.TabIndex = 63;
 			this.groupBox2.TabStop = false;
@@ -305,7 +306,7 @@
 			// txtObservaciones
 			// 
 			this.txtObservaciones.Location = new System.Drawing.Point(28, 25);
-			this.txtObservaciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtObservaciones.Margin = new System.Windows.Forms.Padding(4);
 			this.txtObservaciones.Multiline = true;
 			this.txtObservaciones.Name = "txtObservaciones";
 			this.txtObservaciones.Size = new System.Drawing.Size(261, 107);
@@ -315,9 +316,9 @@
 			// 
 			this.groupBox1.Controls.Add(this.dgvCondiciones);
 			this.groupBox1.Location = new System.Drawing.Point(561, 4);
-			this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
 			this.groupBox1.Size = new System.Drawing.Size(316, 164);
 			this.groupBox1.TabIndex = 62;
 			this.groupBox1.TabStop = false;
@@ -330,8 +331,11 @@
             this.Nombre,
             this.Sel});
 			this.dgvCondiciones.Location = new System.Drawing.Point(8, 23);
-			this.dgvCondiciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.dgvCondiciones.Margin = new System.Windows.Forms.Padding(4);
 			this.dgvCondiciones.Name = "dgvCondiciones";
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+			this.dgvCondiciones.RowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgvCondiciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvCondiciones.Size = new System.Drawing.Size(300, 133);
 			this.dgvCondiciones.TabIndex = 0;
@@ -357,7 +361,7 @@
 			this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnBuscar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnBuscar.Location = new System.Drawing.Point(35, 465);
-			this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
 			this.btnBuscar.Name = "btnBuscar";
 			this.btnBuscar.Size = new System.Drawing.Size(181, 25);
 			this.btnBuscar.TabIndex = 10;
@@ -370,7 +374,7 @@
 			this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnNuevo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnNuevo.Location = new System.Drawing.Point(532, 465);
-			this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
 			this.btnNuevo.Name = "btnNuevo";
 			this.btnNuevo.Size = new System.Drawing.Size(181, 25);
 			this.btnNuevo.TabIndex = 9;
@@ -388,7 +392,7 @@
 			this.Controls.Add(this.btnModificar);
 			this.Controls.Add(this.btnCancelar);
 			this.Controls.Add(this.btnGuardar);
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "frmGestionarBebe";
 			this.Text = "frmGestionarBebe";
 			this.gbDatosGenerales.ResumeLayout(false);
