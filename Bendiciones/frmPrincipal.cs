@@ -20,13 +20,15 @@ namespace Bendiciones
         int btnWidth = 172;
 
 
-        public frmPrincipal()
+        public frmPrincipal(string usuario)
         {
             InitializeComponent();
 
             Paleta paleta = new Paleta();
             pnlTop.BackColor = paleta.GrisOscuro;
             pnlSide.BackColor = paleta.NaranjaOscuro;
+            lblUsuario.Text = usuario;
+            lblUsuario.Left = lblBienvenido.Width - lblUsuario.Width;
             estadoInicialBarraLateral();
             customDesign();
         }
@@ -309,6 +311,9 @@ namespace Bendiciones
             Application.Exit();
         }
 
-        
+        private void picCerraSesion_Click(object sender, EventArgs e)
+        {
+            frmMensaje mensaje = new frmMensaje("Desea Cerrar Sesion?","","");
+        }
     }
 }
