@@ -74,12 +74,6 @@
       <DependentUpon>frmBuscarColaborador.cs</DependentUpon>
     </Compile>
     <Compile Include="Formateador.cs" />
-    <Compile Include="frmBuscarBebe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmBuscarBebe.Designer.cs">
-      <DependentUpon>frmBuscarBebe.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmBuscarDescuento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +91,12 @@
     </Compile>
     <Compile Include="frmBuscarServicioDeudaPorCliente.Designer.cs">
       <DependentUpon>frmBuscarServicioDeudaPorCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCambiarPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCambiarPass.Designer.cs">
+      <DependentUpon>frmCambiarPass.cs</DependentUpon>
     </Compile>
     <Compile Include="frmGestionarBebe.cs">
       <SubType>Form</SubType>
@@ -175,12 +175,6 @@
     </Compile>
     <Compile Include="frmPrincipalSec.Designer.cs">
       <DependentUpon>frmPrincipalSec.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmReportes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmReportes.Designer.cs">
-      <DependentUpon>frmReportes.cs</DependentUpon>
     </Compile>
     <Compile Include="Estado.cs" />
     <Compile Include="frmBuscarCliente.cs">
@@ -273,6 +267,12 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReportesTotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportesTotal.Designer.cs">
+      <DependentUpon>frmReportesTotal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Paleta.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -285,9 +285,6 @@
     <EmbeddedResource Include="frmBuscarColaborador.resx">
       <DependentUpon>frmBuscarColaborador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBuscarBebe.resx">
-      <DependentUpon>frmBuscarBebe.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarDescuento.resx">
       <DependentUpon>frmBuscarDescuento.cs</DependentUpon>
     </EmbeddedResource>
@@ -296,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarServicioDeudaPorCliente.resx">
       <DependentUpon>frmBuscarServicioDeudaPorCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCambiarPass.resx">
+      <DependentUpon>frmCambiarPass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGestionarBebe.resx">
       <DependentUpon>frmGestionarBebe.cs</DependentUpon>
@@ -335,9 +335,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipalSec.resx">
       <DependentUpon>frmPrincipalSec.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmReportes.resx">
-      <DependentUpon>frmReportes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBuscarCliente.resx">
       <DependentUpon>frmBuscarCliente.cs</DependentUpon>
@@ -384,6 +381,9 @@
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReportesTotal.resx">
+      <DependentUpon>frmReportesTotal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -392,6 +392,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagram1.cd" />
     <None Include="Connected Services\Service\Bendiciones.Service.actualizarApoderadoResponse.datasource">
@@ -530,6 +531,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\Service\Bendiciones.Service.eliminarTipoColaboradorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.generarReporteAlumnosPorHorarioPDFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.generarReporteAsistenciaPorCursoPDFResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\Service\Bendiciones.Service.generarReporteServicioPDFResponse.datasource">
@@ -694,6 +701,12 @@
     <None Include="Connected Services\Service\Bendiciones.Service.listarMatriculaActivaPorGestanteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.listarMatriculaCursosActivosPorApoderadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.listarMatriculaCursosActivosPorGestanteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\Service\Bendiciones.Service.listarMatriculaSaldoPorApoderadoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -725,6 +738,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\Service\Bendiciones.Service.tipoColaborador.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.validarUsuarioUnicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.verificarDNIResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\Service\Bendiciones.Service.verificarUsuarioResponse.datasource">
@@ -764,6 +783,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -99,12 +99,12 @@ namespace Bendiciones
 			if (txtNombreCurso.Text.Equals("")|| txtDescripcion.Text.Equals("") || txtPrecio.Text.Equals(""))
 			{
 				frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios", "Error de campos","");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 			if(!float.TryParse(txtPrecio.Text,out i))
 			{
 				frmMensaje mensaje = new frmMensaje("Añada un precio válido", "Error en Precio", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 			
 			return true;
@@ -164,13 +164,13 @@ namespace Bendiciones
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            frmBuscarCurso formCurso = new frmBuscarCurso();
+            frmBuscarCurso formCurso = new frmBuscarCurso(true);
             if (formCurso.ShowDialog() == DialogResult.OK)
             {
                 curso = formCurso.CursoSeleccionado;
                 txtNombreCurso.Text = curso.nombre;
                 txtDescripcion.Text = curso.descripcion;
-                txtPrecio.Text = curso.precio.ToString();
+                txtPrecio.Text = curso.precio.ToString("0.0");
                 udNumClases.Value = curso.numClases;
                 dgvCondiciones.DataSource = curso.condMedicas;
                 for (int i = 0; i < dgvCondiciones.RowCount; i++)

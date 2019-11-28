@@ -38,8 +38,10 @@ namespace Bendiciones
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
+            lblBebe.Visible = false;
+            cboBebes.Visible = false;
 
-            frmBuscarCliente formBuscarCliente = new frmBuscarCliente();
+            frmBuscarCliente formBuscarCliente = new frmBuscarCliente(false);
             if(formBuscarCliente.ShowDialog() == DialogResult.OK)
             {
                 cliente = formBuscarCliente.ClienteSeleccionado;
@@ -107,12 +109,12 @@ namespace Bendiciones
             if(cliente == null)
             {
                 frmMensaje mensaje = new frmMensaje("Seleecione un Cliente", "Error de Cliente", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             if (dgvMatriculas.RowCount == 0)
             {
                 frmMensaje mensaje = new frmMensaje("Agregue un curso", "Error de Matricula", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             return true;
         }
@@ -132,11 +134,11 @@ namespace Bendiciones
                     }
 
                     Program.dbController.insertarMatricula(m);
-                    frmMensaje mensaje = new frmMensaje("Matrícula Registrada exitosamente", "Mensaje Confirmación", "Confirmar");
-
-
                 }
-                txtDNI.Text = "";
+				frmMensaje mensaje = new frmMensaje("Matrícula Registrada exitosamente", "Mensaje Confirmación", "Confirmar");
+				Correo c = new Correo();
+				c.CorreoNuevoServicio(cliente,matriculas);
+				txtDNI.Text = "";
                 txtNombreCliente.Text = "";
                 cboBebes.DataSource = null;
                 cboBebes.SelectedIndex = -1;
@@ -157,6 +159,11 @@ namespace Bendiciones
 
         private void btnEliminarCurso_Click(object sender, EventArgs e)
         {
+            if(cliente == null)
+            {
+                frmMensaje mensaje = new frmMensaje("Seleccione un Cliente", "Error de Cliente", "");
+                return;
+            }
             foreach(DataGridViewRow row in dgvMatriculas.SelectedRows)
             {
                 matriculas.RemoveAt(row.Index);

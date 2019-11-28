@@ -14,14 +14,19 @@ namespace Bendiciones
     public partial class frmBuscarSede : Form
     {
         private Service.sede sedeSeleccionada = new Service.sede();
-        public frmBuscarSede()
+        public frmBuscarSede(Boolean eliminar)
         {
             InitializeComponent();
             dgvSedes.AutoGenerateColumns = false;
             dgvSedes.DataSource = Program.dbController.listarSedes();
             Formateador f = new Formateador();
-            f.iniFormFreddyBuscar(this, "Buscar Sede", "Nombre:", txtNombre, dgvSedes, btnBuscar, btnSeleccionar,btnEliminar, false);
+            f.iniFormFreddyBuscar(this, "Buscar Sede", "Nombre:", txtNombre, dgvSedes, btnBuscar, btnSeleccionar,btnEliminar, false, eliminar);
         }
+
+
+
+
+
 
         public sede SedeSeleccionada { get => sedeSeleccionada; set => sedeSeleccionada = value; }
 

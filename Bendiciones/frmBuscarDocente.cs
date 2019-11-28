@@ -17,11 +17,11 @@ namespace Bendiciones
 
         public colaborador DocenteSeleccionado { get => docenteSeleccionado; set => docenteSeleccionado = value; }
 
-        public frmBuscarDocente()
+        public frmBuscarDocente(Boolean eliminar)
         {
             InitializeComponent();
             Formateador f = new Formateador();
-            f.iniFormFreddyBuscar(this, "Buscar Docente", "Nombre o DNI:", txtNombre, dgvProfesores, btnBuscar, btnSeleccionar, btnEliminar, false);
+            f.iniFormFreddyBuscar(this, "Buscar Docente", "Nombre o DNI:", txtNombre, dgvProfesores, btnBuscar, btnSeleccionar, btnEliminar, false, eliminar);
             dgvProfesores.AutoGenerateColumns = false;
             dgvProfesores.DataSource = Program.dbController.listarDocentesPorNombreDni("");
             btnEliminar.Visible = false;
@@ -45,17 +45,29 @@ namespace Bendiciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            docenteSeleccionado = (Service.colaborador)dgvProfesores.CurrentRow.DataBoundItem;
-            this.DialogResult = DialogResult.OK;
+            if (dgvProfesores.RowCount == 0)
+            {
+                frmMensaje mensaje = new frmMensaje("No hay docente para seleccionar", "Mensaje de advertencia", "");
+            }
+            else
+            {
+                docenteSeleccionado = (Service.colaborador)dgvProfesores.CurrentRow.DataBoundItem;
+                this.DialogResult = DialogResult.OK;
+            }
+            
         }
 
         private void dgvProfesores_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            Service.colaborador data = dgvProfesores.Rows[e.RowIndex].DataBoundItem as Service.colaborador;
-            dgvProfesores.Rows[e.RowIndex].Cells[0].Value = data.dni;
-            dgvProfesores.Rows[e.RowIndex].Cells[1].Value = data.nombre;
-            dgvProfesores.Rows[e.RowIndex].Cells[2].Value = data.profesion;
-            dgvProfesores.Rows[e.RowIndex].Cells[3].Value = (char)data.sexo;
+            if (dgvProfesores.RowCount != 0)
+            {
+                Service.colaborador data = dgvProfesores.Rows[e.RowIndex].DataBoundItem as Service.colaborador;
+                dgvProfesores.Rows[e.RowIndex].Cells[0].Value = data.dni;
+                dgvProfesores.Rows[e.RowIndex].Cells[1].Value = data.nombre;
+                dgvProfesores.Rows[e.RowIndex].Cells[2].Value = data.profesion;
+                dgvProfesores.Rows[e.RowIndex].Cells[3].Value = (char)data.sexo;
+
+            }
             
         }
 

@@ -15,6 +15,7 @@ namespace Bendiciones
         private Service.curso curso;
         private BindingList<Service.horario> horarios = new BindingList<Service.horario>();
         private Service.horario horario;
+        private List<Service.asistencia> asist= new List<Service.asistencia>();
         public frmAsignarHorario()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace Bendiciones
             dgvHorarios.Rows.Clear();
             horarios = new BindingList<Service.horario>();
             //dgvHorarios.RowCount = 0;
-            frmBuscarCurso formBuscarCurso = new frmBuscarCurso();
+            frmBuscarCurso formBuscarCurso = new frmBuscarCurso(false);
             if (formBuscarCurso.ShowDialog() == DialogResult.OK)
             {
                 curso = formBuscarCurso.CursoSeleccionado;
@@ -40,20 +41,30 @@ namespace Bendiciones
                 {
                     foreach (Service.horario h in Program.dbController.listarHorariosPorCurso(curso.id_servicio))
                     {
+                        Service.asistencia a = new Service.asistencia();
+                        a.horario = h;
+                       
                         horarios.Add(h);
                         Object[] filaHorario = new Object[7];
                         filaHorario[0] = h.clase;
                         filaHorario[1] = h.horaIni.ToShortTimeString();
                         filaHorario[2] = h.horaFin.ToShortTimeString();
                         if (h.colaborador.idPersona != 0)
+                        {
                             filaHorario[3] = h.colaborador.nombre;
-                        else
-                            filaHorario[3] = "-";
+                            a.persona = h.colaborador;
+                        }
 
+                        else
+                        {
+                            filaHorario[3] = "-";
+                        }
+                            
                         filaHorario[4] = h.fecha.ToShortDateString();
                         filaHorario[5] = h.sede.direccion;
                         filaHorario[6] = h.numVacantes;
                         dgvHorarios.Rows.Add(filaHorario);
+                        asist.Add(a);
                     }
                 }
 
@@ -73,7 +84,7 @@ namespace Bendiciones
             if (formGestionarHorario.ShowDialog() == DialogResult.OK)
             {
                 horario = formGestionarHorario.HorarioSeleccionado;
-
+                Service.asistencia a = new Service.asistencia();
                 horarios.Add(horario);
                 Object[] filaHorario = new Object[7];
                 filaHorario[0] = horario.clase;
@@ -119,17 +130,14 @@ namespace Bendiciones
                 frmMensaje mensaje = new frmMensaje("Seleccione un curso", "Error", "");
                 return;
             }
+             foreach(Service.asistencia a in asist)
+            {
+                Program.dbController.eliminarAsistencia(a);
+            }
             foreach (Service.horario h in horarios)
             {
                 if (h.idHorario != 0)
                 {
-                    Console.WriteLine(h.idHorario);
-                    Console.WriteLine(h.clase);
-                    Console.WriteLine(h.numVacantes);
-                    Console.WriteLine(h.fecha);
-                    Console.WriteLine(h.horaIni);
-                    Console.WriteLine(h.horaFin);
-                    Console.WriteLine(h.sede.idSede);
                     //Console.WriteLine(h.colaborador.idPersona);
                     Program.dbController.actualizarHorario(h);
                 }
@@ -138,7 +146,7 @@ namespace Bendiciones
                     Program.dbController.insertarHorario(h, curso.id_servicio);
                 }
             }
-            frmMensaje mensaje1 = new frmMensaje("Horarios registrados", "Mensaje de confirmación","Confirmar");
+            frmMensaje mensaje1 = new frmMensaje("Cambios realizados", "Mensaje de confirmación","Confirmar");
         }
 
         private void dgvHorarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

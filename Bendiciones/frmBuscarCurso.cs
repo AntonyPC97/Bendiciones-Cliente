@@ -14,11 +14,11 @@ namespace Bendiciones
     public partial class frmBuscarCurso : Form
     {
         private Service.curso cursoSeleccionado = new Service.curso();
-        public frmBuscarCurso()
+        public frmBuscarCurso(Boolean eliminar)
         {
             InitializeComponent();
             Formateador f = new Formateador();
-            f.iniFormFreddyBuscar(this, "Buscar Curso", "Nombre:", txtNombre, dgvCursos, btnBuscar, btnSeleccionar,btnEliminar, false);
+            f.iniFormFreddyBuscar(this, "Buscar Curso", "Nombre:", txtNombre, dgvCursos, btnBuscar, btnSeleccionar,btnEliminar, false, eliminar);
             dgvCursos.AutoGenerateColumns = false;
             dgvCursos.DataSource = Program.dbController.listarCursosPorNombre("");
         }

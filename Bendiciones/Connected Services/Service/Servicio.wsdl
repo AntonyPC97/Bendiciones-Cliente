@@ -377,6 +377,18 @@
   <message name="insertarDescuentoResponse">
     <part name="parameters" element="tns:insertarDescuentoResponse" />
   </message>
+  <message name="generarReporteAsistenciaPorCursoPDF">
+    <part name="parameters" element="tns:generarReporteAsistenciaPorCursoPDF" />
+  </message>
+  <message name="generarReporteAsistenciaPorCursoPDFResponse">
+    <part name="parameters" element="tns:generarReporteAsistenciaPorCursoPDFResponse" />
+  </message>
+  <message name="generarReporteAlumnosPorHorarioPDF">
+    <part name="parameters" element="tns:generarReporteAlumnosPorHorarioPDF" />
+  </message>
+  <message name="generarReporteAlumnosPorHorarioPDFResponse">
+    <part name="parameters" element="tns:generarReporteAlumnosPorHorarioPDFResponse" />
+  </message>
   <message name="listarDocentesYaAsistieron">
     <part name="parameters" element="tns:listarDocentesYaAsistieron" />
   </message>
@@ -563,11 +575,35 @@
   <message name="listarClientesYaAsistieronPorCursoResponse">
     <part name="parameters" element="tns:listarClientesYaAsistieronPorCursoResponse" />
   </message>
+  <message name="listarMatriculaCursosActivosPorGestante">
+    <part name="parameters" element="tns:listarMatriculaCursosActivosPorGestante" />
+  </message>
+  <message name="listarMatriculaCursosActivosPorGestanteResponse">
+    <part name="parameters" element="tns:listarMatriculaCursosActivosPorGestanteResponse" />
+  </message>
+  <message name="listarMatriculaCursosActivosPorApoderado">
+    <part name="parameters" element="tns:listarMatriculaCursosActivosPorApoderado" />
+  </message>
+  <message name="listarMatriculaCursosActivosPorApoderadoResponse">
+    <part name="parameters" element="tns:listarMatriculaCursosActivosPorApoderadoResponse" />
+  </message>
   <message name="listarDocentesYaAsistieronPorCurso">
     <part name="parameters" element="tns:listarDocentesYaAsistieronPorCurso" />
   </message>
   <message name="listarDocentesYaAsistieronPorCursoResponse">
     <part name="parameters" element="tns:listarDocentesYaAsistieronPorCursoResponse" />
+  </message>
+  <message name="verificarDNI">
+    <part name="parameters" element="tns:verificarDNI" />
+  </message>
+  <message name="verificarDNIResponse">
+    <part name="parameters" element="tns:verificarDNIResponse" />
+  </message>
+  <message name="validarUsuarioUnico">
+    <part name="parameters" element="tns:validarUsuarioUnico" />
+  </message>
+  <message name="validarUsuarioUnicoResponse">
+    <part name="parameters" element="tns:validarUsuarioUnicoResponse" />
   </message>
   <portType name="Servicio">
     <operation name="listarDocentesDelDiaPorCurso">
@@ -818,6 +854,14 @@
       <input wsam:Action="http://services/Servicio/insertarDescuentoRequest" message="tns:insertarDescuento" />
       <output wsam:Action="http://services/Servicio/insertarDescuentoResponse" message="tns:insertarDescuentoResponse" />
     </operation>
+    <operation name="generarReporteAsistenciaPorCursoPDF">
+      <input wsam:Action="http://services/Servicio/generarReporteAsistenciaPorCursoPDFRequest" message="tns:generarReporteAsistenciaPorCursoPDF" />
+      <output wsam:Action="http://services/Servicio/generarReporteAsistenciaPorCursoPDFResponse" message="tns:generarReporteAsistenciaPorCursoPDFResponse" />
+    </operation>
+    <operation name="generarReporteAlumnosPorHorarioPDF">
+      <input wsam:Action="http://services/Servicio/generarReporteAlumnosPorHorarioPDFRequest" message="tns:generarReporteAlumnosPorHorarioPDF" />
+      <output wsam:Action="http://services/Servicio/generarReporteAlumnosPorHorarioPDFResponse" message="tns:generarReporteAlumnosPorHorarioPDFResponse" />
+    </operation>
     <operation name="listarDocentesYaAsistieron">
       <input wsam:Action="http://services/Servicio/listarDocentesYaAsistieronRequest" message="tns:listarDocentesYaAsistieron" />
       <output wsam:Action="http://services/Servicio/listarDocentesYaAsistieronResponse" message="tns:listarDocentesYaAsistieronResponse" />
@@ -942,9 +986,25 @@
       <input wsam:Action="http://services/Servicio/listarClientesYaAsistieronPorCursoRequest" message="tns:listarClientesYaAsistieronPorCurso" />
       <output wsam:Action="http://services/Servicio/listarClientesYaAsistieronPorCursoResponse" message="tns:listarClientesYaAsistieronPorCursoResponse" />
     </operation>
+    <operation name="listarMatriculaCursosActivosPorGestante">
+      <input wsam:Action="http://services/Servicio/listarMatriculaCursosActivosPorGestanteRequest" message="tns:listarMatriculaCursosActivosPorGestante" />
+      <output wsam:Action="http://services/Servicio/listarMatriculaCursosActivosPorGestanteResponse" message="tns:listarMatriculaCursosActivosPorGestanteResponse" />
+    </operation>
+    <operation name="listarMatriculaCursosActivosPorApoderado">
+      <input wsam:Action="http://services/Servicio/listarMatriculaCursosActivosPorApoderadoRequest" message="tns:listarMatriculaCursosActivosPorApoderado" />
+      <output wsam:Action="http://services/Servicio/listarMatriculaCursosActivosPorApoderadoResponse" message="tns:listarMatriculaCursosActivosPorApoderadoResponse" />
+    </operation>
     <operation name="listarDocentesYaAsistieronPorCurso">
       <input wsam:Action="http://services/Servicio/listarDocentesYaAsistieronPorCursoRequest" message="tns:listarDocentesYaAsistieronPorCurso" />
       <output wsam:Action="http://services/Servicio/listarDocentesYaAsistieronPorCursoResponse" message="tns:listarDocentesYaAsistieronPorCursoResponse" />
+    </operation>
+    <operation name="verificarDNI">
+      <input wsam:Action="http://services/Servicio/verificarDNIRequest" message="tns:verificarDNI" />
+      <output wsam:Action="http://services/Servicio/verificarDNIResponse" message="tns:verificarDNIResponse" />
+    </operation>
+    <operation name="validarUsuarioUnico">
+      <input wsam:Action="http://services/Servicio/validarUsuarioUnicoRequest" message="tns:validarUsuarioUnico" />
+      <output wsam:Action="http://services/Servicio/validarUsuarioUnicoResponse" message="tns:validarUsuarioUnicoResponse" />
     </operation>
   </portType>
   <binding name="ServicioPortBinding" type="tns:Servicio">
@@ -1507,6 +1567,24 @@
         <soap:body use="literal" />
       </output>
     </operation>
+    <operation name="generarReporteAsistenciaPorCursoPDF">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="generarReporteAlumnosPorHorarioPDF">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="listarDocentesYaAsistieron">
       <soap:operation soapAction="" />
       <input>
@@ -1786,7 +1864,43 @@
         <soap:body use="literal" />
       </output>
     </operation>
+    <operation name="listarMatriculaCursosActivosPorGestante">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarMatriculaCursosActivosPorApoderado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="listarDocentesYaAsistieronPorCurso">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="verificarDNI">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="validarUsuarioUnico">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

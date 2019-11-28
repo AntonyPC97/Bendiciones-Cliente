@@ -101,10 +101,10 @@
             // 
             // dtpFechaNac
             // 
-            this.dtpFechaNac.Location = new System.Drawing.Point(203, 185);
+            this.dtpFechaNac.Location = new System.Drawing.Point(116, 185);
             this.dtpFechaNac.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dtpFechaNac.Name = "dtpFechaNac";
-            this.dtpFechaNac.Size = new System.Drawing.Size(231, 28);
+            this.dtpFechaNac.Size = new System.Drawing.Size(318, 28);
             this.dtpFechaNac.TabIndex = 5;
             // 
             // lblFechaNac
@@ -112,9 +112,9 @@
             this.lblFechaNac.AutoSize = true;
             this.lblFechaNac.Location = new System.Drawing.Point(4, 190);
             this.lblFechaNac.Name = "lblFechaNac";
-            this.lblFechaNac.Size = new System.Drawing.Size(193, 24);
+            this.lblFechaNac.Size = new System.Drawing.Size(110, 24);
             this.lblFechaNac.TabIndex = 106;
-            this.lblFechaNac.Text = "Fecha de nacimiento:";
+            this.lblFechaNac.Text = "Nacimiento:";
             // 
             // lblReferencia
             // 
@@ -138,13 +138,13 @@
             this.lblDireccion.AutoSize = true;
             this.lblDireccion.Location = new System.Drawing.Point(464, 230);
             this.lblDireccion.Name = "lblDireccion";
-            this.lblDireccion.Size = new System.Drawing.Size(95, 24);
+            this.lblDireccion.Size = new System.Drawing.Size(114, 24);
             this.lblDireccion.TabIndex = 103;
-            this.lblDireccion.Text = "Dirección:";
+            this.lblDireccion.Text = "Dirección(*):";
             // 
             // txtDireccion
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(631, 227);
+            this.txtDireccion.Location = new System.Drawing.Point(644, 228);
             this.txtDireccion.MaxLength = 150;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(221, 28);
@@ -161,7 +161,7 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(631, 147);
+            this.txtUsuario.Location = new System.Drawing.Point(644, 147);
             this.txtUsuario.MaxLength = 25;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(221, 28);
@@ -178,7 +178,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(631, 187);
+            this.txtPassword.Location = new System.Drawing.Point(644, 187);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(221, 28);
@@ -189,13 +189,13 @@
             this.lblProfesión.AutoSize = true;
             this.lblProfesión.Location = new System.Drawing.Point(464, 110);
             this.lblProfesión.Name = "lblProfesión";
-            this.lblProfesión.Size = new System.Drawing.Size(94, 24);
+            this.lblProfesión.Size = new System.Drawing.Size(113, 24);
             this.lblProfesión.TabIndex = 97;
-            this.lblProfesión.Text = "Profesión:";
+            this.lblProfesión.Text = "Profesión(*):";
             // 
             // txtProfesion
             // 
-            this.txtProfesion.Location = new System.Drawing.Point(631, 107);
+            this.txtProfesion.Location = new System.Drawing.Point(644, 107);
             this.txtProfesion.MaxLength = 150;
             this.txtProfesion.Name = "txtProfesion";
             this.txtProfesion.Size = new System.Drawing.Size(221, 28);
@@ -212,20 +212,21 @@
             // 
             // txtNumColeg
             // 
-            this.txtNumColeg.Location = new System.Drawing.Point(631, 67);
+            this.txtNumColeg.Location = new System.Drawing.Point(644, 67);
             this.txtNumColeg.MaxLength = 6;
             this.txtNumColeg.Name = "txtNumColeg";
             this.txtNumColeg.Size = new System.Drawing.Size(221, 28);
             this.txtNumColeg.TabIndex = 10;
+            this.txtNumColeg.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumColeg_KeyPress);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(4, 30);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 24);
+            this.label6.Size = new System.Drawing.Size(103, 24);
             this.label6.TabIndex = 93;
-            this.label6.Text = "Nombre:";
+            this.label6.Text = "Nombre(*):";
             // 
             // txtNombre
             // 
@@ -238,55 +239,56 @@
             // cboTipo
             // 
             this.cboTipo.FormattingEnabled = true;
-            this.cboTipo.Location = new System.Drawing.Point(656, 27);
+            this.cboTipo.Location = new System.Drawing.Point(669, 27);
             this.cboTipo.Name = "cboTipo";
             this.cboTipo.Size = new System.Drawing.Size(196, 30);
             this.cboTipo.TabIndex = 9;
+            this.cboTipo.SelectedIndexChanged += new System.EventHandler(this.cboTipo_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(464, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 24);
+            this.label1.Size = new System.Drawing.Size(205, 24);
             this.label1.TabIndex = 90;
-            this.label1.Text = "Tipo de colaborador:";
+            this.label1.Text = "Tipo de colaborador(*):";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(4, 270);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(59, 24);
+            this.label12.Size = new System.Drawing.Size(78, 24);
             this.label12.TabIndex = 89;
-            this.label12.Text = "Sexo:";
+            this.label12.Text = "Sexo(*):";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(4, 230);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 24);
+            this.label5.Size = new System.Drawing.Size(109, 24);
             this.label5.TabIndex = 88;
-            this.label5.Text = "Teléfono:";
+            this.label5.Text = "Teléfono(*):";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(4, 110);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 24);
+            this.label4.Size = new System.Drawing.Size(92, 24);
             this.label4.TabIndex = 87;
-            this.label4.Text = "Correo:";
+            this.label4.Text = "Correo(*):";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(4, 70);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 24);
+            this.label2.Size = new System.Drawing.Size(65, 24);
             this.label2.TabIndex = 86;
-            this.label2.Text = "DNI:";
+            this.label2.Text = "DNI(*):";
             // 
             // txtCorreo
             // 
@@ -303,6 +305,7 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(318, 28);
             this.txtTelefono.TabIndex = 6;
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
             // txtDNI
             // 
@@ -311,6 +314,7 @@
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(318, 28);
             this.txtDNI.TabIndex = 2;
+            this.txtDNI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDNI_KeyPress);
             // 
             // rbMasculino
             // 

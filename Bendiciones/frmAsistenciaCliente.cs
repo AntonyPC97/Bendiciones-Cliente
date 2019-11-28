@@ -22,7 +22,7 @@ namespace Bendiciones
         {            
             InitializeComponent();
             Formateador f = new Formateador();
-            f.iniFormAsistencia(this, "Asistencia de cliente", pnlCtn, btnRegistrar);
+            f.iniFormAsistencia(this, "Asistencia de cliente", pnlCtn, btnRegistrar, btnBuscar);
             cboCursos.SelectedIndexChanged -= new EventHandler(cboCursos_SelectedIndexChanged);
             IEnumerable<Service.curso> dataSource = Program.dbController.listarCursosPorNombre("");
             if (dataSource != null)
@@ -295,6 +295,28 @@ namespace Bendiciones
                     cboCursos_SelectedIndexChanged(sender, e);
                 }
             }  
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (!txtDni.Text.Equals(""))
+            {
+                foreach (DataGridViewRow r in dgvPorAsistir.Rows)
+                {
+                    if (!r.Cells[0].Value.Equals(txtDni.Text))
+                        r.Visible = false;
+                }
+
+                foreach (DataGridViewRow r in dgvYaAsistieron.Rows)
+                {
+                    if (!r.Cells[0].Value.Equals(txtDni.Text))
+                        r.Visible = false;
+                }
+            }
+            else
+            {
+                cboCursos_SelectedIndexChanged(sender, e);
+            }
         }
     }
 }

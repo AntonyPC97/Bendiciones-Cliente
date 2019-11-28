@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipalSec));
             this.pnlSide = new System.Windows.Forms.Panel();
+            this.btnReportes = new System.Windows.Forms.Button();
             this.btnClasesParticulares = new System.Windows.Forms.Button();
             this.btnMatricula = new System.Windows.Forms.Button();
             this.pnlPagos = new System.Windows.Forms.Panel();
-            this.btnServiciosAdeudados = new System.Windows.Forms.Button();
             this.btnHistorico = new System.Windows.Forms.Button();
             this.btnRegitrarCuota = new System.Windows.Forms.Button();
             this.btnPagos = new System.Windows.Forms.Button();
@@ -43,25 +43,29 @@
             this.btnAsistencia = new System.Windows.Forms.Button();
             this.btnCliente = new System.Windows.Forms.Button();
             this.pnlCursos = new System.Windows.Forms.Panel();
+            this.btnInscribir = new System.Windows.Forms.Button();
             this.btnAsignarHorario = new System.Windows.Forms.Button();
             this.btnAsignarDesc = new System.Windows.Forms.Button();
             this.btnCursosRegistrar = new System.Windows.Forms.Button();
             this.btnCursos = new System.Windows.Forms.Button();
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.btnCuenta = new System.Windows.Forms.Button();
+            this.lblBienvenido = new System.Windows.Forms.Label();
             this.lblBendiciones = new System.Windows.Forms.Label();
-            this.imgIsotipo = new System.Windows.Forms.PictureBox();
+            this.lblNombre = new System.Windows.Forms.Label();
             this.pnlFiller = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnInscribir = new System.Windows.Forms.Button();
-            this.btnReportes = new System.Windows.Forms.Button();
+            this.pnlCuenta = new System.Windows.Forms.Panel();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
+            this.btnCambiarPass = new System.Windows.Forms.Button();
             this.pnlSide.SuspendLayout();
             this.pnlPagos.SuspendLayout();
             this.pnlAsistencia.SuspendLayout();
             this.pnlCursos.SuspendLayout();
             this.pnlTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgIsotipo)).BeginInit();
             this.pnlFiller.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlCuenta.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlSide
@@ -79,10 +83,25 @@
             this.pnlSide.Controls.Add(this.pnlCursos);
             this.pnlSide.Controls.Add(this.btnCursos);
             this.pnlSide.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlSide.Location = new System.Drawing.Point(0, 60);
+            this.pnlSide.Location = new System.Drawing.Point(0, 84);
             this.pnlSide.Name = "pnlSide";
-            this.pnlSide.Size = new System.Drawing.Size(189, 541);
+            this.pnlSide.Size = new System.Drawing.Size(189, 522);
             this.pnlSide.TabIndex = 1;
+            // 
+            // btnReportes
+            // 
+            this.btnReportes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReportes.FlatAppearance.BorderSize = 0;
+            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportes.Location = new System.Drawing.Point(0, 420);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Size = new System.Drawing.Size(189, 30);
+            this.btnReportes.TabIndex = 29;
+            this.btnReportes.Text = "Reportes";
+            this.btnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReportes.UseVisualStyleBackColor = true;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
             // 
             // btnClasesParticulares
             // 
@@ -90,7 +109,7 @@
             this.btnClasesParticulares.FlatAppearance.BorderSize = 0;
             this.btnClasesParticulares.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClasesParticulares.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClasesParticulares.Location = new System.Drawing.Point(0, 420);
+            this.btnClasesParticulares.Location = new System.Drawing.Point(0, 390);
             this.btnClasesParticulares.Name = "btnClasesParticulares";
             this.btnClasesParticulares.Size = new System.Drawing.Size(189, 30);
             this.btnClasesParticulares.TabIndex = 28;
@@ -105,7 +124,7 @@
             this.btnMatricula.FlatAppearance.BorderSize = 0;
             this.btnMatricula.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMatricula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMatricula.Location = new System.Drawing.Point(0, 390);
+            this.btnMatricula.Location = new System.Drawing.Point(0, 360);
             this.btnMatricula.Name = "btnMatricula";
             this.btnMatricula.Size = new System.Drawing.Size(189, 30);
             this.btnMatricula.TabIndex = 27;
@@ -116,31 +135,13 @@
             // 
             // pnlPagos
             // 
-            this.pnlPagos.Controls.Add(this.btnServiciosAdeudados);
             this.pnlPagos.Controls.Add(this.btnHistorico);
             this.pnlPagos.Controls.Add(this.btnRegitrarCuota);
             this.pnlPagos.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlPagos.Location = new System.Drawing.Point(0, 300);
             this.pnlPagos.Name = "pnlPagos";
-            this.pnlPagos.Size = new System.Drawing.Size(189, 90);
+            this.pnlPagos.Size = new System.Drawing.Size(189, 60);
             this.pnlPagos.TabIndex = 1;
-            // 
-            // btnServiciosAdeudados
-            // 
-            this.btnServiciosAdeudados.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnServiciosAdeudados.FlatAppearance.BorderSize = 0;
-            this.btnServiciosAdeudados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnServiciosAdeudados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnServiciosAdeudados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServiciosAdeudados.Location = new System.Drawing.Point(0, 60);
-            this.btnServiciosAdeudados.Name = "btnServiciosAdeudados";
-            this.btnServiciosAdeudados.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnServiciosAdeudados.Size = new System.Drawing.Size(189, 30);
-            this.btnServiciosAdeudados.TabIndex = 26;
-            this.btnServiciosAdeudados.Text = "Ver Servicios Adeudados";
-            this.btnServiciosAdeudados.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServiciosAdeudados.UseVisualStyleBackColor = true;
-            this.btnServiciosAdeudados.Click += new System.EventHandler(this.btnServiciosAdeudados_Click);
             // 
             // btnHistorico
             // 
@@ -277,6 +278,22 @@
             this.pnlCursos.Size = new System.Drawing.Size(189, 120);
             this.pnlCursos.TabIndex = 2;
             // 
+            // btnInscribir
+            // 
+            this.btnInscribir.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnInscribir.FlatAppearance.BorderSize = 0;
+            this.btnInscribir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInscribir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInscribir.Location = new System.Drawing.Point(0, 90);
+            this.btnInscribir.Name = "btnInscribir";
+            this.btnInscribir.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnInscribir.Size = new System.Drawing.Size(189, 30);
+            this.btnInscribir.TabIndex = 7;
+            this.btnInscribir.Text = "Inscribir a Horario";
+            this.btnInscribir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInscribir.UseVisualStyleBackColor = true;
+            this.btnInscribir.Click += new System.EventHandler(this.btnInscribir_Click);
+            // 
             // btnAsignarHorario
             // 
             this.btnAsignarHorario.Dock = System.Windows.Forms.DockStyle.Top;
@@ -342,47 +359,73 @@
             // pnlTop
             // 
             this.pnlTop.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnlTop.Controls.Add(this.btnCuenta);
+            this.pnlTop.Controls.Add(this.lblBienvenido);
             this.pnlTop.Controls.Add(this.lblBendiciones);
-            this.pnlTop.Controls.Add(this.imgIsotipo);
+            this.pnlTop.Controls.Add(this.lblNombre);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(1164, 60);
+            this.pnlTop.Size = new System.Drawing.Size(1166, 84);
             this.pnlTop.TabIndex = 0;
+            // 
+            // btnCuenta
+            // 
+            this.btnCuenta.BackColor = System.Drawing.Color.White;
+            this.btnCuenta.FlatAppearance.BorderSize = 0;
+            this.btnCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCuenta.Image = ((System.Drawing.Image)(resources.GetObject("btnCuenta.Image")));
+            this.btnCuenta.Location = new System.Drawing.Point(1133, 49);
+            this.btnCuenta.Name = "btnCuenta";
+            this.btnCuenta.Size = new System.Drawing.Size(30, 32);
+            this.btnCuenta.TabIndex = 11;
+            this.btnCuenta.UseVisualStyleBackColor = false;
+            this.btnCuenta.Click += new System.EventHandler(this.btnCuenta_Click);
+            // 
+            // lblBienvenido
+            // 
+            this.lblBienvenido.AutoSize = true;
+            this.lblBienvenido.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBienvenido.ForeColor = System.Drawing.Color.White;
+            this.lblBienvenido.Location = new System.Drawing.Point(3, 9);
+            this.lblBienvenido.Name = "lblBienvenido";
+            this.lblBienvenido.Size = new System.Drawing.Size(194, 31);
+            this.lblBienvenido.TabIndex = 8;
+            this.lblBienvenido.Text = "Bienvenido(a)";
             // 
             // lblBendiciones
             // 
             this.lblBendiciones.AutoSize = true;
             this.lblBendiciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBendiciones.ForeColor = System.Drawing.Color.White;
-            this.lblBendiciones.Location = new System.Drawing.Point(49, 11);
+            this.lblBendiciones.Location = new System.Drawing.Point(981, 9);
             this.lblBendiciones.Name = "lblBendiciones";
             this.lblBendiciones.Size = new System.Drawing.Size(173, 31);
-            this.lblBendiciones.TabIndex = 4;
+            this.lblBendiciones.TabIndex = 10;
             this.lblBendiciones.Text = "Bendiciones";
             // 
-            // imgIsotipo
+            // lblNombre
             // 
-            this.imgIsotipo.ErrorImage = ((System.Drawing.Image)(resources.GetObject("imgIsotipo.ErrorImage")));
-            this.imgIsotipo.Image = ((System.Drawing.Image)(resources.GetObject("imgIsotipo.Image")));
-            this.imgIsotipo.Location = new System.Drawing.Point(19, 16);
-            this.imgIsotipo.Name = "imgIsotipo";
-            this.imgIsotipo.Size = new System.Drawing.Size(24, 24);
-            this.imgIsotipo.TabIndex = 0;
-            this.imgIsotipo.TabStop = false;
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.ForeColor = System.Drawing.Color.White;
+            this.lblNombre.Location = new System.Drawing.Point(118, 49);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(64, 18);
+            this.lblNombre.TabIndex = 9;
+            this.lblNombre.Text = "usuario";
             // 
             // pnlFiller
             // 
-            this.pnlFiller.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlFiller.AutoSize = true;
             this.pnlFiller.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.pnlFiller.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlFiller.Controls.Add(this.pictureBox1);
-            this.pnlFiller.Location = new System.Drawing.Point(189, 60);
+            this.pnlFiller.Controls.Add(this.pnlCuenta);
+            this.pnlFiller.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlFiller.Location = new System.Drawing.Point(189, 84);
             this.pnlFiller.Name = "pnlFiller";
-            this.pnlFiller.Size = new System.Drawing.Size(977, 637);
+            this.pnlFiller.Size = new System.Drawing.Size(977, 522);
             this.pnlFiller.TabIndex = 2;
             // 
             // pictureBox1
@@ -393,53 +436,55 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(388, 152);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(254, 254);
+            this.pictureBox1.Size = new System.Drawing.Size(257, 248);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // btnInscribir
+            // pnlCuenta
             // 
-            this.btnInscribir.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnInscribir.FlatAppearance.BorderSize = 0;
-            this.btnInscribir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInscribir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInscribir.Location = new System.Drawing.Point(0, 90);
-            this.btnInscribir.Name = "btnInscribir";
-            this.btnInscribir.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnInscribir.Size = new System.Drawing.Size(189, 30);
-            this.btnInscribir.TabIndex = 7;
-            this.btnInscribir.Text = "Inscribir a Horario";
-            this.btnInscribir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInscribir.UseVisualStyleBackColor = true;
-            this.btnInscribir.Click += new System.EventHandler(this.btnInscribir_Click);
+            this.pnlCuenta.BackColor = System.Drawing.Color.Red;
+            this.pnlCuenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlCuenta.Controls.Add(this.btnCerrarSesion);
+            this.pnlCuenta.Controls.Add(this.btnCambiarPass);
+            this.pnlCuenta.Location = new System.Drawing.Point(804, 0);
+            this.pnlCuenta.Name = "pnlCuenta";
+            this.pnlCuenta.Size = new System.Drawing.Size(172, 60);
+            this.pnlCuenta.TabIndex = 7;
             // 
-            // btnReportes
+            // btnCerrarSesion
             // 
-            this.btnReportes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReportes.FlatAppearance.BorderSize = 0;
-            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportes.Location = new System.Drawing.Point(0, 450);
-            this.btnReportes.Name = "btnReportes";
-            this.btnReportes.Size = new System.Drawing.Size(189, 30);
-            this.btnReportes.TabIndex = 29;
-            this.btnReportes.Text = "Reportes";
-            this.btnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportes.UseVisualStyleBackColor = true;
-            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
+            this.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 30);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(170, 30);
+            this.btnCerrarSesion.TabIndex = 1;
+            this.btnCerrarSesion.Text = "Cerrar Sesion";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
+            // btnCambiarPass
+            // 
+            this.btnCambiarPass.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCambiarPass.Location = new System.Drawing.Point(0, 0);
+            this.btnCambiarPass.Name = "btnCambiarPass";
+            this.btnCambiarPass.Size = new System.Drawing.Size(170, 30);
+            this.btnCambiarPass.TabIndex = 0;
+            this.btnCambiarPass.Text = "Cambiar Contraseña";
+            this.btnCambiarPass.UseVisualStyleBackColor = true;
+            this.btnCambiarPass.Click += new System.EventHandler(this.btnCambiarPass_Click);
             // 
             // frmPrincipalSec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1164, 601);
+            this.ClientSize = new System.Drawing.Size(1166, 606);
             this.Controls.Add(this.pnlFiller);
             this.Controls.Add(this.pnlSide);
             this.Controls.Add(this.pnlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1182, 647);
+            this.MaximumSize = new System.Drawing.Size(1182, 645);
             this.Name = "frmPrincipalSec";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bendiciones";
@@ -450,9 +495,9 @@
             this.pnlCursos.ResumeLayout(false);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgIsotipo)).EndInit();
             this.pnlFiller.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlCuenta.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -461,7 +506,6 @@
         #endregion
         private System.Windows.Forms.Panel pnlSide;
         private System.Windows.Forms.Panel pnlTop;
-        private System.Windows.Forms.PictureBox imgIsotipo;
         private System.Windows.Forms.Button btnCursos;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel pnlCursos;
@@ -470,7 +514,6 @@
         private System.Windows.Forms.Button btnClasesParticulares;
         private System.Windows.Forms.Button btnMatricula;
         private System.Windows.Forms.Panel pnlPagos;
-        private System.Windows.Forms.Button btnServiciosAdeudados;
         private System.Windows.Forms.Button btnHistorico;
         private System.Windows.Forms.Button btnRegitrarCuota;
         private System.Windows.Forms.Button btnPagos;
@@ -480,10 +523,16 @@
         private System.Windows.Forms.Button btnAsistencia;
         private System.Windows.Forms.Panel pnlFiller;
         private System.Windows.Forms.Button btnAsignarDesc;
-        private System.Windows.Forms.Label lblBendiciones;
         private System.Windows.Forms.Button btnAsignarHorario;
         private System.Windows.Forms.Button btnInscribir;
         private System.Windows.Forms.Button btnReportes;
+        private System.Windows.Forms.Button btnCuenta;
+        private System.Windows.Forms.Label lblBienvenido;
+        private System.Windows.Forms.Label lblBendiciones;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.Panel pnlCuenta;
+        private System.Windows.Forms.Button btnCerrarSesion;
+        private System.Windows.Forms.Button btnCambiarPass;
     }
 }
 
