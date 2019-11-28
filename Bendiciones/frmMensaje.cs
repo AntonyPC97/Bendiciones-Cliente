@@ -20,21 +20,16 @@ namespace Bendiciones
 			Formateador f = new Formateador();
 			f.formMensaje(pnlTitulo,pnlMensaje,lblTitulo,lblMensaje,btnOk,btnCancelar,tipo);
 			this.StartPosition = FormStartPosition.CenterScreen;
-			this.Show();
-
         }
 
         private void btnOk_Click(object sender, EventArgs e)
         {
 			this.DialogResult = DialogResult.OK;
-            this.Close();
-            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
-            this.Close();
         }
     }
 }

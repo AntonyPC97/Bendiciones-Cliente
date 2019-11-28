@@ -59,7 +59,7 @@ namespace Bendiciones
             if (txtDNIBebe.Text.Equals("") || txtNombre.Text.Equals("") || cboRelacion.SelectedIndex==-1 || (rbMasculino.Checked==false && rbFemenino.Checked==false))
             {
                 frmMensaje mensaje = new frmMensaje("Complete los campos obligatorios", "Error de CAMPOS", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             return true;
         }

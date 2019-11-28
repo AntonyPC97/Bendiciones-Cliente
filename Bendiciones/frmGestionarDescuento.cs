@@ -91,23 +91,23 @@ namespace Bendiciones
 			if (txtPorcentaje.Text.Equals("") || txtNombre.Text.Equals("") || txtDescripcion.Text.Equals("")) 
 			{
 				frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios", "Error de Campos","");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 
 			if (!float.TryParse(txtPorcentaje.Text,out i))
 			{	
 				frmMensaje mensaje = new frmMensaje("Ingrese un procentaje valido(Ej. 25, 30.5)", "Porcentaje Invalido", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 			if (float.Parse(txtPorcentaje.Text) < 0 || float.Parse(txtPorcentaje.Text) > 100)
 			{
 				frmMensaje mensaje = new frmMensaje("El porcentaje debe estar entre 0 y 100", "Porcentaje Invalido", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 			if (cboTipo.SelectedIndex == -1)
 			{
 				frmMensaje mensaje = new frmMensaje("Escoja un Tipo de Seguro", "Error de Tipo", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 			return true;
 		}

@@ -109,12 +109,12 @@ namespace Bendiciones
             if(cliente == null)
             {
                 frmMensaje mensaje = new frmMensaje("Seleecione un Cliente", "Error de Cliente", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             if (dgvMatriculas.RowCount == 0)
             {
                 frmMensaje mensaje = new frmMensaje("Agregue un curso", "Error de Matricula", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             return true;
         }

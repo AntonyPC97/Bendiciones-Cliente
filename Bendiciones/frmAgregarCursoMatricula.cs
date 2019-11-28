@@ -53,18 +53,18 @@ namespace Bendiciones
             if (cur == null)
             {
                 frmMensaje mensaje = new frmMensaje("No se ha seleccionado un servicio","Error de Servicio","");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             if (cboFormaPago.SelectedIndex == -1)
             {
                 frmMensaje mensaje = new frmMensaje("No se ha seleccionado una forma de pago", "Error de Forma de Pago", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             if(!float.TryParse(txtAbonar.Text,out i))
             {
                 frmMensaje mensaje = new frmMensaje("Ingrese una cantidad valida", "Error al Abonar", "");
                 txtAbonar.Text = "";
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             return true;
         }

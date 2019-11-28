@@ -99,12 +99,12 @@ namespace Bendiciones
 			if (txtNombreCurso.Text.Equals("")|| txtDescripcion.Text.Equals("") || txtPrecio.Text.Equals(""))
 			{
 				frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios", "Error de campos","");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 			if(!float.TryParse(txtPrecio.Text,out i))
 			{
 				frmMensaje mensaje = new frmMensaje("Añada un precio válido", "Error en Precio", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 			
 			return true;

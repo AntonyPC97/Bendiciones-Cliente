@@ -111,13 +111,13 @@ namespace Bendiciones
                     Program.dbController.actualizarColaborador(colaborador);
                     if (colaborador.tipo.nombre.Equals("Administracion"))
                     {
-                        frmPrincipal Principal = new frmPrincipal(txtUser.Text);
+                        frmPrincipal Principal = new frmPrincipal(colaborador);
                         Principal.Show();
                         this.Hide();
                     }
                     else if(colaborador.tipo.nombre.Equals("Secretaria"))
                     {
-                        frmPrincipalSec Principal = new frmPrincipalSec(txtUser.Text);
+                        frmPrincipalSec Principal = new frmPrincipalSec(colaborador);
                         Principal.Show();
                         this.Hide();
                     }

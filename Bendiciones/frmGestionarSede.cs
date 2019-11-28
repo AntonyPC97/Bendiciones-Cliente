@@ -35,17 +35,17 @@ namespace Bendiciones
 			if(txtTelefono.Text.Equals("") || txtDireccion.Text.Equals("") || txtDistrito.Text.Equals(""))
 			{
 				frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios", "", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 			if (!int.TryParse(txtTelefono.Text, out i))
 			{
 				frmMensaje mensaje = new frmMensaje("Telefono debe ser numerico", "", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 			if (txtTelefono.Text.Length < 7)
 			{
 				frmMensaje mensaje = new frmMensaje("Tamaño minimo de 7 numeros en el campo Telefono", "", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 			return true;
 		}

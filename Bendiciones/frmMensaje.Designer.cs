@@ -64,7 +64,7 @@
             this.pnlTitulo.Controls.Add(this.lblTitulo);
             this.pnlTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitulo.Location = new System.Drawing.Point(0, 0);
-            this.pnlTitulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlTitulo.Margin = new System.Windows.Forms.Padding(2);
             this.pnlTitulo.Name = "pnlTitulo";
             this.pnlTitulo.Size = new System.Drawing.Size(409, 43);
             this.pnlTitulo.TabIndex = 2;
@@ -96,7 +96,7 @@
             this.pnlMensaje.Controls.Add(this.btnOk);
             this.pnlMensaje.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMensaje.Location = new System.Drawing.Point(0, 43);
-            this.pnlMensaje.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlMensaje.Margin = new System.Windows.Forms.Padding(2);
             this.pnlMensaje.Name = "pnlMensaje";
             this.pnlMensaje.Size = new System.Drawing.Size(409, 137);
             this.pnlMensaje.TabIndex = 4;

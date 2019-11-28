@@ -174,32 +174,32 @@ namespace Bendiciones
                txtDireccion.Text.Equals("") || cboDistrito.SelectedIndex == -1)
             {
                 frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios", "", "");
-               return false;
+               if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             if(float.TryParse(txtPrecio.Text, out i))
             {
                 if(i <= 0)
                 {
                     frmMensaje mensaje = new frmMensaje("El precio debe ser mayor a cero", "", "");
-                    return false;
+                    if(mensaje.ShowDialog() == DialogResult.OK) return false;
                 }
             }
             else
             {
                 frmMensaje mensaje = new frmMensaje("TDebe ingresar un precio válido", "", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             if (dtpHoraIni.Value > dtpHoraFin.Value)
             {
                 frmMensaje mensaje = new frmMensaje("El horario tiene una hora de inicio mayor a la hora final", "Error de Servicio", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             int horaIni = dtpHoraIni.Value.Hour * 100 + dtpHoraIni.Value.Minute;
             int horaFin = dtpHoraFin.Value.Hour * 100 + dtpHoraFin.Value.Minute;
             if (horaFin - horaIni > 300 | horaFin - horaIni < 130)
             {
                 frmMensaje mensaje = new frmMensaje("La duración de la clase particular debe ser de mínimo 2hrs y máximo 3 hrs", "Error de Servicio", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
 
             return true;

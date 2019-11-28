@@ -86,6 +86,29 @@ namespace Bendiciones
 				}
 			}
 		}
-	}
+
+        public void CambiarPass(Service.colaborador colaborador)
+        {
+
+            using (MailMessage mail = new MailMessage())
+            {
+                mail.From = new MailAddress(emailFromAddress);
+                mail.To.Add(colaborador.email);
+                mail.Subject = "Cambio de Contraseña de " + colaborador.nombre;
+                mail.Body = "Usuario: " + colaborador.user + "<br>Contraseña: " + colaborador.password +
+                    "<br> Contraseña personal. Por favor, no comparta con nadie su contraseña";
+                mail.IsBodyHtml = true;
+                using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
+                {
+                    smtp.Credentials = new NetworkCredential(emailFromAddress, password);
+                    smtp.EnableSsl = enableSSL;
+                    smtp.Send(mail);
+                    frmMensaje mensaje = new frmMensaje("Se ha enviado el correo a " + colaborador.email, "", "");
+                }
+            }
+
+
+        }
+    }
 }
 

@@ -76,7 +76,7 @@ namespace Bendiciones
 			if(txtDescripcion.Text.Equals("") || txtNombreCondicion.Text.Equals(""))
 			{
 				frmMensaje mensaje = new frmMensaje("Complete los campos obligatorios", "Error de CAMPOS", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 			return true;
 		}

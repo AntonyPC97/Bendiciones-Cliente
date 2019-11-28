@@ -220,28 +220,28 @@ namespace Bendiciones
 				cboTipo.SelectedIndex ==-1 || txtDireccion.Text.Equals(""))
             {
 				frmMensaje mensaje = new frmMensaje("Complete los campos obligatorios","Error de CAMPOS","");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
             
 			if(txtTelefono.Text.Length < 7 || txtTelefono.Text.Length == 8)
 			{
 				frmMensaje mensaje = new frmMensaje("Telefono de longitud incorrecta", "Error de TELEFONO", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 			if (!Program.dbController.validarUsuarioUnico(txtUsuario.Text))
 			{
 				frmMensaje mensaje = new frmMensaje("El nombre de USUARIO no esta disponible.", "Error de USUARIO", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
             if (!IsValidEmail(txtCorreo.Text))
             {
                 frmMensaje mensaje = new frmMensaje("Ingrese un correo electronico valido", "", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             if (!int.TryParse(txtDNI.Text,out i) || !int.TryParse(txtTelefono.Text, out i)) 
             {
                 frmMensaje mensaje = new frmMensaje("Dni y Telefono deben ser numericos", "", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             
             return true;

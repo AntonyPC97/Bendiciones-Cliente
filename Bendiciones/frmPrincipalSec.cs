@@ -20,14 +20,14 @@ namespace Bendiciones
         int btnWidth = 172;
 
 
-        public frmPrincipalSec(string usuario)
+        public frmPrincipalSec(Service.colaborador colaborador)
         {
             InitializeComponent();
 
             Paleta paleta = new Paleta();
             pnlTop.BackColor = paleta.GrisOscuro;
             pnlSide.BackColor = paleta.NaranjaOscuro;
-            lblUsuario.Text = usuario;
+            lblUsuario.Text = colaborador.nombre;
             lblUsuario.Left = lblBienvenido.Width - lblUsuario.Width;
             estadoInicialBarraLateral();
             customDesign();

@@ -87,16 +87,16 @@ namespace Bendiciones
             if (cboFormaPago.SelectedIndex == -1)
             {
                 frmMensaje mensaje = new frmMensaje("No se ha seleciconado una forma de pago", "Error de Forma de Pago", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             if (!float.TryParse(txtAbonar.Text, out i))
             {
                 frmMensaje mensaje = new frmMensaje("Ingrese una cantidad valida", "Error al Abonar", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }else if(i == 0)
             {
                 frmMensaje mensaje = new frmMensaje("Ingrese un monto a abonar mayor que cero", "Error al Abonar", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             return true;
         }

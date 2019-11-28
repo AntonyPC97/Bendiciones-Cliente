@@ -281,35 +281,35 @@ namespace Bendiciones
 			if (txtNombreCliente.Text.Equals("") || txtDNI.Text.Equals("") || cboSedes.SelectedIndex==-1|| txtTelef.Text.Equals(""))
 			{
 				frmMensaje mensaje = new frmMensaje("Complete los campos obligatorios","Error de Campos","");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
             
 			if(!int.TryParse(txtTelef.Text,out i))
 			{
 				frmMensaje mensaje = new frmMensaje("Campo TELEFONO debe ser numerico", "Error de TELEFONO", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 			if (txtDNI.Text.Length != 8)
 			{
 				frmMensaje mensaje = new frmMensaje("DNI de longitud incorrecta", "Error de DNI", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 			if (txtTelef.Text.Length < 7 || txtTelef.Text.Length == 8)
 			{
 				frmMensaje mensaje = new frmMensaje("Telefono de longitud incorrecta", "Error de TELEFONO", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 
 			if (!IsValidEmail(txtCorreo.Text))
 			{
 				frmMensaje mensaje = new frmMensaje("Ingrese un correo electronico valido: example@dominio.com", "Error de CORREO", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 
 			if (rbFemenino.Checked == false && rbMasculino.Checked == false)
 			{
 				frmMensaje mensaje = new frmMensaje("Campo SEXO(cliente o pareja) debe ser seleccionado", "Error de SEXO", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 
 			if ((!txtAseguradora.Text.Equals("") && txtNumAseguradora.Text.Equals(""))|| (txtAseguradora.Text.Equals("") && !txtNumAseguradora.Text.Equals("")))
@@ -318,9 +318,9 @@ namespace Bendiciones
                 if (!int.TryParse(txtNumAseguradora.Text, out i))
                 {
                     frmMensaje mensaje1 = new frmMensaje("Campo Num. ASEGURADORA debe ser numerico", "Error de ASEGURADORA", "");
-                    return false;
+                    if(mensaje.ShowDialog() == DialogResult.OK) return false;
                 }
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
 
 			if ((!txtDNIPareja.Text.Equals("") && txtNombrePareja.Text.Equals("")) || (txtDNIPareja.Text.Equals("") && !txtNombrePareja.Text.Equals("")))
@@ -329,15 +329,15 @@ namespace Bendiciones
                 if(rbFemeninoPareja.Checked == false && rbMasculinoPareja.Checked == false)
                 {
                     frmMensaje mensaje1 = new frmMensaje("Campo SEXO(cliente o pareja) debe ser seleccionado", "Error de SEXO", "");
-                    return false;
+                    if(mensaje1.ShowDialog() == DialogResult.OK) return false;
                 }
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 
 			if (udNumEmbarazos.Value < udNumPartos.Value)
 			{
-                frmMensaje mensaje1 = new frmMensaje("N° de Embarazos debe ser mayor que N° de Partos ", "Error", "");
-                return false;
+                frmMensaje mensaje = new frmMensaje("N° de Embarazos debe ser mayor que N° de Partos ", "Error", "");
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             return true;
 		}
