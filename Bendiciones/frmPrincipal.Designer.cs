@@ -497,11 +497,11 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombre.ForeColor = System.Drawing.Color.White;
             this.lblNombre.Location = new System.Drawing.Point(118, 49);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(79, 24);
+            this.lblNombre.Size = new System.Drawing.Size(64, 18);
             this.lblNombre.TabIndex = 4;
             this.lblNombre.Text = "usuario";
             // 
@@ -534,7 +534,7 @@
             this.pnlCuenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCuenta.Controls.Add(this.btnCerrarSesion);
             this.pnlCuenta.Controls.Add(this.btnCambiarPass);
-            this.pnlCuenta.Location = new System.Drawing.Point(804, 3);
+            this.pnlCuenta.Location = new System.Drawing.Point(804, 0);
             this.pnlCuenta.Name = "pnlCuenta";
             this.pnlCuenta.Size = new System.Drawing.Size(172, 60);
             this.pnlCuenta.TabIndex = 1;

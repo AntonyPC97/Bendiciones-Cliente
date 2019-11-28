@@ -16,6 +16,7 @@ namespace Bendiciones
     public partial class frmPrincipalSec : Form
     {
         private Form activeForm = null;
+        private Service.colaborador colab;
         int btnHeight = 30;
         int btnWidth = 172;
 
@@ -27,9 +28,11 @@ namespace Bendiciones
             Paleta paleta = new Paleta();
             pnlTop.BackColor = paleta.GrisOscuro;
             pnlSide.BackColor = paleta.NaranjaOscuro;
-            lblUsuario.Text = colaborador.nombre;
-            lblUsuario.Left = lblBienvenido.Width - lblUsuario.Width;
+            pnlCuenta.BackColor = paleta.NaranjaOscuro;
+            lblNombre.Text = colaborador.nombre;
+            lblNombre.Left = lblBienvenido.Width - lblNombre.Width;
             estadoInicialBarraLateral();
+            colab = colaborador;
             customDesign();
         }
 
@@ -89,6 +92,8 @@ namespace Bendiciones
             f.formatearBotonMenu(btnPagos);
             f.formatearBotonSubMenu(btnInscribir);
             f.formatearBotonMenu(btnReportes);
+            f.formatearBotonSubMenu(btnCerrarSesion);
+            f.formatearBotonSubMenu(btnCambiarPass);
             #endregion
 
         }
@@ -97,6 +102,7 @@ namespace Bendiciones
             pnlCursos.Visible = false;
             pnlAsistencia.Visible = false;
             pnlPagos.Visible = false;
+            pnlCuenta.Visible = false;
         }
 
         private void hideSubMenu()
@@ -107,7 +113,8 @@ namespace Bendiciones
                 pnlPagos.Visible = false;
             if (pnlAsistencia.Visible == true)
                 pnlAsistencia.Visible = false;
-
+            if (pnlCuenta.Visible == true)
+                pnlCuenta.Visible = false;
         }
 
         private void showSubMenu(Panel subMenu)
@@ -141,7 +148,6 @@ namespace Bendiciones
         {
             showSubMenu(pnlCursos);
         }
-
         private void btnAsistencia_Click(object sender, EventArgs e)
         {
             showSubMenu(pnlAsistencia);
@@ -150,6 +156,12 @@ namespace Bendiciones
         private void btnPagos_Click(object sender, EventArgs e)
         {
             showSubMenu(pnlPagos);
+        }
+
+        private void btnCuenta_Click(object sender, EventArgs e)
+        {
+            showSubMenu(pnlCuenta);
+            pnlCuenta.BringToFront();
         }
         #endregion
 
@@ -232,7 +244,6 @@ namespace Bendiciones
             customDesign();
         }
 
-
         private void btnMatricula_Click(object sender, EventArgs e)
         {
             frmMatricula formMatricula = new frmMatricula();
@@ -279,6 +290,7 @@ namespace Bendiciones
         private void btnReportes_Click(object sender, EventArgs e)
         {
             frmReportesTotal formReportes = new frmReportesTotal();
+            //frmReportes formReportes = new frmReportes();
             openChildForm(formReportes);
             customDesign();
         }
@@ -287,5 +299,25 @@ namespace Bendiciones
         {
             Application.Exit();
         }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            frmMensaje mensaje = new frmMensaje("Seguro que quiere cerrar sesion?", "", "Confirmar");
+            if (mensaje.ShowDialog() == DialogResult.OK)
+            {
+                this.Hide();
+                FormLogin login = new FormLogin();
+                login.Show();
+            }
+        }
+
+        private void btnCambiarPass_Click(object sender, EventArgs e)
+        {
+            frmCambiarPass cambiar = new frmCambiarPass(colab, this);
+
+            cambiar.Show();
+        }
+
+        
     }
 }
