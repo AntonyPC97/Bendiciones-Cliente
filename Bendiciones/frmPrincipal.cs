@@ -16,11 +16,12 @@ namespace Bendiciones
     public partial class frmPrincipal : Form
     {
         private Form activeForm = null;
+        private Service.colaborador colab;
         int btnHeight = 30;
         int btnWidth = 172;
 
 
-        public frmPrincipal(string usuario)
+        public frmPrincipal(Service.colaborador colaborador)
         {
             InitializeComponent();
 
@@ -28,9 +29,10 @@ namespace Bendiciones
             pnlTop.BackColor = paleta.GrisOscuro;
             pnlSide.BackColor = paleta.NaranjaOscuro;
             pnlCuenta.BackColor = paleta.NaranjaOscuro;
-            lblUsuario.Text = usuario;
-            lblUsuario.Left = lblBienvenido.Width - lblUsuario.Width;
+            lblNombre.Text = colaborador.nombre;
+            lblNombre.Left = lblBienvenido.Left;
             estadoInicialBarraLateral();
+            colab = colaborador;
             customDesign();
         }
 
@@ -180,9 +182,10 @@ namespace Bendiciones
             showSubMenu(pnlPagos);
         }
 
-        private void picCerraSesion_Click(object sender, EventArgs e)
+        private void btnCuenta_Click(object sender, EventArgs e)
         {
             showSubMenu(pnlCuenta);
+            pnlCuenta.BringToFront();
         }
         #endregion
 
@@ -323,13 +326,20 @@ namespace Bendiciones
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            frmMensaje mensaje = new frmMensaje("Seguro que quiere cerrar sesion?","","Confirmar");
+            frmMensaje mensaje = new frmMensaje("Seguro que quiere cerrar sesion?","","Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
             if(mensaje.ShowDialog() == DialogResult.OK)
             {
                 this.Hide();
                 FormLogin login = new FormLogin();
                 login.Show();
             }
+        }
+
+        private void btnCambiarPass_Click(object sender, EventArgs e)
+        {
+            frmCambiarPass cambiar = new frmCambiarPass(colab,this);
+            
+            cambiar.Show();
         }
     }
 }

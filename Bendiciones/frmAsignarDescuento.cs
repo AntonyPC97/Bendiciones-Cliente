@@ -59,7 +59,7 @@ namespace Bendiciones
             }
             curso.desAplicables = descuentos.ToArray<Service.descuento>();
             Program.dbController.actualizarCurso(curso);
-            frmMensaje mensaje = new frmMensaje("Descuentos actualizados", "Mensaje de confirmación", "Confirmar");
+            frmMensaje mensaje = new frmMensaje("Descuentos actualizados", "Mensaje de confirmación","Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
 
         }
 

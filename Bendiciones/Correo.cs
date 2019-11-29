@@ -34,8 +34,8 @@ namespace Bendiciones
 					smtp.Credentials = new NetworkCredential(emailFromAddress, password);
 					smtp.EnableSsl = enableSSL;
 					smtp.Send(mail);
-					frmMensaje mensaje = new frmMensaje("Se ha enviado el correo a " + colaborador.email, "", "");
-				}
+					frmMensaje mensaje = new frmMensaje("Se ha enviado el correo a " + colaborador.email, "", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
+                }
 			}
                
             
@@ -43,16 +43,18 @@ namespace Bendiciones
 		
 		public void CorreoNuevoServicio(Service.cliente cliente,BindingList<Service.matricula> matriculas)
 		{
-
+            double monto =0;
 			using (MailMessage mail = new MailMessage())
 			{
 				mail.From = new MailAddress(emailFromAddress);
 				mail.To.Add(cliente.email);
 				mail.Subject = "Bienvenida/o a Escuela para embarazadas " + cliente.nombre;
-				mail.Body = "La relacion de sus matricuals es\n\n";
+				mail.Body = "La relacion de sus matricuals es<br><br>";
 				foreach(Service.matricula mat in matriculas)
 				{
-					mail.Body += mat.servicio.nombre +"\n";
+                    if (mat.cuotas!=null) monto = mat.cuotas[0].monto;
+
+					mail.Body += "Curso: "+mat.servicio.nombre +"<br>Monto inicial Abonado: "+monto + "<br>Saldo: "+mat.saldo+"<br><br>";
 				}
 				mail.IsBodyHtml = true;
 				using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
@@ -60,8 +62,8 @@ namespace Bendiciones
 					smtp.Credentials = new NetworkCredential(emailFromAddress, password);
 					smtp.EnableSsl = enableSSL;
 					smtp.Send(mail);
-					frmMensaje mensaje = new frmMensaje("Se ha enviado Correo con los detalles a " + cliente.email, "", "");
-				}
+					frmMensaje mensaje = new frmMensaje("Se ha enviado correo con los detalles a " + cliente.email, "", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
+                }
 			}
 
 
@@ -82,10 +84,51 @@ namespace Bendiciones
 					smtp.Credentials = new NetworkCredential(emailFromAddress, password);
 					smtp.EnableSsl = enableSSL;
 					smtp.Send(mail);
-					frmMensaje mensaje = new frmMensaje("Se ha enviado un correo a " + colaborador.email, "", "Confirmar");
+					frmMensaje mensaje = new frmMensaje("Se ha enviado un correo a " + colaborador.email, "", "Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
 				}
 			}
 		}
-	}
+
+        public void CambiarPass(Service.colaborador colaborador)
+        {
+
+            using (MailMessage mail = new MailMessage())
+            {
+                mail.From = new MailAddress(emailFromAddress);
+                mail.To.Add(colaborador.email);
+                mail.Subject = "Cambio de Contraseña de " + colaborador.nombre;
+                mail.Body = "Usuario: " + colaborador.user + "<br>Contraseña: " + colaborador.password +
+                    "<br> Contraseña personal. Por favor, no comparta con nadie su contraseña";
+                mail.IsBodyHtml = true;
+                using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
+                {
+                    smtp.Credentials = new NetworkCredential(emailFromAddress, password);
+                    smtp.EnableSsl = enableSSL;
+                    smtp.Send(mail);
+                    frmMensaje mensaje = new frmMensaje("Se ha enviado el correo a " + colaborador.email, "", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
+                }
+            }
+        }
+
+        public void RegistroCuota(Service.matricula matricula,string abonar)
+        {
+
+            using (MailMessage mail = new MailMessage())
+            {
+                mail.From = new MailAddress(emailFromAddress);
+                mail.To.Add(matricula.cliente.email);
+                mail.Subject = "Se ha registrado un nuevo pago" ;
+                mail.Body = "Estimada/o cliente, <br><br>Se ha registrado un nuevo pago en su curso "+ matricula.servicio.nombre;
+                mail.Body += "<br>Monto Registrado: "+abonar + "<br>Nuevo Saldo Adeudado: "+matricula.saldo;
+                mail.IsBodyHtml = true;
+                using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
+                {
+                    smtp.Credentials = new NetworkCredential(emailFromAddress, password);
+                    smtp.EnableSsl = enableSSL;
+                    smtp.Send(mail);
+                }
+            }
+        }
+    }
 }
 

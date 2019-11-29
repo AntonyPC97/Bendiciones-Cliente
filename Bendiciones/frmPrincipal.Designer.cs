@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.pnlSide = new System.Windows.Forms.Panel();
-            this.picCuenta = new System.Windows.Forms.PictureBox();
             this.btnReportes = new System.Windows.Forms.Button();
             this.btnClasesParticulares = new System.Windows.Forms.Button();
             this.btnMatricula = new System.Windows.Forms.Button();
@@ -56,26 +55,24 @@
             this.btnCursosRegistrar = new System.Windows.Forms.Button();
             this.btnCursos = new System.Windows.Forms.Button();
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.btnCuenta = new System.Windows.Forms.Button();
             this.lblBendiciones = new System.Windows.Forms.Label();
-            this.lblUsuario = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
             this.lblBienvenido = new System.Windows.Forms.Label();
-            this.imgIsotipo = new System.Windows.Forms.PictureBox();
             this.pnlFiller = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlCuenta = new System.Windows.Forms.Panel();
-            this.btnCambiarPass = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
+            this.btnCambiarPass = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlSide.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picCuenta)).BeginInit();
             this.pnlPagos.SuspendLayout();
             this.pnlAsistencia.SuspendLayout();
             this.pnlAdmin.SuspendLayout();
             this.pnlCursos.SuspendLayout();
             this.pnlTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgIsotipo)).BeginInit();
             this.pnlFiller.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlCuenta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlSide
@@ -99,17 +96,6 @@
             this.pnlSide.Name = "pnlSide";
             this.pnlSide.Size = new System.Drawing.Size(189, 534);
             this.pnlSide.TabIndex = 1;
-            // 
-            // picCuenta
-            // 
-            this.picCuenta.Image = ((System.Drawing.Image)(resources.GetObject("picCuenta.Image")));
-            this.picCuenta.Location = new System.Drawing.Point(1127, 52);
-            this.picCuenta.Name = "picCuenta";
-            this.picCuenta.Size = new System.Drawing.Size(27, 29);
-            this.picCuenta.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picCuenta.TabIndex = 1;
-            this.picCuenta.TabStop = false;
-            this.picCuenta.Click += new System.EventHandler(this.picCerraSesion_Click);
             // 
             // btnReportes
             // 
@@ -474,16 +460,28 @@
             // pnlTop
             // 
             this.pnlTop.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pnlTop.Controls.Add(this.picCuenta);
+            this.pnlTop.Controls.Add(this.btnCuenta);
             this.pnlTop.Controls.Add(this.lblBendiciones);
-            this.pnlTop.Controls.Add(this.lblUsuario);
+            this.pnlTop.Controls.Add(this.lblNombre);
             this.pnlTop.Controls.Add(this.lblBienvenido);
-            this.pnlTop.Controls.Add(this.imgIsotipo);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.Size = new System.Drawing.Size(1166, 84);
             this.pnlTop.TabIndex = 0;
+            // 
+            // btnCuenta
+            // 
+            this.btnCuenta.BackColor = System.Drawing.Color.White;
+            this.btnCuenta.FlatAppearance.BorderSize = 0;
+            this.btnCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCuenta.Image = ((System.Drawing.Image)(resources.GetObject("btnCuenta.Image")));
+            this.btnCuenta.Location = new System.Drawing.Point(1133, 49);
+            this.btnCuenta.Name = "btnCuenta";
+            this.btnCuenta.Size = new System.Drawing.Size(30, 32);
+            this.btnCuenta.TabIndex = 6;
+            this.btnCuenta.UseVisualStyleBackColor = false;
+            this.btnCuenta.Click += new System.EventHandler(this.btnCuenta_Click);
             // 
             // lblBendiciones
             // 
@@ -496,16 +494,16 @@
             this.lblBendiciones.TabIndex = 5;
             this.lblBendiciones.Text = "Bendiciones";
             // 
-            // lblUsuario
+            // lblNombre
             // 
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(118, 49);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(79, 24);
-            this.lblUsuario.TabIndex = 4;
-            this.lblUsuario.Text = "usuario";
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.ForeColor = System.Drawing.Color.White;
+            this.lblNombre.Location = new System.Drawing.Point(118, 49);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(64, 18);
+            this.lblNombre.TabIndex = 4;
+            this.lblNombre.Text = "usuario";
             // 
             // lblBienvenido
             // 
@@ -517,16 +515,6 @@
             this.lblBienvenido.Size = new System.Drawing.Size(194, 31);
             this.lblBienvenido.TabIndex = 3;
             this.lblBienvenido.Text = "Bienvenido(a)";
-            // 
-            // imgIsotipo
-            // 
-            this.imgIsotipo.ErrorImage = ((System.Drawing.Image)(resources.GetObject("imgIsotipo.ErrorImage")));
-            this.imgIsotipo.Image = ((System.Drawing.Image)(resources.GetObject("imgIsotipo.Image")));
-            this.imgIsotipo.Location = new System.Drawing.Point(9, 49);
-            this.imgIsotipo.Name = "imgIsotipo";
-            this.imgIsotipo.Size = new System.Drawing.Size(24, 24);
-            this.imgIsotipo.TabIndex = 0;
-            this.imgIsotipo.TabStop = false;
             // 
             // pnlFiller
             // 
@@ -540,6 +528,39 @@
             this.pnlFiller.Size = new System.Drawing.Size(977, 534);
             this.pnlFiller.TabIndex = 2;
             // 
+            // pnlCuenta
+            // 
+            this.pnlCuenta.BackColor = System.Drawing.Color.Red;
+            this.pnlCuenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlCuenta.Controls.Add(this.btnCerrarSesion);
+            this.pnlCuenta.Controls.Add(this.btnCambiarPass);
+            this.pnlCuenta.Location = new System.Drawing.Point(804, 0);
+            this.pnlCuenta.Name = "pnlCuenta";
+            this.pnlCuenta.Size = new System.Drawing.Size(172, 60);
+            this.pnlCuenta.TabIndex = 1;
+            // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 30);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(170, 30);
+            this.btnCerrarSesion.TabIndex = 1;
+            this.btnCerrarSesion.Text = "Cerrar Sesion";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
+            // btnCambiarPass
+            // 
+            this.btnCambiarPass.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCambiarPass.Location = new System.Drawing.Point(0, 0);
+            this.btnCambiarPass.Name = "btnCambiarPass";
+            this.btnCambiarPass.Size = new System.Drawing.Size(170, 30);
+            this.btnCambiarPass.TabIndex = 0;
+            this.btnCambiarPass.Text = "Cambiar Contraseña";
+            this.btnCambiarPass.UseVisualStyleBackColor = true;
+            this.btnCambiarPass.Click += new System.EventHandler(this.btnCambiarPass_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -548,41 +569,10 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(399, 152);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(257, 248);
+            this.pictureBox1.Size = new System.Drawing.Size(276, 240);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // pnlCuenta
-            // 
-            this.pnlCuenta.BackColor = System.Drawing.Color.Red;
-            this.pnlCuenta.Controls.Add(this.btnCerrarSesion);
-            this.pnlCuenta.Controls.Add(this.btnCambiarPass);
-            this.pnlCuenta.Location = new System.Drawing.Point(804, 3);
-            this.pnlCuenta.Name = "pnlCuenta";
-            this.pnlCuenta.Size = new System.Drawing.Size(172, 60);
-            this.pnlCuenta.TabIndex = 1;
-            // 
-            // btnCambiarPass
-            // 
-            this.btnCambiarPass.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCambiarPass.Location = new System.Drawing.Point(0, 0);
-            this.btnCambiarPass.Name = "btnCambiarPass";
-            this.btnCambiarPass.Size = new System.Drawing.Size(172, 30);
-            this.btnCambiarPass.TabIndex = 0;
-            this.btnCambiarPass.Text = "Cambiar Contraseña";
-            this.btnCambiarPass.UseVisualStyleBackColor = true;
-            // 
-            // btnCerrarSesion
-            // 
-            this.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 30);
-            this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(172, 30);
-            this.btnCerrarSesion.TabIndex = 1;
-            this.btnCerrarSesion.Text = "Cerrar Sesion";
-            this.btnCerrarSesion.UseVisualStyleBackColor = true;
-            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
             // frmPrincipal
             // 
@@ -599,17 +589,15 @@
             this.Text = "Bendiciones";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmPrincipal_FormClosed);
             this.pnlSide.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picCuenta)).EndInit();
             this.pnlPagos.ResumeLayout(false);
             this.pnlAsistencia.ResumeLayout(false);
             this.pnlAdmin.ResumeLayout(false);
             this.pnlCursos.ResumeLayout(false);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgIsotipo)).EndInit();
             this.pnlFiller.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlCuenta.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -617,7 +605,6 @@
         #endregion
         private System.Windows.Forms.Panel pnlSide;
         private System.Windows.Forms.Panel pnlTop;
-        private System.Windows.Forms.PictureBox imgIsotipo;
         private System.Windows.Forms.Button btnCursos;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnSede;
@@ -646,11 +633,11 @@
         private System.Windows.Forms.Button btnInscribir;
         private System.Windows.Forms.Button btnReportes;
         private System.Windows.Forms.Label lblBendiciones;
-        private System.Windows.Forms.Label lblUsuario;
-        private System.Windows.Forms.PictureBox picCuenta;
+        private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Panel pnlCuenta;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.Button btnCambiarPass;
+        private System.Windows.Forms.Button btnCuenta;
     }
 }
 

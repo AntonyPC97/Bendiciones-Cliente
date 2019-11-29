@@ -52,7 +52,7 @@ namespace Bendiciones
 		{
 			descuentoSeleccionado = (Service.descuento)dgvDescuentos.CurrentRow.DataBoundItem;
 			Program.dbController.eliminarDescuento(descuentoSeleccionado.idDescuento);
-			frmMensaje mensaje = new frmMensaje("Se ha eliminado correctamente","Mensaje Confirmacion","Confirmar");
+			frmMensaje mensaje = new frmMensaje("Se ha eliminado correctamente","Mensaje Confirmacion","Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
 			this.Close();
 		}
 	}

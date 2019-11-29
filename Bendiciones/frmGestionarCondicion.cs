@@ -76,7 +76,7 @@ namespace Bendiciones
 			if(txtDescripcion.Text.Equals("") || txtNombreCondicion.Text.Equals(""))
 			{
 				frmMensaje mensaje = new frmMensaje("Complete los campos obligatorios", "Error de CAMPOS", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 			return true;
 		}
@@ -95,12 +95,12 @@ namespace Bendiciones
 				if (estadoObjCon == Estado.Nuevo)
 				{
 					Program.dbController.insertarCondicionMedica(condicion);
-					frmMensaje mensaje = new frmMensaje("Condicion Medica Registrada exitosamente", "Mensaje Confirmacion", "Confirmar");
+					frmMensaje mensaje = new frmMensaje("Condicion Medica Registrada exitosamente", "Mensaje Confirmacion", "Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
 				}
 				else if (estadoObjCon == Estado.Modificar)
 				{
 					Program.dbController.actualizarCondicionMedica(condicion);
-					frmMensaje mensaje = new frmMensaje("Se han actualizado los datos", "Mensaje Confirmacion", "Confirmar");
+					frmMensaje mensaje = new frmMensaje("Se han actualizado los datos", "Mensaje Confirmacion", "Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
 				}
 				limpiarComponentes();
 				estadoComponentes(Estado.Inicial);
