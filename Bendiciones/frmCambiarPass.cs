@@ -31,6 +31,11 @@ namespace Bendiciones
 
         private void txtRepetir_TextChanged(object sender, EventArgs e)
         {
+            if(txtRepetir.Text.Length == 0)
+            {
+                lblCoinciden.Visible = false;
+            }
+
             if (!txtNueva.Text.Equals(txtRepetir.Text))
                 lblCoinciden.Visible = true;
             else
@@ -39,18 +44,26 @@ namespace Bendiciones
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
+            if(txtActual.Text.Equals("") || txtNueva.Text.Equals("") || txtRepetir.Text.Equals(""))
+            {
+                frmMensaje msj = new frmMensaje("Complete todos los campos", "", "");
+                if (msj.ShowDialog() == DialogResult.OK) return;
+                return;
+            }
+
             if (!txtActual.Text.Equals(colaborador.password))
             {
                 frmMensaje msj = new frmMensaje("Contraseña actual incorrecta","", "");
                 if (msj.ShowDialog() == DialogResult.OK) return;
                 return;
             }
-            frmMensaje mensaje1 = new frmMensaje("Seguro que desea continuar?","","");
+            
+            frmMensaje mensaje1 = new frmMensaje("Seguro que desea continuar?","","Confirmar"); 
             if(mensaje1.ShowDialog() == DialogResult.OK)
             {
                 colaborador.password = txtNueva.Text;
                 Program.dbController.actualizarColaborador(colaborador);
-                frmMensaje mensaje2 = new frmMensaje("Cambio de Contraseñas exitoso", "", "Confirmar");
+                frmMensaje mensaje2 = new frmMensaje("Cambio de Contraseñas exitoso", "","Confirmar"); 
                 if (mensaje2.ShowDialog() == DialogResult.OK)
                 {
                     this.Close();

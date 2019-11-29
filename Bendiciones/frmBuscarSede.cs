@@ -20,7 +20,7 @@ namespace Bendiciones
             dgvSedes.AutoGenerateColumns = false;
             dgvSedes.DataSource = Program.dbController.listarSedes();
             Formateador f = new Formateador();
-            f.iniFormFreddyBuscar(this, "Buscar Sede", "Nombre:", txtNombre, dgvSedes, btnBuscar, btnSeleccionar,btnEliminar, false, eliminar);
+            f.iniFormFreddyBuscar(this, "Buscar Sede", "Distrito:", txtNombre, dgvSedes, btnBuscar, btnSeleccionar,btnEliminar, false, eliminar);
         }
 
 
@@ -48,7 +48,7 @@ namespace Bendiciones
 		{
 			sedeSeleccionada = (Service.sede)dgvSedes.CurrentRow.DataBoundItem;
 			Program.dbController.eliminarSede(sedeSeleccionada.idSede);
-			frmMensaje mensaje = new frmMensaje("Se ha eliminado correctamente", "Mensaje Confirmacion", "Confirmar");
+			frmMensaje mensaje = new frmMensaje("Se ha eliminado correctamente", "Mensaje Confirmacion","Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
 			this.Close();
 		}
 	}

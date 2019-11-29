@@ -280,7 +280,7 @@ namespace Bendiciones
 			int i;
 			if (txtNombreCliente.Text.Equals("") || txtDNI.Text.Equals("") || cboSedes.SelectedIndex==-1|| txtTelef.Text.Equals(""))
 			{
-				frmMensaje mensaje = new frmMensaje("Complete los campos obligatorios","Error de Campos","");
+				frmMensaje mensaje = new frmMensaje("Complete los campos obligatorios","Error de Campos","Confirmar");
 				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
             
@@ -314,11 +314,11 @@ namespace Bendiciones
 
 			if ((!txtAseguradora.Text.Equals("") && txtNumAseguradora.Text.Equals(""))|| (txtAseguradora.Text.Equals("") && !txtNumAseguradora.Text.Equals("")))
 			{
-				frmMensaje mensaje = new frmMensaje("Completar Campos de Aseguradora", "Error de ASEGURADORA", "");
+				frmMensaje mensaje = new frmMensaje("Completar Campos de Aseguradora", "Error de ASEGURADORA", ""); 
                 if (!int.TryParse(txtNumAseguradora.Text, out i))
                 {
                     frmMensaje mensaje1 = new frmMensaje("Campo Num. ASEGURADORA debe ser numerico", "Error de ASEGURADORA", "");
-                    if(mensaje.ShowDialog() == DialogResult.OK) return false;
+                    if(mensaje1.ShowDialog() == DialogResult.OK) return false;
                 }
                 if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
@@ -334,11 +334,7 @@ namespace Bendiciones
                 if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 
-			if (udNumEmbarazos.Value < udNumPartos.Value)
-			{
-                frmMensaje mensaje = new frmMensaje("N° de Embarazos debe ser mayor que N° de Partos ", "Error", "");
-                if(mensaje.ShowDialog() == DialogResult.OK) return false;
-            }
+			
             return true;
 		}
         #endregion
@@ -442,7 +438,7 @@ namespace Bendiciones
 				{
 					if (dgvBebes.RowCount == 0)
 					{
-						frmMensaje mensaje = new frmMensaje("Debe registrar un bebe para poder Registrar Apoderado","","");
+						frmMensaje mensaje = new frmMensaje("Debe registrar un bebe para poder Registrar Apoderado","","Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
 						return;
 					}
 					apoderado.nombre = txtNombreCliente.Text;
@@ -463,30 +459,30 @@ namespace Bendiciones
 					{
                         if (!Program.dbController.verificarDNI(txtDNI.Text))
                         {
-                            frmMensaje msj = new frmMensaje("El Dni ya existe en la base de datos", "Error de Dni", "");
+                            frmMensaje msj = new frmMensaje("El Dni ya existe en la base de datos", "Error de Dni", ""); if (msj.ShowDialog() == DialogResult.OK) { }
                             return;
                         }
                         string cod = Program.dbController.insertarApoderado(apoderado, ((Service.sede)cboSedes.SelectedItem).distrito);
 						Console.WriteLine(cod);
-						frmMensaje mensaje = new frmMensaje("Se ha registrado un nuevo Apoderado", "Mensaje de confirmación", "Confirmar");
+						frmMensaje mensaje = new frmMensaje("Se ha registrado un nuevo Apoderado", "Mensaje de confirmación","Confirmar");if(mensaje.ShowDialog() == DialogResult.OK){};
 					}
 					else
 					{
 						Program.dbController.actualizarApoderado(apoderado);
-						frmMensaje mensaje = new frmMensaje("Se han actualizado los datos", "Mensaje de confirmación", "Confirmar");
+						frmMensaje mensaje = new frmMensaje("Se han actualizado los datos", "Mensaje de confirmación", "Confirmar");if(mensaje.ShowDialog() == DialogResult.OK){};
 					}
 				}
 				else
 				{
 					if (dgvGestaciones.RowCount == 0)
 					{
-						frmMensaje mensaje = new frmMensaje("Debe registrar una gestacion para poder Registrar Gestante", "", "");
-						return;
+						frmMensaje mensaje = new frmMensaje("Debe registrar una gestacion para poder Registrar Gestante", "", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
+                        return;
 					}
 					if (udNumEmbarazos.Value < udNumPartos.Value)
 					{
-						frmMensaje mensaje = new frmMensaje("Numero de Partos no puede se mayor que el Numero de Embarazos","", "");
-						return;
+						frmMensaje mensaje = new frmMensaje("Numero de Partos no puede se mayor que el Numero de Embarazos","", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
+                        return;
 					}
 					gestante.nombre = txtNombreCliente.Text;
 					gestante.dni = txtDNI.Text;
@@ -540,17 +536,17 @@ namespace Bendiciones
 					{
                         if (!Program.dbController.verificarDNI(txtDNI.Text) || !Program.dbController.verificarDNI(txtDNIPareja.Text))
                         {
-                            frmMensaje msj = new frmMensaje("El Dni ya existe en la base de datos", "Error de Dni", "");
+                            frmMensaje msj = new frmMensaje("El Dni ya existe en la base de datos", "Error de Dni", ""); if (msj.ShowDialog() == DialogResult.OK) { }
                             return;
                         }
                         string cod = Program.dbController.insertarGestante(gestante, ((Service.sede)cboSedes.SelectedItem).distrito);
-						frmMensaje mensaje = new frmMensaje("Cliente apoderado registrado", "Mensaje de confirmación", "");
-					}
+						frmMensaje mensaje = new frmMensaje("Cliente apoderado registrado", "Mensaje de confirmación", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
+                    }
 					else
 					{
 						Program.dbController.actualizarGestante(gestante);
-						frmMensaje mensaje = new frmMensaje("Cliente apoderado actualizado", "Mensaje de confirmación", "");
-					}
+						frmMensaje mensaje = new frmMensaje("Cliente apoderado actualizado", "Mensaje de confirmación", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
+                    }
 				}
 				estadoComponentes(Estado.Inicial);
 				limpiarComponentes();
@@ -607,8 +603,8 @@ namespace Bendiciones
 			}
 			else
 			{
-				frmMensaje mensaje = new frmMensaje("Ingrese datos del contacto de emergencia correctamente", "Error de CAMPOS", "");
-			}			
+				frmMensaje mensaje = new frmMensaje("Ingrese datos del contacto de emergencia correctamente", "Error de CAMPOS", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
+            }			
 		}
 
 		private void btnQuitarContacto_Click(object sender, EventArgs e)

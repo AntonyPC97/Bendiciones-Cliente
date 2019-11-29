@@ -82,7 +82,7 @@ namespace Bendiciones
 					smtp.Credentials = new NetworkCredential(emailFromAddress, password);
 					smtp.EnableSsl = enableSSL;
 					smtp.Send(mail);
-					frmMensaje mensaje = new frmMensaje("Se ha enviado un correo a " + colaborador.email, "", "Confirmar");
+					frmMensaje mensaje = new frmMensaje("Se ha enviado un correo a " + colaborador.email, "", "Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
 				}
 			}
 		}

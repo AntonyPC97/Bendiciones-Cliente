@@ -30,7 +30,7 @@ namespace Bendiciones
             pnlSide.BackColor = paleta.NaranjaOscuro;
             pnlCuenta.BackColor = paleta.NaranjaOscuro;
             lblNombre.Text = colaborador.nombre;
-            lblNombre.Left = lblBienvenido.Width - lblNombre.Width;
+            lblNombre.Left = lblBienvenido.Left;
             estadoInicialBarraLateral();
             colab = colaborador;
             customDesign();
@@ -326,7 +326,7 @@ namespace Bendiciones
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            frmMensaje mensaje = new frmMensaje("Seguro que quiere cerrar sesion?","","Confirmar");
+            frmMensaje mensaje = new frmMensaje("Seguro que quiere cerrar sesion?","","Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
             if(mensaje.ShowDialog() == DialogResult.OK)
             {
                 this.Hide();

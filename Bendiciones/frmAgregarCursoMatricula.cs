@@ -183,6 +183,7 @@ namespace Bendiciones
                     if (total < abono)
                     {
                         frmMensaje mensaje = new frmMensaje("Monto máximo a abonar: " + total.ToString("0.0"), "Mensaje de advertencia", "");
+                        if(mensaje.ShowDialog() == DialogResult.OK) { }
                         txtAbonar.Text = txtTotal.Text;
                     }
                     else
@@ -194,6 +195,7 @@ namespace Bendiciones
             else
             {
                 frmMensaje mensaje = new frmMensaje("Ingrese una cantidad valida", "Error al Abonar", "");
+                if (mensaje.ShowDialog() == DialogResult.OK) { }
                 txtAbonar.Text = "";
             }
             

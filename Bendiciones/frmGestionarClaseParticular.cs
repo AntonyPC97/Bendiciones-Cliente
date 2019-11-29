@@ -309,7 +309,7 @@ namespace Bendiciones
                 mat.cliente = cliente;
             else
             {
-                frmMensaje m1 = new frmMensaje("Debe seleccionar un cliente", "Error de CLIENTE", "");
+                frmMensaje m1 = new frmMensaje("Debe seleccionar un cliente", "Error de CLIENTE", ""); if (m1.ShowDialog() == DialogResult.OK) { }
                 return;
             }
 
@@ -339,7 +339,7 @@ namespace Bendiciones
             }
             else
             {
-                frmMensaje m1 = new frmMensaje("Campo fecha debe ser posterior a hoy", "Error de FECHA", "");
+                frmMensaje m1 = new frmMensaje("Campo fecha debe ser posterior a hoy", "Error de FECHA", ""); if (m1.ShowDialog() == DialogResult.OK) { }
                 return;
             }
 
@@ -372,12 +372,12 @@ namespace Bendiciones
                 mat.servicio = cp;
                 Program.dbController.insertarMatricula(mat);
 
-                frmMensaje mensaje = new frmMensaje("Clase Particular registrada", "Mensaje de confirmación", "");
-                
+                frmMensaje mensaje = new frmMensaje("Clase Particular registrada", "Mensaje de confirmación", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
+
             } else
             {
                 Program.dbController.actualizarClaseParticular(cp);
-                frmMensaje mensaje = new frmMensaje("Clase Particular actualizada", "Mensaje de confirmación", "");
+                frmMensaje mensaje = new frmMensaje("Clase Particular actualizada", "Mensaje de confirmación", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
             }
 
             limpiarComponentes();
@@ -392,13 +392,13 @@ namespace Bendiciones
             {
                 if (p <= 0)
                 {
-                    frmMensaje mensaje = new frmMensaje("Ingrese una cantidad numérica mayor a cero", "Error de precio", "");
+                    frmMensaje mensaje = new frmMensaje("Ingrese una cantidad numérica mayor a cero", "Error de precio", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
                     txtPrecio.Text = "";
                     return;
                 }
             }else
             {
-                frmMensaje mensaje = new frmMensaje("Ingrese una cantidad numérica mayor a cero", "Error de precio", "");
+                frmMensaje mensaje = new frmMensaje("Ingrese una cantidad numérica mayor a cero", "Error de precio", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
                 txtPrecio.Text = "";
                 return;
             }
@@ -430,7 +430,7 @@ namespace Bendiciones
             }
             else
             {
-                frmMensaje mensaje = new frmMensaje("Ingrese una cantidad numérica mayor a cero", "Error de precio", "");
+                frmMensaje mensaje = new frmMensaje("Ingrese una cantidad numérica mayor a cero", "Error de precio", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
                 txtPrecio.Text = "";
                 txtSaldo.Text = "0";
                 txtTotal.Text = "0";
@@ -461,7 +461,7 @@ namespace Bendiciones
             }
             else
             {
-                frmMensaje mensaje = new frmMensaje("Ingrese un precio válido", "Error de precio", "");
+                frmMensaje mensaje = new frmMensaje("Ingrese un precio válido", "Error de precio", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
                 cboDescuentos.SelectedIndex = -1;
                 txtSaldo.Text = "0";
                 txtTotal.Text = "0";

@@ -95,12 +95,12 @@ namespace Bendiciones
 				if (estadoObjCon == Estado.Nuevo)
 				{
 					Program.dbController.insertarCondicionMedica(condicion);
-					frmMensaje mensaje = new frmMensaje("Condicion Medica Registrada exitosamente", "Mensaje Confirmacion", "Confirmar");
+					frmMensaje mensaje = new frmMensaje("Condicion Medica Registrada exitosamente", "Mensaje Confirmacion", "Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
 				}
 				else if (estadoObjCon == Estado.Modificar)
 				{
 					Program.dbController.actualizarCondicionMedica(condicion);
-					frmMensaje mensaje = new frmMensaje("Se han actualizado los datos", "Mensaje Confirmacion", "Confirmar");
+					frmMensaje mensaje = new frmMensaje("Se han actualizado los datos", "Mensaje Confirmacion", "Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
 				}
 				limpiarComponentes();
 				estadoComponentes(Estado.Inicial);

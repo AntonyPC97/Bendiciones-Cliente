@@ -97,7 +97,7 @@ namespace Bendiciones
             }
             else
             {
-                frmMensaje mensaje = new frmMensaje("Seleccione un Cliente", "", "");
+                frmMensaje mensaje = new frmMensaje("Seleccione un Cliente", "", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
             }
         }
 
@@ -109,7 +109,7 @@ namespace Bendiciones
                 float pendiente = float.Parse(txtPendiente.Text);
                 if (pendiente < monto)
                 {
-                    frmMensaje mensaje = new frmMensaje("Monto máximo a abonar: " + pendiente.ToString("0.0"), "Mensaje de advertencia", "");
+                    frmMensaje mensaje = new frmMensaje("Monto máximo a abonar: " + pendiente.ToString("0.0"), "Mensaje de advertencia", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
                     txtAbonar.Text = "0";
                 }
                 else
@@ -123,7 +123,7 @@ namespace Bendiciones
                     servMat.saldo = servMat.saldo - c.monto;
                     Program.dbController.actualizarMatricula(servMat);
                     Program.dbController.insertarCuota(c, servMat.idMatricula);
-                    frmMensaje mensaje = new frmMensaje("Cuota Registrada exitosamente", "Mensaje Confirmación", "Confirmar");
+                    frmMensaje mensaje = new frmMensaje("Cuota Registrada exitosamente", "Mensaje Confirmación","Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
 
                     txtPendiente.Text = (float.Parse(txtPendiente.Text) - float.Parse(txtAbonar.Text)).ToString("0.0");
                     txtAbonar.Text = "0";
