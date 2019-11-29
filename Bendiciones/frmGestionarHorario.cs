@@ -14,7 +14,7 @@ namespace Bendiciones
     public partial class frmGestionarHorario : Form
     {
         private Service.horario horarioSeleccionado = new Service.horario();
-        private Service.colaborador docente = new Service.colaborador();
+        private Service.colaborador docente = null;
         private Service.curso curs;
 
         public frmGestionarHorario(Service.curso cur)
@@ -121,10 +121,11 @@ namespace Bendiciones
             txtNumVac.Text = h.numVacantes.ToString();
 
             //docente nulo
-            if (h.colaborador.idPersona != 0)
+            if (h.colaborador!=null)
             {
                 txtDNIDocente.Text = h.colaborador.dni;
                 txtNombreDocente.Text = h.colaborador.nombre;
+                docente = h.colaborador;
             }
             estadoComponentes(Estado.Inicial);
         }
@@ -155,7 +156,7 @@ namespace Bendiciones
             txtNumVac.Text = h.numVacantes.ToString();
 
             //docente nulo
-            if (h.colaborador.idPersona != 0)
+            if (h.colaborador!= null)
             {
                 txtDNIDocente.Text = h.colaborador.dni;
                 txtNombreDocente.Text = h.colaborador.nombre;
@@ -182,7 +183,7 @@ namespace Bendiciones
                 horarioSeleccionado.sede = (Service.sede)cboSede.SelectedItem;
                 //si hay docente
                 //Console.WriteLine(docente.idPersona);
-                if (docente != null)
+                if (txtDNIDocente.Text != "")
                 {
                     horarioSeleccionado.colaborador = docente;
                 }

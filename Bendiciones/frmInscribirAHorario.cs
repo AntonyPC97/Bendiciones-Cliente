@@ -28,6 +28,7 @@ namespace Bendiciones
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
+            cboServicios.Items.Clear();
             dgvHorarios.RowCount = 0;
             frmBuscarCliente formBuscarCliente = new frmBuscarCliente(false);
             if (formBuscarCliente.ShowDialog() == DialogResult.OK)

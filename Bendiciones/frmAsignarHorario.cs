@@ -90,7 +90,7 @@ namespace Bendiciones
                 filaHorario[0] = horario.clase;
                 filaHorario[1] = horario.horaIni.ToShortTimeString();
                 filaHorario[2] = horario.horaFin.ToShortTimeString();
-                if (horario.colaborador.idPersona != 0)
+                if (horario.colaborador !=null)
                     filaHorario[3] = horario.colaborador.nombre;
                 else
                     filaHorario[3] = "-";
@@ -110,17 +110,19 @@ namespace Bendiciones
                 return;
             }
             frmMensaje dr = new frmMensaje("Seguro que quiere eliminar horario?","","Confirmar");
-            if (dr.DialogResult == DialogResult.OK)
-            {
-                horario = horarios[dgvHorarios.CurrentRow.Index];
-                horarios.Remove(horario);
-                dgvHorarios.Rows.Remove(dgvHorarios.CurrentRow);
+            if (dr.ShowDialog() == DialogResult.OK) { 
+                if (dr.DialogResult == DialogResult.OK)
+                {
+                    horario = horarios[dgvHorarios.CurrentRow.Index];
+                    horarios.Remove(horario);
+                    dgvHorarios.Rows.Remove(dgvHorarios.CurrentRow);
+                }
+                else if (dr.DialogResult == DialogResult.Cancel)
+                {
+                    return;
+                }
             }
-            else if (dr.DialogResult == DialogResult.Cancel)
-            {
-                return;
-            }
-            
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
