@@ -107,14 +107,17 @@
 			this.btnBuscar.TabIndex = 10;
 			this.btnBuscar.Text = "Buscar";
 			this.btnBuscar.UseVisualStyleBackColor = true;
+			this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
 			// 
 			// txtNombre
 			// 
+			this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtNombre.Location = new System.Drawing.Point(245, 122);
 			this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
 			this.txtNombre.Name = "txtNombre";
-			this.txtNombre.Size = new System.Drawing.Size(607, 22);
+			this.txtNombre.Size = new System.Drawing.Size(607, 30);
 			this.txtNombre.TabIndex = 8;
+			this.txtNombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombre_KeyDown);
 			// 
 			// btnEliminar
 			// 

@@ -45,7 +45,7 @@ namespace Bendiciones
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-			
+			dgvDescuentos.DataSource = Program.dbController.listarDescuentos();
         }
 
 		private void btnEliminar_Click(object sender, EventArgs e)

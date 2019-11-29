@@ -75,6 +75,18 @@ namespace Bendiciones
         {
             docenteSeleccionado = (Service.colaborador)dgvProfesores.CurrentRow.DataBoundItem;
             Program.dbController.eliminarColaborador(docenteSeleccionado.idPersona);
-        }
+
+			docenteSeleccionado = (Service.colaborador)dgvProfesores.CurrentRow.DataBoundItem;
+			frmMensaje mensaje = new frmMensaje("Seguro que desea eliminar el Docente: " + docenteSeleccionado.nombre, "", "");
+			if (mensaje.ShowDialog() == DialogResult.OK)
+			{
+				Program.dbController.eliminarColaborador(docenteSeleccionado.idPersona);
+				frmMensaje msj = new frmMensaje("Se ha eliminado correctamente", "Mensaje Confirmacion", "Confirmar");
+				if (msj.ShowDialog() == DialogResult.OK)
+				{
+					this.Close();
+				}
+			}
+		}
     }
 }

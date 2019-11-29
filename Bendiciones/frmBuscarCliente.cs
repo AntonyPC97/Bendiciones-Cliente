@@ -101,7 +101,25 @@ namespace Bendiciones
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-
+			if(clientes[dgvClientes.CurrentRow.Index] is Service.apoderado)
+			{
+				frmMensaje mensaje = new frmMensaje("Seguro que desea eliminar el Cliente "+ clientes[dgvClientes.CurrentRow.Index].nombre,"","");
+				if (mensaje.ShowDialog() == DialogResult.OK)
+				{
+					Program.dbController.eliminarApoderado(clientes[dgvClientes.CurrentRow.Index].idPersona);
+				}
+			}
+			else
+			{
+				frmMensaje mensaje = new frmMensaje("Seguro que desea eliminar el Cliente " + clientes[dgvClientes.CurrentRow.Index].nombre, "", "");
+				if (mensaje.ShowDialog() == DialogResult.OK)
+				{
+					Program.dbController.eliminarGestante(clientes[dgvClientes.CurrentRow.Index].idPersona);
+				}
+			}
+			frmMensaje msj = new frmMensaje("Cliente Eliminado","Mensaje Confirmacion", "Confirmar");
+			if(msj.ShowDialog() == DialogResult.OK)
+				this.Close();
         }
 
 		private void txtNombre_KeyDown(object sender, KeyEventArgs e)

@@ -837,7 +837,7 @@
 			// txtNumAseguradora
 			// 
 			this.txtNumAseguradora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtNumAseguradora.Location = new System.Drawing.Point(217, 71);
+			this.txtNumAseguradora.Location = new System.Drawing.Point(239, 71);
 			this.txtNumAseguradora.Margin = new System.Windows.Forms.Padding(4);
 			this.txtNumAseguradora.MaxLength = 8;
 			this.txtNumAseguradora.Name = "txtNumAseguradora";
@@ -852,9 +852,9 @@
 			this.label3.Location = new System.Drawing.Point(30, 30);
 			this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(131, 25);
+			this.label3.Size = new System.Drawing.Size(153, 25);
 			this.label3.TabIndex = 15;
-			this.label3.Text = "Aseguradora:";
+			this.label3.Text = "Aseguradora(*):";
 			// 
 			// label2
 			// 
@@ -863,14 +863,14 @@
 			this.label2.Location = new System.Drawing.Point(30, 70);
 			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(179, 25);
+			this.label2.Size = new System.Drawing.Size(201, 25);
 			this.label2.TabIndex = 14;
-			this.label2.Text = "Número de seguro:";
+			this.label2.Text = "Número de seguro(*):";
 			// 
 			// txtAseguradora
 			// 
 			this.txtAseguradora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtAseguradora.Location = new System.Drawing.Point(169, 31);
+			this.txtAseguradora.Location = new System.Drawing.Point(191, 31);
 			this.txtAseguradora.Margin = new System.Windows.Forms.Padding(4);
 			this.txtAseguradora.MaxLength = 150;
 			this.txtAseguradora.Name = "txtAseguradora";

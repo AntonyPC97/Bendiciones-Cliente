@@ -228,6 +228,17 @@ namespace Bendiciones
 			rbFemeninoPareja.Checked = false;
 			rbMasculino.Checked = false;
 			dgvGestaciones.RowCount = 0;
+
+			cliente = new Service.cliente();
+			apoderado = new Service.apoderado();
+			gestante = new Service.gestante();
+			gestacion = new Service.gestacion();
+			contacto = new Service.contactoEmergencia();
+			bebe = new Service.bebe();
+			contactos = new BindingList<Service.contactoEmergencia>();
+			bebes = new BindingList<Service.bebe>();
+			gestacion = new Service.gestacion();
+			condiciones = new BindingList<Service.condicionMedica>();
 		}
 
         public bool IsValidEmail(string email)
@@ -357,7 +368,6 @@ namespace Bendiciones
 					rbMasculino.Checked = true;
 				txtAseguradora.Text = cliente.aseguradora;
 				txtNumAseguradora.Text = cliente.numSeguro;
-                //dgvContactos.Rows.Clear();
                 dgvContactos.RowCount = 0;
                 //rprobando cambios a rama
 				if (cliente.contactos != null)
@@ -468,6 +478,7 @@ namespace Bendiciones
 					}
 					else
 					{
+						
 						Program.dbController.actualizarApoderado(apoderado);
 						frmMensaje mensaje = new frmMensaje("Se han actualizado los datos", "Mensaje de confirmación", "Confirmar");if(mensaje.ShowDialog() == DialogResult.OK){};
 					}
