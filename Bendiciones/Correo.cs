@@ -49,10 +49,10 @@ namespace Bendiciones
 				mail.From = new MailAddress(emailFromAddress);
 				mail.To.Add(cliente.email);
 				mail.Subject = "Bienvenida/o a Escuela para embarazadas " + cliente.nombre;
-				mail.Body = "La relacion de sus matricuals es\n\n";
+				mail.Body = "La relacion de sus matricuals es<br><br>";
 				foreach(Service.matricula mat in matriculas)
 				{
-					mail.Body += mat.servicio.nombre +"\n";
+					mail.Body += mat.servicio.nombre +"<br>";
 				}
 				mail.IsBodyHtml = true;
 				using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
@@ -60,7 +60,7 @@ namespace Bendiciones
 					smtp.Credentials = new NetworkCredential(emailFromAddress, password);
 					smtp.EnableSsl = enableSSL;
 					smtp.Send(mail);
-					frmMensaje mensaje = new frmMensaje("Se ha enviado Correo con los detalles a " + cliente.email, "", "");
+					frmMensaje mensaje = new frmMensaje("Se ha enviado correo con los detalles a " + cliente.email, "", "");
 				}
 			}
 
