@@ -13,6 +13,7 @@ namespace Bendiciones
     public partial class frmAsistenciaColaborador : Form
     {
         private BindingList<Service.asistencia> asistencias = new BindingList<Service.asistencia>();
+        private BindingList<Service.asistencia> asistenciasReg = new BindingList<Service.asistencia>();
         private Service.colaborador colab;
         private IEnumerable<Service.curso> cursos;
         private IEnumerable<Service.curso> cursosAsis;
@@ -40,6 +41,7 @@ namespace Bendiciones
             cboCursos.DisplayMember = "Nombre";
             cboCursos.SelectedIndexChanged += new EventHandler(cboCursos_SelectedIndexChanged);
             cursos = Program.dbController.listarDocentesDelDia();
+            asistencias.Clear();
             if(cursos != null)
             {
                 foreach (Service.curso c in cursos)
@@ -64,6 +66,7 @@ namespace Bendiciones
                 }
             }
             cursosAsis = Program.dbController.listarDocentesYaAsistieron();
+            asistenciasReg.Clear();
             if (cursosAsis != null)
             {
                 foreach (Service.curso c in cursosAsis)
@@ -79,6 +82,10 @@ namespace Bendiciones
                             fila[3] = h.horaIni.ToShortTimeString();
                             fila[4] = h.horaFin.ToShortTimeString();
                             dgvYaAsistieron.Rows.Add(fila);
+                            Service.asistencia a = new Service.asistencia();
+                            a.horario = h;
+                            a.persona = h.colaborador;
+                            asistenciasReg.Add(a);
                         }
                     }
                 }
@@ -86,7 +93,7 @@ namespace Bendiciones
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
-        {
+        {   
             
             if (asistencias.Any())
             {
@@ -102,14 +109,16 @@ namespace Bendiciones
                 fila[4] = dgvPorAsistir.CurrentRow.Cells[4].Value;
                 dgvYaAsistieron.Rows.Add(fila);
                 dgvPorAsistir.Rows.RemoveAt(dgvPorAsistir.CurrentRow.Index);
+                asistenciasReg.Add(a);
 
                 frmMensaje mensaje = new frmMensaje("Asistencia registrada", "Mensaje de confirmación","Confirmar");if(mensaje.ShowDialog() == DialogResult.OK){};
             }
             else
             {
-                frmMensaje mensaje = new frmMensaje("Debe seleccionar a un colaborador", "Mensaje de error", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
+                frmMensaje mensaje = new frmMensaje("No hay asistentes el día de hoy", "Mensaje de error", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
             }
-
+            txtDni.Text = "";
+            cboCursos_SelectedIndexChanged(sender, e);
         }
 
         private void txtDni_KeyPress(object sender, KeyPressEventArgs e)
@@ -161,6 +170,7 @@ namespace Bendiciones
             if (cboCursos.SelectedIndex != 0)
             {
                 cursos = Program.dbController.listarDocentesDelDiaPorCurso(((Service.curso)cboCursos.SelectedItem).id_servicio);
+                asistencias.Clear();
                 if (cursos != null)
                 {
                     foreach (Service.curso c in cursos)
@@ -185,6 +195,7 @@ namespace Bendiciones
                     }
                 }
                 cursosAsis = Program.dbController.listarDocentesYaAsistieronPorCurso(((Service.curso)cboCursos.SelectedItem).id_servicio);
+                asistenciasReg.Clear();
                 if (cursosAsis != null)
                 {
                     foreach (Service.curso c in cursosAsis)
@@ -200,7 +211,10 @@ namespace Bendiciones
                                 fila[3] = h.horaIni.ToShortTimeString();
                                 fila[4] = h.horaFin.ToShortTimeString();
                                 dgvYaAsistieron.Rows.Add(fila);
-                                Console.WriteLine("Si");
+                                Service.asistencia a = new Service.asistencia();
+                                a.horario = h;
+                                a.persona = h.colaborador;
+                                asistenciasReg.Add(a);
                             }
                         }
                     }
@@ -209,6 +223,7 @@ namespace Bendiciones
             else
             {
                 cursos = Program.dbController.listarDocentesDelDia();
+                asistencias.Clear();
                 if (cursos != null)
                 {
                     foreach (Service.curso c in cursos)
@@ -233,6 +248,7 @@ namespace Bendiciones
                     }
                 }
                 cursosAsis = Program.dbController.listarDocentesYaAsistieron();
+                asistenciasReg.Clear();
                 if (cursosAsis != null)
                 {
                     foreach (Service.curso c in cursosAsis)
@@ -248,6 +264,10 @@ namespace Bendiciones
                                 fila[3] = h.horaIni.ToShortTimeString();
                                 fila[4] = h.horaFin.ToShortTimeString();
                                 dgvYaAsistieron.Rows.Add(fila);
+                                Service.asistencia a = new Service.asistencia();
+                                a.horario = h;
+                                a.persona = h.colaborador;
+                                asistenciasReg.Add(a);
                             }
                         }
                     }
@@ -259,6 +279,8 @@ namespace Bendiciones
         {
             if (!txtDni.Text.Equals(""))
             {
+                asistencias.Clear();
+                asistenciasReg.Clear();
                 foreach (DataGridViewRow r in dgvPorAsistir.Rows)
                 {
                     if (!r.Cells[0].Value.Equals(txtDni.Text))
@@ -274,6 +296,38 @@ namespace Bendiciones
             else
             {
                 cboCursos_SelectedIndexChanged(sender, e);
+            }
+        }
+
+        private void dgvPorAsistir_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnRegistrar_Click(sender, e);
+        }
+
+        private void dgvYaAsistieron_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (asistenciasReg.Any())
+            {
+                Object[] fila = new Object[5];
+                fila[0] = dgvYaAsistieron.CurrentRow.Cells[0].Value;
+                fila[1] = dgvYaAsistieron.CurrentRow.Cells[1].Value;
+                fila[2] = dgvYaAsistieron.CurrentRow.Cells[2].Value;
+                fila[3] = dgvYaAsistieron.CurrentRow.Cells[3].Value;
+                fila[4] = dgvYaAsistieron.CurrentRow.Cells[4].Value;
+
+                frmMensaje mensaje = new frmMensaje("¿Está seguro de desmarcar la asistencia de " + fila[1] + "?", "Mensaje de confirmación", "Confirmar");
+                if (mensaje.ShowDialog() == DialogResult.OK)
+                {
+                    Service.asistencia a = asistenciasReg[dgvYaAsistieron.CurrentRow.Index];
+                    a.asistio = false;
+                    Program.dbController.actualizarAsistencia(a);
+                    dgvPorAsistir.Rows.Add(fila);
+                    asistencias.Add(a);
+                    asistenciasReg.RemoveAt(dgvYaAsistieron.CurrentRow.Index);
+                    dgvYaAsistieron.Rows.RemoveAt(dgvYaAsistieron.CurrentRow.Index);
+                    
+                }
+
             }
         }
     }

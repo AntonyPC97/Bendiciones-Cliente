@@ -10,16 +10,17 @@ using System.Windows.Forms;
 
 namespace Bendiciones
 {
-    
+
     public partial class frmAsistenciaCliente : Form
     {
         private BindingList<Service.asistencia> asistencias = new BindingList<Service.asistencia>();
+        private BindingList<Service.asistencia> asistenciasReg = new BindingList<Service.asistencia>();
         //private List<Service.curso> cursos;
         private IEnumerable<Service.curso> cursos;
         private IEnumerable<Service.curso> cursosAsis;
         List<Service.curso> data = new List<Service.curso>();
         public frmAsistenciaCliente()
-        {            
+        {
             InitializeComponent();
             Formateador f = new Formateador();
             f.iniFormAsistencia(this, "Asistencia de cliente", pnlCtn, btnRegistrar, btnBuscar);
@@ -34,10 +35,11 @@ namespace Bendiciones
                 cboCursos.DataSource = data;
             }
             else
-                cboCursos.DataSource = dataSource;            
+                cboCursos.DataSource = dataSource;
             cboCursos.DisplayMember = "Nombre";
             cboCursos.SelectedIndexChanged += new EventHandler(cboCursos_SelectedIndexChanged);
             cursos = Program.dbController.listarClientesDelDia();
+            asistencias.Clear();
             if (cursos != null)
             {
                 foreach (Service.curso c in cursos)
@@ -46,8 +48,8 @@ namespace Bendiciones
                     {
                         foreach (Service.horario h in c.horario)
                         {
-                            if(h.participantes != null)                            {
-                                
+                            if (h.participantes != null)
+                            {
                                 foreach (Service.persona p in h.participantes)
                                 {
                                     Object[] fila = new Object[5];
@@ -61,7 +63,7 @@ namespace Bendiciones
                                     a.horario = h;
                                     a.persona = p;
                                     asistencias.Add(a);
-                                } 
+                                }
 
                             }
                         }
@@ -69,6 +71,7 @@ namespace Bendiciones
                 }
             }
             cursosAsis = Program.dbController.listarClientesYaAsistieron();
+            asistenciasReg.Clear();
             if (cursosAsis != null)
             {
                 foreach (Service.curso c in cursosAsis)
@@ -89,6 +92,10 @@ namespace Bendiciones
                                     fila[3] = h.horaIni.ToShortTimeString();
                                     fila[4] = h.horaFin.ToShortTimeString();
                                     dgvYaAsistieron.Rows.Add(fila);
+                                    Service.asistencia a = new Service.asistencia();
+                                    a.horario = h;
+                                    a.persona = p;
+                                    asistenciasReg.Add(a);
                                 }
 
                             }
@@ -100,7 +107,7 @@ namespace Bendiciones
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if(asistencias.Any())
+            if (asistencias.Any())
             {
                 Service.asistencia a = asistencias[dgvPorAsistir.CurrentRow.Index];
                 a.asistio = true;
@@ -114,14 +121,16 @@ namespace Bendiciones
                 fila[4] = dgvPorAsistir.CurrentRow.Cells[4].Value;
                 dgvYaAsistieron.Rows.Add(fila);
                 dgvPorAsistir.Rows.RemoveAt(dgvPorAsistir.CurrentRow.Index);
-                
-                frmMensaje mensaje = new frmMensaje("Asistencia registrada", "Mensaje de confirmación","Confirmar"); if(mensaje.ShowDialog() == DialogResult.OK){};
+                asistenciasReg.Add(a);
+
+                frmMensaje mensaje = new frmMensaje("Asistencia registrada", "Mensaje de confirmación", "Confirmar"); if (mensaje.ShowDialog() == DialogResult.OK) { };
             }
             else
             {
                 frmMensaje mensaje = new frmMensaje("No hay asistentes el día de hoy", "Mensaje de error", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
             }
-            
+            txtDni.Text = "";
+            cboCursos_SelectedIndexChanged(sender, e);
         }
 
         private void cboCursos_SelectedIndexChanged(object sender, EventArgs e)
@@ -129,8 +138,9 @@ namespace Bendiciones
             dgvPorAsistir.RowCount = 0;
             dgvYaAsistieron.RowCount = 0;
             if (cboCursos.SelectedIndex != 0)
-            {               
+            {
                 cursos = Program.dbController.listarClientesDelDiaPorCurso(((Service.curso)cboCursos.SelectedItem).id_servicio);
+                asistencias.Clear();
                 if (cursos != null)
                 {
                     foreach (Service.curso c in cursos)
@@ -163,6 +173,7 @@ namespace Bendiciones
                     }
                 }
                 cursosAsis = Program.dbController.listarClientesYaAsistieronPorCurso(((Service.curso)cboCursos.SelectedItem).id_servicio);
+                asistenciasReg.Clear();
                 if (cursosAsis != null)
                 {
                     foreach (Service.curso c in cursosAsis)
@@ -182,6 +193,10 @@ namespace Bendiciones
                                         fila[3] = h.horaIni.ToShortTimeString();
                                         fila[4] = h.horaFin.ToShortTimeString();
                                         dgvYaAsistieron.Rows.Add(fila);
+                                        Service.asistencia a = new Service.asistencia();
+                                        a.horario = h;
+                                        a.persona = p;
+                                        asistenciasReg.Add(a);
                                     }
 
                                 }
@@ -191,8 +206,10 @@ namespace Bendiciones
                     }
                 }
             }
-            else {
+            else
+            {
                 cursos = Program.dbController.listarClientesDelDia();
+                asistencias.Clear();
                 if (cursos != null)
                 {
                     foreach (Service.curso c in cursos)
@@ -225,8 +242,9 @@ namespace Bendiciones
                     }
                 }
                 cursosAsis = Program.dbController.listarClientesYaAsistieron();
+                asistenciasReg.Clear();
                 if (cursosAsis != null)
-                {
+                {                    
                     foreach (Service.curso c in cursosAsis)
                     {
                         if (c.horario != null)
@@ -236,7 +254,7 @@ namespace Bendiciones
                                 if (h.participantes != null)
                                 {
                                     foreach (Service.persona p in h.participantes)
-                                    {                                        
+                                    {
                                         Object[] fila = new Object[5];
                                         fila[0] = p.dni;
                                         fila[1] = p.nombre;
@@ -244,6 +262,10 @@ namespace Bendiciones
                                         fila[3] = h.horaIni.ToShortTimeString();
                                         fila[4] = h.horaFin.ToShortTimeString();
                                         dgvYaAsistieron.Rows.Add(fila);
+                                        Service.asistencia a = new Service.asistencia();
+                                        a.horario = h;
+                                        a.persona = p;
+                                        asistenciasReg.Add(a);
                                     }
 
                                 }
@@ -252,7 +274,7 @@ namespace Bendiciones
                     }
                 }
             }
-                
+
         }
 
         private void txtDni_KeyPress(object sender, KeyPressEventArgs e)
@@ -264,7 +286,7 @@ namespace Bendiciones
             else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
             {
                 e.Handled = false;
-            }            
+            }
             else
             {
                 //el resto de teclas pulsadas se desactivan
@@ -273,7 +295,7 @@ namespace Bendiciones
         }
 
         private void txtDni_KeyDown(object sender, KeyEventArgs e)
-        {       
+        {
             if (e.KeyCode == Keys.Enter)
             {
                 if (!txtDni.Text.Equals(""))
@@ -281,7 +303,7 @@ namespace Bendiciones
                     foreach (DataGridViewRow r in dgvPorAsistir.Rows)
                     {
                         if (!r.Cells[0].Value.Equals(txtDni.Text))
-                           r.Visible = false;
+                            r.Visible = false;
                     }
 
                     foreach (DataGridViewRow r in dgvYaAsistieron.Rows)
@@ -294,7 +316,7 @@ namespace Bendiciones
                 {
                     cboCursos_SelectedIndexChanged(sender, e);
                 }
-            }  
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -316,6 +338,36 @@ namespace Bendiciones
             else
             {
                 cboCursos_SelectedIndexChanged(sender, e);
+            }
+        }
+
+        private void dgvPorAsistir_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnRegistrar_Click(sender, e);
+        }
+
+        private void dgvYaAsistieron_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (asistenciasReg.Any())
+            {               
+                Object[] fila = new Object[5];
+                fila[0] = dgvYaAsistieron.CurrentRow.Cells[0].Value;
+                fila[1] = dgvYaAsistieron.CurrentRow.Cells[1].Value;
+                fila[2] = dgvYaAsistieron.CurrentRow.Cells[2].Value;
+                fila[3] = dgvYaAsistieron.CurrentRow.Cells[3].Value;
+                fila[4] = dgvYaAsistieron.CurrentRow.Cells[4].Value;
+
+                frmMensaje mensaje = new frmMensaje("¿Está seguro de desmarcar la asistencia de "+fila[1]+"?", "Mensaje de confirmación", "Confirmar");
+                if (mensaje.ShowDialog() == DialogResult.OK) {
+                    Service.asistencia a = asistenciasReg[dgvYaAsistieron.CurrentRow.Index];
+                    a.asistio = false;
+                    Program.dbController.actualizarAsistencia(a);
+                    dgvPorAsistir.Rows.Add(fila);
+                    asistenciasReg.RemoveAt(dgvYaAsistieron.CurrentRow.Index);
+                    dgvYaAsistieron.Rows.RemoveAt(dgvYaAsistieron.CurrentRow.Index);                    
+                    asistencias.Add(a);
+                }
+                
             }
         }
     }
