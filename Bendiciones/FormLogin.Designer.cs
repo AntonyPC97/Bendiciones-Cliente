@@ -30,7 +30,6 @@
         {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
 			this.pnlMain = new System.Windows.Forms.Panel();
-			this.btnOlvide = new System.Windows.Forms.Button();
 			this.pnlLine1 = new System.Windows.Forms.Panel();
 			this.lblPassword = new System.Windows.Forms.Label();
 			this.lblUsuario = new System.Windows.Forms.Label();
@@ -40,7 +39,7 @@
 			this.txtUser = new System.Windows.Forms.TextBox();
 			this.picLogo = new System.Windows.Forms.PictureBox();
 			this.picName = new System.Windows.Forms.PictureBox();
-			this.btnSalir = new System.Windows.Forms.Button();
+			this.btnOlvide = new System.Windows.Forms.Button();
 			this.pnlMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.picName)).BeginInit();
@@ -60,30 +59,17 @@
 			this.pnlMain.Controls.Add(this.txtUser);
 			this.pnlMain.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.pnlMain.Location = new System.Drawing.Point(0, 222);
-			this.pnlMain.Margin = new System.Windows.Forms.Padding(4);
+			this.pnlMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.pnlMain.Name = "pnlMain";
 			this.pnlMain.Size = new System.Drawing.Size(480, 443);
 			this.pnlMain.TabIndex = 1;
-			// 
-			// btnOlvide
-			// 
-			this.btnOlvide.FlatAppearance.BorderSize = 0;
-			this.btnOlvide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnOlvide.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-			this.btnOlvide.Location = new System.Drawing.Point(143, 379);
-			this.btnOlvide.Name = "btnOlvide";
-			this.btnOlvide.Size = new System.Drawing.Size(189, 26);
-			this.btnOlvide.TabIndex = 8;
-			this.btnOlvide.Text = "Olvide mi contraseña";
-			this.btnOlvide.UseVisualStyleBackColor = true;
-			this.btnOlvide.Click += new System.EventHandler(this.btnOlvide_Click);
 			// 
 			// pnlLine1
 			// 
 			this.pnlLine1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pnlLine1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.pnlLine1.Location = new System.Drawing.Point(101, 140);
-			this.pnlLine1.Margin = new System.Windows.Forms.Padding(4);
+			this.pnlLine1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.pnlLine1.Name = "pnlLine1";
 			this.pnlLine1.Size = new System.Drawing.Size(266, 1);
 			this.pnlLine1.TabIndex = 5;
@@ -114,7 +100,7 @@
 			// 
 			this.pnlLine2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pnlLine2.Location = new System.Drawing.Point(101, 254);
-			this.pnlLine2.Margin = new System.Windows.Forms.Padding(4);
+			this.pnlLine2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.pnlLine2.Name = "pnlLine2";
 			this.pnlLine2.Size = new System.Drawing.Size(266, 1);
 			this.pnlLine2.TabIndex = 4;
@@ -127,7 +113,7 @@
 			this.btnIngresar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnIngresar.ForeColor = System.Drawing.Color.SeaShell;
 			this.btnIngresar.Location = new System.Drawing.Point(101, 315);
-			this.btnIngresar.Margin = new System.Windows.Forms.Padding(4);
+			this.btnIngresar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.btnIngresar.Name = "btnIngresar";
 			this.btnIngresar.Size = new System.Drawing.Size(267, 57);
 			this.btnIngresar.TabIndex = 3;
@@ -140,7 +126,7 @@
 			this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtPassword.Location = new System.Drawing.Point(101, 226);
-			this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
+			this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.txtPassword.Name = "txtPassword";
 			this.txtPassword.PasswordChar = '*';
 			this.txtPassword.Size = new System.Drawing.Size(267, 19);
@@ -152,7 +138,7 @@
 			this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.txtUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtUser.Location = new System.Drawing.Point(101, 114);
-			this.txtUser.Margin = new System.Windows.Forms.Padding(4);
+			this.txtUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.txtUser.Name = "txtUser";
 			this.txtUser.Size = new System.Drawing.Size(267, 19);
 			this.txtUser.TabIndex = 1;
@@ -162,7 +148,7 @@
 			// 
 			this.picLogo.Image = ((System.Drawing.Image)(resources.GetObject("picLogo.Image")));
 			this.picLogo.Location = new System.Drawing.Point(72, 76);
-			this.picLogo.Margin = new System.Windows.Forms.Padding(4);
+			this.picLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.picLogo.Name = "picLogo";
 			this.picLogo.Size = new System.Drawing.Size(73, 79);
 			this.picLogo.TabIndex = 2;
@@ -172,27 +158,24 @@
 			// 
 			this.picName.Image = ((System.Drawing.Image)(resources.GetObject("picName.Image")));
 			this.picName.Location = new System.Drawing.Point(144, 76);
-			this.picName.Margin = new System.Windows.Forms.Padding(4);
+			this.picName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.picName.Name = "picName";
 			this.picName.Size = new System.Drawing.Size(240, 79);
 			this.picName.TabIndex = 3;
 			this.picName.TabStop = false;
 			// 
-			// btnSalir
+			// btnOlvide
 			// 
-			this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-			this.btnSalir.FlatAppearance.BorderSize = 0;
-			this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnSalir.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnSalir.ForeColor = System.Drawing.Color.SeaShell;
-			this.btnSalir.Location = new System.Drawing.Point(407, 13);
-			this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
-			this.btnSalir.Name = "btnSalir";
-			this.btnSalir.Size = new System.Drawing.Size(60, 26);
-			this.btnSalir.TabIndex = 10;
-			this.btnSalir.Text = "Salir";
-			this.btnSalir.UseVisualStyleBackColor = false;
-			this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+			this.btnOlvide.FlatAppearance.BorderSize = 0;
+			this.btnOlvide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnOlvide.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+			this.btnOlvide.Location = new System.Drawing.Point(143, 379);
+			this.btnOlvide.Name = "btnOlvide";
+			this.btnOlvide.Size = new System.Drawing.Size(189, 26);
+			this.btnOlvide.TabIndex = 8;
+			this.btnOlvide.Text = "Olvide mi contraseña";
+			this.btnOlvide.UseVisualStyleBackColor = true;
+			this.btnOlvide.Click += new System.EventHandler(this.btnOlvide_Click);
 			// 
 			// FormLogin
 			// 
@@ -201,12 +184,11 @@
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
 			this.ClientSize = new System.Drawing.Size(480, 665);
 			this.ControlBox = false;
-			this.Controls.Add(this.btnSalir);
 			this.Controls.Add(this.picName);
 			this.Controls.Add(this.picLogo);
 			this.Controls.Add(this.pnlMain);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Margin = new System.Windows.Forms.Padding(4);
+			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.Name = "FormLogin";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.pnlMain.ResumeLayout(false);
@@ -229,7 +211,6 @@
         private System.Windows.Forms.PictureBox picLogo;
         private System.Windows.Forms.PictureBox picName;
 		private System.Windows.Forms.Button btnOlvide;
-		private System.Windows.Forms.Button btnSalir;
 	}
 }
 
