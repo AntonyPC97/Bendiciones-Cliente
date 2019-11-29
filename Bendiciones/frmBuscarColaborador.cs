@@ -31,6 +31,7 @@ namespace Bendiciones
         {
             Service.colaborador colabFila = (Service.colaborador)dgvColaborador.Rows[e.RowIndex].DataBoundItem;
             dgvColaborador.Rows[e.RowIndex].Cells["Nombre"].Value = colabFila.nombre;
+            dgvColaborador.Rows[e.RowIndex].Cells["DNI"].Value = colabFila.dni;
             dgvColaborador.Rows[e.RowIndex].Cells["Tipo"].Value = colabFila.tipo.nombre;
         }
 
@@ -44,7 +45,7 @@ namespace Bendiciones
 		{
 			colabSeleccionado = (Service.colaborador)dgvColaborador.CurrentRow.DataBoundItem;
 			Program.dbController.eliminarColaborador(colabSeleccionado.idPersona);
-			frmMensaje mensaje = new frmMensaje("Se ha eliminado correctamente", "Mensaje Confirmacion", "Confirmar");
+			frmMensaje mensaje = new frmMensaje("Se ha eliminado correctamente", "Mensaje Confirmacion","Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
 			this.Close();
 		}
 

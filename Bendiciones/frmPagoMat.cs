@@ -63,7 +63,7 @@ namespace Bendiciones
                     float abono = float.Parse(txtAbonar.Text);
                     if (total < abono)
                     {
-                        frmMensaje mensaje = new frmMensaje("Monto máximo a abonar: " + total.ToString("0.0"), "Mensaje de advertencia", "");
+                        frmMensaje mensaje = new frmMensaje("Monto máximo a abonar: " + total.ToString("0.0"), "Mensaje de advertencia", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
                         txtAbonar.Text = txtTotalAPagar.Text;
                     }
                     else
@@ -74,7 +74,7 @@ namespace Bendiciones
             }
             else
             {
-                frmMensaje mensaje = new frmMensaje("Ingrese una cantidad valida", "Error al Abonar", "");
+                frmMensaje mensaje = new frmMensaje("Ingrese una cantidad valida", "Error al Abonar", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
                 txtAbonar.Text = "0";
             }
         }

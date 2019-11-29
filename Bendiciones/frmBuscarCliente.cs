@@ -18,36 +18,6 @@ namespace Bendiciones
         
         public cliente ClienteSeleccionado { get => clienteSeleccionado; set => clienteSeleccionado = value; }
 
-   //     public frmBuscarCliente()
-   //     {
-   //         InitializeComponent();
-   //         dgvClientes.AutoGenerateColumns = false;
-   //         Formateador f = new Formateador();
-   //         f.iniFormFreddyBuscar(this, "Buscar Cliente", "Nombre o DNI:", txtNombre, dgvClientes, btnBuscar, btnSeleccionar, btnEliminar, false);
-			
-			////agregar gestantes y apoderados a la lista de clientes
-			//clientes = Program.dbController.listarApoderadosPorNombreDNI("").ToList<Service.cliente>();
-   //         foreach (Service.gestante g in Program.dbController.listarGestantePorNombreDNI(""))
-   //             clientes.Add((Service.cliente)g);
-
-			////llenar data grid view
-   //         foreach (Service.apoderado apoderado in Program.dbController.listarApoderadosPorNombreDNI(""))
-   //         {
-   //             Object[] fila = new Object[3];
-   //             fila[0] = apoderado.dni;
-   //             fila[1] = apoderado.nombre;
-   //             fila[2] = "Apoderado";
-   //             dgvClientes.Rows.Add(fila);
-   //         }
-   //         foreach (Service.gestante gestante in Program.dbController.listarGestantePorNombreDNI(""))
-   //         {
-   //             Object[] fila = new Object[3];
-   //             fila[0] = gestante.dni;
-   //             fila[1] = gestante.nombre;
-   //             fila[2] = "Gestante";
-   //             dgvClientes.Rows.Add(fila);
-   //         }
-   //     }
         public frmBuscarCliente(Boolean eliminar)
         {
             InitializeComponent();
@@ -83,8 +53,6 @@ namespace Bendiciones
         {
             dgvClientes.RowCount = 0;
             clientes = new List<cliente>();
-            //dgvClientes.DataSource = Program.dbController.listarGestantePorNombreDNI(txtNombre.Text);
-            //dgvClientes.DataSource = Program.dbController.listarApoderadosPorNombreDNI(txtNombre.Text);
             IEnumerable < Service.cliente > apoderados = Program.dbController.listarApoderadosPorNombreDNI(txtNombre.Text);
             if (apoderados != null)
             {
@@ -121,7 +89,7 @@ namespace Bendiciones
         {
             if (dgvClientes.RowCount == 0)
             {
-                frmMensaje mensaje = new frmMensaje("No hay clientes para seleccionar", "Mensaje de advertencia", "");
+                frmMensaje mensaje = new frmMensaje("No hay clientes para seleccionar", "Mensaje de advertencia", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
             }
             else
             {

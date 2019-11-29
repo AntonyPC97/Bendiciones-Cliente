@@ -312,18 +312,17 @@ namespace Bendiciones
                 {
 					if (!Program.dbController.verificarDNI(txtDNI.Text))
 					{
-						frmMensaje msj = new frmMensaje("El Dni ya existe en la base de datos", "Error de DNI", "");
+                        frmMensaje msj = new frmMensaje("El Dni ya existe en la base de datos", "Error de DNI", ""); if (msj.ShowDialog() == DialogResult.OK) { };
 						return;
 					}
 					Program.dbController.insertarColaborador(colaborador);
-					frmMensaje mensaje = new frmMensaje("Colaborador registrado correctamente.", "Mensaje Confirmacion", "Confirmar");
+					frmMensaje mensaje = new frmMensaje("Colaborador registrado correctamente.", "Mensaje Confirmacion", "Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
                     correo.CorreoNuevoColaborador(colaborador);
                 }
                 else if (estadoObjColab == Estado.Modificar)
                 {
                     Program.dbController.actualizarColaborador(colaborador);
-                    frmMensaje mensaje = new frmMensaje("Se han actualizado los datos.", "Mensaje Confirmacion", "Confirmar");
-                    correo.CorreoNuevoColaborador(colaborador);
+                    frmMensaje mensaje = new frmMensaje("Se han actualizado los datos.", "Mensaje Confirmacion", "Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
                 }
 
                 limpiarComponentes();

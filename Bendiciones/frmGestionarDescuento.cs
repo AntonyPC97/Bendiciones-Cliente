@@ -90,7 +90,7 @@ namespace Bendiciones
 			float i;
 			if (txtPorcentaje.Text.Equals("") || txtNombre.Text.Equals("") || txtDescripcion.Text.Equals("")) 
 			{
-				frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios", "Error de Campos","");
+				frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios", "Error de Campos","Confirmar");
 				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 
@@ -128,18 +128,18 @@ namespace Bendiciones
 				}
 				else
 				{
-					frmMensaje mensaje = new frmMensaje("Selecciona tipo de descuento válido", "", "");
-				}
+					frmMensaje mensaje = new frmMensaje("Selecciona tipo de descuento válido", "", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
+                }
 
 				if (estadoObjDescuento == Estado.Nuevo)
 				{
 					Program.dbController.insertarDescuento(descuento);
-					frmMensaje mensaje = new frmMensaje("Descuento Registrado exitosamente.", "Mensaje Confirmacion", "Confirmar");
+					frmMensaje mensaje = new frmMensaje("Descuento Registrado exitosamente.", "Mensaje Confirmacion", "Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
 				}
 				else if (estadoObjDescuento == Estado.Modificar)
 				{
 					Program.dbController.actualizarDescuento(descuento);
-					frmMensaje mensaje = new frmMensaje("Se han actualizado los datos", "Mensaje Confirmacion", "Confirmar");
+					frmMensaje mensaje = new frmMensaje("Se han actualizado los datos", "Mensaje Confirmacion", "Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
 				}
 				limpiarCompentes();
 				estadoComponentes(Estado.Inicial);
