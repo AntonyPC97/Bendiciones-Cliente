@@ -143,5 +143,10 @@ namespace Bendiciones
 			Correo c = new Correo();
 			c.RecuperarPassword(correo, pass);
 		}
+
+		private void btnSalir_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
 	}
 }

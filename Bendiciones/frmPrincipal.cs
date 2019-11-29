@@ -13,14 +13,26 @@ using System.Drawing.Drawing2D;
 
 namespace Bendiciones
 {
+
     public partial class frmPrincipal : Form
     {
         private Form activeForm = null;
         int btnHeight = 30;
         int btnWidth = 172;
 
+		public void BtnFormater(Button btn, int type)
+		{
+			if (type == 1)
+			{
+				btn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			}
+			else if (type == 2)
+			{
+				btn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			}
+		}
 
-        public frmPrincipal()
+		public frmPrincipal()
         {
             InitializeComponent();
 
@@ -111,7 +123,32 @@ namespace Bendiciones
             pnlAdmin.Visible = false;
             pnlAsistencia.Visible = false;
             pnlPagos.Visible = false;
-        }
+
+			BtnFormater(btnCursos, 1);
+			BtnFormater(btnCliente, 1);
+			BtnFormater(btnAdmin, 1);
+			BtnFormater(btnAsistencia, 1);
+			BtnFormater(btnPagos, 1);
+			BtnFormater(btnMatricula, 1);
+			BtnFormater(btnClasesParticulares, 1);
+			BtnFormater(btnReportes, 1);
+
+			BtnFormater(btnCursosRegistrar, 2);
+			BtnFormater(btnAsignarDesc, 2);
+			BtnFormater(btnAsignarHorario, 2);
+			BtnFormater(btnInscribir, 2);
+
+			BtnFormater(btnSede, 2);
+			BtnFormater(btnColaborador, 2);
+			BtnFormater(btnDescuentos, 2);
+			BtnFormater(btnCondiciones, 2);
+
+			BtnFormater(btnAsistenciaCliente, 2);
+			BtnFormater(btnAsistenciaDocente, 2);
+
+			BtnFormater(btnRegitrarCuota, 2);
+			BtnFormater(btnHistorico, 2);
+		}
 
         private void hideSubMenu()
         {
