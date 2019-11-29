@@ -178,5 +178,10 @@ namespace Bendiciones
             Program.dbController.actualizarColaborador(colaborador);
 			c.RecuperarPassword(colaborador);
 		}
+
+		private void btnSalir_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
 	}
 }

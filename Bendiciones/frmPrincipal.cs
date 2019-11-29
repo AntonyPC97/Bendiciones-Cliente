@@ -21,7 +21,7 @@ namespace Bendiciones
         int btnWidth = 172;
 
 
-        public frmPrincipal(Service.colaborador colaborador)
+		public frmPrincipal(Service.colaborador colaborador)
         {
             InitializeComponent();
 
@@ -119,7 +119,7 @@ namespace Bendiciones
             pnlAsistencia.Visible = false;
             pnlPagos.Visible = false;
             pnlCuenta.Visible = false;
-        }
+		}
 
         private void hideSubMenu()
         {

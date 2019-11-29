@@ -67,7 +67,8 @@ namespace Bendiciones
             boton.FlatAppearance.BorderSize = 0;
             boton.BackColor = colores.NaranjaOscuro;
             boton.ForeColor = colores.Blanco;
-            boton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			boton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			//boton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
 
         public void formatearBotonSubMenu(Button boton)
@@ -76,8 +77,9 @@ namespace Bendiciones
             boton.FlatAppearance.BorderSize = 0;
             boton.BackColor = colores.Naranja;
             boton.ForeColor = colores.Blanco;
-            boton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        }
+			boton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			//boton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+		}
 
         public void estiloFormularioGestion(Form ventana, Label titulo, Panel panel,Button btnNuevo, Button btnBuscar, Button btnGuardar, Button btnModificar, Button btnCancelar, Boolean isMini)
         {
