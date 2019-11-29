@@ -467,6 +467,9 @@
     <None Include="Connected Services\Service\Bendiciones.Service.contactoEmergencia.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.cruceHorarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\Service\Bendiciones.Service.cuota.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

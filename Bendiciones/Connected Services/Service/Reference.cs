@@ -568,6 +568,15 @@ namespace Bendiciones.Service {
         System.Threading.Tasks.Task<Bendiciones.Service.generarReporteAlumnosPorHorarioPDFResponse> generarReporteAlumnosPorHorarioPDFAsync(Bendiciones.Service.generarReporteAlumnosPorHorarioPDFRequest request);
         
         // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services/Servicio/cruceHorarioRequest", ReplyAction="http://services/Servicio/cruceHorarioResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        Bendiciones.Service.cruceHorarioResponse cruceHorario(Bendiciones.Service.cruceHorarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services/Servicio/cruceHorarioRequest", ReplyAction="http://services/Servicio/cruceHorarioResponse")]
+        System.Threading.Tasks.Task<Bendiciones.Service.cruceHorarioResponse> cruceHorarioAsync(Bendiciones.Service.cruceHorarioRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services/Servicio/listarDocentesYaAsistieronRequest", ReplyAction="http://services/Servicio/listarDocentesYaAsistieronResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -4959,6 +4968,47 @@ namespace Bendiciones.Service {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="cruceHorario", WrapperNamespace="http://services/", IsWrapped=true)]
+    public partial class cruceHorarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public Bendiciones.Service.horario horario;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idPersona;
+        
+        public cruceHorarioRequest() {
+        }
+        
+        public cruceHorarioRequest(Bendiciones.Service.horario horario, int idPersona) {
+            this.horario = horario;
+            this.idPersona = idPersona;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="cruceHorarioResponse", WrapperNamespace="http://services/", IsWrapped=true)]
+    public partial class cruceHorarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public Bendiciones.Service.curso[] @return;
+        
+        public cruceHorarioResponse() {
+        }
+        
+        public cruceHorarioResponse(Bendiciones.Service.curso[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="listarDocentesYaAsistieron", WrapperNamespace="http://services/", IsWrapped=true)]
     public partial class listarDocentesYaAsistieronRequest {
         
@@ -7592,6 +7642,31 @@ namespace Bendiciones.Service {
             Bendiciones.Service.generarReporteAlumnosPorHorarioPDFRequest inValue = new Bendiciones.Service.generarReporteAlumnosPorHorarioPDFRequest();
             inValue.idHorario = idHorario;
             return ((Bendiciones.Service.Servicio)(this)).generarReporteAlumnosPorHorarioPDFAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Bendiciones.Service.cruceHorarioResponse Bendiciones.Service.Servicio.cruceHorario(Bendiciones.Service.cruceHorarioRequest request) {
+            return base.Channel.cruceHorario(request);
+        }
+        
+        public Bendiciones.Service.curso[] cruceHorario(Bendiciones.Service.horario horario, int idPersona) {
+            Bendiciones.Service.cruceHorarioRequest inValue = new Bendiciones.Service.cruceHorarioRequest();
+            inValue.horario = horario;
+            inValue.idPersona = idPersona;
+            Bendiciones.Service.cruceHorarioResponse retVal = ((Bendiciones.Service.Servicio)(this)).cruceHorario(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Bendiciones.Service.cruceHorarioResponse> Bendiciones.Service.Servicio.cruceHorarioAsync(Bendiciones.Service.cruceHorarioRequest request) {
+            return base.Channel.cruceHorarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Bendiciones.Service.cruceHorarioResponse> cruceHorarioAsync(Bendiciones.Service.horario horario, int idPersona) {
+            Bendiciones.Service.cruceHorarioRequest inValue = new Bendiciones.Service.cruceHorarioRequest();
+            inValue.horario = horario;
+            inValue.idPersona = idPersona;
+            return ((Bendiciones.Service.Servicio)(this)).cruceHorarioAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

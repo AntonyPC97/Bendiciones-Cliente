@@ -11,7 +11,7 @@ namespace Bendiciones
     public partial class frmGestionarColaboradores : Form
     {
         private Service.colaborador colaborador = new Service.colaborador();
-        private int estadoPassword = 0;
+        private string cont;
         Estado estadoObjColab;
         public frmGestionarColaboradores()
         {
@@ -291,7 +291,8 @@ namespace Bendiciones
                 colaborador.email = txtCorreo.Text;
                 colaborador.telefono = txtTelefono.Text;
                 colaborador.user = txtUsuario.Text;
-                colaborador.password = txtPassword.Text;
+				cont = txtPassword.Text;
+                colaborador.password = Encriptar.HashTable(cont);
                 colaborador.numColegiatura = txtNumColeg.Text;
                 colaborador.profesion = txtProfesion.Text;
                 colaborador.referencia = txtReferencia.Text;
@@ -317,7 +318,7 @@ namespace Bendiciones
 					}
 					Program.dbController.insertarColaborador(colaborador);
 					frmMensaje mensaje = new frmMensaje("Colaborador registrado correctamente.", "Mensaje Confirmacion", "Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
-                    correo.CorreoNuevoColaborador(colaborador);
+                    correo.CorreoNuevoColaborador(colaborador,cont);
                 }
                 else if (estadoObjColab == Estado.Modificar)
                 {
@@ -349,20 +350,6 @@ namespace Bendiciones
 			estadoComponentes(Estado.Inicial);
 		}
 
-        private void btnVer_Click(object sender, EventArgs e)
-        {
-            if (estadoPassword == 0)
-            {
-                estadoPassword = 1;
-                txtPassword.PasswordChar = '\0';
-            }
-            else
-            {
-                estadoPassword = 0;
-                txtPassword.PasswordChar = '*';
-            }
-
-        }
 
         private void rbMasculino_KeyDown(object sender, KeyEventArgs e)
         {
