@@ -40,6 +40,7 @@ namespace Bendiciones
 			btnGuardar.Top = gbCliente.Top;
 			btnCancelar.Top = btnGuardar.Top + btnGuardar.Height + 10;
             cboFormaPago.SelectedIndex = 0;
+            cboDescuentos.SelectedIndex = -1;
 			btnGuardar.Left = gbCliente.Left + gbCliente.Width + 10;
 			btnCancelar.Left = btnGuardar.Left;
             dgvCondicionesMedicas.AutoGenerateColumns = false;
@@ -53,18 +54,18 @@ namespace Bendiciones
             if (cur == null)
             {
                 frmMensaje mensaje = new frmMensaje("No se ha seleccionado un servicio","Error de Servicio","");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             if (cboFormaPago.SelectedIndex == -1)
             {
                 frmMensaje mensaje = new frmMensaje("No se ha seleccionado una forma de pago", "Error de Forma de Pago", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             if(!float.TryParse(txtAbonar.Text,out i))
             {
                 frmMensaje mensaje = new frmMensaje("Ingrese una cantidad valida", "Error al Abonar", "");
                 txtAbonar.Text = "";
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             return true;
         }
@@ -148,6 +149,7 @@ namespace Bendiciones
                 txtTotal.Text = (cur.precio * (1 - desc.porcentaje / 100)).ToString("0.0");
                 int longitud = txtTotal.Text.Length;
                 txtAbonar.MaxLength = longitud;
+                txtPorc.Text = desc.porcentaje + " %";
                 if (txtAbonar.Text == "")
                 {
                     txtSaldo.Text = (float.Parse(txtTotal.Text) - 0).ToString("0.0");
@@ -183,6 +185,7 @@ namespace Bendiciones
                     if (total < abono)
                     {
                         frmMensaje mensaje = new frmMensaje("Monto máximo a abonar: " + total.ToString("0.0"), "Mensaje de advertencia", "");
+                        if(mensaje.ShowDialog() == DialogResult.OK) { }
                         txtAbonar.Text = txtTotal.Text;
                     }
                     else
@@ -194,6 +197,7 @@ namespace Bendiciones
             else
             {
                 frmMensaje mensaje = new frmMensaje("Ingrese una cantidad valida", "Error al Abonar", "");
+                if (mensaje.ShowDialog() == DialogResult.OK) { }
                 txtAbonar.Text = "";
             }
             
@@ -212,7 +216,5 @@ namespace Bendiciones
             cboFormaPago.SelectedIndex = -1;
             dgvCondicionesMedicas.DataSource = null;
         }
-
- 
     }
 }

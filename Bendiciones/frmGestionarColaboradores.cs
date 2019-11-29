@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Bendiciones
@@ -152,6 +150,7 @@ namespace Bendiciones
             string shuffle = new string(password.ToCharArray().OrderBy(s => (random.Next(2) % 2) == 0).ToArray());
             return shuffle;
         }
+
 		public void limpiarComponentes() {
 			txtNombre.Text = "";
 			txtDNI.Text = "";
@@ -170,16 +169,49 @@ namespace Bendiciones
 
         public bool IsValidEmail(string email)
         {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
             try
             {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
+                // Normalize the domain
+                email = Regex.Replace(email, @"(@)(.+)$", DomainMapper,
+                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+
+                // Examines the domain part of the email and normalizes it.
+                string DomainMapper(Match match)
+                {
+                    // Use IdnMapping class to convert Unicode domain names.
+                    var idn = new IdnMapping();
+
+                    // Pull out and process domain name (throws ArgumentException on invalid)
+                    var domainName = idn.GetAscii(match.Groups[2].Value);
+
+                    return match.Groups[1].Value + domainName;
+                }
             }
-            catch
+            catch (RegexMatchTimeoutException e)
+            {
+                return false;
+            }
+            catch (ArgumentException e)
+            {
+                return false;
+            }
+
+            try
+            {
+                return Regex.IsMatch(email,
+                    @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                    @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
             {
                 return false;
             }
         }
+
         public bool verificarCampos()
 		{
             int i;
@@ -188,28 +220,28 @@ namespace Bendiciones
 				cboTipo.SelectedIndex ==-1 || txtDireccion.Text.Equals(""))
             {
 				frmMensaje mensaje = new frmMensaje("Complete los campos obligatorios","Error de CAMPOS","");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
             
 			if(txtTelefono.Text.Length < 7 || txtTelefono.Text.Length == 8)
 			{
 				frmMensaje mensaje = new frmMensaje("Telefono de longitud incorrecta", "Error de TELEFONO", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 			if (!Program.dbController.validarUsuarioUnico(txtUsuario.Text))
 			{
 				frmMensaje mensaje = new frmMensaje("El nombre de USUARIO no esta disponible.", "Error de USUARIO", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
             if (!IsValidEmail(txtCorreo.Text))
             {
                 frmMensaje mensaje = new frmMensaje("Ingrese un correo electronico valido", "", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             if (!int.TryParse(txtDNI.Text,out i) || !int.TryParse(txtTelefono.Text, out i)) 
             {
                 frmMensaje mensaje = new frmMensaje("Dni y Telefono deben ser numericos", "", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             
             return true;
@@ -280,18 +312,17 @@ namespace Bendiciones
                 {
 					if (!Program.dbController.verificarDNI(txtDNI.Text))
 					{
-						frmMensaje msj = new frmMensaje("El Dni ya existe en la base de datos", "Error de DNI", "");
+                        frmMensaje msj = new frmMensaje("El Dni ya existe en la base de datos", "Error de DNI", ""); if (msj.ShowDialog() == DialogResult.OK) { };
 						return;
 					}
 					Program.dbController.insertarColaborador(colaborador);
-					frmMensaje mensaje = new frmMensaje("Colaborador registrado correctamente.", "Mensaje Confirmacion", "Confirmar");
+					frmMensaje mensaje = new frmMensaje("Colaborador registrado correctamente.", "Mensaje Confirmacion", "Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
                     correo.CorreoNuevoColaborador(colaborador);
                 }
                 else if (estadoObjColab == Estado.Modificar)
                 {
                     Program.dbController.actualizarColaborador(colaborador);
-                    frmMensaje mensaje = new frmMensaje("Se han actualizado los datos.", "Mensaje Confirmacion", "Confirmar");
-                    correo.CorreoNuevoColaborador(colaborador);
+                    frmMensaje mensaje = new frmMensaje("Se han actualizado los datos.", "Mensaje Confirmacion", "Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
                 }
 
                 limpiarComponentes();

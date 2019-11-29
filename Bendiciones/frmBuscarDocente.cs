@@ -47,7 +47,7 @@ namespace Bendiciones
         {
             if (dgvProfesores.RowCount == 0)
             {
-                frmMensaje mensaje = new frmMensaje("No hay docente para seleccionar", "Mensaje de advertencia", "");
+                frmMensaje mensaje = new frmMensaje("No hay docente para seleccionar", "Mensaje de advertencia", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
             }
             else
             {

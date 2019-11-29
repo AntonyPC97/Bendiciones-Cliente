@@ -77,7 +77,7 @@ namespace Bendiciones
         {
             if (curso == null)
             {
-                frmMensaje mensaje = new frmMensaje("Seleccione un curso", "Error", "");
+                frmMensaje mensaje = new frmMensaje("Seleccione un curso", "Error", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
                 return;
             }
             frmGestionarHorario formGestionarHorario = new frmGestionarHorario(curso);
@@ -106,11 +106,11 @@ namespace Bendiciones
         {
             if (curso == null)
             {
-                frmMensaje mensaje = new frmMensaje("Seleccione un curso", "Error", "");
+                frmMensaje mensaje = new frmMensaje("Seleccione un curso", "Error", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
                 return;
             }
-            frmMensaje dr = new frmMensaje("Seguro que quiere eliminar horario?","","");
-            if(dr.DialogResult == DialogResult.OK)
+            frmMensaje dr = new frmMensaje("Seguro que quiere eliminar horario?","","Confirmar");
+            if (dr.DialogResult == DialogResult.OK)
             {
                 horario = horarios[dgvHorarios.CurrentRow.Index];
                 horarios.Remove(horario);
@@ -127,7 +127,7 @@ namespace Bendiciones
         {
              if (curso == null)
             {
-                frmMensaje mensaje = new frmMensaje("Seleccione un curso", "Error", "");
+                frmMensaje mensaje = new frmMensaje("Seleccione un curso", "Error", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
                 return;
             }
              foreach(Service.asistencia a in asist)
@@ -146,7 +146,7 @@ namespace Bendiciones
                     Program.dbController.insertarHorario(h, curso.id_servicio);
                 }
             }
-            frmMensaje mensaje1 = new frmMensaje("Cambios realizados", "Mensaje de confirmación","Confirmar");
+            frmMensaje mensaje1 = new frmMensaje("Cambios realizados", "Mensaje de confirmación","Confirmar"); if(mensaje1.ShowDialog() == DialogResult.OK){};
         }
 
         private void dgvHorarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

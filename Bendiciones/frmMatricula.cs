@@ -62,6 +62,7 @@ namespace Bendiciones
                     }
                     
                 }
+                
             }
 
         }
@@ -99,7 +100,7 @@ namespace Bendiciones
             }
             else
             {
-                frmMensaje mensaje = new frmMensaje("Seleecione un Cliente","Error de Cliente","");
+                frmMensaje mensaje = new frmMensaje("Seleecione un Cliente","Error de Cliente","Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
                 return;
             }
         }
@@ -109,12 +110,12 @@ namespace Bendiciones
             if(cliente == null)
             {
                 frmMensaje mensaje = new frmMensaje("Seleecione un Cliente", "Error de Cliente", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             if (dgvMatriculas.RowCount == 0)
             {
                 frmMensaje mensaje = new frmMensaje("Agregue un curso", "Error de Matricula", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             return true;
         }
@@ -135,7 +136,8 @@ namespace Bendiciones
 
                     Program.dbController.insertarMatricula(m);
                 }
-				frmMensaje mensaje = new frmMensaje("Matrícula Registrada exitosamente", "Mensaje Confirmación", "Confirmar");
+				frmMensaje mensaje = new frmMensaje("Matrícula Registrada exitosamente", "Mensaje Confirmación", "Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
+                
 				Correo c = new Correo();
 				c.CorreoNuevoServicio(cliente,matriculas);
 				txtDNI.Text = "";
@@ -161,7 +163,7 @@ namespace Bendiciones
         {
             if(cliente == null)
             {
-                frmMensaje mensaje = new frmMensaje("Seleccione un Cliente", "Error de Cliente", "");
+                frmMensaje mensaje = new frmMensaje("Seleccione un Cliente", "Error de Cliente", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
                 return;
             }
             foreach(DataGridViewRow row in dgvMatriculas.SelectedRows)

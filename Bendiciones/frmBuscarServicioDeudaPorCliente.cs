@@ -52,7 +52,7 @@ namespace Bendiciones
             else
             {
 
-                frmMensaje mensaje = new frmMensaje("El cliente no tiene deudas pendientes", "Mensaje de advertencia", "");
+                frmMensaje mensaje = new frmMensaje("El cliente no tiene deudas pendientes", "Mensaje de advertencia", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
                 this.DialogResult = DialogResult.OK;
 
 

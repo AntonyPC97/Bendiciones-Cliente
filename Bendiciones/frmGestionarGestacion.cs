@@ -47,7 +47,7 @@ namespace Bendiciones
             if (txtClinica.Text.Equals("") || txtMedico.Text.Equals(""))
             {
                 frmMensaje mensaje = new frmMensaje("Complete los datos obligatorios", "Error de CAMPOS", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             return true;
         }

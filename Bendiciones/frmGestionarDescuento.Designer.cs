@@ -121,7 +121,7 @@
             "Seguro"});
             this.cboTipo.Location = new System.Drawing.Point(120, 223);
             this.cboTipo.Name = "cboTipo";
-            this.cboTipo.Size = new System.Drawing.Size(183, 28);
+            this.cboTipo.Size = new System.Drawing.Size(213, 28);
             this.cboTipo.TabIndex = 4;
             // 
             // lblTipo
@@ -137,10 +137,10 @@
             // txtNombre
             // 
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(120, 73);
+            this.txtNombre.Location = new System.Drawing.Point(120, 23);
             this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(183, 26);
+            this.txtNombre.Size = new System.Drawing.Size(213, 26);
             this.txtNombre.TabIndex = 2;
             // 
             // lblDescripcion
@@ -156,7 +156,7 @@
             // txtPorcentaje
             // 
             this.txtPorcentaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPorcentaje.Location = new System.Drawing.Point(120, 24);
+            this.txtPorcentaje.Location = new System.Drawing.Point(120, 73);
             this.txtPorcentaje.MaxLength = 6;
             this.txtPorcentaje.Name = "txtPorcentaje";
             this.txtPorcentaje.Size = new System.Drawing.Size(91, 26);
@@ -166,7 +166,7 @@
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(3, 74);
+            this.lblNombre.Location = new System.Drawing.Point(3, 24);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(84, 24);
             this.lblNombre.TabIndex = 37;
@@ -176,7 +176,7 @@
             // 
             this.lblPorcentaje.AutoSize = true;
             this.lblPorcentaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPorcentaje.Location = new System.Drawing.Point(3, 24);
+            this.lblPorcentaje.Location = new System.Drawing.Point(3, 74);
             this.lblPorcentaje.Name = "lblPorcentaje";
             this.lblPorcentaje.Size = new System.Drawing.Size(105, 24);
             this.lblPorcentaje.TabIndex = 35;
@@ -190,7 +190,7 @@
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDescripcion.Size = new System.Drawing.Size(183, 72);
+            this.txtDescripcion.Size = new System.Drawing.Size(213, 72);
             this.txtDescripcion.TabIndex = 3;
             // 
             // btnNuevo

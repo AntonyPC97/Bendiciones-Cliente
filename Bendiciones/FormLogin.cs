@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Globalization;
 using System.Threading;
+using System.Linq;
 
 namespace Bendiciones
 {
@@ -9,6 +10,7 @@ namespace Bendiciones
     {
 		private string correo;
 		private string pass;
+        private Service.colaborador colaborador;
         public FormLogin()
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("es-MX");
@@ -31,21 +33,21 @@ namespace Bendiciones
             pnlLine2.BackColor = paleta.Marron;
 			btnOlvide.Visible = false;
 
-
         }
         public int transformar(double minutos)
         {
-            int segundos = (int)(60 - minutos);
+            int segundos = (int)(60 - minutos*60);
             return segundos;
         }
         public Service.colaborador verificarCampos()
         {
             double minutos = 0;
-            Service.colaborador colaborador = Program.dbController.verificarUsuario(txtUser.Text);
+            colaborador = Program.dbController.verificarUsuario(txtUser.Text);
 
             if (colaborador.idPersona == 0)
             {
                 frmMensaje mensaje = new frmMensaje("Usuario o Contraseña inválido", "", "");
+                if (mensaje.ShowDialog() == DialogResult.OK) { }
                 return null;
             }
 
@@ -59,7 +61,8 @@ namespace Bendiciones
                 minutos = (current.TimeOfDay - horaBloqueo.TimeOfDay).TotalMinutes;
                 if (minutos < 1)
                 {
-                    frmMensaje mensaje = new frmMensaje("Excedio el numero de intentos, vuelva a intentar en " + transformar(minutos) + " segundos","","");
+                    frmMensaje mensaje = new frmMensaje("Excedio el numero de intentos, vuelva a intentar en " + transformar(minutos) + " seg.","","Confirmar");
+                    if (mensaje.ShowDialog() == DialogResult.OK) { };
                     return null;
                 }
                 else {
@@ -77,6 +80,7 @@ namespace Bendiciones
                     colaborador.intentos += 1;
                     Program.dbController.actualizarColaborador(colaborador);
                     frmMensaje mensaje = new frmMensaje("Contraseña incorrecta \nIntentos restantes: " + (3 - colaborador.intentos), "", "");
+                    if (mensaje.ShowDialog() == DialogResult.OK) { };
 					btnOlvide.Visible = true;
 					correo = colaborador.email;
 					pass = colaborador.password;
@@ -99,7 +103,8 @@ namespace Bendiciones
         {
             if(txtUser.Text.Equals("") || txtPassword.Text.Equals(""))
             {
-                frmMensaje mensaje = new frmMensaje("Ingresar usuario y/o contraseñña", "", "");
+                frmMensaje mensaje = new frmMensaje("Ingresar usuario y/o contraseña", "", "");
+                if (mensaje.ShowDialog() == DialogResult.OK) return;
             }
             else
             {
@@ -110,13 +115,13 @@ namespace Bendiciones
                     Program.dbController.actualizarColaborador(colaborador);
                     if (colaborador.tipo.nombre.Equals("Administracion"))
                     {
-                        frmPrincipal Principal = new frmPrincipal();
+                        frmPrincipal Principal = new frmPrincipal(colaborador);
                         Principal.Show();
                         this.Hide();
                     }
                     else if(colaborador.tipo.nombre.Equals("Secretaria"))
                     {
-                        frmPrincipalSec Principal = new frmPrincipalSec();
+                        frmPrincipalSec Principal = new frmPrincipalSec(colaborador);
                         Principal.Show();
                         this.Hide();
                     }
@@ -126,7 +131,35 @@ namespace Bendiciones
             
         }
 
-		private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        public string randomPassword()
+        {
+            string password = "";
+            //3 mayuscula, 3 minuscula, 3 numeros, 1 signo de puntuacion
+            Random random = new Random();
+            for (int i = 0; i < 3; i++)
+            {
+                int mayus = random.Next(65, 91);
+                char car = (char)mayus;
+                password += car;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                int min = random.Next(97, 123);
+                char car = (char)min;
+                password += car;
+            }
+            password += '.';
+            for (int i = 0; i < 3; i++)
+            {
+                int num = random.Next(10);
+                password += num;
+            }
+
+            string shuffle = new string(password.ToCharArray().OrderBy(s => (random.Next(2) % 2) == 0).ToArray());
+            return shuffle;
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
 		{
             if (e.KeyCode == Keys.Enter)
                 btnIngresar_Click(sender, e);
@@ -141,7 +174,9 @@ namespace Bendiciones
 		private void btnOlvide_Click(object sender, EventArgs e)
 		{
 			Correo c = new Correo();
-			c.RecuperarPassword(correo, pass);
+            colaborador.password = randomPassword();
+            Program.dbController.actualizarColaborador(colaborador);
+			c.RecuperarPassword(colaborador);
 		}
 	}
 }

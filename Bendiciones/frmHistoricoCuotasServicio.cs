@@ -95,7 +95,7 @@ namespace Bendiciones
             }
             else
             {
-                frmMensaje mensaje = new frmMensaje("Seleccione un Cliente", "","");
+                frmMensaje mensaje = new frmMensaje("Seleccione un Cliente", "","Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
             }
 		}
     }
