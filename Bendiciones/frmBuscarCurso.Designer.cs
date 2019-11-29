@@ -46,7 +46,6 @@
 			// 
 			this.dgvCursos.AllowUserToAddRows = false;
 			this.dgvCursos.AllowUserToDeleteRows = false;
-			this.dgvCursos.AllowUserToOrderColumns = true;
 			this.dgvCursos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
 			this.dgvCursos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvCursos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -54,15 +53,15 @@
             this.Descripcion,
             this.NumClases,
             this.Precio});
-			this.dgvCursos.Location = new System.Drawing.Point(114, 244);
-			this.dgvCursos.Margin = new System.Windows.Forms.Padding(4);
+			this.dgvCursos.Location = new System.Drawing.Point(115, 244);
+			this.dgvCursos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.dgvCursos.Name = "dgvCursos";
 			this.dgvCursos.ReadOnly = true;
 			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
 			this.dgvCursos.RowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgvCursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dgvCursos.Size = new System.Drawing.Size(860, 307);
+			this.dgvCursos.Size = new System.Drawing.Size(860, 306);
 			this.dgvCursos.TabIndex = 22;
 			this.dgvCursos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCursos_CellFormatting);
 			// 
@@ -97,7 +96,7 @@
 			this.btnSeleccionar.FlatAppearance.BorderSize = 0;
 			this.btnSeleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnSeleccionar.Location = new System.Drawing.Point(708, 146);
-			this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(4);
+			this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.btnSeleccionar.Name = "btnSeleccionar";
 			this.btnSeleccionar.Size = new System.Drawing.Size(133, 37);
 			this.btnSeleccionar.TabIndex = 21;
@@ -110,7 +109,7 @@
 			this.btnBuscar.FlatAppearance.BorderSize = 0;
 			this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnBuscar.Location = new System.Drawing.Point(567, 146);
-			this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
+			this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.btnBuscar.Name = "btnBuscar";
 			this.btnBuscar.Size = new System.Drawing.Size(133, 37);
 			this.btnBuscar.TabIndex = 20;
@@ -122,17 +121,18 @@
 			// 
 			this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtNombre.Location = new System.Drawing.Point(213, 87);
-			this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
+			this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.txtNombre.Name = "txtNombre";
 			this.txtNombre.Size = new System.Drawing.Size(607, 30);
 			this.txtNombre.TabIndex = 18;
+			this.txtNombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombre_KeyDown);
 			// 
 			// btnEliminar
 			// 
 			this.btnEliminar.FlatAppearance.BorderSize = 0;
 			this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnEliminar.Location = new System.Drawing.Point(821, 146);
-			this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
+			this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.btnEliminar.Name = "btnEliminar";
 			this.btnEliminar.Size = new System.Drawing.Size(133, 37);
 			this.btnEliminar.TabIndex = 23;
@@ -153,7 +153,7 @@
 			this.Controls.Add(this.txtNombre);
 			this.DoubleBuffered = true;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Margin = new System.Windows.Forms.Padding(4);
+			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.Name = "frmBuscarCurso";
 			this.Text = " Buscar Curso";
 			((System.ComponentModel.ISupportInitialize)(this.dgvCursos)).EndInit();

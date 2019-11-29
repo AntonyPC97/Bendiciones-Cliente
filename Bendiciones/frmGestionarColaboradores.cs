@@ -11,7 +11,7 @@ namespace Bendiciones
     public partial class frmGestionarColaboradores : Form
     {
         private Service.colaborador colaborador = new Service.colaborador();
-        private int estadoPassword = 0;
+        private string cont;
         Estado estadoObjColab;
         public frmGestionarColaboradores()
         {
@@ -220,28 +220,28 @@ namespace Bendiciones
 				cboTipo.SelectedIndex ==-1 || txtDireccion.Text.Equals(""))
             {
 				frmMensaje mensaje = new frmMensaje("Complete los campos obligatorios","Error de CAMPOS","");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
             
 			if(txtTelefono.Text.Length < 7 || txtTelefono.Text.Length == 8)
 			{
 				frmMensaje mensaje = new frmMensaje("Telefono de longitud incorrecta", "Error de TELEFONO", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
 			if (!Program.dbController.validarUsuarioUnico(txtUsuario.Text))
 			{
 				frmMensaje mensaje = new frmMensaje("El nombre de USUARIO no esta disponible.", "Error de USUARIO", "");
-				return false;
+				if(mensaje.ShowDialog() == DialogResult.OK) return false;
 			}
             if (!IsValidEmail(txtCorreo.Text))
             {
                 frmMensaje mensaje = new frmMensaje("Ingrese un correo electronico valido", "", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             if (!int.TryParse(txtDNI.Text,out i) || !int.TryParse(txtTelefono.Text, out i)) 
             {
                 frmMensaje mensaje = new frmMensaje("Dni y Telefono deben ser numericos", "", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             
             return true;
@@ -291,7 +291,8 @@ namespace Bendiciones
                 colaborador.email = txtCorreo.Text;
                 colaborador.telefono = txtTelefono.Text;
                 colaborador.user = txtUsuario.Text;
-                colaborador.password = txtPassword.Text;
+				cont = txtPassword.Text;
+                colaborador.password = Encriptar.HashTable(cont);
                 colaborador.numColegiatura = txtNumColeg.Text;
                 colaborador.profesion = txtProfesion.Text;
                 colaborador.referencia = txtReferencia.Text;
@@ -312,18 +313,17 @@ namespace Bendiciones
                 {
 					if (!Program.dbController.verificarDNI(txtDNI.Text))
 					{
-						frmMensaje msj = new frmMensaje("El Dni ya existe en la base de datos", "Error de DNI", "");
+                        frmMensaje msj = new frmMensaje("El Dni ya existe en la base de datos", "Error de DNI", ""); if (msj.ShowDialog() == DialogResult.OK) { };
 						return;
 					}
 					Program.dbController.insertarColaborador(colaborador);
-					frmMensaje mensaje = new frmMensaje("Colaborador registrado correctamente.", "Mensaje Confirmacion", "Confirmar");
-                    correo.CorreoNuevoColaborador(colaborador);
+					frmMensaje mensaje = new frmMensaje("Colaborador registrado correctamente.", "Mensaje Confirmacion", "Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
+                    correo.CorreoNuevoColaborador(colaborador,cont);
                 }
                 else if (estadoObjColab == Estado.Modificar)
                 {
                     Program.dbController.actualizarColaborador(colaborador);
-                    frmMensaje mensaje = new frmMensaje("Se han actualizado los datos.", "Mensaje Confirmacion", "Confirmar");
-                    correo.CorreoNuevoColaborador(colaborador);
+                    frmMensaje mensaje = new frmMensaje("Se han actualizado los datos.", "Mensaje Confirmacion", "Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
                 }
 
                 limpiarComponentes();
@@ -350,20 +350,6 @@ namespace Bendiciones
 			estadoComponentes(Estado.Inicial);
 		}
 
-        private void btnVer_Click(object sender, EventArgs e)
-        {
-            if (estadoPassword == 0)
-            {
-                estadoPassword = 1;
-                txtPassword.PasswordChar = '\0';
-            }
-            else
-            {
-                estadoPassword = 0;
-                txtPassword.PasswordChar = '*';
-            }
-
-        }
 
         private void rbMasculino_KeyDown(object sender, KeyEventArgs e)
         {

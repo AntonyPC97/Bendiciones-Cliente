@@ -41,7 +41,7 @@ namespace Bendiciones
             }
             else
             {
-                frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios", "Mensaje de advertencia", "");
+                frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios", "Mensaje de advertencia", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
             }
         }
 
@@ -98,7 +98,7 @@ namespace Bendiciones
             }
             else
             {
-                frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios", "Mensaje de advertencia", "");
+                frmMensaje mensaje = new frmMensaje("Todos los campos son obligatorios", "Mensaje de advertencia", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
             }
         }
 
@@ -119,12 +119,12 @@ namespace Bendiciones
                 }
                 else
                 {
-                    frmMensaje mensaje = new frmMensaje("No se ha seleccionado un horario", "", "");
+                    frmMensaje mensaje = new frmMensaje("No se ha seleccionado un horario", "", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
                 }
             }
             else
             {
-                frmMensaje mensaje = new frmMensaje("Seleccione un curso", "", "");
+                frmMensaje mensaje = new frmMensaje("Seleccione un curso", "", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
             }
 
 

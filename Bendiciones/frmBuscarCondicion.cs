@@ -42,8 +42,19 @@ namespace Bendiciones
 		{
 			Service.condicionMedica conSeleccionada = (Service.condicionMedica)dgvCondiciones.CurrentRow.DataBoundItem;
 			Program.dbController.eliminarCondicionMedica(conSeleccionada.id_cond);
-			frmMensaje mensaje = new frmMensaje("Eliminado correctamente.", "Mensaje Confirmacion", "Confirmar");
+			frmMensaje mensaje = new frmMensaje("Eliminado correctamente.", "Mensaje Confirmacion","Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
 			this.Close();
+		}
+
+		private void txtNombre_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+				btnBuscar_Click(sender, e);
+		}
+
+		private void btnBuscar_Click(object sender, EventArgs e)
+		{
+			dgvCondiciones.DataSource = Program.dbController.listarCondMedicasPorNombre(txtNombre.Text);
 		}
 	}
 }

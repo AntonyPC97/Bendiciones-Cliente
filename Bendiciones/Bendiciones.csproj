@@ -92,6 +92,12 @@
     <Compile Include="frmBuscarServicioDeudaPorCliente.Designer.cs">
       <DependentUpon>frmBuscarServicioDeudaPorCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCambiarPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCambiarPass.Designer.cs">
+      <DependentUpon>frmCambiarPass.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGestionarBebe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,6 +294,9 @@
     <EmbeddedResource Include="frmBuscarServicioDeudaPorCliente.resx">
       <DependentUpon>frmBuscarServicioDeudaPorCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCambiarPass.resx">
+      <DependentUpon>frmCambiarPass.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGestionarBebe.resx">
       <DependentUpon>frmGestionarBebe.cs</DependentUpon>
     </EmbeddedResource>
@@ -383,6 +392,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagram1.cd" />
     <None Include="Connected Services\Service\Bendiciones.Service.actualizarApoderadoResponse.datasource">
@@ -455,6 +465,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\Service\Bendiciones.Service.contactoEmergencia.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Service\Bendiciones.Service.cruceHorarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\Service\Bendiciones.Service.cuota.datasource">
@@ -773,6 +786,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

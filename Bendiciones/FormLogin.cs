@@ -34,9 +34,11 @@ namespace Bendiciones
 			btnOlvide.Visible = false;
 
         }
-        public int transformar(double minutos)
+
+		
+		public int transformar(double minutos)
         {
-            int segundos = (int)(60 - minutos);
+            int segundos = (int)(60 - minutos*60);
             return segundos;
         }
         public Service.colaborador verificarCampos()
@@ -47,6 +49,7 @@ namespace Bendiciones
             if (colaborador.idPersona == 0)
             {
                 frmMensaje mensaje = new frmMensaje("Usuario o Contraseña inválido", "", "");
+                if (mensaje.ShowDialog() == DialogResult.OK) { }
                 return null;
             }
 
@@ -60,7 +63,8 @@ namespace Bendiciones
                 minutos = (current.TimeOfDay - horaBloqueo.TimeOfDay).TotalMinutes;
                 if (minutos < 1)
                 {
-                    frmMensaje mensaje = new frmMensaje("Excedio el numero de intentos, vuelva a intentar en " + transformar(minutos) + " segundos","","");
+                    frmMensaje mensaje = new frmMensaje("Excedio el numero de intentos, vuelva a intentar en " + transformar(minutos) + " seg.","","Confirmar");
+                    if (mensaje.ShowDialog() == DialogResult.OK) { };
                     return null;
                 }
                 else {
@@ -69,7 +73,7 @@ namespace Bendiciones
                 }
             }
 			
-            if (txtPassword.Text.Equals(colaborador.password))
+            if (Encriptar.HashTable(txtPassword.Text).Equals(colaborador.password))
                 return colaborador;
             else
             {
@@ -78,6 +82,7 @@ namespace Bendiciones
                     colaborador.intentos += 1;
                     Program.dbController.actualizarColaborador(colaborador);
                     frmMensaje mensaje = new frmMensaje("Contraseña incorrecta \nIntentos restantes: " + (3 - colaborador.intentos), "", "");
+                    if (mensaje.ShowDialog() == DialogResult.OK) { };
 					btnOlvide.Visible = true;
 					correo = colaborador.email;
 					pass = colaborador.password;
@@ -100,7 +105,8 @@ namespace Bendiciones
         {
             if(txtUser.Text.Equals("") || txtPassword.Text.Equals(""))
             {
-                frmMensaje mensaje = new frmMensaje("Ingresar usuario y/o contraseñña", "", "");
+                frmMensaje mensaje = new frmMensaje("Ingresar usuario y/o contraseña", "", "");
+                if (mensaje.ShowDialog() == DialogResult.OK) return;
             }
             else
             {
@@ -111,13 +117,13 @@ namespace Bendiciones
                     Program.dbController.actualizarColaborador(colaborador);
                     if (colaborador.tipo.nombre.Equals("Administracion"))
                     {
-                        frmPrincipal Principal = new frmPrincipal(txtUser.Text);
+                        frmPrincipal Principal = new frmPrincipal(colaborador);
                         Principal.Show();
                         this.Hide();
                     }
                     else if(colaborador.tipo.nombre.Equals("Secretaria"))
                     {
-                        frmPrincipalSec Principal = new frmPrincipalSec(txtUser.Text);
+                        frmPrincipalSec Principal = new frmPrincipalSec(colaborador);
                         Principal.Show();
                         this.Hide();
                     }
@@ -170,9 +176,15 @@ namespace Bendiciones
 		private void btnOlvide_Click(object sender, EventArgs e)
 		{
 			Correo c = new Correo();
-            colaborador.password = randomPassword();
+			string cont = randomPassword();
+			colaborador.password = Encriptar.HashTable(cont);
             Program.dbController.actualizarColaborador(colaborador);
-			c.RecuperarPassword(colaborador);
+			c.RecuperarPassword(colaborador,cont);
+		}
+
+		private void btnSalir_Click(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 	}
 }

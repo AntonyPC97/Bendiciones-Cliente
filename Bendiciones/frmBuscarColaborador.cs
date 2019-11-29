@@ -31,6 +31,7 @@ namespace Bendiciones
         {
             Service.colaborador colabFila = (Service.colaborador)dgvColaborador.Rows[e.RowIndex].DataBoundItem;
             dgvColaborador.Rows[e.RowIndex].Cells["Nombre"].Value = colabFila.nombre;
+            dgvColaborador.Rows[e.RowIndex].Cells["DNI"].Value = colabFila.dni;
             dgvColaborador.Rows[e.RowIndex].Cells["Tipo"].Value = colabFila.tipo.nombre;
         }
 
@@ -43,14 +44,27 @@ namespace Bendiciones
 		private void btnEliminar_Click(object sender, EventArgs e)
 		{
 			colabSeleccionado = (Service.colaborador)dgvColaborador.CurrentRow.DataBoundItem;
-			Program.dbController.eliminarColaborador(colabSeleccionado.idPersona);
-			frmMensaje mensaje = new frmMensaje("Se ha eliminado correctamente", "Mensaje Confirmacion", "Confirmar");
-			this.Close();
+			frmMensaje mensaje = new frmMensaje("Seguro que desea eliminar el Colaborador: " + colabSeleccionado.nombre, "", "");
+			if(mensaje.ShowDialog()== DialogResult.OK)
+			{
+				Program.dbController.eliminarColaborador(colabSeleccionado.idPersona);
+				frmMensaje msj = new frmMensaje("Se ha eliminado correctamente", "Mensaje Confirmacion", "Confirmar");
+				if (msj.ShowDialog() == DialogResult.OK) {
+					this.Close();
+				}
+			}
+			
 		}
 
 		private void btnBuscar_Click(object sender, EventArgs e)
 		{
 			dgvColaborador.DataSource = Program.dbController.listarColaboradoresPorNombreDni(txtNombre.Text);
+		}
+
+		private void txtNombre_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+				btnBuscar_Click(sender, e);
 		}
 	}
 }

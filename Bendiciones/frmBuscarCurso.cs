@@ -29,7 +29,7 @@ namespace Bendiciones
         {
             if (dgvCursos.RowCount == 0)
             {
-                frmMensaje mensaje = new frmMensaje("No hay curso para seleccionar", "Mensaje de advertencia", "");
+                frmMensaje mensaje = new frmMensaje("No hay curso para seleccionar", "Mensaje de advertencia", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
             }
             else
             {
@@ -56,9 +56,23 @@ namespace Bendiciones
 		private void btnEliminar_Click(object sender, EventArgs e)
 		{
 			cursoSeleccionado = (Service.curso)dgvCursos.CurrentRow.DataBoundItem;
-			Program.dbController.eliminarCurso(cursoSeleccionado.id_servicio);
-			frmMensaje mensaje = new frmMensaje("Curso Eliminado exitosamente", "Mensaje Confirmacion", "Confirmar");
-			this.Close();
+			frmMensaje mensaje = new frmMensaje("Seguro que desea eliminar el Curso: "+cursoSeleccionado.nombre, "", "");
+			if (mensaje.ShowDialog() == DialogResult.OK)
+			{
+				Program.dbController.eliminarCurso(cursoSeleccionado.id_servicio);
+				frmMensaje msj = new frmMensaje("Curso Eliminado exitosamente", "Mensaje Confirmacion", "Confirmar");
+				if (msj.ShowDialog() == DialogResult.OK)
+				{
+					this.Close();
+				}
+			}
+
+		}
+
+		private void txtNombre_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+				btnBuscar_Click(sender, e);
 		}
 	}
 }

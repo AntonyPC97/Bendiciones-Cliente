@@ -54,23 +54,23 @@ namespace Bendiciones
             if (txtNumClase.Text.ToString().Equals(""))
             {
                 frmMensaje mensaje = new frmMensaje("Ingrese un número de clase o número de vacantes válido", "Error de Servicio", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             int nClases = Int32.Parse(txtNumClase.Text);
             if (Curs.numClases < nClases)
             {
                 frmMensaje mensaje = new frmMensaje("El curso tiene como máximo: " + Curs.numClases + " clases", "Error de Servicio", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             if (dtpFechaMatricula.Value.Date < DateTime.Now.Date)
             {
                 frmMensaje mensaje = new frmMensaje("El curso no puede crearse un fecha anterior al actual", "Error de Servicio", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             if(dtpHoraIni.Value> dtpHoraFin.Value)
             {
                 frmMensaje mensaje = new frmMensaje("El horario tiene una hora de inicio mayor a la hora final", "Error de Servicio", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
 
             int horaIni = dtpHoraIni.Value.Hour * 100 + dtpHoraIni.Value.Minute;
@@ -78,17 +78,17 @@ namespace Bendiciones
             if (horaFin - horaIni > 300| horaFin - horaIni < 130)
             {
                 frmMensaje mensaje = new frmMensaje("El horario debe durar minimo 2hrs y maximo 3 hrs", "Error de Servicio", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             if (txtNumVac.Text.ToString().Equals(""))
             {
                 frmMensaje mensaje = new frmMensaje("Ingrese un número de clase o número de vacantes válido", "Error de Servicio", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             if (Int32.Parse(txtNumVac.Text.ToString())>30)
             {
                 frmMensaje mensaje = new frmMensaje("El horario debe terner máximo 30 vacantes", "Error de Servicio", "");
-                return false;
+                if(mensaje.ShowDialog() == DialogResult.OK) return false;
             }
             return true;
         }
@@ -244,7 +244,8 @@ namespace Bendiciones
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            this.DialogResult = DialogResult.None;
+            this.Close();
         }
 
         private void btnEliminarDocente_Click(object sender, EventArgs e)

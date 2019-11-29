@@ -389,6 +389,12 @@
   <message name="generarReporteAlumnosPorHorarioPDFResponse">
     <part name="parameters" element="tns:generarReporteAlumnosPorHorarioPDFResponse" />
   </message>
+  <message name="cruceHorario">
+    <part name="parameters" element="tns:cruceHorario" />
+  </message>
+  <message name="cruceHorarioResponse">
+    <part name="parameters" element="tns:cruceHorarioResponse" />
+  </message>
   <message name="listarDocentesYaAsistieron">
     <part name="parameters" element="tns:listarDocentesYaAsistieron" />
   </message>
@@ -861,6 +867,10 @@
     <operation name="generarReporteAlumnosPorHorarioPDF">
       <input wsam:Action="http://services/Servicio/generarReporteAlumnosPorHorarioPDFRequest" message="tns:generarReporteAlumnosPorHorarioPDF" />
       <output wsam:Action="http://services/Servicio/generarReporteAlumnosPorHorarioPDFResponse" message="tns:generarReporteAlumnosPorHorarioPDFResponse" />
+    </operation>
+    <operation name="cruceHorario">
+      <input wsam:Action="http://services/Servicio/cruceHorarioRequest" message="tns:cruceHorario" />
+      <output wsam:Action="http://services/Servicio/cruceHorarioResponse" message="tns:cruceHorarioResponse" />
     </operation>
     <operation name="listarDocentesYaAsistieron">
       <input wsam:Action="http://services/Servicio/listarDocentesYaAsistieronRequest" message="tns:listarDocentesYaAsistieron" />
@@ -1577,6 +1587,15 @@
       </output>
     </operation>
     <operation name="generarReporteAlumnosPorHorarioPDF">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="cruceHorario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -67,7 +67,8 @@ namespace Bendiciones
             boton.FlatAppearance.BorderSize = 0;
             boton.BackColor = colores.NaranjaOscuro;
             boton.ForeColor = colores.Blanco;
-            boton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			boton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			//boton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
 
         public void formatearBotonSubMenu(Button boton)
@@ -76,8 +77,9 @@ namespace Bendiciones
             boton.FlatAppearance.BorderSize = 0;
             boton.BackColor = colores.Naranja;
             boton.ForeColor = colores.Blanco;
-            boton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        }
+			boton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			//boton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+		}
 
         public void estiloFormularioGestion(Form ventana, Label titulo, Panel panel,Button btnNuevo, Button btnBuscar, Button btnGuardar, Button btnModificar, Button btnCancelar, Boolean isMini)
         {
@@ -469,7 +471,7 @@ namespace Bendiciones
             btnCancelar.Left = btnModificar.Left + btnW + btnGap;
 
         }
-		public void formMensaje(Panel pnlTitulo, Panel pnlMensaje, Label lblTitulo, Label lblMensaje,Button btnOk, Button btnCancel,string tipo)
+		public void formMensaje(Panel pnlTitulo, Panel pnlMensaje, Label lblTitulo, TextBox txtMensaje,Button btnOk, Button btnCancel,string tipo)
 		{
 			formatearBotonNaranja(btnOk);
 			formatearBotonNaranja(btnCancel);
@@ -483,9 +485,9 @@ namespace Bendiciones
 			lblTitulo.Top = (pnlTitulo.Height - lblTitulo.Height) / 2;
 			lblTitulo.Left = pnlTitulo.Left + btnGap;
 
-			lblMensaje.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			lblMensaje.Top = (pnlMensaje.Height - lblMensaje.Height) / 2 - 2*btnGap;
-			lblMensaje.Left = pnlMensaje.Left + btnGap;
+			txtMensaje.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			txtMensaje.Top = (pnlMensaje.Height - txtMensaje.Height) / 2 - 2*btnGap;
+			txtMensaje.Left = pnlMensaje.Left + btnGap;
 
 			btnCancel.Top = btnOk.Top = pnlMensaje.Top + pnlMensaje.Height - 2*btnH - btnGap;
 			btnOk.Left = pnlMensaje.Left + pnlMensaje.Width - 3 * btnGap - 2 * btnW;

@@ -45,14 +45,14 @@ namespace Bendiciones
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-			
+			dgvDescuentos.DataSource = Program.dbController.listarDescuentos();
         }
 
 		private void btnEliminar_Click(object sender, EventArgs e)
 		{
 			descuentoSeleccionado = (Service.descuento)dgvDescuentos.CurrentRow.DataBoundItem;
 			Program.dbController.eliminarDescuento(descuentoSeleccionado.idDescuento);
-			frmMensaje mensaje = new frmMensaje("Se ha eliminado correctamente","Mensaje Confirmacion","Confirmar");
+			frmMensaje mensaje = new frmMensaje("Se ha eliminado correctamente","Mensaje Confirmacion","Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
 			this.Close();
 		}
 	}
