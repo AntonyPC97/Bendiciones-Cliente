@@ -323,7 +323,6 @@ namespace Bendiciones
                 {
                     Program.dbController.actualizarColaborador(colaborador);
                     frmMensaje mensaje = new frmMensaje("Se han actualizado los datos.", "Mensaje Confirmacion", "Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
-                    correo.CorreoNuevoColaborador(colaborador);
                 }
 
                 limpiarComponentes();

@@ -40,6 +40,7 @@ namespace Bendiciones
 			btnGuardar.Top = gbCliente.Top;
 			btnCancelar.Top = btnGuardar.Top + btnGuardar.Height + 10;
             cboFormaPago.SelectedIndex = 0;
+            cboDescuentos.SelectedIndex = -1;
 			btnGuardar.Left = gbCliente.Left + gbCliente.Width + 10;
 			btnCancelar.Left = btnGuardar.Left;
             dgvCondicionesMedicas.AutoGenerateColumns = false;

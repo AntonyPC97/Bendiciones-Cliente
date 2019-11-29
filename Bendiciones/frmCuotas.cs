@@ -88,6 +88,7 @@ namespace Bendiciones
                     if (formBuscarServicioPorCliente.ShowDialog() == DialogResult.OK)
                     {
                         servMat = formBuscarServicioPorCliente.ServMat;
+                        servMat.cliente = cliente;
                         txtNombreServicio.Text = servMat.servicio.nombre;
                         dtpFechaMatricula.Value = servMat.fecha;
                         txtPendiente.Text = servMat.saldo.ToString("0.0");
@@ -124,7 +125,8 @@ namespace Bendiciones
                     Program.dbController.actualizarMatricula(servMat);
                     Program.dbController.insertarCuota(c, servMat.idMatricula);
                     frmMensaje mensaje = new frmMensaje("Cuota Registrada exitosamente", "Mensaje Confirmación","Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
-
+                    Correo correo = new Correo();
+                    correo.RegistroCuota(servMat,txtAbonar.Text);
                     txtPendiente.Text = (float.Parse(txtPendiente.Text) - float.Parse(txtAbonar.Text)).ToString("0.0");
                     txtAbonar.Text = "0";
                 }

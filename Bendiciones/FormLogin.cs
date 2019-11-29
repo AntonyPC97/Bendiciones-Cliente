@@ -61,7 +61,7 @@ namespace Bendiciones
                 minutos = (current.TimeOfDay - horaBloqueo.TimeOfDay).TotalMinutes;
                 if (minutos < 1)
                 {
-                    frmMensaje mensaje = new frmMensaje("Excedio el numero de intentos, vuelva a intentar en " + transformar(minutos) + " seg.","","Confirmar");   if(mensaje.ShowDialog() == DialogResult.OK){};
+                    frmMensaje mensaje = new frmMensaje("Excedio el numero de intentos, vuelva a intentar en " + transformar(minutos) + " seg.","","Confirmar");
                     if (mensaje.ShowDialog() == DialogResult.OK) { };
                     return null;
                 }
