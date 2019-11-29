@@ -149,6 +149,7 @@ namespace Bendiciones
                 txtTotal.Text = (cur.precio * (1 - desc.porcentaje / 100)).ToString("0.0");
                 int longitud = txtTotal.Text.Length;
                 txtAbonar.MaxLength = longitud;
+                txtPorc.Text = desc.porcentaje + " %";
                 if (txtAbonar.Text == "")
                 {
                     txtSaldo.Text = (float.Parse(txtTotal.Text) - 0).ToString("0.0");
@@ -215,7 +216,5 @@ namespace Bendiciones
             cboFormaPago.SelectedIndex = -1;
             dgvCondicionesMedicas.DataSource = null;
         }
-
- 
     }
 }

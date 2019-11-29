@@ -31,6 +31,7 @@ namespace Bendiciones
         {
             Service.colaborador colabFila = (Service.colaborador)dgvColaborador.Rows[e.RowIndex].DataBoundItem;
             dgvColaborador.Rows[e.RowIndex].Cells["Nombre"].Value = colabFila.nombre;
+            dgvColaborador.Rows[e.RowIndex].Cells["DNI"].Value = colabFila.dni;
             dgvColaborador.Rows[e.RowIndex].Cells["Tipo"].Value = colabFila.tipo.nombre;
         }
 
