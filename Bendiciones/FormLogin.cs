@@ -19,6 +19,7 @@ namespace Bendiciones
             picName.BackColor = paleta.Naranja;
             this.BackColor = paleta.NaranjaOscuro;
             btnIngresar.BackColor = paleta.Naranja;
+            btnSalir.BackColor = paleta.NaranjaOscuro;
 
             txtUser.Left = (txtUser.Parent.Width - txtUser.Width) / 2;
             txtPassword.Left = (txtPassword.Parent.Width - txtPassword.Width) / 2;
@@ -30,7 +31,6 @@ namespace Bendiciones
             pnlLine1.BackColor = paleta.Marron;
             pnlLine2.BackColor = paleta.Marron;
 			btnOlvide.Visible = false;
-
 
         }
         public int transformar(double minutos)
@@ -143,5 +143,10 @@ namespace Bendiciones
 			Correo c = new Correo();
 			c.RecuperarPassword(correo, pass);
 		}
-	}
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
 }
