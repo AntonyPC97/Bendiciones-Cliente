@@ -135,27 +135,38 @@ namespace Bendiciones
 
         private void btnSeleccionarHorario_Click(object sender, EventArgs e)
         {
-            if (dgvHorarios.RowCount != 0)
-            {
-                Service.horario h = horarios[dgvHorarios.CurrentRow.Index];
-                Service.asistencia a = new Service.asistencia();
+			if (dgvHorarios.RowCount != 0)
+			{
+				Service.horario h = horarios[dgvHorarios.CurrentRow.Index];
+				Service.asistencia a = new Service.asistencia();
 
-                a.horario = h;
+				a.horario = h;
 
-                if (cliente is Service.gestante)
-                {
-                    a.persona = cliente;
-                }
-                else
-                {
-                    a.persona = (Service.persona)cboBebes.SelectedItem;
-                }
+				if (cliente is Service.gestante)
+				{
+					a.persona = cliente;
+				}
+				else
+				{
+					a.persona = (Service.persona)cboBebes.SelectedItem;
+				}
 
+				IEnumerable<Service.curso> cur = Program.dbController.cruceHorario(horarios[dgvHorarios.CurrentRow.Index], cliente.idPersona);
+				if (cur == null)
+				{
+					Program.dbController.registrarClienteEnHorario(a);
+					frmMensaje mensaje = new frmMensaje("Cliente registrado en horario", "Mensaje Confirmación","Confirmar");if (mensaje.ShowDialog() == DialogResult.OK) { }
+				}
+				else
+				{
+					foreach (Service.curso c in cur)
+					{
+						frmMensaje mensaje = new frmMensaje("Cuce de horarios con la clase " + c.horario[0].clase + " del curso " + c.nombre, "Advertencia", ""); if (mensaje.ShowDialog() == DialogResult.OK) { }
+						break;
+					}
+				}
+			}
 
-                Program.dbController.registrarClienteEnHorario(a);
-                frmMensaje mensaje = new frmMensaje("Cliente registrado en horario", "Mensaje Confirmación","Confirmar"); if (mensaje.ShowDialog() == DialogResult.OK) { }
-            }
-            
-        }
+		}
     }
 }

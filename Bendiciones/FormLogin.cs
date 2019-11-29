@@ -34,7 +34,9 @@ namespace Bendiciones
 			btnOlvide.Visible = false;
 
         }
-        public int transformar(double minutos)
+
+		
+		public int transformar(double minutos)
         {
             int segundos = (int)(60 - minutos*60);
             return segundos;
@@ -71,7 +73,7 @@ namespace Bendiciones
                 }
             }
 			
-            if (txtPassword.Text.Equals(colaborador.password))
+            if (Encriptar.HashTable(txtPassword.Text).Equals(colaborador.password))
                 return colaborador;
             else
             {
@@ -174,9 +176,10 @@ namespace Bendiciones
 		private void btnOlvide_Click(object sender, EventArgs e)
 		{
 			Correo c = new Correo();
-            colaborador.password = randomPassword();
+			string cont = randomPassword();
+			colaborador.password = Encriptar.HashTable(cont);
             Program.dbController.actualizarColaborador(colaborador);
-			c.RecuperarPassword(colaborador);
+			c.RecuperarPassword(colaborador,cont);
 		}
 
 		private void btnSalir_Click(object sender, EventArgs e)

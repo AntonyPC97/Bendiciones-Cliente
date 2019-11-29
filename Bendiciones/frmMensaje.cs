@@ -16,9 +16,9 @@ namespace Bendiciones
         {
             InitializeComponent();
 			lblTitulo.Text = titulo;
-			lblMensaje.Text = mensaje;
+			txtMensaje.Text = mensaje;
 			Formateador f = new Formateador();
-			f.formMensaje(pnlTitulo,pnlMensaje,lblTitulo,lblMensaje,btnOk,btnCancelar,tipo);
+			f.formMensaje(pnlTitulo,pnlMensaje,lblTitulo,txtMensaje,btnOk,btnCancelar,tipo);
 			this.StartPosition = FormStartPosition.CenterScreen;
         }
 

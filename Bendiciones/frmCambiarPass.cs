@@ -51,7 +51,7 @@ namespace Bendiciones
                 return;
             }
 
-            if (!txtActual.Text.Equals(colaborador.password))
+            if (Encriptar.HashTable(txtActual.Text).Equals(Encriptar.HashTable(colaborador.password)))
             {
                 frmMensaje msj = new frmMensaje("Contraseña actual incorrecta","", "");
                 if (msj.ShowDialog() == DialogResult.OK) return;
@@ -61,14 +61,15 @@ namespace Bendiciones
             frmMensaje mensaje1 = new frmMensaje("Seguro que desea continuar?","","Confirmar"); 
             if(mensaje1.ShowDialog() == DialogResult.OK)
             {
-                colaborador.password = txtNueva.Text;
+				string cont = txtNueva.Text;
+                colaborador.password = Encriptar.HashTable(txtNueva.Text);
                 Program.dbController.actualizarColaborador(colaborador);
                 frmMensaje mensaje2 = new frmMensaje("Cambio de Contraseñas exitoso", "","Confirmar"); 
                 if (mensaje2.ShowDialog() == DialogResult.OK)
                 {
                     this.Close();
                     Correo c = new Correo();
-                    c.CambiarPass(colaborador);
+                    c.CambiarPass(colaborador,cont);
                     padre.Hide();
                     
                 }

@@ -18,7 +18,7 @@ namespace Bendiciones
         static string emailFromAddress = "bendicionestest@gmail.com"; //Sender Email Address  
         static string password = "bendiciones1234."; //Sender Password  
 
-        public void CorreoNuevoColaborador( Service.colaborador colaborador)
+        public void CorreoNuevoColaborador( Service.colaborador colaborador,string cont)
         {
 
 			using (MailMessage mail = new MailMessage())
@@ -26,7 +26,7 @@ namespace Bendiciones
 				mail.From = new MailAddress(emailFromAddress);
 				mail.To.Add(colaborador.email);
 				mail.Subject = "Bienvenida/o a Escuela para embarazadas " + colaborador.nombre;
-				mail.Body = "Usuario: " + colaborador.user + "<br>Contraseña: " + colaborador.password +
+				mail.Body = "Usuario: " + colaborador.user + "<br>Contraseña: " + cont +
 					"<br> Contraseña personal. Por favor, no comparta con nadie su contraseña" ; 
 				mail.IsBodyHtml = true;
 				using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
@@ -69,7 +69,7 @@ namespace Bendiciones
 
 		}
 
-		public void RecuperarPassword(Service.colaborador colaborador)
+		public void RecuperarPassword(Service.colaborador colaborador,string cont)
 		{
 			using (MailMessage mail = new MailMessage())
 			{
@@ -77,7 +77,7 @@ namespace Bendiciones
 				mail.To.Add(colaborador.email);
 				mail.Subject = "Recuperar Contraseña";
 				mail.Body = "Estimado " + colaborador.nombre + ",<br><br> Nuestro sistema ha detectato que olvidaste tu contraseña por lo que se ha generado una nueva.+" +
-                    "<br>Contraseña nueva: "+colaborador.password+ "<br> Contraseña personal. Por favor, no comparta con nadie su contraseña";
+                    "<br>Contraseña nueva: "+cont+ "<br> Contraseña personal. Por favor, no comparta con nadie su contraseña";
                 mail.IsBodyHtml = true;
 				using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
 				{
@@ -89,7 +89,7 @@ namespace Bendiciones
 			}
 		}
 
-        public void CambiarPass(Service.colaborador colaborador)
+        public void CambiarPass(Service.colaborador colaborador,string pass)
         {
 
             using (MailMessage mail = new MailMessage())
@@ -97,7 +97,7 @@ namespace Bendiciones
                 mail.From = new MailAddress(emailFromAddress);
                 mail.To.Add(colaborador.email);
                 mail.Subject = "Cambio de Contraseña de " + colaborador.nombre;
-                mail.Body = "Usuario: " + colaborador.user + "<br>Contraseña: " + colaborador.password +
+                mail.Body = "Usuario: " + colaborador.user + "<br>Contraseña: " + pass +
                     "<br> Contraseña personal. Por favor, no comparta con nadie su contraseña";
                 mail.IsBodyHtml = true;
                 using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
